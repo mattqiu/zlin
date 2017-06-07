@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<title>平台推广员申请</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/extension.css">
+</head>
+<body>
+<header id="header" class="transparent"></header>
+
+<div class="login-form mb20 mt20" id="apply_info"></div>
+<!--foot-->
+<footer id="footer" class="fixed-Width"></footer>
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script> 
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/core/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script> 
+<script type="text/javascript" src="../../js/tmpl/extension_applyplat.js"></script>
+<script type="text/javascript" src="../../js/footer.js"></script>
+</body>
+</html>
+<script type="text/html" id="join-top-tmpl">
+  <div class="header-wrap">
+    <div class="header-l"> <a href="javascript:history.go(-1)"> <i class="back"></i> </a> </div>
+	<div class="header-tit">欢迎加入<%=apply_info.site_name;%>！</div>
+    <div class="header-r"> <a id="header-nav" href="javascript:void(0);"><i class="more"></i><sup></sup></a> </div>
+  </div>
+  <div class="qm-nav-layout">
+    <div class="qm-nav-menu"> <span class="arrow"></span>
+      <ul>
+        <li><a href="../../index.html"><i class="home"></i>首页</a></li>
+        <li><a href="../search.html"><i class="search"></i>搜索</a></li>
+        <li><a href="../cart_list.html"><i class="cart"></i>购物车<sup></sup></a></li>
+        <li><a href="../member/member.html"><i class="member"></i>我的商城</a></li>
+        <li><a href="javascript:void(0);"><i class="message"></i>消息<sup></sup></a></li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="apply_info_form">
+  <div class="qm-inp-con">
+    <form action="" method ="">
+      <ul class="form-box">      
+	    <li class="form-item">
+		  <h4>真实姓名：</h4>
+          <div class="input-box">
+            <input type="text" placeholder="" class="inp" name="truename" id="truename" value="<%=apply_info.member_truename;%>" />
+          </div>
+        </li>
+		<li class="form-item">
+		  <h4>手机号码：</h4>
+          <div class="input-box">
+            <input type="text" placeholder="" class="inp" name="mobile" id="mobile" value="<%=apply_info.member_mobile;%>" />
+          </div>
+        </li>
+		<li class="form-item">
+		  <h4>电子邮箱：</h4>
+          <div class="input-box">
+            <input type="text" placeholder="" class="inp" name="email" id="email" value="<%=apply_info.member_email;%>" />
+          </div>
+        </li>
+		<li class="form-item">
+		  <h4>QQ号码：</h4>
+          <div class="input-box">
+            <input type="text" placeholder="" class="inp" name="qq" id="qq" value="<%=apply_info.member_qq;%>" />
+          </div>
+        </li>
+		<li class="form-item">
+		  <h4>联系地址：</h4>
+          <div class="input-box">
+            <input type="text" placeholder="" class="inp" name="areainfo" id="areainfo" value="<%=apply_info.member_areainfo;%>" />
+          </div>
+        </li>
+		<li class="form-item">
+		  <h4>申请说明：</h4>
+          <div class="input-box">
+            <input type="text" placeholder="" class="inp" name="describe" id="describe" value="" />
+          </div>
+        </li>
+	  </ul>        
+      <input type="hidden" name="client" value="wap">
+	  <div class="error-tips"></div>
+      <a href="javascript:void(0);" class="btn-l" id="applybtn">提交申请</a>  
+    </form>
+  </div> 
+</script>

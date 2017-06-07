@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>我的团队</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../../css/main.css">
+<link rel="stylesheet" type="text/css" href="../../css/index.css">
+<link rel="stylesheet" type="text/css" href="../../css/extension.css">
+</head>
+<body>
+<header id="header"></header>
+
+<div class="exten-top clearfix" id="extension-info"></div>
+
+<ul class="extension-tab" id="extension-tab"></ul>
+<div class="extension-list-wp" id="extension-list"></div>
+
+<!--foot-->
+<div id="main_footer" class="footer mr-t20"></div>
+<!--全局导航-->
+<div id="main-globalnav" class="global-nav"></div>
+<!--分类菜单-->
+<nav id="main-menu" style="display:None"></nav>
+
+<script type="text/javascript" src="../../js/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/swipe.js"></script>
+<script type="text/javascript" src="../../js/template.js"></script>
+<script type="text/javascript" src="../../js/TouchSlide.js"></script>
+<script type="text/javascript" src="../../js/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script>
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/tmpl/common-top.js"></script>
+<script type="text/javascript" src="../../js/tmpl/subordinate_list.js"></script>
+<script type="text/javascript" src="../../js/tmpl/footer.js"></script>
+</body>
+</html>
+<script type="text/html" id="extension-info-tmpl">
+  <div class="exten-information">
+    <div class="exten-avatar fleft">
+      <img src="<%=extension_list.avator;%>" />
+    </div>
+    <div class="exten-infor fleft">
+      <div class="exten-name mt10"><span><%=extension_list.user_name;%></span></div>
+	  <% if (extension_list.mc_name !=''){%>
+	  <div class="exten-mc"><span>渠道身份：<%=extension_list.mc_name;%></span></div>
+	  <% }%>
+    </div>
+  </div>
+  <div class="exten-option">
+    <ul class="ex-op-list">
+	  <%if (extension_list.statistics_all_show>0){%>
+      <li class="ex-op-item">
+        <span class="im-label"><%=extension_list.statistics_all;%></span>
+		<span class="im-count"><%=extension_list.statistics_all_name;%></span>
+      </li>
+	  <% }%>
+	  <%if (extension_list.statistics_curr_show>0){%>
+	  <li class="ex-op-item">
+        <span class="im-label"><%=extension_list.statistics_curr;%></span>
+		<span class="im-count"><%=extension_list.statistics_curr_name;%></span>
+      </li>
+	  <% }%>
+	  <li class="ex-op-item">
+	    <a href='favorites.html'>
+          <span class="im-label"><i class="fa fa-heartbeat"></i></span>
+		  <span class="im-count">喜欢</span>
+		</a>
+      </li>
+	  <li class="ex-op-item">
+	    <a href='views_list.html'>
+          <span class="im-label"><i class="fa fa-paw"></i></span>
+		  <span class="im-count">足迹</span>
+		</a>
+      </li>
+	</ul>
+  </div>  
+</script>
+
+<!--导航-->
+<script type="text/html" id="extension-tab-tmpl">
+  <% if (extension_list.mc_id && extension_list.mc_id == 2) { %>
+  <li class="twotab"> <a data-state="subordinate" href="?extension_state=subordinate">团队</a> </li>
+  <li class="twotab"> <a data-state="apply" href="?extension_state=apply">审核</a> </li>
+  <% } %>
+</script>
+<!--我的团队-->
+<script type="text/html" id="subordinate-list-tmpl">
+<div class="extension-list">
+  <table class="imm-default-table">
+    <thead>
+      <tr>
+        <th class="w200">推广帐号</th>
+        <th class="w100">身份类型</th>
+        <th class="w80">总业绩</th>
+        <th class="w80">本期业绩</th>
+      </tr>
+    </thead>
+    <tbody>
+	  <% if (extension_list.promotion_list && extension_list.promotion_list.length > 0) { %>
+      <% for (var k in extension_list.promotion_list) { var v = extension_list.promotion_list[k]; %>	  
+      <tr class="bd-line">
+        <td class="subordinate_name">
+		  <% if (v.have_child>0){ %>
+          <img fieldid="<%= v.member_id %>" fielddeep="<%= v.deep %>" status="open" im_type="flex" src="<%= WapSiteUrl%>/images/treetable/tv-expandable.gif">
+          <% } else { %>
+          <img fieldid="<%= v.member_id %>" fielddeep="<%= v.deep %>" status="close" im_type="flex" src="<%= WapSiteUrl%>/images/treetable/tv-item.gif">
+          <% } %>
+		  <%= v.member_name %> 
+        </td>
+        <td>
+		  <% if(v.mc_id==5){%>
+          股东
+		  <% }else if(v.mc_id==4){%>
+		  首席
+		  <% }else if(v.mc_id==3){%>
+		  协理
+		  <% }else if(v.mc_id==2){%>
+		  经理
+		  <% }else{%>
+		  推广员
+		  <% } %>
+		</td>
+        <td><%= v.total_sales %></td>
+        <td><%= v.curr_sales %></td>
+      </tr>
+      <% } %>
+      <% } else { %>
+      <tr>
+        <td colspan="20" class="norecord"><div class="warning-option"><i class="fa fa-exclamation-triangle"></i><span>暂无推广员信息</span></div></td>
+      </tr>
+      <% } %>
+    </tbody>
+    <tfoot>
+      <% if (extension_list.promotion_list && extension_list.promotion_list.length > 0) { %>
+      <tr>
+        <td colspan="20">
+		  <div class="pagination mt10">
+            <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+            <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+          </div>
+		</td>
+      </tr>
+      <% } %>
+    </tfoot>
+  </table>
+</div>
+</script>
+
+<!--我的团队申请-->
+<script type="text/html" id="apply-list-tmpl">
+<div class="extension-list">
+  <table class="imm-default-table">
+    <thead>
+      <tr>	
+		<th class="w100">申请时间</th>
+        <th class="w100">真实姓名</th>
+        <th class="w80">手机</th>
+        <th class="w60">状态</th>      
+        <th class="w100">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+	  <% if (extension_list.apply_list && extension_list.apply_list.length > 0) { %>
+      <% for (var k in extension_list.apply_list) { var v = extension_list.apply_list[k]; %>	  
+      <tr class="bd-line">
+        <td class="goods-time"><%= tsToDateString(v.ai_addtime) %></td>
+        <td class="goods-price"><%= v.truename %></td>
+        <td><%= v.mobile %></td>		
+		<td>
+		  <% if(v.ai_dispose==0){%>
+		  未处理
+		  <% }else if(v.ai_dispose==1){%>
+		  拒绝
+		  <% }else if(v.ai_dispose==2){%>
+		  同意
+		  <% } %>
+		</td>
+		<td>
+          <% if (v.ai_dispose==0){%>
+          <a href="javascript:void(0)" im_type="verify" fieldid="<%= v.ai_id %>" verify="2" title="审核通过">通过</a>|
+		  <a href="javascript:void(0)" im_type="verify" fieldid="<%= v.ai_id %>" verify="1" title="审核拒绝">拒绝</a>
+		  <% }else{%>
+          <a href="javascript:void(0)" im_type="apply_del" fieldid="<%= v.ai_id %>">删除</a>
+          <% }%>    
+        </td>
+      </tr>
+      <% } %>
+      <% } else { %>
+      <tr>
+        <td colspan="20" class="norecord"><div class="warning-option"><i class="fa fa-exclamation-triangle"></i><span>暂无推广员申请信息</span></div></td>
+      </tr>
+      <% } %>
+    </tbody>
+    <tfoot>
+      <% if (extension_list.apply_list && extension_list.apply_list.length > 0) { %>
+      <tr>
+        <td colspan="20">
+		  <div class="pagination mt10">
+            <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+            <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+          </div>
+		</td>
+      </tr>
+      <% } %>
+    </tfoot>
+  </table>
+</div>
+</script>

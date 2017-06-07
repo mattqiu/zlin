@@ -1,0 +1,57 @@
+<config>
+  <autostart>true</autostart>
+  <smoothing>true</smoothing>
+  <stretching>窗口比例</stretching>
+  <backcolor>000000</backcolor>
+  <volume>90</volume>  
+  <controlbar>over</controlbar>
+  <controlbar.idlehide>false</controlbar.idlehide>
+  <dock>true</dock>
+  <icons>true</icons>
+  <height>392</height>
+  <width>940</width>
+  
+  <logo.file>logo.png</logo.file>
+  <logo.link>http://www.hntdyz.com</logo.link>
+  <logo.linktarget>_blank</logo.linktarget>
+  <logo.hide>false</logo.hide>
+  <logo.margin>8</logo.margin>
+  <logo.position>top-left</logo.position>
+  <logo.timeout>3</logo.timeout>     
+  
+  <playlistfile1>/data/resource/videoplayer/playlist.xml</playlistfile>
+  <playlist.size1>240</playlist.size> 
+  <playlist1>right</playlist> 
+  <repeat1>always</repeat> 
+  
+  <skin>/data/resource/videoplayer/skin/beelden/beelden.xml</skin>
+  
+  <plugins>/data/resource/videoplayer/plugins/revolt.swf,/data/resource/videoplayer/plugins/captions.swf,/data/resource/videoplayer/plugins/related.swf</plugins>
+  
+  <revolt.gain>1</revolt.gain>
+  <revolt.simple>false</revolt.simple>
+  <revolt.sound>false</revolt.sound>
+  <revolt.timeout>10</revolt.timeout>
+  <revolt.alphavalue>0.5</revolt.alphavalue>
+  
+  <captions.back>false</captions.back>
+  <captions.state>true</captions.state>
+  <captions.kalaok>false</captions.kalaok>
+  
+  <captions.color>#FFFFFF</captions.color>
+  <captions.fontFamily>Arial, sans-serif</captions.fontFamily>
+  <captions.fontSize>14</captions.fontSize>
+  <captions.fontStyle>normal</captions.fontStyle>
+  <captions.fontWeight>normal</captions.fontWeight>
+  <captions.leading>5</captions.leading>
+  <captions.textAlign>center</captions.textAlign>
+  <captions.textDecoration>none</captions.textDecoration>  
+  
+  <related.width>600</related.width> 
+  <related.height>600</related.height> 
+  <related.oncomplete>true</related.oncomplete>
+  <related.onpause>true</related.onpause>
+  <related.useicons>true</related.useicons> 
+  <related.redirect>false</related.redirect>   
+
+</config>

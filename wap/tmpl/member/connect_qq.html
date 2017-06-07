@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<title>QQ绑定</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+<header id="header">
+  <div class="header-wrap">
+    <div class="header-l"><a href="../../index.html"><i class="home"></i></a></div>
+    <div class="header-title">
+      <h1>QQ登录</h1>
+    </div>
+    <div class="header-r"> <a id="header-nav" href="login.html" class="text">帐号登录</a> </div>
+  </div>
+</header>
+<div class="qm-main-layout fixed-Width">
+  <div class="qm-single-nav mb5 register-tab">
+    <ul>
+      <li class="selected"><a href="javascript: void(0);" id="tab_register"><i class="reg"></i>创建新帐号</a></li>
+      <li><a href="javascript: void(0);" id="tab_binding"><i class="binding"></i>绑定已有帐号</a></li>
+    </ul>
+  </div>
+  <div id="register" class="qm-inp-con">
+    <form id="register_form" action="" method ="">
+      <ul class="form-box">
+        <li class="form-item">
+          <h4>用&nbsp;户&nbsp;名</h4>
+          <div class="input-box">
+            <input type="text" placeholder="请输入6-20个字符" class="inp" name="reg_user_name" id="reg_user_name" value=""/>
+            <span class="input-del"></span></div>
+        </li>
+        <li class="form-item">
+          <h4>设置密码</h4>
+          <div class="input-box">
+            <input type="text" placeholder="请输入6-20位密码" class="inp" name="reg_password" id="reg_password" value=""/>
+            <span class="input-del"></span></div>
+        </li>
+      </ul>
+      <div class="error-tips"></div>
+      <div class="form-btn ok"><a href="javascript:void(0);" class="btn" id="register_btn">注&nbsp;&nbsp;&nbsp;册</a></div>
+    </form>
+  </div>
+  <div id="binding" class="qm-inp-con hide">
+    <form id="binding_form" action="" method ="">
+      <ul class="form-box">
+        <li class="form-item">
+          <h4>用&nbsp;户&nbsp;名</h4>
+          <div class="input-box">
+            <input type="text" placeholder="已注册的会员/手机号" class="inp" name="user_name" id="user_name" value=""/>
+            <span class="input-del"></span></div>
+        </li>
+        <li class="form-item">
+          <h4>登录密码</h4>
+          <div class="input-box">
+            <input type="password" placeholder="6-20个大小写英文字母、符号或数字" class="inp" name="password" id="password" value=""/>
+            <span class="input-del"></span></div>
+        </li>
+      </ul>
+      <div class="error-tips"></div>
+      <div class="form-btn ok"><a href="javascript:void(0);" class="btn" id="binding_btn">绑&nbsp;&nbsp;&nbsp;定</a></div>
+    </form>    
+  </div>
+</div>
+<footer id="footer" class="bottom"></footer>
+<div class="pre-loading hide">
+  <div class="pre-block">
+    <div class="spinner"><i></i></div>正在获取QQ信息...
+  </div>
+</div>
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/tmpl/connect_qq.js"></script>
+<script type="text/javascript" src="../../js/footer.js"></script> 
+</body>
+</html>

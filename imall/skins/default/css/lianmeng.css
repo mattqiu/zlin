@@ -1,0 +1,95 @@
+input[type="text"], input[type="password"], input.text, input.password { font: 12px/20px Arial; color: #777; background-color: #FFF; vertical-align: top; display: inline-block; height: 20px; padding: 4px; border: solid 1px #E6E9EE; outline: 0 none;}
+input[type="text"]:focus, input[type="password"]:focus, input.text:focus, input.password:focus, textarea:focus { color: #333; border-color: #CCD0D9; outline: 0 none;}
+input[type="text"].error, input[type="password"].error, textarea.error { border: dashed 1px #ED5564; outline: 0 none;}
+textarea, .textarea { font: 12px/18px Arial; color: #777; background-color: #FFF; vertical-align: top; display: inline-block; height: 54px; padding: 4px; border: solid 1px #CCD0D9; outline: 0 none;}
+select, .select { color: #777; background-color: #FFF; height: 30px; vertical-align: middle; *display: inline; padding: 0 4px; border: solid 1px #E6E9EE; *zoom:1;}
+select option, .select option { line-height: 20px; display: block; height: 20px; padding: 4px;}
+input[type="radio"], .radio { vertical-align: middle; display: inline-block; margin-right: 5px;}
+.submit-border { vertical-align: middle; display: inline-block; *display: inline/*IE6,7*/; *zoom: 1;}
+input[type="submit"], 
+input.submit, 
+a.submit { font-size: 12px; line-height: 30px; font-weight: bold; color: #FFF; background-color: #48CFAE; display: block; height: 30px; padding: 0 20px; border-radius: 3px; border: none 0; cursor: pointer; }
+input[type="submit"]:hover, 
+input.submit:hover, 
+a.submit:hover { text-decoration: none; color: #FFF; background-color: #36BC9B;}
+
+body {height: 100%; overflow: hidden; -ms-overflow-y: scroll; min-height: 600px;}
+body.active {overflow: auto; min-height: 0px;}
+#page-contents .pagewrap {display: none;}
+#page-contents .active.pagewrap {height: 100%; overflow: hidden; display: block;}
+
+#page-contents #intro {width: 100%; height: 480px; text-align: center; overflow: hidden; position: relative; background-color: rgb(255, 255, 255);}
+#page-contents #intro h1 {padding-top: 67px;}
+#page-contents #intro > .txt {text-align: center; color: rgb(26, 26, 26); line-height: 1.8; font-size: 15px; margin-top: 25px;}
+#page-contents #intro .btn-about {margin: 33px auto 53px; width: 203px; height: 41px; overflow: hidden; display: block;}
+#page-contents #intro .btn-about:hover img {margin-top: -50px;}
+
+#page-contents #intro .circlearea {margin: 0px auto; top: 0px; width: 470px; height: 355px; position: relative; }
+
+#page-contents #intro .circlearea .logoarea {margin: 0px auto; top: 0px; width: 350px; height: 380px; position: relative; overflow:hidden;}
+#page-contents #intro .circlearea .logoarea img{width:350px; height:233px; padding-top:100px;}
+
+#page-contents #intro .circlearea .circle {left: 0px; top: 0px; position: absolute; z-index: 1;}
+
+#page-contents #intro .circlearea .wrap {width: 355px; height: 355px; position: relative; z-index: 1;}
+/* 联盟搜索 */
+.head-search-bar {position: relative; width: 470px; float: left; padding-top:28px; overflow: hidden;}
+#search ul.tab { width: 200px; height: 23px; display:block; position: absolute; z-index: 99; top: 8px; left: 0px; overflow: hidden;}
+#search ul.tab li { font-weight: bold; line-height: 20px; color: #555; white-space: nowrap; float: left; height: 20px; float: left; padding: 0 14px 3px 14px; margin-right: 8px; cursor: pointer;}
+#search ul.tab li.current:hover {background: #ff5454;}
+#search ul.tab li.current { line-height: 22px; color: #FFF; background: #ff5454; height: 20px; float: left; padding: 0 14px 3px 14px; margin: 0;}
+
+.head-search-bar .search-form { background-color: #ff5454; height: 36px; padding: 3px;}
+.head-search-bar .input-text { line-height: 24px; color: #555; width: 82%; height: 24px; float: left; padding: 6px 1%; border: none 0;}
+.head-search-bar .submit,
+.head-search-bar .submit:hover { font-size: 14px; color: #FFF; font-weight: 600; background-color: transparent; width: 15%; height: 40px; float: right; border: none; cursor: pointer;}
+.head-search-bar .keyword { line-height: 20px; color: #999; white-space: nowrap; width: 500px; height: 20px; margin-top: 4px; overflow: hidden;}
+.head-search-bar .keyword ul { font-size: 0; *word-spacing:-1px/*IE6、7*/; vertical-align: top; display: inline-block; *display:inline/*IE6、7*/;}
+.head-search-bar .keyword ul li { font-size: 12px; vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display:inline/*IE6、7*/; margin-right: 12px;}
+.head-search-bar .keyword ul li a { color: #777;}
+
+#page-contents #intro .girls-wrap {left: 50%; width: 100%; bottom: 0px; position: absolute;}
+#page-contents #intro .girls-wrap .person {transition:margin 0.5s ease-out; width: 120px; height: 400px; position: relative; -webkit-transition: margin .5s ease-out; -moz-transition: margin .5s ease-out;}
+#page-contents #intro .girls-wrap .person img {left: 0px; bottom: 0px; position: absolute;}
+#page-contents #intro .girls-wrap .person .fukidashi {top: -80px; bottom: auto;}
+#page-contents #intro .girls-wrap .person .cover {width: 120px; height: 400px; display: block; position: absolute;}
+#page-contents #intro .girls-wrap .pp1 .fukidashi {left: 60px;}
+#page-contents #intro .girls-wrap .pp2 .fukidashi {left: 62px;}
+#page-contents #intro .girls-wrap .pp3 .fukidashi {left: -104px;}
+#page-contents #intro .girls-wrap .pp4 .fukidashi {left: -102px;}
+#page-contents #intro .girls-wrap .pp5 .fukidashi {left: 62px;}
+#page-contents #intro .girls-wrap .pp6 .fukidashi {left: 56px;}
+#page-contents #intro .girls-wrap .pp7 .fukidashi {left: -95px;}
+#page-contents #intro .girls-wrap .pp8 .fukidashi {left: -96px;}
+#page-contents #intro .girls-wrap .girl-left {left: -50%; width: 50%; bottom: 0px; margin-left: -180px; position: absolute;}
+#page-contents #intro .girls-wrap .girl-left::after {clear: both; display: block; content: "";}
+#page-contents #intro .girls-wrap .girl-left .person {float: right;}
+#page-contents #intro .girls-wrap .girl-right {left: 0px; width: 50%; bottom: 0px; margin-left: 180px; position: absolute;}
+#page-contents #intro .girls-wrap .girl-right::after {clear: both; display: block; content: "";}
+#page-contents #intro .girls-wrap .girl-right .person {float: left;}
+
+#page-contents #care {background-position: top; height: 40px; position: relative; background-image: url("../common/img/wave-bottom.png"); background-repeat: no-repeat; background-color: rgb(255, 255, 255);}
+#page-contents #care .bg-arrow {left: 50%; width: 2000px; height: 40px; bottom: 0px; margin-left: -1000px; position: absolute;}
+
+#page-contents #inq {background: rgb(255, 84, 84); margin: 0px auto; text-align: center; padding-bottom: 20px; position: relative; max-width: 2000px;}
+#page-contents #inq .bg-arrow {left: 50%; width: 139px; height: 40px; top: -39px; margin-left: -70px; position: absolute;}
+
+#fi {left: 0px; top: 0px; width: 100%; height: 100%; overflow: hidden; position: absolute; z-index: 1000; min-width: 1000px; background-color: rgb(255, 255, 255);}
+#fi > .wrap {left: 0px; top: 50%; width: 100%; height: 750px; margin-top: -375px; position: absolute; z-index: 1000; min-width: 1000px; background-color: rgb(255, 255, 255);}
+#fi .person {left: 50%; top: 50%; position: absolute; background-color: rgb(255, 255, 255);}
+#fi .person img {left: -490px; top: -380px; position: absolute;}
+#fi .fukidashi {left: 50%; top: 50%; position: absolute;}
+#fi .fukidashi .wrap {left: -155px; top: -127px; position: absolute;}
+#fi .fukidashi .wrap img {left: -255px; top: -197px; position: absolute;}
+
+.columnBox{width:1200px;height:286px;margin-left:auto;margin-right:auto;}
+
+.columnBox .columnText{width:1200px;height:28px;font-weight:bold; padding-top:10px;}
+.columnBox p{float:left; width:180px;}
+.columnBox .warmPrompt{float:left; width:900px;}
+.columnBox .marqueetext{float:left; width:100%;}
+.columnBox .ccardactive{float:right; margin-right:20px;}
+
+.columnBox .logoBox{width:1200px;height:238px;float:left;background-color:#fafafa;}
+.columnBox img{width:160px;height:66px;display:block;float:left;margin-left:10px;margin-top:10px;}
+

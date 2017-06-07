@@ -1,0 +1,518 @@
+@charset "utf-8";
+/* ================================ */
+/* 商城活动页面独立样式定义 				*/
+/* @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)*/
+/* @license    http://www.zlin-e.com*/
+/* @link       http://www.zlin-e.com*/
+/* @since      File available since Release v1.1*/
+/* ================================ */
+
+.wrapper {
+	width: 1200px !important;
+}
+.no-content{ font: normal 16px/20px Arial, "microsoft yahei"; color: #999999; text-align: center; padding: 150px 0; 
+}
+
+/*专题活动列表*/
+.activity-list {}
+.activity-list li {clear: both; width: 1200px; margin: 10px 0 0 0; overflow: hidden;}
+.activity-list .activity-title { font-size: 16px; font-weight: 600; line-height: 24px; padding: 0 0 6px 12px;}
+.activity-list .activity-cover { width: 980px; height: 245px; padding: 9px; border: solid 1px #E7E7E7}
+.activity-list .activity-cover img { width: 980px; height: 245px;}
+/* 翻页样式 */
+.pagination { display: inline-block; margin: 0 auto;}
+.pagination ul { font-size: 0; *word-spacing:-1px/*IE6、7*/; }
+.pagination ul li { vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; margin: 0 0 0 -1px;}
+.pagination ul li { *display: inline/*IE6、7*/; *zoom:1;}
+.pagination li span { font: normal 14px/20px "microsoft yahei"; color: #AAA; background-color: #FAFAFA; text-align: center; display: block; min-width: 20px; padding: 8px; border: 1px solid #E6E6E6; position: relative; z-index: 1;}
+.pagination li a span , 
+.pagination li a:visited span { color: #005AA0; text-decoration: none; background-color: #FFF; position: relative; z-index: 1;}
+.pagination li a:hover span, .pagination li a:active span{ color: #FFF; text-decoration: none !important; background-color: #D93600; border-color: #CA3300; position: relative; z-index: 9; cursor:pointer;}
+.pagination li a:hover { text-decoration: none;}
+.pagination li span.currentpage { color: #AAA; font-weight: bold; background-color: #FAFAFA; border-color: #E6E6E6; position: relative; z-index: 2;}
+.imcss-appbar-tabs a.compare { display: none !important;}
+
+
+.imcss-activity_desc {
+	width: 90%; 
+	overflow: hidden;
+	margin:auto;
+}
+.imcss-activity_desc .title {
+	width: 100%; 
+	color: rgb(51, 51, 51); 
+	line-height: 28px;
+	margin:10px;
+	overflow: hidden; 
+	font-size: 30px;
+	font-weight:bold;
+	word-break: break-all; 
+	word-wrap: break-word;
+	text-align:center;
+}
+.imcss-activity_desc .description {
+	width: 100%; 
+	color: rgb(186, 186, 186);
+	line-height: 24px; 
+	overflow: hidden; 
+	font-family: "宋体"; 
+	font-size: 16px;
+	margin-bottom:10px;
+	text-indent:2em; 
+	word-break: break-all; 
+	word-wrap: break-word;
+}
+
+.sale { width: 100%; overflow: hidden;}
+.sale .list_pic { font-size: 0; *word-spacing:-1px/*IE6、7*/; width: 1199px; border: solid #E6E6E6; border-width: 1px 0 0 1px;}
+.sale .list_pic li { vertical-align: top; letter-spacing: normal; word-spacing: normal; display: inline-block; *display:inline/*IE7*/; width: 240px; margin: 0 -1px 0 0; *zoom:1;}
+.sale .list_pic li dl { width: 200px; padding: 21px 20px 21px 21px; border-style: solid; border-width: 0 1px 1px 0; border-color: transparent #E6E6E6 #E6E6E6 transparent; position: relative;}
+.sale .list_pic li dl { transition: border-color 0.4s ease-in-out 0s;}
+.sale .list_pic li dl:hover { padding: 19px; border: solid 2px #F30; box-shadow: 0 0 3px rgba(204,204,204,0.9);}
+
+.sale .list_pic li dl dt { width: 200px; height: 200px; margin-bottom: 10px;}
+.sale .list_pic li dl dt a { line-height: 0; background-color: #FFF; text-align: center; vertical-align: middle; display: table-cell; *display: block; width: 200px; height: 200px; overflow: hidden;}
+.sale .list_pic li dl dt img  {max-width: 200px; max-height: 200px; margin-top:expression(200-this.height/2); *margin-top:expression(100-this.height/2)/*IE6,7*/;}
+
+.sale .list_pic li dl dd { font-size: 12px; font-weight: normal; line-height: 16px; color: #555; display: block; width: 200px; clear: both; padding: 0; margin: 0 10px;}
+.sale .list_pic li dl dd.goodsname { line-height: 18px; height: 36px; padding-bottom: 5px; overflow: hidden;}
+.sale .list_pic li dl dd.cost { line-height: 20px; color: #999; width: 132px; display: block; padding-left: 28px;}
+.sale .list_pic li dl dd.cost h4 { font-size: 12px; font-weight: normal; text-decoration: line-through; color: #999; display: inline;}
+.sale .list_pic li dl dd.price { background: url(../images/sale_price.gif) no-repeat 4px 0px; text-align: center; display: block; width: 160px; height: 33px; padding: 0 0 0 4px; margin: 5px 10px;}
+.sale .list_pic li dl dd.price h4 { font-family: Arial, Helvetica, sans-serif; font-size: 15px; line-height: 33px; color: #FFF; height: 33px; float: left; margin-left: 76px;}
+
+
+
+
+
+html {
+	margin: 0px; padding: 0px;
+}
+body {
+	margin: 0px; padding: 0px;  background-color: rgb(236, 236, 236);
+}
+.container * {
+	font-family: "微软雅黑"; font-size: 16px;
+}
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+}
+ul {
+	margin: 0px; padding: 0px;
+}
+li {
+	list-style: none; display: inline-block;
+}
+span {
+	vertical-align: middle; display: inline-block;
+}
+
+.container {
+	margin: 0px auto; width: 1200px; font-family: "微软雅黑"; font-size: 16px;
+}
+.content {
+	width: 1200px; display: inline-block;
+}
+
+.content-miaosha-countdown-processing-time {
+	left: 722px; top: 36px; width: 230px; height: 25px; color: rgb(255, 255, 255); position: relative;
+}
+.content-miaosha-countdown-processing-time-hour {
+	top: 3px; font-size: 32px; position: absolute; _line-height: 46px;
+}
+.content-miaosha-countdown-processing-time-minute {
+	top: 3px; font-size: 32px; position: absolute; _line-height: 46px;
+}
+.content-miaosha-countdown-processing-time-second {
+	top: 3px; font-size: 32px; position: absolute; _line-height: 46px;
+}
+.content-miaosha-countdown-processing-time-hour {
+	left: 0px; letter-spacing: 13px;
+}
+.content-miaosha-countdown-processing-time-minute {
+	left: 76px; letter-spacing: 13px;
+}
+.content-miaosha-countdown-processing-time-second {
+	left: 152px; letter-spacing: 12px;
+}
+.content-miaosha-countdown-processing-time1 {
+	left: 162px; top: 75px; color: rgb(255, 255, 255); position: relative; _top: 60px;
+}
+.content-miaosha-countdown-processing-time2 {
+	left: 210px; top: 75px; color: rgb(255, 255, 255); position: relative; _top: 60px;
+}
+.content-miaosha-countdown-processing-time3 {
+	left: 270px; top: 75px; color: rgb(255, 255, 255); font-size: 24px; position: relative; _top: 60px;
+}
+.content-miaosha-countdown-processing-time4 {
+	left: 723px; top: 75px; color: rgb(255, 255, 255); font-size: 24px; position: relative; _top: 60px;
+}
+
+.content-miaosha-countdown-processing-region {
+	width: 100%; height: 150px; margin-top: 30px;
+}
+.content-miaosha-countdown-top {
+	width: 1200px; height:auto; padding-left: 0px; background-color: rgb(255, 255, 255); display:block;
+}
+.content-miaosha-countdown-top-next-bg {
+	background: url("../images/activity-next-purple-bg.png") no-repeat; margin: 0px auto; top: -11px; width: 406px; height: 11px; position: relative; _top: -19px; _background: none;
+}
+.content-miaosha-countdown-top-next-content {
+	background: url("../images/activity-next-purple-fg.png") no-repeat; margin: 0px auto; top: -22px; width: 385px; height: 50px; position: relative; _top: -37px; _background: none;
+}
+
+.content-miaosha-countdown-top-list-region {
+	display:block; height:auto;
+}
+
+.content-miaosha-countdown-top-list-region .next {
+	border: 1px solid rgb(185, 111, 167);
+}
+
+.content-miaosha-countdown-top-list-item {
+	margin: 10px 8px 10px; border: 1px solid transparent; width: 275px; height: 310px; text-align: center; float: left; position: relative; _margin: 10px 8px 15px 8px;
+}
+.content-miaosha-countdown-top-list-item .content-miaosha-countdown-top-click {
+	color: rgb(255, 255, 255); display: none;
+}
+.content-miaosha-countdown-top-list-item:hover .content-miaosha-countdown-top-txt {
+	display: none;
+}
+.content-miaosha-countdown-top-list-item:hover .content-miaosha-countdown-top-click {
+	display: block;
+}
+
+.content-miaosha-countdown-top-img-region {
+	padding: 10px;
+}
+.content-miaosha-countdown-top-img-region img {
+	width: 150px; height: 150px;
+}
+
+.content-miaosha-countdown-top-name {
+	padding: 10px; width: 255px; height: 37px; text-align: left; line-height: 16px; overflow: hidden; float: left; word-break: break-all; word-wrap: break-word;
+}
+.content-miaosha-countdown-top-name a {
+	height: 32px; line-height: 16px; overflow: hidden; font-family: "宋体"; font-size: 13px; display: inline-block; word-break: break-all; word-wrap: break-word;
+}
+
+.content-miaosha-countdown-top-price-region {
+	padding: 5px 10px; text-align: left;
+}
+.content-miaosha-countdown-top-price-title {
+	font-family: "宋体"; font-size: 14px; margin-top: 6px;
+}
+.content-miaosha-countdown-top-price-current {
+	color: rgb(231, 56, 55); font-size: 22px;
+}
+.content-miaosha-countdown-bottom-price-discount {
+	color: rgb(204, 204, 204); font-size: 14px; text-decoration: line-through; margin-top: 6px;
+}
+
+.content-miaosha-countdown-top-btn {
+	width: 275px; height: 36px; color: rgb(255, 255, 255); padding-top: 18px; font-size: 26px;
+}
+.content-miaosha-countdown-top-btn span {
+	font-size: 24px;
+}
+.unclickable {
+	cursor: default !important; background-color: rgb(188, 188, 188) !important;
+}
+.unclickable:hover {
+	cursor: default !important; background-color: rgb(188, 188, 188) !important;
+}
+.content-miaosha-countdown-top-list-region .next .unclickable {
+	background-color: rgb(185, 111, 167) !important;
+}
+.content-miaosha-countdown-top-list-region .next .unclickable:hover {
+	background-color: rgb(185, 111, 167) !important;
+}
+.content-seckill-dazhe-region {
+	border-radius: 25px; left: 150px; top: 15px; width: 50px; height: 35px; text-align: center; color: rgb(255, 255, 255); padding-top: 15px; font-size: 22px; position: absolute; background-color: rgb(228, 57, 60);
+}
+.content-seckill-dazhe-region {
+	border-radius: 30px; left: 190px; top: 20px; width: 60px; height: 40px; padding-top: 20px; font-size: 22px;
+}
+
+/*正在进行*/
+.content-miaosha-countdown-middle-list-region {
+	display:block; height:auto;
+}
+
+.content-miaosha-countdown-middle-list-region .next {
+	border: 1px solid rgb(255, 0, 0);
+}
+.content-miaosha-countdown-middle-list-region .next .unclickable {
+	background-color: rgb(255, 0, 0) !important;
+}
+.content-miaosha-countdown-middle-list-region .next .unclickable:hover {
+	background-color: rgb(255, 0, 0) !important;
+}
+
+.content-miaosha-countdown-middle-list-item {
+	margin: 10px 8px 10px; border: 1px solid transparent; width: 275px; height: 310px; text-align: center; float: left; position: relative; _margin: 10px 8px 15px 8px;
+}
+.content-miaosha-countdown-middle-list-item .content-miaosha-countdown-middle-click {
+	color: rgb(255, 255, 255); display: none;
+}
+.content-miaosha-countdown-middle-list-item:hover .content-miaosha-countdown-middle-txt {
+	display: none;
+}
+.content-miaosha-countdown-middle-list-item:hover .content-miaosha-countdown-middle-click {
+	display: block;
+}
+
+.content-miaosha-countdown-middle-img-region {
+	padding: 10px;
+}
+.content-miaosha-countdown-middle-img-region img {
+	width: 150px; height: 150px;
+}
+
+.content-miaosha-countdown-middle-name {
+	padding: 10px; width: 255px; height: 37px; text-align: left; line-height: 16px; overflow: hidden; float: left; word-break: break-all; word-wrap: break-word;
+}
+.content-miaosha-countdown-middle-name a {
+	height: 32px; line-height: 16px; overflow: hidden; font-family: "宋体"; font-size: 13px; display: inline-block; word-break: break-all; word-wrap: break-word;
+}
+
+.content-miaosha-countdown-middle-price-region {
+	padding: 5px 10px; text-align: left;
+}
+.content-miaosha-countdown-middle-price-title {
+	font-family: "宋体"; font-size: 14px; margin-top: 6px;
+}
+.content-miaosha-countdown-middle-price-current {
+	color: rgb(231, 56, 55); font-size: 22px;
+}
+.content-miaosha-countdown-middle-btn {
+	width: 275px; height: 36px; color: rgb(255, 255, 255); padding-top: 18px; font-size: 26px;
+}
+.content-miaosha-countdown-middle-btn span {
+	font-size: 24px;
+}
+
+/*已结束*/
+.content-miaosha-countdown-bottom-region {
+	width: 100%; height: 150px; margin-top: 30px;
+}
+.content-miaosha-countdown-bottom {
+	width: 1200px; height:auto; padding-left: 0px; background-color: rgb(255, 255, 255); margin-bottom: 10px;
+}
+.content-miaosha-countdown-bottom-over-bg {
+	background: url("../images/activity-over-purple-bg.png") no-repeat; margin: 0px auto; top: -11px; width: 406px; height: 11px; position: relative; _top: -19px; _background: none;
+}
+.content-miaosha-countdown-bottom-over-content {
+	background: url("../images/activity-over-purple-fg.png") no-repeat; margin: 0px auto; top: -22px; width: 385px; height: 50px; position: relative; _top: -37px; _background: none;
+}
+.content-miaosha-countdown-bottom-list-region .end {
+	border: 1px solid rgb(123, 123, 123);
+}
+.content-miaosha-countdown-bottom-list-region .end .content-miaosha-countdown-bottom-btn {
+	background-color: rgb(123, 123, 123);
+}
+.content-miaosha-countdown-bottom-list-item {
+	margin: 10px 8px 10px; border: 1px solid transparent; width: 275px; height: 310px; text-align: center; float: left; position: relative; _margin: 10px 8px 15px 8px;
+}
+.content-miaosha-countdown-bottom-list-item:hover .content-miaosha-countdown-bottom-btn-click {
+	display: inline-block;
+}
+.content-miaosha-countdown-bottom-list-item:hover .content-miaosha-countdown-bottom-btn-txt {
+	display: none;
+}
+.content-miaosha-countdown-bottom-list-item:hover .content-miaosha-countdown-bottom-btn-txt {
+	
+}
+.content-miaosha-countdown-bottom-img-region {
+	padding: 10px;
+}
+.content-miaosha-countdown-bottom-img-region img {
+	width: 150px; height: 150px;
+}
+
+.content-miaosha-countdown-bottom-name {
+	padding: 10px; width: 255px; height: 37px; text-align: left; line-height: 16px; overflow: hidden; float: left; word-break: break-all; word-wrap: break-word;
+}
+.content-miaosha-countdown-bottom-name a {
+	height: 32px; line-height: 16px; overflow: hidden; font-family: "宋体"; font-size: 13px; display: inline-block; word-break: break-all; word-wrap: break-word;
+}
+.content-miaosha-countdown-bottom-price-region {
+	padding: 5px 10px; text-align: left;
+}
+.content-miaosha-countdown-bottom-price-title {
+	font-family: "宋体"; font-size: 14px; margin-top: 6px;
+}
+.content-miaosha-countdown-bottom-price-current {
+	color: rgb(231, 56, 55); font-size: 22px;
+}
+.content-miaosha-countdown-bottom-btn {
+	width: 275px; height: 36px; color: rgb(255, 255, 255); padding-top: 18px; font-size: 26px;
+}
+.content-miaosha-countdown-bottom-btn a {
+	color: rgb(255, 255, 255);
+}
+
+.content-miaosha-countdown-bottom-btn-click {
+	display: none;
+}
+.content-miaosha-countdown-bottom-btn-click {
+	font-size: 24px;
+}
+
+.content-miaosha-countdown-bottom-btn-txt {
+	font-size: 24px;
+}
+.content-miaosha-countdown-bottom-btn-txt {
+	
+}
+
+
+.content-miaosha-countdown-middle-region {
+	width: 100%; height: 150px; margin-top: 30px;
+}
+.content-miaosha-countdown-middle-over-bg {
+	background: url("../images/activity-curr-purple-bg.png") no-repeat; margin: 0px auto; top: -11px; width: 406px; height: 11px; position: relative; _top: -19px; _background: none;
+}
+.content-miaosha-countdown-middle-over-content {
+	background: url("../images/activity-curr-purple-fg.png") no-repeat; margin: 0px auto; top: -22px; width: 385px; height: 50px; position: relative; _top: -37px; _background: none;
+}
+.content-youhui-middle {
+	width: 1180px; height:auto; padding-left: 0px; background-color: rgb(255, 255, 255); margin-bottom: 10px; padding: 0px 10px 10px 10px; width: 1180px;
+}
+.content-youhui-list-item {
+	width: 100%; height: 308px; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.content-youhui-list-top {
+	background: url("../images/activity-curr-title-bg.png") no-repeat; margin: 10px 0px 10px; height: 46px; _background: none; position: relative; left:-16px;
+}
+.content-youhui-top-txt {
+	margin: 6px 0px 10px 45px; padding: 5px; width: 310px; height: 15px; color: rgb(255, 255, 255); overflow: hidden; word-break: break-all; word-wrap: break-word;
+}
+.content-youhui-top-bottom-list-bottom-right-date-region {
+	height: 20px; color: rgb(153, 153, 153); font-family: "宋体"; font-size: 12px; margin-top: 12px; float: right;
+}
+.content-youhui-top-bottom-list-bottom-right-date-region {
+	margin-right: 30px;
+}
+
+.content-youhui-list-middle {
+	width: 100%; height: 265px;
+}
+.content-youhui-img-region {
+	width: 400px; overflow:hidden;
+}
+.content-youhui-left-img img {
+	width: 274px; height: 220px;
+}
+.content-youhui-right-img img {
+	width: 105px; height: 105px;
+}
+
+.content-youhui-right-top-img {
+	border: 1px solid rgb(236, 236, 236); margin-bottom: 5px; position: relative;
+}
+.content-youhui-right-top-img:hover .content-youhui-right-top-price {
+	display: block;
+}
+.content-youhui-right-top-price {
+	left: 0px; top: 0px; width: 105px; height: 75px; text-align: center; color: white; padding-top: 30px; display: none; position: absolute; z-index: 11;
+}
+.content-youhui-right-top-price-name {
+	width: 80px; line-height: 15px; overflow: hidden; font-family: "宋体"; font-size: 13px; margin-left: 10px; word-break: break-all; word-wrap: break-word;
+}
+.content-youhui-right-top-price-name a {
+	font-family: "宋体"; font-size: 12px;
+}
+.content-youhui-right-top-price-txt {
+	color: rgb(255, 255, 255); font-size: 13px; margin-top: 10px;
+}
+
+.content-youhui-right-top-price-mask {
+	background: url("../images/activity-baili-bg.png"); top: 0px; width: 105px; height: 105px; display: none; position: absolute; z-index: 1;
+}
+.content-youhui-right-top-img:hover .content-youhui-right-top-price-mask {
+	display: block;
+}
+
+.content-youhui-content-region {
+	width: 735px; height: 215px; margin-left: 20px; position: relative;
+}
+
+.content-youhui-main-title {
+	width: 100%; color: rgb(51, 51, 51); line-height: 31px; overflow: hidden; font-size: 20px; word-break: break-all; word-wrap: break-word;
+}
+.content-youhui-main-title a {
+	font-size: 20px;
+}
+.content-youhui-main-title:hover a {
+	color: rgb(0, 94, 167) !important;
+}
+.content-youhui-main-title:hover font {
+	color: rgb(249, 180, 188) !important;
+}
+content-youhui-left-bottom-list-bottom-right-region .runout .content-youhui-main-title:hover font {
+	color: rgb(221, 221, 221) !important;
+}
+.content-youhui-description {
+	width: 100%; height: 100px;
+}
+.content-youhui-description-region {
+	width: 735px; height: 72px; color: rgb(186, 186, 186); line-height: 24px; overflow: hidden; font-family: "宋体"; font-size: 14px; margin-top: 10px; word-break: break-all; word-wrap: break-word;
+}
+.content-youhui-description-region a {
+	color: rgb(0, 94, 167); font-family: "宋体"; font-size: 14px;
+}
+.content-youhui-description-region a:hover {
+	text-decoration: underline;
+}
+.content-youhui-bottom-region {
+	width: 100%; bottom: 0px; position: absolute;
+}
+.content-youhui-bottom-goto-btn {
+	border-radius: 5px; width: 120px; height: 28px; text-align: center; color: rgb(255, 255, 255); padding-top: 7px; font-family: "宋体"; font-size: 14px; float: right; cursor: pointer; background-color: rgb(224, 49, 49);
+}
+.content-youhui-bottom-goto-btn:hover {
+	background-color: rgb(176, 21, 21);
+}
+._zhidaolianjie_home_page_zhidao{display:block !important;}
+._woxiangyao_home_page_zhidao{display:none !important;}
+
+.content-youhui-bottom-praise {
+	padding: 5px 5px 2px 10px; border-radius: 5px; border: 1px solid rgb(221, 221, 221); height: 26px; color: rgb(102, 102, 102); font-size: 14px; vertical-align: bottom; position: relative; cursor: pointer;
+}
+.content-youhui-bottom-praise {
+	height: 24px; padding-top: 7px;
+}
+.content-youhui-bottom-praise:hover {
+	border: 1px solid rgb(224, 49, 49); color: rgb(224, 49, 49);
+}
+
+.content-youhui-bottom-share {
+	padding: 5px 5px 2px 10px; border-radius: 5px; border: 1px solid rgb(221, 221, 221); height: 26px; color: rgb(102, 102, 102); font-size: 14px; vertical-align: bottom; position: relative; cursor: pointer;
+}
+.content-youhui-bottom-share:hover .content-youhui-bottom-share-icon {
+	background-position: -44px -96px;
+}
+.content-youhui-bottom-share:hover {
+	border: 1px solid rgb(224, 49, 49); color: rgb(224, 49, 49);
+}
+
+.content-youhui-bottom-share-icon {
+	background: url("../images/activity-icons.png") no-repeat -24px -96px; width: 16px; height: 16px; display: inline-block;
+}
+.content-youhui-left-bottom-list-bottom-right-bottom-share:hover .content-youhui-bottom-share-icon {
+	background-position: -44px -96px;
+}
+.content-youhui-bottom-share-txt {
+	margin: 1px 2px 10px 0px; font-size: 14px;
+}
+
+.content-miaosha-countdown-bottom-next-time-txt {
+	left: 175px; top: 13px; color: rgb(255, 255, 255); font-size: 26px; position: relative;
+}

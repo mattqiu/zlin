@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1">
+<title>确定买单</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/cart.css">
+<style>
+.qm-bottom-mask{
+    position: fixed;
+    z-index: 8;
+    margin-top: 10px;
+    left: 0;
+    right: 0;
+    display: block;
+}
+.qm-bottom-mask.up{
+	position: fixed;
+    z-index: 8;
+    margin-top: 10px;
+}
+.qm-bottom-mask-paystep {
+    display: block;
+    position: absolute;
+    top: 1.5rem;
+    z-index: 8;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: 12rem;
+    background: #FFF;
+}
+</style>
+</head>
+<body>
+<header id="header" class="fixed">
+  <div class="header-wrap">
+    <div class="header-l"><a href="javascript:history.go(-1);"> <i class="back"></i> </a> </div>
+    <div class="header-title">
+      <h1>确定买单</h1>
+    </div>
+    <div class="header-r"> <a href="javascript:void(0);" id="header-nav"><i class="more"></i><sup></sup></a> </div>
+  </div>
+  <div class="qm-nav-layout">
+    <div class="qm-nav-menu"> <span class="arrow"></span>
+      <ul>
+        <li><a href="../store.html" id="backto_home"><i class="home"></i>首页</a></li>
+        <li><a href="../tmpl/search.html"><i class="search"></i>搜索</a></li>
+        <li><a href="../tmpl/cart_list.html"><i class="cart"></i>购物车<sup></sup></a></li>
+        <li><a href="javascript:void(0);"><i class="message"></i>消息<sup></sup></a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<div class="qm-main-layout">
+  <!--底部总金额固定层End-->
+  <div id="list-payment-wrapper" class="qm-bottom-mask up">
+    
+    <div class="qm-bottom-mask-paystep">
+      <div class="qm-bottom-mask-top" id="wrapperUseBalance" style="display: none;">
+        <p class="qm-cart-num">云币不足请充值<em id="onlineTotal">1</em>元</p>
+        <p id="isPayed" class="qm-cart-payed-tips"></p>
+      </div>
+      <div class="qm-inp-con qm-inp-cart">
+        <ul class="form-box" id="internalPay">
+          <li class="form-item">
+            <div class="input-box"> 
+              <span class="txt">实际消费金额</span>
+              <input type="text" class="inp" id="pay_price" name="pay_price" value="" autocomplete="off" placeholder="询问服务员后输入">
+              <span class="input-del"></span>
+            </div>
+          </li>
+          
+          <li class="form-item" id="wrapperUseRCBpay">
+            <div class="input-box pl5">
+              <label>
+              <input type="checkbox" class="checkbox" id="useRCBpay" autocomplete="off">使用充值卡支付 <span class="power"><i></i></span></label>
+              <p>可用充值卡余额 ￥<em id="availableRcBalance"></em></p>
+            </div>
+          </li>
+          <li class="form-item" id="wrapperUseJFpy">
+            <div class="input-box pl5">
+              <span class="txt">云币支付</span>
+              <input type="text" class="inp" id="pay_points" name="pay_points" value="" autocomplete="on" disabled="disabled" placeholder="自动计算不需输入">
+              <p>可用云币 ￥<em id="availablePoints"></em></p>
+            </div>
+          </li>
+          <li class="form-item" id="wrapperUsePDpy">
+            <div class="input-box pl5">
+              <label><input type="checkbox" class="checkbox" id="usePDpy" autocomplete="off">使用积分支付 <span class="power"><i></i></span> </label>
+              <p>可用积分余额 ￥<em id="availablePredeposit"></em></p>
+            </div>
+          </li>
+          <li class="form-item" id="wrapperPaymentPassword" style="display: none;border-bottom:solid #EEE 0.05rem;">
+            <div class="input-box"> 
+              <span class="txt">输入支付密码</span>
+              <input type="password" class="inp" id="paymentPassword" autocomplete="off">
+              <span class="input-del"></span>
+            </div>
+            <a href="../member/member_paypwd_step1.html" style="display:none" class="input-box-help"><i>i</i>尚未设置</a> 
+          </li>
+        </ul>
+        <div style="display: block;margin-top: 1rem; background-color: #F5F5F5;"></div>
+		    <ul>
+	          <li class="form-item" id="wrapperTotelPrice">
+	            <div class="input-box">
+	            	<span class="txt">实付金额</span>
+	              	<p style="font-size:1.2rem;color:#DB4453;">
+	              	￥<em id="availableTotal" style="font-size:1.2rem;color:#DB4453;">0.00</em>
+	              	</p>
+	            </div>
+	          </li>
+	        </ul>
+        
+        <div class="qm-pay" id="vr_payment_list">
+          <div class="spacing-div"><span>在线支付方式</span></div>
+          <div class="pay-sel">
+		  	<label ><input type="radio" name="payment_code" class="checkbox" id="wxpay" autocomplete="off"  checked="true"><span class="wxpay">微信</span></label>
+            <label ><input type="radio" name="payment_code" class="checkbox" id="alipay" autocomplete="off"><span class="alipay">支付宝</span></label>
+            <label ><input type="radio" name="payment_code" class="checkbox" id="llpay" autocomplete="off"><span class="llpay">银行卡</span></label>
+          </div>
+        </div>
+        <div class="pay-btn"> <a href="javascript:void(0);" id="toPay" class="btn-l">确认支付</a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="fix-block-r">
+	<a href="javascript:void(0);" class="gotop-btn gotop hide" id="goTopBtn"><i></i></a>
+</div>
+<footer id="footer" class="bottom"><div class="qm-footer-wrap posr"><div class="nav-text"><a href="http://www.zlin-e.com/wap/tmpl/member/member.html">我的商城</a><a id="logoutbtn" href="javascript:void(0);">注销</a><a href="http://www.zlin-e.com/wap/tmpl/seller/seller.html">商家中心</a><a href="javascript:void(0);" class="gotop">返回顶部</a></div><div class="nav-pic"><a href="http://www.zlin-e.com/imall/index.php?act=mb_app" class="app"><span><i></i></span><p>客户端</p></a><a href="javascript:void(0);" class="touch"><span><i></i></span><p>触屏版</p></a><a href="http://www.zlin-e.com/imall" class="pc"><span><i></i></span><p>电脑版</p></a></div><div class="copyright">Copyright&nbsp;©&nbsp;2014-2016领沃中国<a href="javascript:void(0);">hzlwo.com</a>版权所有</div></div></footer>
+
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script> 
+<script type="text/javascript" src="../../js/core/template.js"></script>
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script> 
+<script type="text/javascript" src="../../js/core/zepto.waypoints.js"></script> 
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script>
+<script type="text/javascript" src="../../js/tmpl/pay_step.js"></script>
+
+</body></html>

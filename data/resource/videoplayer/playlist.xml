@@ -1,0 +1,88 @@
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:jwplayer="http://developer.longtailvideo.com/">
+<channel>
+  <title>一中影院</title>
+    <item>
+      <title>赵继良教授演讲</title>
+      <link>http://www.hntdyz.com/Item/Show.asp?m=1&d=91</link>
+      <description>赵继良教授演讲.</description>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/video/赵继良教授演讲.flv"/>
+      <media:thumbnail url="/UploadFiles/2011-05/admin/2011052315461255869.jpg" />
+    </item>
+	<item>
+      <title>通道一中庆祝建党90周年唱红歌比赛高中组</title>
+      <link>http://www.hntdyz.com/Item/Show.asp?m=1&d=90</link>
+      <description>通道一中庆祝建党90周年唱红歌比赛高中组.</description>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/video/通道一中庆祝建党90周年唱红歌比赛高中组.flv"/>
+      <media:thumbnail url="/UploadFiles/2011-05/admin/2011052315424697280.jpg" />
+    </item>
+	<item>
+      <title>通道一中庆祝建党90周年唱红歌比赛初中组</title>
+      <link>http://www.hntdyz.com/Item/Show.asp?m=1&d=89</link>
+      <description>通道一中庆祝建党90周年唱红歌比赛初中组.</description>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/video/通道一中庆祝建党90周年唱红歌比赛初中组.flv"/>
+      <media:thumbnail url="/UploadFiles/2011-05/admin/2011052315390870429.jpg" />
+    </item>
+	<item>
+      <title>2010校运会广播操</title>
+      <link>http://www.hntdyz.com/Item/Show.asp?m=1&d=88</link>
+      <description>2010校运会广播操.</description>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/video/全校广播体操.flv"/>
+      <media:thumbnail url="/UploadFiles/schoolpic/田径运动场3.jpg" />
+    </item>
+	<item>
+      <title>风景</title>
+      <link>http://www.hntdyz.com/UploadFiles/2011-05/admin/2011051516311134013.jpg</link>
+      <description>风景.</description>
+	  <provider>image</provider>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/2011-05/admin/2011051516311134013.jpg" duration="20"/>
+      <media:thumbnail url="/UploadFiles/2011-05/admin/2011051516311134013.jpg" />
+    </item>
+	<item>
+      <title>2010校运会广播操精选</title>
+      <link>http://www.hntdyz.com/Item/Show.asp?m=1&d=86</link>
+      <description>2010校运会广播操精选.</description>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/video/运动会.flv"/>
+      <media:thumbnail url="/UploadFiles/schoolpic/篮球场3.jpg" />
+    </item>
+	<item>
+      <title>爱的供养</title>
+      <link>http://www.hntdyz.com/space/?166</link>
+      <description>爱的供养.</description>
+	  <provider>sound</provider>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/UploadFiles/User/yangbaiyan/music/2011041403010791800.mp3"/>
+      <media:thumbnail url="/UploadFiles/2011-05/admin/2011051516261422266.jpg" />
+	  <jwplayer:captions.file>/tdyzTV/lyric/爱的供养.xml</jwplayer:captions.file>	
+	  <jwplayer:captions.kalaok>true</jwplayer:captions.kalaok>	
+	  <jwplayer:related.file>/tdyzTV/playlist.xml</jwplayer:related.file> 
+    </item>	
+    <item>
+      <title>不爱我放了我</title>
+      <link>http://www.hntdyz.com/space/?166</link>
+      <description>不爱我放了我.</description>
+	  <provider>sound</provider>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/data/resource/videoplayer/lyric/不爱我放了我.mp3"/>
+      <media:thumbnail url="/data/resource/videoplayer/lyric/不爱我放了我.jpg" />
+      <jwplayer:captions.file>/data/resource/videoplayer/lyric/不爱我放了我.xml</jwplayer:captions.file>	 
+	  <jwplayer:captions.kalaok>true</jwplayer:captions.kalaok>	 
+    </item>	
+	<item>
+      <title>大城小事</title>
+      <link>http://www.hntdyz.com/space/?166</link>
+      <description>大城小事</description>
+	  <provider>sound</provider>
+      <pubDate>Sat, 07 Sep 2002 09:42:31 GMT</pubDate>
+      <media:content url="/data/resource/videoplayer/lyric/大城小事.mp3"/>
+      <media:thumbnail url="/data/resource/videoplayer/lyric/大城小事.jpg" />
+      <jwplayer:captions.file>/data/resource/videoplayer/lyric/大城小事.xml</jwplayer:captions.file>	 
+	  <jwplayer:captions.kalaok>true</jwplayer:captions.kalaok>	 
+    </item>	
+  </channel>
+</rss>

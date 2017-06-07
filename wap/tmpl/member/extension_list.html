@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<title>我的推广</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/extension.css">
+</head>
+<body>
+<header id="header" class="transparent">
+  <div class="header-wrap">
+    <div class="header-l"> <a href="javascript:history.go(-1)"> <i class="back"></i> </a> </div>
+    <div class="header-r"> <a id="header-nav" href="javascript:void(0);"><i class="more"></i><sup></sup></a> </div>
+  </div>
+  <div class="qm-nav-layout">
+    <div class="qm-nav-menu"> <span class="arrow"></span>
+      <ul>
+        <li><a href="../../index.html"><i class="home"></i>首页</a></li>
+        <li><a href="../search.html"><i class="search"></i>搜索</a></li>
+        <li><a href="../cart_list.html"><i class="cart"></i>购物车<sup></sup></a></li>
+        <li><a href="../member/member.html"><i class="member"></i>我的商城</a></li>
+        <li><a href="javascript:void(0);"><i class="message"></i>消息<sup></sup></a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="exten-top clearfix" id="extension-info"></div>
+
+<ul class="touch-single-nav" id="extension-tab"></ul>
+<div class="extension-list-wp" id="extension-list"></div>
+
+<!--foot-->
+<footer id="footer" class="bottom"></footer>
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script> 
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/core/template.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script> 
+<script type="text/javascript" src="../../js/tmpl/extension_list.js"></script>
+<script type="text/javascript" src="../../js/footer.js"></script>
+</body>
+</html>
+<script type="text/html" id="extension-info-tmpl">
+  <div class="exten-information">
+    <div class="exten-avatar fleft">
+      <img src="<%=extension_list.avator;%>" />
+    </div>
+    <div class="exten-infor fleft">
+      <div class="exten-name mt10"><span><%=extension_list.user_name;%></span></div>
+	  <% if (extension_list.mc_name !=''){%>
+	  <div class="exten-mc"><span>渠道身份：<%=extension_list.mc_name;%></span></div>
+	  <% }%>
+    </div>
+  </div>
+  <div class="exten-option">
+    <ul class="ex-op-list">
+	  <%if (extension_list.statistics_all_show>0){%>
+      <li class="ex-op-item">
+        <span class="im-label"><%=extension_list.statistics_all;%></span>
+		<span class="im-count"><%=extension_list.statistics_all_name;%></span>
+      </li>
+	  <% }%>
+	  <%if (extension_list.statistics_curr_show>0){%>
+	  <li class="ex-op-item">
+        <span class="im-label"><%=extension_list.statistics_curr;%></span>
+		<span class="im-count"><%=extension_list.statistics_curr_name;%></span>
+      </li>
+	  <% }%>
+	  <li class="ex-op-item">
+	    <a href='favorites.html'>
+          <span class="im-label"><i class="fa fa-heartbeat"></i></span>
+		  <span class="im-count">喜欢</span>
+		</a>
+      </li>
+	  <li class="ex-op-item">
+	    <a href='views_list.html'>
+          <span class="im-label"><i class="fa fa-paw"></i></span>
+		  <span class="im-count">足迹</span>
+		</a>
+      </li>
+	</ul>
+  </div>  
+</script>
+
+<!--导航-->
+<script type="text/html" id="extension-tab-tmpl">
+  <ul>
+    <li data-state="achievement"><a href="?extension_state=achievement">业绩</a> </li>
+    <li data-state="income"><a href="?extension_state=income">待收益</a> </li>
+    <li data-state="balance"><a href="?extension_state=balance">已结算</a> </li>
+  </ul>
+</script>
+<!--我的业绩-->
+<script type="text/html" id="achievement-list-tmpl">
+<div class="extension-list">
+  <table class="imm-default-table">
+    <thead>
+      <tr>
+        <th class="w200">时间</th>
+        <th class="w100">推广</th>
+        <th class="w100">店铺</th>
+		<th class="w100">顾客</th>
+        <th class="w100">金额</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (extension_list.achievement_list && extension_list.achievement_list.length > 0) { %>
+      <% for (var k in extension_list.achievement_list) { var v = extension_list.achievement_list[k]; %>
+      <tr class="bd-line <% if (v.order_state!=40){%>bg-success<% } %>">
+        <td class="goods-time"><%= tsToDateString(v.add_time) %></td>
+        <td class="goods-price"><%= v.saleman_name %></td>
+        <td><%= v.store_name %></td>
+		<td><%= v.buyer_name %></td>
+        <td style="color: #ED5564;"><%= v.goods_amount %></td>
+      </tr>
+      <% } %>
+      <% } else { %>
+      <tr>
+        <td colspan="20" class="norecord">
+		<div class="warning-option"><i>&nbsp;</i><span>暂无推广业绩！</span></div>
+		</td>
+      </tr>
+      <% } %>
+    </tbody>
+    <tfoot>
+      <% if (extension_list.achievement_list && extension_list.achievement_list.length > 0) { %>
+      <tr>
+        <td colspan="20">
+		  <div class="pagination mt10">
+            <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+            <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+          </div>
+		</td>
+      </tr>
+      <% } %>
+    </tfoot>
+  </table>
+</div>
+</script>
+
+<!--我的待收益-->
+<script type="text/html" id="income-list-tmpl">
+<div class="extension-list">
+  <table class="imm-default-table">
+    <thead>
+      <tr>
+        <th class="w150">时间</th>
+        <th class="w150">推广</th>
+        <th class="w100">预收益</th>
+        <th class="w80">状态</th>
+      </tr>
+    </thead>
+    <tbody>
+	  <% if (extension_list.income_list && extension_list.income_list.length > 0) { %>
+      <% for (var k in extension_list.income_list) { var v = extension_list.income_list[k]; %>
+      <tr class="bd-line">
+        <td class="goods-time"><%= tsToDateString(v.add_time) %></td>
+        <td class="goods-price"><%= v.extension_name %></td>
+        <td><%= v.mb_commis_totals %></td>
+        <td><% if (v.give_status==1){ %>已结算<% } else { %>未结算<% } %></td>
+      </tr>
+      <% } %>
+      <% } else { %>
+      <tr>
+        <td colspan="20" class="norecord"><div class="warning-option"><i>&nbsp;</i><span>暂无推广收益！</span></div></td>
+      </tr>
+      <% } %>
+    </tbody>
+    <tfoot>
+      <% if (extension_list.income_list && extension_list.income_list.length > 0) { %>
+      <tr>
+        <td colspan="20">
+		  <div class="pagination mt10">
+            <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+            <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+          </div>
+		</td>
+      </tr>
+      <% } %>
+    </tfoot>
+  </table>
+</div>
+</script>
+
+<!--我的结算记录-->
+<script type="text/html" id="balance-list-tmpl">
+<div class="extension-list">
+  <table class="imm-default-table" >
+    <thead>
+      <tr>
+        <th class="w150">结算日期</th>
+		<th class="w80">推广积分</th>
+		<th class="w80">高管奖励</th>
+		<th class="w80">门店补贴</th>
+        <th class="w80">结算金额</th>
+      </tr>
+    </thead>
+    <tbody>
+	  <% if (extension_list.balance_list && extension_list.balance_list.length > 0) { %>
+      <% for (var k in extension_list.balance_list) { var v = extension_list.balance_list[k]; %>
+      <tr class="bd-line">
+        <td class="goods-time"><%= tsToDateString(v.pde_add_time) %></td>
+		<td class="goods-price"><%= v.pde_commis>0?v.pde_commis:'' %></td>
+		<td class="goods-price"><%= v.pde_manageaward>0?v.pde_manageaward:'' %></td>
+		<td class="goods-price"><%= v.pde_perforaward>0?v.pde_perforaward:'' %></td>
+        <td class="goods-price"><%= v.pde_amount>0?v.pde_amount:'' %></td>        
+      </tr>
+      <% } %>
+      <% } else { %>
+      <tr>
+        <td colspan="20" class="norecord">
+		<div class="warning-option"><i>&nbsp;</i><span>暂无结算记录！</span></div>
+		</td>
+      </tr>
+      <% } %>
+    </tbody>
+    <tfoot>
+      <% if (extension_list.balance_list && extension_list.balance_list.length > 0) { %>
+      <tr>
+        <td colspan="20">
+		  <div class="pagination mt10">
+            <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+            <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+          </div>
+		</td>
+      </tr>
+      <% } %>
+    </tfoot>
+  </table>
+</div>
+</script>

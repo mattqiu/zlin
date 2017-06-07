@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+	<title>调试微信小程序调用的API</title>
+</head>
+<body>
+<div style="text-align:center;">
+	调试微信小程序调用的API数据
+</div>
+<script type="text/javascript" src="../wap/js/core/zepto.min.js"></script> 
+<script type="text/javascript" src="../wap/js/core/template.js"></script>
+<script type="text/javascript" src="../wap/js/core/swipe.js"></script>
+<script type="text/javascript" src="../wap/js/common.js"></script>
+<script type="text/javascript">
+var ApiUrl = "https://www.zlin-e.com/wxapp";//更换自己本地地址
+$(function() {	
+	$.ajax({
+        url: ApiUrl + "/index.php?act=index&op=index", //请求的地址
+        data:{},//模拟传参，请输入参数。格式：id:10001,name:小程序
+        type: 'get',//小程序传参统一都用get
+        dataType: 'json',
+        success: function(result) {
+            var data = result.datas;
+			console.log(data); //输入结果，再浏览器里查看
+			//alert(); //输入自己想要的结果
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

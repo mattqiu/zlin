@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>智琳之家开业活动-充值可领取代金券</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../css/base.css">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="../css/child.css">
+</head>
+<body>
+<header id="header" class="qm-product-header fixed">
+  <div class="header-wrap">
+    <div class="header-l"> <a href="javascript:history.go(-1)"> <i class="back"></i> </a> </div>
+	<div class="header-title">
+      <h1>充值领取代金券</h1>
+    </div>
+    <div class="header-r"> 
+      <a href="../tmpl/product_categroy.html" class="categroy"><i></i></a> 
+      <a id="header-nav" href="javascript:void(0);"><i class="more"></i><sup></sup></a> 
+    </div>
+  </div>
+  <div class="qm-nav-layout">
+    <div class="qm-nav-menu"> <span class="arrow"></span>
+      <ul>
+        <li><a href="../store.html?store_id=<%= store_info.store_id %>"><i class="home"></i>首页</a></li>
+        <li><a href="../tmpl/cart_list.html"><i class="cart"></i>购物车<sup></sup></a></li>
+        <li><a href="../tmpl/member/member.html"><i class="member"></i>我的商城</a></li>
+        <li><a href="javascript:void(0);"><i class="message"></i>消息<sup></sup></a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="qm-main-layout mb20">
+  <div id="voucher_list"></div>
+</div>
+<!--foot-->
+<footer id="footer" class="bottom"></footer>
+<!--全局导航-->
+<div id="main-globalnav" class="global-nav"></div>
+<!--分类菜单-->
+<nav id="main-menu" style="display:None"></nav>
+
+<script type="text/javascript" src="../js/core/zepto.min.js"></script>
+<script type="text/javascript" src="../js/core/swipe.js"></script>
+<script type="text/javascript" src="../js/core/template.js"></script>
+<script type="text/javascript" src="../js/TouchSlide.js"></script>
+<script type="text/javascript" src="../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../js/core/requestAnimationFrame.js"></script>
+<script type="text/javascript" src="../js/core/zepto.fly.min.js"></script>
+<script type="text/javascript" src="../js/config.js"></script> 
+<script type="text/javascript" src="../js/common.js"></script> 
+
+<script type="text/javascript" src="../js/tmpl/promotion_list.js"></script>
+<script type="text/javascript" src="../js/footer.js"></script>  
+</body>
+</html>
+<script type="text/html" id="voucher-list-tmpl">
+<% if (voucher_list && voucher_list.length > 0) { %>
+<ul class="imcp-voucher-list">  
+  <% for (var k in voucher_list) { var v = voucher_list[k]; %>
+  <li>
+    <div class="imcp-voucher">
+      <div class="cut"></div>
+      <div class="info">
+	    <div class="store"><%= v.voucher_t_storename %></div>
+		<p class="store-classify"></p>
+        <div class="pic"><img src="<%= v.voucher_t_customimg %>"/></div>
+      </div>
+      <dl class="value">
+        <dt>￥<em><%= v.voucher_t_price %></em></dt>
+        <dd>购物满<%= v.voucher_t_limit %>元可用</dd>
+        <dd class="time">有效期至<%= tsToDateString(v.voucher_t_end_date) %></dd>
+      </dl>
+      <div class="button"><a target="_blank" href="###" im_type="exchangebtn" data-param='{"vid":"<%= v.voucher_t_id %>","points":"<%= v.voucher_t_points %>","store":"<%= v.voucher_t_storename %>","price":"<%= v.voucher_t_price %>"}' class="imcp-btn imcp-btn-red">立即领取</a></div>
+    </div>
+  </li>	
+  <% } %>
+  <div class="pagination mt10">
+    <a href="javascript:void(0);" class="pre-page<% if (curpage <= 1 ) { %> disabled<% } %>">上一页</a>
+    <a href="javascript:void(0);" has_more="<% if (hasmore){ %>true<% } else { %>false<% } %>" class="next-page<% if (!hasmore) { %> disabled<% } %>">下一页</a>
+  </div>  
+</ul>
+<% } else { %>
+<div class="no-record">暂无记录</div>
+<% } %>
+</script>

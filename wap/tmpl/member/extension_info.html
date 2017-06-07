@@ -1,0 +1,221 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<title>推广中心</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/extension.css">
+</head>
+<body>
+<header id="header" class="transparent">
+  <div class="header-wrap">
+    <div class="header-l"> <a href="javascript:history.go(-1)"> <i class="back"></i> </a> </div>
+    <div class="header-r"> <a id="header-nav" href="javascript:void(0);"><i class="more"></i><sup></sup></a> </div>
+  </div>
+  <div class="qm-nav-layout">
+    <div class="qm-nav-menu"> <span class="arrow"></span>
+      <ul>
+        <li><a href="../../index.html"><i class="home"></i>首页</a></li>
+        <li><a href="../search.html"><i class="search"></i>搜索</a></li>
+        <li><a href="../cart_list.html"><i class="cart"></i>购物车<sup></sup></a></li>
+        <li><a href="../member/member.html"><i class="member"></i>我的商城</a></li>
+        <li><a href="javascript:void(0);"><i class="message"></i>消息<sup></sup></a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="exten-top clearfix" id="extension-info"></div>
+
+<div class="exten-center" id="extension-profile"></div>
+
+<!--foot-->
+<footer id="footer" class="fixed-Width"></footer>
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script> 
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/core/template.js"></script> 
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script> 
+<script type="text/javascript" src="../../js/tmpl/extension_info.js"></script>
+<script type="text/javascript" src="../../js/footer.js"></script>
+</body>
+</html>
+<script type="text/html" id="extension-info-tmpl">
+  <div class="exten-information">
+    <div class="exten-avatar fleft">
+      <img src="<%=member_info.avator;%>" />
+    </div>
+    <div class="exten-infor fleft">
+      <div class="exten-name mt10"><span><%=member_info.user_name;%></span></div>
+	  <% if (member_info.extension_info.mc_name !=''){%>
+	  <div class="exten-mc"><span>渠道身份：<%=member_info.extension_info.mc_name;%></span></div>
+	  <% }%>
+    </div>
+  </div>
+  <div class="exten-option">
+    <ul class="ex-op-list">
+      <li class="ex-op-item">
+	    <a href='order_list.html?state=10'>
+          <span class="im-label"><i class="fa fa-cc-visa"></i></span>
+		  <span class="im-count">待付款</span>
+		</a>
+		<% if (member_info.order_info.order_new>0){%>
+		<span class="operate-num"><%=member_info.order_info.order_new;%></span>
+		<% }%>
+      </li>
+	  <li class="ex-op-item">
+	    <a href='order_list.html?state=20'>
+          <span class="im-label"><i class="fa fa-truck"></i></span>
+		  <span class="im-count">待发货</span>
+		</a>
+		<% if (member_info.order_info.order_pay>0){%>
+		<span class="operate-num"><%=member_info.order_info.order_pay;%></span>
+		<% }%>
+      </li>
+	  <li class="ex-op-item">
+	    <a href='order_list.html?state=30'>
+          <span class="im-label"><i class="fa fa-edit"></i></span>
+		  <span class="im-count">待收货</span>
+		</a>
+		<% if (member_info.order_info.order_send>0){%>
+		<span class="operate-num"><%=member_info.order_info.order_send;%></span>
+		<% }%>
+      </li>
+	  <li class="ex-op-item">
+	    <a href='favorites.html'>
+          <span class="im-label"><i class="fa fa-heartbeat"></i></span>
+		  <span class="im-count">喜欢</span>
+		</a>
+      </li>
+	  <li class="ex-op-item">
+	    <a href='views_list.html'>
+          <span class="im-label"><i class="fa fa-paw"></i></span>
+		  <span class="im-count">足迹</span>
+		</a>
+      </li>
+	</ul>
+  </div>  
+</script>
+
+<script type="text/html" id="extension-profile-tmpl">
+  <div class="exten-plate">
+    <div class="title"><i class="fa fa-user"></i><span>管理业绩</span></div>
+	<ul class="im-ind-panel">
+      <li class="im-ind-item first">
+	    <a href="extension_subordinate.html">
+          <span class="im-label"><%=member_info.extension_info.personal_childs;%></span>
+		  <span class="im-count">我的团队</span>
+		</a>
+      </li>
+	  <% if (member_info.extension_info.mc_id>1 && member_info.extension_info.mc_id<10){%>
+	  <% if (member_info.extension_info.mc_real==10){%>
+	  <li class="im-ind-item">
+	    <a href="extension_list.html?extension_state=income">
+          <span class="im-label"><%=member_info.extension_info.personal_perforaward;%></span>
+		  <span class="im-count">门店补贴</span>
+		</a>
+      </li>
+	  <% }else{%>
+	  <li class="im-ind-item">
+	    <a href="extension_subordinate.html">
+          <span class="im-label"><%=member_info.extension_info.personal_subs;%></span>
+		  <span class="im-count">直推代理</span>
+		</a>
+      </li>
+	  <% }%>
+	  <li class="im-ind-item">
+	    <a href="extension_list.html?extension_state=income">
+          <span class="im-label"><%=member_info.extension_info.personal_manageaward;%></span>
+		  <span class="im-count">心跳指数</span>
+		</a>
+      </li>	  
+	  <% }else{%>
+	  <li class="im-ind-item">
+	    <a href="extension_subordinate.html">
+          <span class="im-label"><%=member_info.extension_info.personal_subs;%></span>
+		  <span class="im-count">直推代理</span>
+		</a>
+      </li>
+	  <li class="im-ind-item">
+	    <a href="extension_list.html?extension_state=income">
+          <span class="im-label"><%=member_info.extension_info.commis_totals;%></span>
+		  <span class="im-count">累积收益</span>
+		</a>
+      </li>
+	  <% }%>
+	</ul>
+  </div>
+  
+  <div class="exten-plate">
+    <div class="title"><i class="fa fa-users"></i><span>渠道业绩</span></div>
+	<ul class="im-ind-panel">
+      <li class="im-ind-item first">
+	    <a href="extension_list.html?extension_state=achievement">
+          <span class="im-label"><%=member_info.extension_info.group_amounts;%></span>
+		  <span class="im-count">销售额</span>
+		</a>
+      </li>
+	  <li class="im-ind-item">
+	    <a href="extension_list.html?extension_state=achievement">
+          <span class="im-label"><%=member_info.extension_info.group_orders;%></span>
+		  <span class="im-count">订单</span>
+		</a>
+      </li>
+	  <li class="im-ind-item">
+	    <a href="extension_list.html?extension_state=income">
+          <span class="im-label"><%=member_info.extension_info.group_commis;%></span>
+		  <span class="im-count">幸福指数</span>
+		</a>
+      </li>
+	</ul>
+  </div>
+  
+  <ul class="mc-cnt radius5">
+    <li>
+      <a href="predepositlog_list.html">
+        <i class="fa fa-briefcase"></i><span>我的钱包</span>
+		<span class="cont"><%=member_info.predepoit;%></span>
+        <span class="grayrightarrow"></span>
+      </a>
+    </li>
+  </ul>
+  
+  <ul class="mc-cnt radius5">
+    <li>
+      <a href="voucher_list.html">
+        <i class="fa fa-newspaper-o"></i><span>代金券</span>
+		<span class="cont"><%=member_info.vouchers;%></span>
+        <span class="grayrightarrow"></span>
+      </a>
+    </li>
+  </ul>
+  
+  <ul class="mc-cnt radius5">
+    <li>
+      <a href="extension_qrcode.html">
+        <i class="fa fa-qrcode"></i><span>推广二维码</span>
+		<span class="cont"></span>
+        <span class="grayrightarrow"></span>
+      </a>
+    </li>
+  </ul>
+  <% if (member_info.extension_info.store_id>0){%>
+  <ul class="mc-cnt radius5">
+    <li>
+      <a href="<%=WapSiteUrl;%>/tmpl/store.html?store_id=<%=member_info.extension_info.store_id;%><%=member_info.extension_info.extension%>">
+        <i class="fa fa-home"></i><span>我的东家</span>
+		<span class="cont"></span>
+        <span class="grayrightarrow"></span>
+      </a>
+    </li>
+  </ul>
+  <% } %>
+</script>

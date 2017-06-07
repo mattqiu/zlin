@@ -1,0 +1,35 @@
+
+.content .con_t1{padding-top:26px;height:272px;width:100%;background:#fff;border-bottom:1px #ccccce solid;}
+.con_t1 .c_h3{margin-left:8%;font-weight:normal;}
+.con_t1 .img1{background:url(images/ttup.jpg) no-repeat;height:88px;width:88px;display:block;margin-top:15px;margin-left:8%;}
+.con_t1 .c_p1{width:95%;margin:auto;margin-top:15px;color:#b7b7b7;}
+.con_t2{height:374px;width:100%;background:#fff;margin-top:25px;padding-top:25px;}
+.con_t2 .c_h3{margin-left:8%;}
+.con_t2 .img1{background:url(images/ttup.jpg) no-repeat;height:88px;width:88px;display:block;margin-top:15px;margin-left:8%;}
+.con_t2 .c_p1{width:95%;margin:auto;margin-top:15px;color:#b7b7b7;}
+.con_t2 .text1{height:130px;width:80%;margin:auto;}
+.con_t3{height:75px;margin-top:25px;width:100%;background:#fff;line-height:75px;padding-left:8%;}
+.con_t4{height:226px;width:100%;background:#fff;margin-top:25px;}
+.con_t4 .con_t41{padding-left:8%;height:75px;border-bottom:1px #d5d5d8 solid;line-height:75px;}
+.con_t4 .con_t41 .span1 a{display:block;width:30%;float:right;color:#d0d0d2;background:url(images/you.jpg) 60px 25px no-repeat;}
+.con_t4 .con_t41 .span2 .aaa{display:block;width:22%;height:75px;float:right;background:url(images/dianji1.jpg) 0 16px no-repeat;}
+.con_t4 .con_t41 .span2 .aaa:hover{background:url(images/dianji.jpg) 0 16px no-repeat;}
+.footer{height:100px;width:100%;background:#f0eff4;text-align:center;padding-top:25px;}
+.footer a{display:block;float:left;line-height:50px;text-align:center;height:50px;width:40%;border-radius:5px;color:#fff;}
+.btn_1{background:#656773;margin-left: 8%;}
+.btn_2{background:#fd6847;margin-left: 5%;}
+
+.top_l2 img{margin-left:8px;}
+.top_l2 a{color:#fff;}
+.f_footer{height:126px;width:92%;background:#f0eff4;padding-left:8%;line-height:126px;position:absolute;z-index:999999;bottom:0}
+.f_footer input{margin-right:18px;}
+.f_footer a{display:inline-block;border-radius:6px;height:70px;width:150px;color:#fff;text-align:center;line-height:70px;margin-right:5%}
+.f_footer .f_a1{background:#656773;margin-left:5%;}
+.f_footer .f_a2{background:#fd6847}
+
+
+
+
+
+
+

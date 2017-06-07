@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>加盟</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" type="text/css" href="../css/reset.css">
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="../css/main.css">
+<link rel="stylesheet" type="text/css" href="../css/index.css">
+<link rel="stylesheet" type="text/css" href="../css/member.css">
+</head>
+<body>
+<header id="header"></header>
+
+<div class="login-form" id="apply_info"></div>
+<!--foot-->
+<div id="main_footer" class="footer mr-t20"></div>
+<!--全局导航-->
+<div id="main-globalnav" class="global-nav"></div>
+<!--分类菜单-->
+<nav id="main-menu" style="display:None"></nav>
+
+<script type="text/javascript" src="../js/core/zepto.min.js"></script>
+<script type="text/javascript" src="../js/core/swipe.js"></script>
+<script type="text/javascript" src="../js/core/template.js"></script>
+<script type="text/javascript" src="../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/tmpl/common-top.js"></script>
+<script type="text/javascript" src="../js/tmpl/apply_join.js"></script>
+<script type="text/javascript" src="../js/tmpl/footer.js"></script>
+</body>
+</html>
+<script type="text/html" id="apply_info_form">
+<form action="" method ="">
+  <span>
+    <input type="text" placeholder="真实姓名" class="input-40" name="truename" id="truename" value="<%=apply_info.member_truename;%>"/>
+  </span>
+  <span>
+    <input type="text" placeholder="电子邮箱" class="input-40" name="email" id="email" value="<%=apply_info.member_email;%>"/>
+  </span>
+  <span>
+    <input type="text" placeholder="手机号码" class="input-40" name="mobile" id="mobile" value="<%=apply_info.member_mobile;%>"/>
+  </span>
+  <span>
+    <input type="text" placeholder="QQ号码" class="input-40" name="qq" id="qq" value="<%=apply_info.member_qq;%>"/>
+  </span>
+  <span>
+    <input type="text" placeholder="联系地址" class="input-40" name="areainfo" id="areainfo" value="<%=apply_info.member_areainfo;%>"/>
+  </span> 
+  <span>
+    <input type="text" placeholder="申请说明" class="input-40" name="describe" id="describe" />
+  </span>           
+  <input type="hidden" name="ai_from" value="<%=apply_info.ai_from;%>">
+  <input type="hidden" name="ai_target" value="<%=apply_info.ai_target;%>">
+  <input type="hidden" name="client" value="wap">
+  <div class="error-tips mt10"></div>
+  <a href="javascript:void(0);" class="l-btn-login mt10" id="applybtn">提交申请</a>
+</form>
+</script>

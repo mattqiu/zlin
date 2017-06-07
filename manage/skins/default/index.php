@@ -1,0 +1,1 @@
+<?php defined('InIMall') or exit('Access Invalid!');?>

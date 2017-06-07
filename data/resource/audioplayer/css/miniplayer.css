@@ -1,0 +1,219 @@
+@font-face {
+	font-family: mb_audio_fontRegular;
+	src: local("?"), url(mbAudioFont/mbaudio_font.woff) format("woff"), 
+	                 url(mbAudioFont/mbaudio_font.ttf) format("truetype"), 
+					 url(mbAudioFont/mbaudio_font.eot) format("opentype"), 
+					 url(mbAudioFont/mbaudio_font.svg#webfontywr4YLri) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: DroidSansMonoRegular;
+	src: local("?"), url(DroidSansMono/DroidSansMono.woff) format("woff"), 
+	                 url(DroidSansMono/DroidSansMono.ttf) format("truetype"),
+					 url(DroidSansMono/DroidSansMono.eot) format("opentype"), 
+					 url(DroidSansMono/DroidSansMono.svg#webfontGzFJ3WpO) format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+.map_params {
+	display: none !important;
+}
+a.audio {
+	display: none;
+}
+.mbMiniPlayer:focus {
+	
+}
+.mbMiniPlayer * {
+	box-sizing: content-box; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.mbMiniPlayer {
+	vertical-align: baseline !important;
+}
+.mbMiniPlayer span {
+	line-height: 20px !important; font-family: "mb_audio_fontRegular" !important; font-size: 20px;
+}
+.mbMiniPlayer table {
+	background: rgb(255, 255, 255); margin: 0px !important; padding: 0px !important; border-radius: 5px !important; border: 1px solid white !important; width: auto !important; color: rgb(119, 119, 119); line-height: 0 !important; vertical-align: middle; display: inline-block; -moz-border-radius: 5px; -webkit-border-radius: 8px;
+}
+.mbMiniPlayer:focus table {
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.38) !important;
+}
+.shadow.mbMiniPlayer table {
+	box-shadow: 0px 0px 3px rgba(0,0,0,0.4); -moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4); -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+}
+.mbMiniPlayer td {
+	margin: 0px !important; padding: 0px !important; border: currentColor !important; line-height: 0 !important; vertical-align: middle;
+}
+.jp-progress {
+	margin: 0px 2px 2px; top: -2px; height: 8px; position: relative; cursor: pointer; box-sizing: content-box; background-color: rgb(255, 255, 255); -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.jp-load-bar {
+	height: 6px; box-sizing: content-box; background-color: rgb(233, 230, 230); -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.jp-play-bar {
+	height: 6px; box-sizing: content-box; background-color: black; -moz-box-sizing: content-box; -webkit-box-sizing: content-box;
+}
+.mbMiniPlayer td.map_controlsBar {
+	margin: 0px; padding: 0px; cursor: default !important; box-shadow: inset 1px 1px 2px #999; background-color: rgb(204, 204, 204); -moz-box-shadow: inset 1px 1px 3px #999; -webkit-box-shadow: inset 1px 1px 2px #999;
+}
+.mbMiniPlayer .map_controls {
+	margin: 1px; width: 1px; height: 100%; overflow: hidden; display: none; white-space: nowrap; position: relative;
+}
+.mbMiniPlayer table span {
+	margin: 0px !important; padding: 3px !important; height: 20px !important; text-align: center !important; color: white; text-transform: none !important; vertical-align: middle; display: inline-block !important; text-shadow: 1px -1px 1px rgba(0, 0, 0, 0.6);
+}
+.mbMiniPlayer table span.map_title {
+	font: 10px/12px "DroidSansMonoRegular", sans-serif !important; top: -2px !important; width: 100% !important; height: 11px !important; text-align: left !important; color: rgb(51, 51, 51); letter-spacing: 0px !important; overflow: hidden; position: relative; cursor: default !important; text-overflow: ellipsis; font-size-adjust: none !important; font-stretch: normal !important; text-shadow: none; 
+}
+.mbMiniPlayer .map_info {
+	background: rgb(48, 48, 48); padding: 1px 4px; color: rgb(209, 209, 209); display: none; position: absolute; z-index: 10;
+}
+.mbMiniPlayer table span.map_rew {
+	cursor: pointer !important;
+}
+.mbMiniPlayer table span.map_volumeLevel {
+	
+}
+.mbMiniPlayer table span.map_volumeLevel a {
+	margin: 0px; padding: 0px; width: 2px; height: 0px; vertical-align: middle !important; border-right-color: rgba(0, 0, 0, 0.4); border-right-width: 1px; border-right-style: solid; display: inline-block !important; position: relative !important; cursor: pointer !important; opacity: 0.1; background-color: white;
+}
+.mbMiniPlayer table span.map_volumeLevel a:hover {
+	opacity: 1 !important;
+}
+.mbMiniPlayer table span.map_volumeLevel a.sel {
+	
+}
+.mbMiniPlayer table span.map_time {
+	font: 11px/20px "DroidSansMonoRegular", sans-serif !important; width: 1px; overflow: hidden; white-space: nowrap; cursor: default !important; font-size-adjust: none !important; font-stretch: normal !important; text-shadow: 1px -1px 1px rgba(0, 0, 0, .6);
+}
+.mbMiniPlayer table span.map_play {
+	border-radius: 0px 4px 4px 0px !important; cursor: pointer !important;
+}
+[isplaying=true].mbMiniPlayer table span.map_play {
+	-webkit-animation: playing .7s infinite alternate; animation: playing .7s infinite alternate;
+}
+.mbMiniPlayer table span.map_volume {
+	border-radius: 4px 0px 0px 4px !important; padding-right: 0px !important; padding-left: 6px !important; cursor: pointer !important;
+}
+.mbMiniPlayer .copy {
+	font: 10px/12px "DroidSansMonoRegular", sans-serif !important; color: rgb(224, 224, 224); padding-left: 10px; display: none; font-size-adjust: none !important; font-stretch: normal !important;
+}
+.mbMiniPlayer span.map_download {
+	margin: 0px !important; padding: 3px 5px !important; color: rgba(0, 0, 0, 0.2); line-height: 22px !important; font-family: "mb_audio_fontRegular" !important; font-size: 50px !important; vertical-align: top !important; display: inline-block !important; transition: color 1s; -moz-transition: color 1s; -webkit-transition: color 1s; -o-transition: color 1s;
+}
+/*BLACK ----------------------------------------*/
+.black.mbMiniPlayer table span {
+	background-color: rgb(51, 51, 51);
+}
+.black.mbMiniPlayer table span.map_play {
+	border-left-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid;
+}
+.black.mbMiniPlayer table span.map_volume {
+	border-right-color: rgb(51, 51, 51); border-right-width: 1px; border-right-style: solid;
+}
+.black.mbMiniPlayer table span.mute.map_volume {
+	color: rgb(51, 51, 51);
+}
+.black.mbMiniPlayer table span.map_title {
+	background-color:#ccc;
+}
+.black.mbMiniPlayer .map_download:hover {
+	color: rgb(0, 0, 0);
+}
+/*GRAY ----------------------------------------*/
+.gray.mbMiniPlayer table span {
+	background-color: rgb(204, 204, 204);
+}
+.gray.mbMiniPlayer table span.map_play {
+	border-left-color: rgb(159, 159, 159); border-left-width: 1px; border-left-style: solid;
+}
+.gray.mbMiniPlayer table span.map_volume {
+	border-right-color: rgb(189, 188, 188); border-right-width: 1px; border-right-style: solid;
+}
+.gray.mbMiniPlayer table span.mute.map_volume {
+	color: rgb(204, 204, 204);
+}
+.gray.mbMiniPlayer table span.map_title {
+	background-color:#ccc;
+}
+.gray.mbMiniPlayer .map_download:hover {
+	color: rgb(102, 102, 102);
+}
+/*BLUE ----------------------------------------*/
+.blue.mbMiniPlayer table span {
+	background-color: rgb(0, 153, 255);
+}
+.blue.mbMiniPlayer table span.map_play {
+	border-left-color: rgb(3, 67, 131); border-left-width: 1px; border-left-style: solid;
+}
+.blue.mbMiniPlayer table span.map_volume {
+	border-right-color: rgb(24, 162, 254); border-right-width: 1px; border-right-style: solid;
+}
+.blue.mbMiniPlayer table span.mute.map_volume {
+	color: rgb(152, 191, 249);
+}
+.blue.mbMiniPlayer table span.map_title {
+	background-color:#ccc;
+}
+.blue.mbMiniPlayer .map_download:hover {
+	color: rgb(0, 153, 255);
+}
+/*ORANGE ----------------------------------------*/
+.orange.mbMiniPlayer table span {
+	background-color: rgb(255, 153, 0);
+}
+.orange.mbMiniPlayer table span.map_play {
+	border-left-color: rgb(140, 80, 2); border-left-width: 1px; border-left-style: solid;
+}
+.orange.mbMiniPlayer table span.map_volume {
+	border-right-color: rgb(254, 168, 39); border-right-width: 1px; border-right-style: solid;
+}
+.orange.mbMiniPlayer table span.mute.map_volume {
+	color: rgb(238, 201, 87);
+}
+.orange.mbMiniPlayer table span.map_title {
+	background-color:#ccc;
+}
+.orange.mbMiniPlayer .map_download:hover {
+	color: rgb(255, 153, 0);
+}
+/*RED ----------------------------------------*/
+.red.mbMiniPlayer table span {
+	background-color: rgb(153, 0, 0);
+}
+.red.mbMiniPlayer table span.map_play {
+	border-left-color: rgb(95, 0, 0); border-left-width: 1px; border-left-style: solid;
+}
+.red.mbMiniPlayer table span.map_volume {
+	border-right-color: rgb(153, 0, 0); border-right-width: 1px; border-right-style: solid;
+}
+.red.mbMiniPlayer table span.mute.map_volume {
+	color: rgb(185, 0, 0);
+}
+.red.mbMiniPlayer table span.map_title {
+	background-color:#ccc;
+}
+.red.mbMiniPlayer .map_download:hover {
+	color: rgb(153, 0, 0) !important;
+}
+/*GREEN ----------------------------------------*/
+.green.mbMiniPlayer table span {
+	background-color: rgb(51, 153, 0);
+}
+.green.mbMiniPlayer table span.map_play {
+	border-left-color: rgb(51, 102, 0); border-left-width: 1px; border-left-style: solid;
+}
+.green.mbMiniPlayer table span.map_volume {
+	border-right-color: rgb(56, 167, 0); border-right-width: 1px; border-right-style: solid;
+}
+.green.mbMiniPlayer table span.mute.map_volume {
+	color: rgb(42, 186, 90);
+}
+.green.mbMiniPlayer table span.map_title {
+	background-color:#ccc;
+}
+.green.mbMiniPlayer .map_download:hover {
+	color: rgb(51, 153, 0) !important;
+}

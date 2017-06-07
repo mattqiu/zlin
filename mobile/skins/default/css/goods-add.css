@@ -1,0 +1,193 @@
+#fixedNavBar {
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true', startColorstr='#CCFFFFFF', endColorstr='#CCFFFFFF');
+    background: rgba(255, 255, 255, 0.8);
+    width: 90px;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 999;
+    top: 50px;
+    right: 0px;
+}
+
+#fixedNavBar h3 {
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    margin-top: 4px;
+}
+
+#fixedNavBar ul {
+    width: 80px;
+    margin: 0 auto 5px auto;
+}
+
+#fixedNavBar li {
+    margin-top: 5px;
+}
+
+#fixedNavBar li a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    background-color: #F5F5F5;
+    color: #999;
+    text-align: center;
+    display: block;
+    height: 20px;
+    border-radius: 10px;
+}
+
+#fixedNavBar li a:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #27a9e3;
+}
+.inblock{display: inline-block;}
+.bgfff{background: #fff;}
+dl{background: #fff;}
+.vertical-middle{vertical-align: middle;}
+.vertical-middle textarea {border:none!important;width: 100%;border-bottom:1px solid #ddd!important;resize: none!important;outline: none!important;-webkit-box-shadow:none!important;}
+input{border:none!important;border-bottom:1px solid #ddd!important;resize: none!important;outline: none!important;-webkit-box-shadow:none!important;}
+.width80{width:80%;}
+.width70{width:57%;}
+
+.width100{width: 100%;}
+.ncbtn{float: right;}
+.ncsc-form-goods dl dd{padding:10px;box-sizing: border-box;border-bottom:1px solid #eee;  line-height: inherit;}
+.right-icon{float: right;width: 20px;height:20px;display: inline-block;}
+.right-icon img,.pic-icon img{width: 100%;display: block;border:none;}
+.hint{margin:0;}
+.goods-img{width: 100%;position:relative;}
+.goods-img img,.save_img-btn img{width: 100%;display: block;border:none;}
+.save_img-btn{position: absolute;bottom:15px;left:15px;width: 35px;height:35px;padding:7px;box-sizing: border-box;border-radius: 100%;    background: rgba(250, 120, 0, 0.8);}
+#upload_img{display: none;}
+#clipArea {
+    margin: 0px auto;
+    height: 250px;
+    width: 250px;
+}
+
+.clicp-box {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index:10005;
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+#upload_img {
+    display: none;
+}
+
+#clipBtn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 15px;
+    font-weight: 600;
+    float: right;
+}
+
+.clipbtn-box {
+    width: 100%;
+    background: rgba(0, 0, 0, 1);
+    position: absolute;
+    top: 0;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+.goods-title{width: 100%;position: relative;}
+.key-number{position:absolute;bottom:5px;right:5px;color:#999; }
+.goods-key-btn{border:none!important;}
+
+.distribution-description a{color:#0063DC;padding:5px 10px;text-decoration:none;margin-right:10px;background: linear-gradient(top , rgb(179, 176, 176) 5% , rgb(255, 255, 255) 51% , rgb(182, 182, 182) 100%);
+    background: -o-linear-gradient(top , rgb(179, 176, 176) 5% , rgb(255, 255, 255) 51% , rgb(182, 182, 182) 100%);
+    background: -ms-linear-gradient(top , rgb(179, 176, 176) 5% , rgb(255, 255, 255) 51% , rgb(182, 182, 182) 100%);
+    background: -moz-linear-gradient(top , rgb(179, 176, 176) 5% , rgb(255, 255, 255) 51% , rgb(182, 182, 182) 100%);
+    background: -webkit-linear-gradient(top , rgb(179, 176, 176) 5% , rgb(255, 255, 255) 51% , rgb(182, 182, 182) 100%);
+    font-size:12px;border-radius:4px;
+    display: block;
+    width: 80px;text-align: center;
+}
+.distribution-description{
+  /*text-align: right;*/
+}
+.clear{clear: both;display: block;}
+.form-control{border:none!important;text-align: right;height:auto;padding:0;}
+.width70{float: right;   }
+.w30{float: left;}
+.goods-desc{padding:15px 10px;background: #fff;}
+.editor-box{width: 100%;height:100%;position: fixed;top:0px;background: #fff;z-index:105;right:-120%;}
+.conplete-btn{width: 100%;padding:10px;box-sizing: border-box;height:40px;line-height:20px;    text-align: center}
+.btn-box{
+    height:40px;border-top:1px solid #ddd;
+    position:absolute;z-index:30;bottom:0;width: 100%;
+    box-sizing: border-box;
+    text-align: center;line-height:40px;
+    background: #ff2c2d;
+    color:#fff;
+}
+.conplete-btn {background: #ff2c2d;color:#fff;}
+#imageUpload{opacity: 0;}
+.pic-btn-box button{color:#333;text-align: center;}
+.pic-icon{width: 25px;display:inline-block;vertical-align: middle;}
+.navbar-fixed-bottom, .navbar-fixed-top{z-index:30;}
+.fenxiaohelp{width:20px;height:20px;display: inline-block;vertical-align: middle;}
+.fenxiaohelp img{width: 100%;display:block;border:none;}
+.loading-box{width: 100%;height:100%;position: absolute;top:0;left: 0;display: none;}
+.loading-box img{width: 100px;position: absolute;top:50%;left: 50%;margin-left: -50px;margin-top:-50px;}
+.load-text{position: absolute;top:50%;left: 50%;margin-left:-50px;margin-top:60px;  }
+#edithiddle{display:none;}
+#gcategory{padding:15px 10px;}
+.gcategory_box{position: fixed;right:-150%;top:0;width:100%;z-index: 99;min-height:100%;background: #fff;}
+.sort_btn1,.sort_btn2,.sort_btn3{color: #999;
+    text-shadow: none;
+    background-color: #F5F5F5;
+    border: solid 1px;
+    border-color: #DCDCDC #DCDCDC #B3B3B3 #DCDCDC;
+    cursor: default;font-size: 14px;padding:5px 10px;}
+.sort_list2,.sort_list3{display: none;}
+.navbar-fixed-bottom, .navbar-fixed-top{position: absolute;}
+/*本店分类*/
+.storeClassification{
+    position: fixed;
+    right:-150%;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    min-height: 100%;
+    background: #fff;
+}
+.storeClassification-return{
+    padding-top: 12px;
+    width: 10%;
+    float: left;
+    text-align: center;
+}
+.storeClass-btn1,.storeClass-btn2{padding:5px;background: #eee;color:#999;}
+#first_storeClassification li,#second_storeClassification li{    font-size: 12px;
+    color: #666;
+    display: block;
+    padding: 4px 8px;
+    margin: 1px;
+    overflow: hidden;}
+#first_storeClassification li.active,#second_storeClassification li.active{
+    color: #3A87AD;
+    background-color: #D9EDF7;
+    display: block;
+    margin: 0;
+    border: solid 1px #BCE8F1;
+}
+.store_list2{display: none;}
+#storeClassification-text{float: right;}
+.init{position: absolute;top:10px;}
+.storeClass_edit{display: none;}
+
+.spec li span .text {
+    vertical-align: middle;
+    width: 60px;
+}

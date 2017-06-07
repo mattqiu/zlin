@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<title>店铺营收</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/seller/mammon.css">
+<link rel="stylesheet" type="text/css" href="../../css/member.css">
+</head>
+<body>
+
+<div class="scroller-body">
+  <div class="scroller-box">
+    <div class="mammon-top gradient">
+	  	<div class="mammon-label">
+	  		<a href="javascript:history.go(-1);"><i class="arrow-l"></i></a>
+		  	<span class="mammon-title" id="mammon-title">
+		  		店铺营收
+		  	</span>
+		  	<h5>
+			  	<a href="explain.html"><i class="arrow-r"></i></a>
+		  	</h5>
+	  	</div>
+	  	<div class="mammon-account" >
+	  		<div class="yue">
+	  			<span>账号余额(元)</span>
+	  		</div>
+	  		<div class="bill">
+	  		  <a href="bill.html">
+	  			<span>账单</span>
+	  			<i class="arrow-r"></i>
+	  		  </a>
+	  		</div>
+	  	</div>
+	  	<div class="store-account" >
+	  		<span>0.00</span>
+	  	</div>
+	</div>
+	
+	<div class="mammon-income">
+  		<span class="name">累计收入(元)</span>
+  		<span class="num" id="income">0.00</span>
+	</div>
+	
+    <div class="mammon-center">
+      <dl class="" id="service_center">
+        <dd>
+          <ul>
+          <li>
+	          <a href="bill.html">
+	          	<span>待确定(元)</span>
+	          	<em>0.00</em>
+	          </a>
+          </li>
+          <li>
+          <a href="bill.html">
+          	<span>提现中(元)</span>
+	        <em>0.00</em>
+          </a>
+          </li>
+          <li>
+          	<a href="bill.html">
+          		<span>已体现(元)</span>
+	          	<em>0.00</em>
+          	</a>
+          </li>
+          </ul>
+        </dd>
+        
+        <dd>
+          <ul>
+          <li>
+	          <a href="bill.html">
+	          	<span>自营收入(元)</span>
+	          	<em>0.00</em>
+	          </a>
+          </li>
+          <li>
+          <a href="bill.html">
+          	<span>代销收入(元)</span>
+	        <em>0.00</em>
+          </a>
+          </li>
+          <li>
+          	<a href="bill.html">
+          		<span>直接收款(元)</span>
+	          	<em>0.00</em>
+          	</a>
+          </li>
+          </ul>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+  <footer id="footer"></footer>
+</div>
+
+</body>
+</html>
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script>
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script> 
+<script type="text/javascript" src="../../js/tmpl/seller/seller.js"></script>
+<script type="text/javascript" src="../../js/footer.js"></script>

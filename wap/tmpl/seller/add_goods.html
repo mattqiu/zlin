@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="msapplication-tap-highlight" content="no" />
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+<title>添加自营商品</title>
+<link rel="stylesheet" type="text/css" href="../../css/base.css">
+<link rel="stylesheet" type="text/css" href="../../css/seller.css">
+<link rel="stylesheet" type="text/css" href="../../css/common.css">
+<link rel="stylesheet" type="text/css" href="../../css/seller/mammon.css">
+</head>
+<body>
+<header id="header" class="seller-header">
+  <div class="header-wrap">
+    <div class="header-l"> <a href="seller.html"> <i class="back"></i> </a> </div>
+    <div class="header-title">
+      <h1>添加自营商品</h1>
+    </div>
+    <div class="header-r"><a id="header-nav" title="发布"><i class="save">发布</i></a></div>
+  </div>
+</header>
+<div class="qm-main-layout">
+  <div class="qm-inp-con">
+  	<form action="" method ="" id="agoodsFrom">
+  	  <ul class="form-box">        
+        <li class="form-item upload-item">
+          <div class="gi_box" id="gi_box">
+            <div class="qm_upload" id="gi_table"> 
+             <a href="javascript:void(0);"> 
+            	<span>
+              <input type="file" hidefocus="true" size="1" class="input-file" name="goods_image"  multiple="multiple" accept="image/*">
+              </span>
+              <p><i class="icon-upload"></i></p>
+              </a>
+              
+	          <input type="hidden" name="image_path" id="image_path" imtype="goods_image" value="">
+            </div>
+            <input type="hidden" name="gi_num" id="gi_num" value="0" />
+          </div>
+        </li>
+      </ul>
+      <ul class="form-box">        
+        <li class="form-item">
+          <h4>商品名称</h4>
+          <div class="input-box">
+            <input type="text" id="g_name" name="g_name" class="inp" autocomplete="off" placeholder="请输入商品名称" oninput="writeClear($(this));" onfocus="writeClear($(this));"/>
+            <span class="input-del code"></span>
+          </div>
+        </li>
+      </ul>
+      <div class="mt5"></div>
+	  <ul class="form-box" id="def_table">
+        <li class="form-item">
+          <h4>价&nbsp;&nbsp;格</h4>
+          <div class="input-box">
+            <input type="text" id="g_price" name="g_price" maxlength="10" size="10" class="inp" autocomplete="off" placeholder="" oninput="writeClear($(this));"/>
+            <span class="input-del code"></span>
+          </div>
+        </li>
+        <li class="form-item">
+          <h4>库&nbsp;&nbsp;存</h4>
+          <div class="input-box">
+            <input type="text" id="g_storage" name="g_storage" maxlength="8" size="10" class="inp" autocomplete="off" placeholder="" oninput="writeClear($(this));"/>
+            <span class="input-del code"></span>
+          </div>
+        </li>
+      </ul>
+      <div id="spec_table">
+      <ul class="spec-box" id="spec_box_0">
+	    <li class="spec-item">
+          <h4>规&nbsp;&nbsp;格</h4>
+          <div class="input-box">
+            <input type="text" id="spec_name[0]" name="spec[0][spec_value]" maxlength="10" size="10" class="inp" autocomplete="off" placeholder="输入商品规格，如颜色、尺码" oninput="writeClear($(this));"/>
+            <span class="input-del code"></span>
+          </div>
+        </li>
+        <li class="spec-item">
+          <h4>价&nbsp;&nbsp;格</h4>
+          <div class="input-box">
+            <input type="text" id="g_price[0]" name="spec[0][price]" maxlength="10" size="10" class="inp" autocomplete="off" placeholder="" oninput="writeClear($(this));"/>
+            <span class="input-del code"></span>
+          </div>
+          <div class="spec-img"><i class="sepc_del" id="sepc_del0"></i></div>
+        </li>
+        <li class="spec-item">
+          <h4>库&nbsp;&nbsp;存</h4>
+          <div class="input-box">
+            <input type="text" id="g_storage[0]" name="spec[0][stock]" maxlength="8" size="10" class="inp" autocomplete="off" placeholder="" oninput="writeClear($(this));"/>
+            <span class="input-del code"></span>
+          </div>
+        </li>
+      </ul>
+      </div>
+     <ul class="form-box mt5">
+        <li class="form-item">
+          <span id="spec_add" class="btn mt5">
+          	+ 商品规格
+          	<input type="hidden" name="s_num" id="s_num" value="0">
+          </span>
+        </li>
+      </ul>
+      <div class="feedback mt5">
+		  	<h4>描&nbsp;&nbsp;述</h4>
+		    <textarea id="g_body" name="g_body" class="textarea" onfocus="if(value=='请输入商品描述'){value=''}" onblur="if(value ==''){value='请输入商品描述'}">请输入商品描述</textarea>
+		    <div class="error-tips"></div>
+		    <div class="form-upload">
+			    <div class="qm_upload" id="gbi_upload">
+			        <a href="javascript:void(0);" id="body_pic_0">
+				      <span>
+		              	<input type="file" hidefocus="true" size="1" class="input-file" name="body_pic" multiple="multiple" accept="image/*">
+		              </span>
+		              <p><i class="icon-upload"></i></p>
+	                </a>
+	           	</div>
+	            <input type="hidden" name="bi_num" id="bi_num" value="0" />
+            </div>
+		</div>
+		<ul class="form-box mt5">
+	        <li class="form-item">
+	          <h4>运&nbsp;&nbsp;费</h4>
+	          <div class="input-box">
+	            <input type="text" id="g_freight" name="g_freight" size="10" class="inp" value="0.00"/>
+	            <span class="input-del code"></span>
+	          </div>
+	        </li>
+	        
+	        <li class="form-item" id="gcate_table">
+	          <h4>所属分类</h4>
+	          <div class="input-box">
+	            <input name="gcategory" type="text" class="inp" id="gcategory" autocomplete="off" onchange="btn_check($('form'));" readonly value="点击获取分类 "/>
+	          	<input type="hidden" name="cate_id" id="gc_id" value="0" />
+	          	<input type="hidden" name="cate_name" id="gc_name" value="0" />
+	          </div>
+	        </li>
+	        <li class="form-item">
+	          <h4>店长推荐</h4>
+	          <div class="input-box">
+	          <label>
+              	<input type="checkbox" class="checkbox" name="is_commend" id="is_commend" value="1">
+              	<input type="hidden" name="g_commend" id="g_commend" value="0" />
+              	<span class="power"><i></i></span> </label>
+              </div>
+	        </li>
+	    </ul>
+      <div class="error-tips"></div>
+      <div class="form-btn ">
+      <input type="hidden" name="key" id="gc_key" value="" />
+      <a href="javascript:void(0);" class="btn-l" id="feedbackbtn">提交</a>
+      </div>
+    </form>
+    
+    
+    <div class="register-mobile-tip"> 小提示：通过手机验证后，可用于快速找回登录密码及支付密码，接收账户资产变更等提醒。</div>
+  </div>
+</div>
+<footer id="footer" class="bottom"></footer>
+<script type="text/javascript" src="../../js/config.js"></script> 
+<script type="text/javascript" src="../../js/core/zepto.min.js"></script> 
+<script type="text/javascript" src="../../js/core/template.js"></script> 
+<script type="text/javascript" src="../../js/common.js"></script> 
+<script type="text/javascript" src="../../js/core/simple-plugin.js"></script> 
+<script type="text/javascript" src="../../js/tmpl/seller/add_goods.js"></script> 
+<script type="text/javascript" src="../../js/footer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+.alertpic{position:absolute;z-index:99;width:100%;top:0;left:0;height:100%;display:none;}
+
+.revite{position:relative;height:100%;width:100%;}
+.marter{width:100%;height:100%;position:absolute;background:rgba(0,0,0,0.8);}
+.alertpic img{width:100%;}
+.picbox{width:80%;position:absolute;left:50%;top:-50%;margin-left:-40%;}
+.top-box{width:100%;height:50%;background:#ddd;}
+.nctouch-home-nav li{text-align:center;}
+.addtop{top:20%;}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-touch-fullscreen" content="yes" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,minimum-scale=1" />
+	<title>店铺详情</title>
+	<link rel="stylesheet" type="text/css" href="../css/store_info.css">
+</head>
+<body>
+<div class="qm-main-layout fixed-Width">
+	<div class="qm-main-layout" id="store_info"> </div>
+
+</div>
+<div class="fix-block-r">
+	<a href="javascript:void(0);" class="gotop-btn gotop hide" id="goTopBtn"><i></i></a>
+</div>
+<script type="text/javascript" src="../js/core/zepto.min.js"></script>
+<script type="text/javascript" src="../js/core/simple-plugin.js"></script>
+<script type="text/javascript" src="../js/core/template.js"></script>
+<script type="text/javascript" src="../js/config.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script type="text/javascript" src="../js/tmpl/store_info.js"></script>
+<script type="text/javascript" src="../js/footer.js"></script>
+</body>
+</html>
+<script type="text/html" id="store_info_tpl">
+
+<div class="poi-banner">
+    <div class="imgbox headimg" data-src="<%= store_info.mb_title_img %>" data-com="unveil" style="background: none;">
+    	<img src="<%= store_info.mb_title_img %>" style="width: 100%;">
+    </div>
+
+        <div class="poi-album-tip">
+            <a class="react" gaevent="imt/poi/albums" href="">
+               <p class="album-thumb-wrapper">
+                   <i class="img-tip"></i>
+               </p>
+                <p>
+                    <span class="img-count"><%= store_info.album_num %></span>
+                </p>
+            </a>
+            
+        </div>
+</div>
+
+<dl class="list poi-info-wrapper">
+    <dd class="cont">
+        <dl>
+            <dd class="poi-name">
+                <div class="poi-info">
+                    <h1 class="dealcard-brand"><%= store_info.store_name %></h1>
+                    <div class="rating">
+                        <span class="score-rl">
+    						<span class="stars" id="store_servicecredit_text">
+							</span>
+                        </span>
+						<span class="avg-price">人均：¥18</span>
+
+                    </div>
+                </div>
+                <a class="btn buy-btn btn-large btn-strong" href="order/pay_step.html?store_id=<%= store_info.store_id %>" rel="nofollow" >优惠买单</a>
+            </dd>
+            <dd>    
+                <div class="kv-line-r">
+                    <h6>
+					<a class="react" href="<%= store_info.map_url %>" rel="nofollow" title="<%= store_info.area_info %>">
+                            <i class="text-icon icon-address color-weaker">⦿</i>
+                            <div class="poi-address"><%= store_info.area_info %><%= store_info.live_store_address %></div>
+                        </a>
+                    </h6>
+                    <p><a href="tel:<%= store_info.store_phone %>" class="react" data-com="phonecall" data-tele="<%= store_info.store_phone %>"><i class="text-icon color-strong">✆</i></a></p>
+                </div>
+            </dd>
+        </dl>
+    </dd>
+</dl>
+</script>

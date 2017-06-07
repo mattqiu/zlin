@@ -1,0 +1,12 @@
+#
+# robots.txt for IMall
+#
+User-agent: *
+Disallow: 
+Disallow: /circle/
+Disallow: /cms/
+Disallow: /imall/
+Disallow: /manage/   //分离的商家后台目录
+Disallow: /microshop/
+Disallow: /delivery/
+Disallow: /mobile/
