@@ -334,7 +334,7 @@ class wxappSellerControl extends wxappControl{
         	//获取该员工登录店铺令牌
         	$mb_seller_token_info = $model_mb_seller_token->getSellerTokenInfoByToken($token);
         	if(empty($mb_seller_token_info)) {
-	    			output_error('该账户没有可管理的店铺，请更换账户后再登录'.strlen($token), array('login' => '0','error_code'=>CODE_InvalidSession));
+	    			output_error('该账户没有可管理的店铺，请更换账户后再登录'.$token, array('login' => '0','error_code'=>CODE_InvalidSession));
         	}
 	    		$seller_id = $mb_seller_token_info['seller_id'];    		
         }
