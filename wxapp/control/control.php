@@ -329,15 +329,15 @@ class wxappSellerControl extends wxappControl{
 	    	 */
 	    	if(!empty($_REQUEST['seller_id'])){
 	    		$seller_id = $_REQUEST['seller_id'];
-        }else{
-        	$model_mb_seller_token = Model('mb_seller_token');
-        	//获取该员工登录店铺令牌
-        	$mb_seller_token_info = $model_mb_seller_token->getSellerTokenInfoByToken($token);
-        	if(empty($mb_seller_token_info)) {
-	    			output_error('该账户没有可管理的店铺，请更换账户后再登录'.$token, array('login' => '0','error_code'=>CODE_InvalidSession));
-        	}
-	    		$seller_id = $mb_seller_token_info['seller_id'];    		
-        }
+	        }else{
+	        	$model_mb_seller_token = Model('mb_seller_token');
+	        	//获取该员工登录店铺令牌
+	        	$mb_seller_token_info = $model_mb_seller_token->getSellerTokenInfoByToken($token);
+	        	if(empty($mb_seller_token_info)) {
+		    			output_error('该账户没有可管理的店铺，请更换账户后再登录'.$token, array('login' => '0','error_code'=>CODE_InvalidSession));
+	        	}
+		    	$seller_id = $mb_seller_token_info['seller_id'];    		
+	        }
 	    	$condition_seller['seller_id'] = $seller_id;
     	}else{
     		//店铺和会员ID同时存在的时候才可以确定新的seller_id
