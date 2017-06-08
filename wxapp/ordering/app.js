@@ -1,6 +1,5 @@
 //app.js
 import common from 'utils/index';//导入公共常用函数
-var util = require('./utils/util.js');
 var indexUrl = require('config').indexUrl; //导购登录地址
 var loginsellerUrl = require('config').loginsellerUrl; //导购登录地址
 var token = wx.getStorageSync('token');//登录令牌
@@ -18,7 +17,7 @@ App({
   },
   //定义整个小程序的全局变量
   globalData: {
-    token: token,
+    token: '',
     store_id: store_id,
     member_id: member_id,
     seller_id: seller_id,
@@ -33,6 +32,7 @@ App({
       typeof cb == "function" && cb(this.globalData.userInfo)
     } else {
       var that = this;
+      let token = that.globalData.token;
       //调用登录接口
       wx.login({
         success: function (res) {
@@ -78,6 +78,7 @@ App({
       icon: 'loading',
       duration: 3000
     });
+    var that = this;
     //请求服务器
     wx.request({
       url: loginsellerUrl,
@@ -90,24 +91,23 @@ App({
       success: function (res) {
         // success
         wx.hideToast();
-        console.log('获取用户登录信息！', res)
+        //console.log('获取用户登录信息！', res)
         if (res.error_code) {
-          this.showErrMsg(res.errMsg);
-          this.getUserInfo();//失败后重新去获取
+          that.showErrMsg(res.errMsg);
+          that.getUserInfo();//失败后重新去获取
           return false;
         } else {
           var data = res.data.trim();
-          console.log('获取用户登录成功！' , res)
-          //this.showSucMsg('登录成功'+data);
           wx.setStorageSync('token', data);
-          this.globalData.token = data;//获取成功后给全局token赋值
+          //console.log('获取用户登录成功！', data)
+          that.globalData.token = data;//获取成功后给全局token赋值
           typeof cb == "function" && cb(userInfo)
         }
       },
       fail: function () {
         // fail
         wx.hideToast();
-        this.showErrMsg('登录失败');
+        that.showErrMsg('登录失败');
       }
     })
   },

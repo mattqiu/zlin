@@ -79,7 +79,7 @@ function upload_file(url, filePath, name, formData, success, fail) {
     　　　　},
     　　　　formData: formData,  //http请求中其他额外的form data
     　　　　success: function (res) {
-      　　　　　　//console.log(res);
+      　　　　　　console.log(res);
       　　　　　　if (res.statusCode == 200 && !res.data.result_code) {
         　　　　　　　　　typeof success == "function" && success(res.data);
       　　　　　　} else {
