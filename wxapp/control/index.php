@@ -10,7 +10,7 @@
  
 defined('InIMall') or exit('Access Invalid!');
 
-class indexControl extends wxappHomeControl{
+class indexControl extends wxappSellerControl{
 
 	public function __construct() {
         parent::__construct();
@@ -20,7 +20,6 @@ class indexControl extends wxappHomeControl{
      * 微信小程序-导购首页
      */
     public function indexOp() {
-    	file_put_contents('test.log',"获取：".json_encode('').PHP_EOL,FILE_APPEND);
     	$indexInfo['member_id'] = $this->member_id; //当前会员ID
     	$indexInfo['store_id'] = $this->store_info['store_id']; //当前店铺ID    	
     	$indexInfo['store_avatar'] = $this->store_info['store_avatar']; //当前店铺LOGO

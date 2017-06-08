@@ -10,7 +10,7 @@
  */
 defined('InIMall') or exit('Access Invalid!');
 
-class searchControl extends BaseHomeControl {
+class searchControl extends wxappControl {
 
 
     //每页显示商品数
@@ -22,8 +22,9 @@ class searchControl extends BaseHomeControl {
     public function indexOp() {
         Language::read('home_goods_class_index');
         $this->_model_search = Model('search');
-        $termKey =$_GET['key'];
-        $termOrder =$_GET['order'];
+        $this->page=20;
+        $termKey =$_REQUEST['key'];
+        $termOrder =$_REQUEST['order'];
         $model_goods = Model('goods');
         $page_nums = !empty($_REQUEST['page_count'])?$_REQUEST['page_count']:$this->page; //每页显示的条数
         $page_curr = !empty($_REQUEST['curpage'])?$_REQUEST['curpage']:1; //当前显示第几页
@@ -32,7 +33,6 @@ class searchControl extends BaseHomeControl {
         	switch ($termOrder) {
         		case '1':
         			$goods_list = $model_goods->getGoodsOnlineList($condition, $fields, $this->page,'goods_tradeprice desc');
-
         			break;
         		case '2':
         			$goods_list = $model_goods->getGoodsOnlineList($condition, $fields,$this->page,'goods_tradeprice asc');
@@ -61,13 +61,12 @@ class searchControl extends BaseHomeControl {
         	}
         }else if($termKey == "4"){
         			$goods_list = $model_goods->getGoodsChoseList($condition, $fields, $this->page,'goods_price desc');
-        			var_dump($goods_list);
-        			exit;
+        			
         }else{
         	$goods_list = $model_goods->getGoodsListByCommonidDistinct($condition, $fields,'goods_commend desc,goods_edittime desc,goods_addtime desc', $this->page);
         }
         
-
+    output_data($goods_list, "加载成功");
     }
 	
     
