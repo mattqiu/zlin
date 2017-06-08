@@ -98,32 +98,9 @@ Page({
       }
     })
   },
+  //初始化页面
   onLoad: function (options) {
-    var that = this;
-    console.log("页面加载获取token: ",app.globalData.token);
-    if (app.globalData.userInfo) {
-      let userInfo = app.globalData.userInfo;
-      console.log("页面加载获取userInfo: ",app.globalData.userInfo);
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      });
-      
-    } else {
-      //调用应用实例的方法获取全局数据
-      app.getUserInfo(function (userInfo) {
-        //更新数据
-        that.setData({
-          userInfo: userInfo
-        });
-        //app.showErrMsg("登录结果是："+wx.getStorageSync('token'));
-        console.log("页面加载获取token: ",wx.getStorageSync('token'));
-        if (app.globalData.token == '' && wx.getStorageSync('token')) {
-          app.globalData.token = wx.getStorageSync('token');//更新全局数据     
-          that.onShow();
-        }
-      });
-    }
+    
   },
 
   /**
@@ -138,28 +115,33 @@ Page({
    */
   onShow: function () {
     var that = this;
+    console.log("加载获取token: ", app.globalData.token);
+    //用户第一次进去页面时，先查询是否已经获取了该会员的微信信息
+    let userInfo = app.globalData.userInfo;
+    if (!userInfo) {
+      //没有授权时是无法获取到会员信息，
+      //调用应用实例的方法获取全局数据
+      app.getUserInfo(function (userInfo) {
+        
+      });
+    }
+    let token = app.globalData.token;//获取到token值
+    console.log("登录成功获取token: ", app.globalData.token);
     //console.log("页面加载缓存token: ",wx.getStorageSync('token'));
-    if (app.globalData.token == '' && wx.getStorageSync('token') == '') {
-      //console.log("页面加载--全局token: ",app.globalData.token);
-      app.globalData.token = wx.getStorageSync('token');//更新全局数据
-      that.onLoad();
-    } else {
+    if (token){
       //console.log('店铺ID：',app.globalData.store_id);  
       //调用应用实例的方法获取全局数据
       wx.request({
         url: indexUrl,
         data: {
-          token: app.globalData.token,
-          store_id: app.globalData.store_id,
-          member_id: app.globalData.member_id,
-          seller_id: app.globalData.seller_id
+          token: token
         },
         method: 'POST',
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         }, // 设置请求的 header
         success: function (res) {
-          //console.log('请求首页时加载',res);
+          console.log('请求首页时加载',res);
           let data = res.data;
           if (data.error_code) {
             app.showErrMsg(data.errMsg);
@@ -176,12 +158,11 @@ Page({
                     wx.clearStorage();//清理本地数据缓存。
                     wx.clearStorageSync();//同步清理本地数据缓存
                   }
-                  that.onLoad();//重新初始化页面             
+                  that.onLoad();//重新初始化页面
                 }
               })
             }
           } else {
-
             that.setData(data.datas);
             let salenamearr = data.datas.saleman.saleman_name;
             let saleidarr = data.datas.saleman.saleman_id;
@@ -215,6 +196,8 @@ Page({
           console.log(err)
         }
       });
+    } else {
+      that.onLoad();//没有获取就重新去获取
     }
   },
 

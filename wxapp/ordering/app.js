@@ -12,9 +12,9 @@ App({
   onLaunch: function () {
     this.common = new common();//加载常用函数
     //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+    //var logs = wx.getStorageSync('logs') || []
+    //logs.unshift(Date.now())
+    //wx.setStorageSync('logs', logs)
   },
   //定义整个小程序的全局变量
   globalData: {
@@ -29,14 +29,14 @@ App({
     userInfo: null
   },
   getUserInfo: function (cb) {
-    var that = this;
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
     } else {
+      var that = this;
       //调用登录接口
       wx.login({
         success: function (res) {
-          console.log('获取微信code：', res)
+          //console.log('获取微信code：', res)
           if (res.code) {
             var code = res.code;
             wx.getUserInfo({
@@ -88,16 +88,19 @@ App({
       }, // 设置请求的 header
       dataType: 'txt',
       success: function (res) {
-        console.log('获取用户登录态失败！' , res)
         // success
         wx.hideToast();
+        console.log('获取用户登录信息！', res)
         if (res.error_code) {
           this.showErrMsg(res.errMsg);
+          this.getUserInfo();//失败后重新去获取
+          return false;
         } else {
           var data = res.data.trim();
           console.log('获取用户登录成功！' , res)
           //this.showSucMsg('登录成功'+data);
           wx.setStorageSync('token', data);
+          this.globalData.token = data;//获取成功后给全局token赋值
           typeof cb == "function" && cb(userInfo)
         }
       },
