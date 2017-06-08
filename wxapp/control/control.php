@@ -83,7 +83,7 @@ class wxappMemberControl extends wxappControl{
         $model_mb_user_token = Model('mb_user_token');
         $token = $_REQUEST['token'];
         
-        print_r($token);
+        return($token);
         exit;
         //$token = trim($token, "\xEF\xBB\xBF");//PHP去除BOM头
         if(empty($token)) {
