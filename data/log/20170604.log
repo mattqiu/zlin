@@ -1,0 +1,147 @@
+[2017-06-04 00:06:33] /imall/index.php?act=search&cate_id=478&op=index ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'im_distinct' in 'group statement'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '478' ) GROUP BY im_distinct ORDER BY is_own_shop desc,goods_id desc LIMIT 1  
+[2017-06-04 03:06:15] /imall/index.php?act=search&area_id2=455&area_id=28&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '28' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 04:40:56] /imall/index.php?act=search&area_id2=89&area_id=4&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '4' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 04:58:16] /imall/index.php?act=search&area_id2=463&area_id=29&cate_id=5&gift=1&op=index&type=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_2 = '5' ) AND ( areaid_1 = '29' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 05:12:56] /imall/index.php?act=search&area_id2=115&area_id=6&cate_id=5&gift=1&op=index&type=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_2 = '5' ) AND ( areaid_1 = '6' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 05:24:56] /imall/index.php?act=search&area_id2=222&area_id=14&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '14' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 05:39:56] /imall/index.php?act=search&area_id2=106&area_id=5&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '5' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 05:51:56] /imall/index.php?act=search&area_id2=404&area_id=23&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '23' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 06:08:57] /imall/index.php?act=search&area_id2=129&area_id=7&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '7' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 06:22:17] /imall/index.php?act=search&area_id2=330&area_id=21&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '21' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 06:38:19] /imall/index.php?act=search&area_id2=312&area_id=20&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '20' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 07:15:57] /imall/index.php?act=search&area_id2=418&area_id=25&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '25' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 07:29:18] /imall/index.php?act=search&area_id2=248&area_id=16&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '16' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 07:40:57] /imall/index.php?act=search&area_id2=478&area_id=31&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '31' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 08:13:17] /imall/index.php?act=search&area_id2=289&area_id=19&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '19' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 08:56:17] /imall/index.php?act=search&area_id2=0&area_id=17&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '17' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 09:19:19] /imall/index.php?act=search&area_id2=0&area_id=15&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '15' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 09:38:58] /imall/index.php?act=search&area_id2=267&area_id=17&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '17' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 09:49:18] /imall/index.php?act=search&area_id2=422&area_id=25&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '25' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 10:03:19] /imall/index.php?act=search&area_id2=139&area_id=8&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '8' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 10:15:58] /imall/index.php?act=search&area_id2=212&area_id=14&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '14' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 10:31:19] /imall/index.php?act=search&area_id2=134&area_id=8&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '8' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 11:27:21] /imall/index.php?act=search&area_id2=231&area_id=15&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '15' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 11:30:18] /mobile/index.php?act=goods&op=goods_detail&goods_id=121394&key=9c32b7602af849647bd9ea6717ef1169&invite_code= ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121394' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 11:30:19] /mobile/index.php?act=goods&op=goods_detail&goods_id=121394&key=9c32b7602af849647bd9ea6717ef1169&invite_code=MTA5ODY ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121394' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 11:31:25] /mobile/index.php?act=goods&op=goods_detail&goods_id=121732&key=9c32b7602af849647bd9ea6717ef1169&invite_code=MTA5ODY ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121732' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 11:32:18] /mobile/index.php?act=goods&op=goods_detail&goods_id=121732&key=9c32b7602af849647bd9ea6717ef1169&invite_code= ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121732' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 11:32:18] /mobile/index.php?act=goods&op=goods_detail&goods_id=121732&key=9c32b7602af849647bd9ea6717ef1169&invite_code=MTA5ODY ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121732' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 11:32:42] /mobile/index.php?act=goods&op=goods_detail&goods_id=121394&key=9c32b7602af849647bd9ea6717ef1169&invite_code= ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121394' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 11:32:42] /mobile/index.php?act=goods&op=goods_detail&goods_id=121394&key=9c32b7602af849647bd9ea6717ef1169&invite_code=MTA5ODY ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'geval_addtime_date' in 'field list'
+SELECT geval_scores,geval_addtime_date,geval_frommembername,geval_content FROM `zlin`.`zlin_evaluate_goods` WHERE ( geval_goodsid = '121394' ) ORDER BY geval_id desc LIMIT 0,10  
+[2017-06-04 13:44:19] /imall/index.php?act=search&area_id2=523&area_id=33&cate_id=13&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '13' ) AND ( areaid_1 = '33' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 14:04:00] /imall/index.php?act=search&area_id2=234&area_id=15&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '15' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 14:45:02] /imall/index.php?act=search&area_id2=417&area_id=25&cate_id=12&gift=1&op=index&type=3 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '25' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 15:18:00] /imall/index.php?act=search&area_id2=125&area_id=7&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '7' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 15:39:21] /imall/index.php?act=search&area_id2=231&area_id=15&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '15' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 16:18:01] /imall/index.php?act=search&area_id2=394&area_id=23&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '23' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 17:29:22] /imall/index.php?act=search&area_id2=183&area_id=11&cate_id=5&op=index&type=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'im_distinct' in 'group statement'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_2 = '5' ) AND ( areaid_1 = '11' ) GROUP BY im_distinct ORDER BY is_own_shop desc,goods_id desc LIMIT 1  
+[2017-06-04 18:26:22] /imall/index.php?act=search&area_id2=508&area_id=32&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '32' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 18:43:27] /imall/index.php?act=search&area_id2=326&area_id=21&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '21' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 18:56:02] /imall/index.php?act=search&area_id2=185&area_id=11&cate_id=12&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '11' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 19:06:02] /imall/index.php?act=search&area_id2=485&area_id=31&cate_id=13&gift=1&key=0&op=index&order=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '13' ) AND ( areaid_1 = '31' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 19:06:02] /imall/index.php?act=search&area_id2=249&area_id=16&cate_id=5&gift=1&op=index&type=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_2 = '5' ) AND ( areaid_1 = '16' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 19:25:24] /imall/index.php?act=search&area_id2=300&area_id=19&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '19' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 19:37:04] /imall/index.php?act=search&area_id2=134&area_id=8&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '8' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 20:29:22] /imall/index.php?act=search&area_id2=76&area_id=3&cate_id=5&gift=1&op=index&type=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_2 = '5' ) AND ( areaid_1 = '3' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 21:26:03] /imall/index.php?act=search&area_id2=0&area_id=17&cate_id=5&gift=1&op=index&type=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_2 = '5' ) AND ( areaid_1 = '17' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 21:56:24] /imall/index.php?act=search&area_id2=242&area_id=16&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '16' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 22:12:02] /imall/index.php?act=search&area_id2=396&area_id=23&cate_id=12&gift=1&key=2&op=index&order=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '23' ) AND ( have_gift = '1' ) LIMIT 1  
+[2017-06-04 23:51:04] /imall/index.php?act=search&area_id2=133&area_id=8&cate_id=12&gift=1&op=index&type=2 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'have_gift' in 'where clause'
+SELECT COUNT(*) AS im_count FROM `zlin`.`zlin_goods_common` WHERE ( gc_id_3 = '12' ) AND ( areaid_1 = '8' ) AND ( have_gift = '1' ) LIMIT 1  
