@@ -194,8 +194,7 @@ Page({
      key = dataSet.id;
      //console.log('测试', key);
      wx.request({
-       //url: goodsFilterUrl,
-       url:'https://www.zlin-e.com/imall/index.php?act=search&op=index',
+       url: goodsFilterUrl,
        data:{
          //store_id:'103',
          key: key,

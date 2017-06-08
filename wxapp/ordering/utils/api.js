@@ -1,4 +1,4 @@
-var HOST_URI = 'https://www.zlin-e.com/wxapp/';
+var HOST_URI = 'https://demo.hzlwo.com/wxapp/';
 
 var GET_TOPICS = '/topics';
 var GET_TOPIC_BY_ID = '/topic/';

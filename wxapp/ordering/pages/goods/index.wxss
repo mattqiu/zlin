@@ -26,7 +26,7 @@ page{
 
 	flex: 1 0 auto;
 
-	background: #dbc284 url(../../images/icons/icon-search.png) no-repeat 12rpx 8rpx;
+	background: #dbc284 url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-search.png) no-repeat 12rpx 8rpx;
 	background-size: 45rpx 49rpx;
 }
 .header .search-bar input{
@@ -40,7 +40,7 @@ page{
 	margin-left: 10rpx;
 	width: 54rpx;
 	height: 54rpx;
-	background: url(../../images/icons/icon-scan.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-scan.png) no-repeat 0 0;
 	background-size: 100%;
 }
 
@@ -79,7 +79,7 @@ page{
 	width: 17rpx;
 	height: 12rpx;
 	margin-left: 12rpx;
-	background: url(../../images/icons/icon-arrow_down.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-arrow_down.png) no-repeat 0 0;
 	background-size: 100%;
 }
 .filter-bar .icon-filter::after{
@@ -87,21 +87,21 @@ page{
 	width: 22rpx;
 	height: 20rpx;
 	margin-left: 12rpx;
-	background: url(../../images/icons/icon-filter.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-filter.png) no-repeat 0 0;
 	background-size: 100%;
 }
 .filter-bar .filter-type1::after{
 	content: '';
 	width: 30rpx;
 	height: 30rpx;
-	background: url(../../images/goods/goods-type1.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/goods/goods-type1.png) no-repeat 0 0;
 	background-size: 100%;
 }
 .filter-bar .filter-type2::after{
 	content: '';
 	width: 30rpx;
 	height: 30rpx;
-	background: url(../../images/goods/goods-type2.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/goods/goods-type2.png) no-repeat 0 0;
 	background-size: 100%;
 }
 .filter-bar .plane{
@@ -301,7 +301,7 @@ page{
 	content: '';
 	width: 15rpx;
 	height: 28rpx;
-	background: url(../../images/icons/icon-arrow_right.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-arrow_right.png) no-repeat 0 0;
 	background-size: 100%;
 }
 .item__bd{
