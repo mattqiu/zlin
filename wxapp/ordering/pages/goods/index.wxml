@@ -61,7 +61,7 @@
                 <view class="goods-item__name">{{item.goods_name}}</view>
                 <view class="goods-item__no">{{item.promotion_cid}}</view>
                 <view class="goods-item__price">￥{{item.goods_price}}</view>
-                <view class="goods-item__dn">{{item.goods_tradeprice}}</view>
+                <view class="goods-item__dn">{{item.goods_salenum}}</view>
               </view>
 					</view>
 				</view>

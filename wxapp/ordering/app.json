@@ -2,6 +2,7 @@
   "pages":[   
     "pages/index/index",
     "pages/goods/index",
+    
     "pages/order/index",
     "pages/analysis/index",
     "pages/my/index",

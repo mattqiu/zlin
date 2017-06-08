@@ -106,6 +106,7 @@ function ajax(url, data = {}, fn, method = "GET", header = {}, dataType = 'json'
     method: method ? method : 'GET',//或'GET',必须大写
     dataType: dataType ? dataType : 'json',
     success: function (res) {
+      //console.log("ajax结果：",res);
       fn(res.data);
     },
     fail: function (res) {

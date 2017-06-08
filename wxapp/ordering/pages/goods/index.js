@@ -1,5 +1,6 @@
 // pages/goods/index.js
 var goodsListUrl = require('../../config').goodsListUrl;
+var util = require('../../utils/util.js');
 var goodsFilterUrl = require('../../config').goodsFilterUrl;
 var goodsUrl = require('../../config').goodsUrl;
 var app = new getApp();
@@ -115,35 +116,6 @@ Page({
     },
     goodsListType: 1, //1小图 2大图
     goodsList: [
-      {
-        id: 0,
-        pic: '../../images/local/pic2.png',
-        name: '百搭针织上衣 针织毛衣上 衣针织衫',
-        no: 1630188,
-        price: 999,
-        dn: 260
-      },{
-        id: 0,
-        pic: '../../images/local/pic2.png',
-        name: '百搭针织上衣 针织毛衣上 衣针织衫',
-        no: 1630188,
-        price: 999,
-        dn: 260
-      },{
-        id: 0,
-        pic: '../../images/local/pic2.png',
-        name: '百搭针织上衣 针织毛衣上 衣针织衫',
-        no: 1630188,
-        price: 999,
-        dn: 260
-      },{
-        id: 0,
-        pic: '../../images/local/pic2.png',
-        name: '百搭针织上衣 针织毛衣上 衣针织衫',
-        no: 1630188,
-        price: 999,
-        dn: 260
-      }
     ],
     isShowList: false,  //是否展示陈列
     // 陈列列表
@@ -189,25 +161,23 @@ Page({
   selectPlaneItem: function(e){
     // 排序 拥有 面板选择
     //console.log(e);
+    var that = this;
     let dataSet = e.currentTarget.dataset,
      order = dataSet.index,
      key = dataSet.id;
-     //console.log('测试', key);
-     wx.request({
-       url: goodsFilterUrl,
-       data:{
-         //store_id:'103',
-         key: key,
-         order: order,
-       },
-       method:'get',
-       header:{
-         'content-type':'application/x-www-form-urlencoded'
-       },
-       success:function(options){
-         console.log('提交返回排序数据', options)
-       }
+     console.log('测试key', key);
+     console.log('测试order', order);
+     var data = {
+       key: key,
+       order: order,
+     };
+     util.Ajax("search/index",data,function(res){
+       that.setData({
+         goods_list: res.datas,        
+       })
+       //console.log('提交返回排序数据', that.data.goods_list)      
      });
+     
     let filterData = this.data.filter;
     //filterData[type].currentIdx = index;
     this.setData({
@@ -246,20 +216,18 @@ Page({
     let isShow = filter.ft.list[index].show;
     filter.ft.list[index].show = !isShow;
     
-   
-
     this.setData({
       filter: filter
     })
   },
   onLoad:function(options){
-    //console.log('跳转成功：', app.globalData);
+    console.log('跳转成功：', app.globalData);
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
+    //console.log('商品列表：', options);
     wx.request({
       url: goodsListUrl,
       data:{
-        list:[],
         token: app.globalData.token,
         store_id: app.globalData.store_id,
         member_id: app.globalData.member_id,
@@ -270,10 +238,14 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success: function (res){
-        console.log('商品列表：', res.data.datas.goods_list);
+        //console.log('商品列表：', res.data.datas.goods_list);
         that.setData({
           goods_list:res.data.datas.goods_list
         });
+      },
+      fail: function (err) {
+        app.showErrMsg(err);
+        console.log('跳转失败：', err);
       }
     })
   },
