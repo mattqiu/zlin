@@ -2,7 +2,6 @@
 /**
  * 公共方法
  *
- * 公共方法
  *
  * @package    function
  * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
