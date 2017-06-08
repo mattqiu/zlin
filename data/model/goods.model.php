@@ -80,7 +80,10 @@ class goodsModel extends Model{
         $condition = $this->_getRecursiveClass($condition);
         return $this->table('goods')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
     }
-	
+    public function getGoodsPriceList($condition, $field = '*', $group = '',$order = '', $limit = 0, $page = 0, $count = 0) {
+    	$condition = $this->getPriceClass($condition);
+    	return $this->table('goods')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
+    }
 	/**
      * 获取指定分类指定店铺下的随机商品列表
      *
@@ -153,7 +156,7 @@ class goodsModel extends Model{
      * @param number $page
      * @return array
      */
-    public function getGoodsListByCommonidDistinct($condition, $field = '*', $order = 'goods_id asc', $page = 0, $limit = 0) {
+    public function getGoodsListByCommonidDistinct($condition, $field = '*', $order = 'goods_id desc', $page = 0, $limit = 0) {
         $condition['goods_state']   = self::STATE1;
         $condition['goods_verify']  = self::VERIFY1;
         $condition = $this->_getRecursiveClass($condition);
@@ -229,7 +232,11 @@ class goodsModel extends Model{
         $condition['goods_verify']  = self::VERIFY1;
         return $this->getGoodsList($condition, $field, $group, $order, $limit, $page, $count);
     }
-
+    public function getGoodsChoseList($condition, $field = '*', $page = 0, $order = 'goods_id desc', $limit = 0, $group = '', $lock = false, $count = 0) {
+    	$condition['goods_state']   = self::STATE1;
+    	$condition['goods_verify']  = self::VERIFY1;
+    	return $this->getGoodsPriceList($condition, $field, $group, $order, $limit, $page, $count);
+    }
     /**
      * 出售中的普通商品列表，即不包括虚拟商品、F码商品、预售商品
      */
@@ -1107,7 +1114,22 @@ class goodsModel extends Model{
         }
         return $condition;
     }
+    /**
+     * 获得商品子分类的ID及商品价格
+     * @param array $condition
+     * @return array
+     */
+    private function getPriceClass($condition){
 
+
+    	//$condition['goodsPriceType'] = $_POST['goodsPriceType'];
+    	//$condition['goodsType'] = $_POST['goodsType'];
+    	//$condition['goods_price']="&& goods_price <='".$_POST['maxPrice']."'";
+    	//$condition['goods_price']="&& goods_price >='".$_POST['minPrice']."'";
+    	
+    	$condition['goods_price']=array(array('egt',7800),array('elt',8000));
+    	return $condition;
+    }
     /**
      * 由ID取得在售单个虚拟商品信息
      * @param unknown $goods_id

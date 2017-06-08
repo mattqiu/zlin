@@ -1,0 +1,46 @@
+{
+  "pages":[
+    
+    "pages/index/index",
+    "pages/goods/index",
+    "pages/order/index",
+    "pages/analysis/index",
+    "pages/my/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "订货会系统",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#9fa0a0",
+    "selectedColor": "#ce9100",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "商品",
+      "iconPath": "images/tabBar/tab-1.png",
+      "selectedIconPath": "images/tabBar/tab-1-active.png"
+    },
+    {
+      "pagePath": "pages/order/index",
+      "text": "订单",
+      "iconPath": "images/tabBar/tab-2.png",
+      "selectedIconPath": "images/tabBar/tab-2-active.png"
+    },
+    {
+      "pagePath": "pages/analysis/index",
+      "text": "分析",
+      "iconPath": "images/tabBar/tab-3.png",
+      "selectedIconPath": "images/tabBar/tab-3-active.png"
+    },
+    {
+      "pagePath": "pages/my/index",
+      "text": "我的",
+      "iconPath": "images/tabBar/tab-4.png",
+      "selectedIconPath": "images/tabBar/tab-4-active.png"
+    }]
+  }
+}
