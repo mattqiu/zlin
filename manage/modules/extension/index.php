@@ -1,13 +1,13 @@
 <?php
-/**
- * 推广系统板块初始化文件
- *
- *
- *
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
- * @since      File available since Release v1.1
+/**
+ * 推广系统板块初始化文件
+ *
+ *
+ *
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
+ * @license    http://www.zlin-e.com
+ * @link       http://www.zlin-e.com
+ * @since      File available since Release v1.1
  */
 
 define('BASE_PATH',str_replace('\\','/',dirname(dirname(dirname(__FILE__)))));
