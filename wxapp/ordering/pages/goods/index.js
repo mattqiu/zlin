@@ -165,8 +165,8 @@ Page({
     let dataSet = e.currentTarget.dataset,
      order = dataSet.index,
      key = dataSet.id;
-     console.log('测试key', key);
-     console.log('测试order', order);
+     //console.log('测试key', key);
+     //console.log('测试order', order);
      var data = {
        key: key,
        order: order,
@@ -186,6 +186,7 @@ Page({
     });
     this.restGoodsList();
   },
+  
   restGoodsList: function(){
     // 排序 拥有 筛选改变 重新加载商品列表
     // 展现陈列时不变
@@ -246,6 +247,37 @@ Page({
       fail: function (err) {
         app.showErrMsg(err);
         console.log('跳转失败：', err);
+      }
+    })
+  },
+  loadMore: function (e) {
+    this.showLoading('正在加载图片中');
+    var that = this;
+    currentPage++;
+    wx.request({
+      url: baseUrl + 'pictureController/getPicturesByAid',
+      data: {
+        pictureAid: albumId,
+        pageSize: pageSize,
+        currentPage: currentPage
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data.result.length != 0) {
+          array = array.concat(res.data.result)
+          that.setData({
+            array: array
+          })
+        }
+        else {
+          that.showToast('已加载完全部图片!');
+        }
+      },
+      complete: function (res) {
+        that.hideLoading();
       }
     })
   },
