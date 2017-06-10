@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>myapp</title>
+	</head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telphone=no,email=no" />
+	<meta name="hotcss" content="max-width=640">
+
+	<title>手机端商城</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/inner.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/index02.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+	<link rel="stylesheet" type="text/css" href="../../satic/font_hbtm39qp07xh6w29/iconfont.css" />
+	<!--适应手机的hotcss-->
+	<script src="../../js/mui.min.js"></script>
+	<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+
+
+	<script src="../../js/tmpl/odering/index.js"></script>
+
+	<script type="text/javascript">
+		$(function() {
+			//			let datas = {},
+			$.ajax({
+				type: "get",
+				url: "../../js/text.json",
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+					var datas = data.datas;
+					var item = datas.ordering_list;
+					//						for(var i = 0; i < item.length; i++) {
+					//							console.log(item[i].num)
+					//						}
+					var list = [];
+					for(var i = 0; i < item.length; i++) {
+						var li = '<div class="good-show">' +
+							'<div class="container-bar center">' +
+							'<div class="display-flex border-bottoms">' +
+							'<div class="modellist-1 border-rights list-height flex-start">' +
+							'<img src="../image/solution1.jpg" />' +
+							'<div class="text">' +
+							'<div class="gray">' + item[i].goods_common_name + '</div>' +
+							'<div>' + item[i].goods_commonid + '</div>' +
+							'</div>' +
+							'</div>' +
+							'<div class="modellist-2 border-rights list-height display-flex text-center">' +
+							item[i].num +
+							'</div>' +
+							'<div class="modellist-3 border-rights list-height display-flex text-center">' +
+							item[i].goods_price +
+							'</div>' +
+							'<div class="modellist-4 list-height display-flex text-center">' +
+							item[i].total_price +
+							'</div>' +
+							'</div>' +
+							'</div>' +
+							'</div>'
+						list.push(li);
+					}
+					$('#good-shows').append(list);
+				},
+
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		})
+	</script>
+
+	<body>
+		<div class="header">
+			<div class="row color-write header_list">
+				<div class="col-3 text-left">
+					<span class="iconfont">
+               	  	&#xe60d;
+               	  </span>
+				</div>
+				<div class="col-6 text-center">
+					订单
+				</div>
+				<div class="col-3 text-center">
+					订单管理
+				</div>
+			</div>
+		</div>
+		<!--header-->
+		<div class="tabbar row">
+			<div class="col-4 bar-list text-center active">
+				我的订单
+			</div>
+			<div class="col-4 bar-list text-center">
+				总排行榜
+			</div>
+			<div class="col-4 bar-list text-center">
+				筛选
+			</div>
+		</div>
+		<!--第一部分模板-->
+		<div class="model-1">
+			<div class="filter display-flex">
+				<div class="filter-center display-flex">
+					<div class="filter-list display-flex">
+						<div class="big-circle display-flex">
+							<div class="small-circle filter-active">
+
+							</div>
+						</div>
+						<div class="filter-text">
+							升序
+						</div>
+					</div>
+					<div class="filter-list display-flex">
+						<div class="big-circle display-flex">
+							<div class="small-circle">
+
+							</div>
+						</div>
+						<div class="filter-text">
+							降序
+						</div>
+					</div>
+					<div class="filter-list display-flex">
+						<div class="big-circle display-flex">
+							<div class="small-circle">
+
+							</div>
+						</div>
+						<div class="filter-text">
+							货号
+						</div>
+					</div>
+					<div class="filter-list display-flex">
+						<div class="big-circle display-flex">
+							<div class="small-circle">
+
+							</div>
+						</div>
+						<div class="filter-text">
+							数量
+						</div>
+					</div>
+					<div class="filter-list display-flex">
+						<div class="big-circle display-flex">
+							<div class="small-circle">
+
+							</div>
+						</div>
+						<div class="filter-text">
+							零售额
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="container">
+				<div class="container-color">
+					<div class="container-bar">
+						<div class="modellist-1 modellist">
+							商品名称及货号
+						</div>
+						<div class="container-bar-list modellist-2">
+							数量
+						</div>
+						<div class="container-bar-list modellist-3">
+							零售价
+						</div>
+						<div class="container-bar-list modellist-4">
+							零售额
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="good-shows">
+
+				<div class="good-show">
+					<div class="container-bar center">
+						<div class="display-flex border-bottoms">
+							<div class="modellist-1 border-rights list-height flex-start">
+								<img src="../image/solution1.jpg" />
+								<div class="text">
+									<div class="gray">针织上衣</div>
+									<div>1516654</div>
+								</div>
+							</div>
+							<div class="modellist-2 border-rights list-height display-flex text-center">
+								数量
+							</div>
+							<div class="modellist-3 border-rights list-height display-flex text-center">
+								零售价
+							</div>
+							<div class="modellist-4  list-height display-flex text-center">
+								零售额
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--第二部分模板-->
+		<div class="model-2">
+			<div class="container">
+				<div class="container-color">
+					<div class="container-bar">
+						<div class="container-bar-list list-1">
+							商品名称及货号
+						</div>
+						<div class="container-bar-list list-2">
+							数量
+						</div>
+						<div class="container-bar-list list-3">
+							零售价
+						</div>
+						<div class="container-bar-list list-4">
+							零售额
+						</div>
+						<div class="container-bar-list list-5">
+							排名
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="good-show">
+				<div class="container-bar center">
+					<div class="flex-nowrap border-bottoms">
+						<div class="list-1 border-rights list-height display-flex">
+							<img src="../image/solution1.jpg" />
+							<div class="text">
+								<div class="gray">针织上衣</div>
+								<div>1516654</div>
+							</div>
+						</div>
+						<div class="list-2 border-rights list-height display-flex text-center">
+							数量
+						</div>
+						<div class="list-3 border-rights list-height display-flex text-center">
+							零售价
+						</div>
+						<div class="list-4 border-rights list-height display-flex text-center">
+							零售额
+						</div>
+						<div class="list-5 list-height display-flex text-center">
+							排名
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--筛选模板-->
+		<div class="model-3">
+			<div class="body">
+				<div class="container-left">
+
+				</div>
+				<div class="container-right">
+					<div class="right-header">
+
+					</div>
+					<div class="tabbar">
+						筛选客户
+					</div>
+					
+					<div class="users display-flex">
+						<div class="user-left display-flex">
+							<button>
+       					                 王思聪
+       				        </button>
+						</div>
+						<div class="user-right display-flex">
+							<button>
+       					马云
+       				</button>
+						</div>
+					</div>
+					<div class="footer display-flex">
+						<div class="footer-left text-center">
+							重置
+						</div>
+						<div class="footer-right text-center">
+							确认
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--footer-->
+		<div class="footer ">
+			<div class="row">
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe60b;</span>
+					<p>商品</p>
+				</div>
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe613;</span>
+					<p>订单</p>
+				</div>
+
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe608;</span>
+					<p>分析</p>
+				</div>
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe60f;</span>
+					<p>我的</p>
+				</div>
+			</div>
+		</div>
+
+		<!--<div data-role="page" id="pageone">
+
+		</div>-->
+
+		<script>
+			$(document).on("pageinit", "#pageone", function() {
+				$(".model-3").on("swiperight", function() {
+					$('.model-3').animate({
+						left: "100%"
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>
