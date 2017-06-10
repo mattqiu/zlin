@@ -1,0 +1,206 @@
+body {
+  width: 16rem;
+  overflow: hidden;
+  margin: 0 auto; }
+
+.bar-list {
+  font-size: 0.7rem;
+  height: 1.425rem;
+  line-height: 1.425rem; }
+
+.model-1 .filter {
+  font-size: 0.7rem;
+  width: 16rem;
+  height: 1.5rem; }
+  .model-1 .filter .filter-center {
+    width: 15rem; }
+    .model-1 .filter .filter-center .filter-list {
+      width: 3rem;
+      height: 1.5rem; }
+      .model-1 .filter .filter-center .filter-list .big-circle {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 50%;
+        border: 0.025rem solid black; }
+        .model-1 .filter .filter-center .filter-list .big-circle .small-circle {
+          width: 0.5rem;
+          height: 0.5rem;
+          border-radius: 50%; }
+      .model-1 .filter .filter-center .filter-list .filter-list {
+        height: 0.75rem; }
+
+.filter-active {
+  background-color: #ca9409; }
+
+.model-2 {
+  display: none; }
+
+.container {
+  font-size: 0.7rem;
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #e6e6e6;
+  font-size: 0.7rem; }
+  .container .container-bar {
+    width: 15rem;
+    display: flex; }
+
+.good-show {
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 15rem;
+  height: 2.7rem; }
+  .center img {
+    width: 2.5rem;
+    height: 2.5rem; }
+  .center .text {
+    width: 2.75rem;
+    margin-left: 0.125rem; }
+
+.gray {
+  color: #e5e5e5; }
+
+.flex-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+
+.modellist {
+  font-size: 0.7rem;
+  font-weight: 700;
+  height: 1.55rem;
+  line-height: 1.55rem; }
+
+.container-bar-list {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  height: 1.55rem;
+  line-height: 1.55rem; }
+
+.modellist-1 {
+  width: 6.75rem; }
+  .modellist-1 .text {
+    width: 4rem; }
+
+.modellist-2 {
+  width: 2.5rem; }
+
+.modellist-3 {
+  width: 2.5rem; }
+
+.modellist-4 {
+  width: 3.25rem; }
+
+.list-1 {
+  width: 5.75rem; }
+
+.list-2 {
+  width: 2rem; }
+
+.list-3 {
+  width: 2.25rem; }
+
+.list-4 {
+  width: 3rem; }
+
+.list-5 {
+  width: 2.25rem; }
+
+.list-height {
+  height: 2.7rem; }
+
+.model-3 {
+  position: absolute;
+  left: 16rem;
+  top: 0;
+  z-index: 10000; }
+  .model-3 .body {
+    display: flex;
+    width: 16rem; }
+    .model-3 .body .container-left {
+      width: 3rem;
+      height: 28.4rem;
+      background-color: rgba(0, 0, 0, 0.5); }
+    .model-3 .body .container-right {
+      background-color: #FFFFFF;
+      position: relative;
+      width: 13rem;
+      height: 26.65rem; }
+      .model-3 .body .container-right .right-header {
+        width: 13rem;
+        height: 1.5rem;
+        background-color: #e6e6e6; }
+      .model-3 .body .container-right .tabbar {
+        width: 13rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding-left: 0.75rem; }
+      .model-3 .body .container-right .users {
+        width: 13rem;
+        font-size: 0.5rem; }
+        .model-3 .body .container-right .users .user-left {
+          width: 6.5rem; }
+          .model-3 .body .container-right .users .user-left button {
+            width: 5.375rem;
+            height: 1rem;
+            line-break: 1rem;
+            background-color: #e6e6e6;
+            border: 0.025rem solid #a1a1a1;
+            border-radius: 5%; }
+        .model-3 .body .container-right .users .user-right {
+          width: 6.5rem; }
+          .model-3 .body .container-right .users .user-right button {
+            width: 5.375rem;
+            height: 1rem;
+            line-break: 1rem;
+            background-color: #cc9203;
+            border: 0.025rem solid #9e8957;
+            border-radius: 5%; }
+      .model-3 .body .container-right .footer {
+        position: absolute;
+        left: 0;
+        bottom: -1.75rem;
+        width: 13rem;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        font-size: 0.625rem;
+        font-weight: 700;
+        color: #FFFFFF; }
+        .model-3 .body .container-right .footer .footer-left {
+          width: 6.5rem;
+          height: 1.75rem;
+          line-height: 1.75rem;
+          background-color: #dbc383; }
+        .model-3 .body .container-right .footer .footer-right {
+          width: 6.5rem;
+          height: 1.75rem;
+          line-height: 1.75rem;
+          background-color: #cd9300; }
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.flex-nowrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; }
+
+/*# sourceMappingURL=index02.css.map */

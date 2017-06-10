@@ -1,0 +1,111 @@
+body {
+  width: 16rem;
+  overflow: hidden;
+  margin: 0 auto;
+  overflow: scroll; }
+
+.goodsshow {
+  width: 16rem;
+  height: 16rem; }
+  .goodsshow img {
+    width: 16rem;
+    height: 16rem; }
+
+.show {
+  width: 16rem;
+  height: 3.25rem;
+  border-bottom: 0.025rem solid #c7c7c7; }
+  .show .show-list {
+    width: 15rem;
+    height: 3.25rem;
+    background-color: #FFFFFF; }
+    .show .show-list .show-list-2 {
+      width: 11.25rem;
+      height: 3.25rem;
+      padding-left: 0.375rem; }
+      .show .show-list .show-list-2 .goods-name {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        font-size: 0.625rem;
+        color: #9d9d9d; }
+      .show .show-list .show-list-2 .goods-num {
+        font-size: 0.525rem;
+        color: #000000; }
+      .show .show-list .show-list-2 .goods-price {
+        font-size: 0.575rem;
+        color: #cd9300; }
+        .show .show-list .show-list-2 .goods-price span {
+          font-size: 0.575rem; }
+    .show .show-list .show-list-3 {
+      width: 3.75rem;
+      height: 3.25rem; }
+      .show .show-list .show-list-3 .circle {
+        width: 1.5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        border-radius: 50%;
+        background-color: #cd9300;
+        color: #FFFFFF;
+        font-size: 0.65rem;
+        font-weight: 600;
+        text-align: center; }
+  .show .tabbar {
+    width: 16rem;
+    height: 1.5rem;
+    background-color: #E6E6E6;
+    font-size: 0.7rem; }
+    .show .tabbar .bar-list {
+      width: 33%;
+      height: 1.5rem;
+      line-height: 1.5rem; }
+  .show .attribute {
+    width: 16rem; }
+    .show .attribute .attribute-list {
+      width: 16rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      padding-left: 1.5rem;
+      border-bottom: 0.075rem solid #d7d7d7;
+      font-size: 0.6rem;
+      font-weight: 700; }
+      .show .attribute .attribute-list .public {
+        width: 2.5rem;
+        display: inline-block;
+        text-align: justify; }
+      .show .attribute .attribute-list .public::after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        height: 0; }
+  .show .selling {
+    display: none; }
+  .show .related-to {
+    width: 16rem;
+    margin-top: 0.5rem;
+    display: none; }
+    .show .related-to .related-container {
+      width: 15rem; }
+      .show .related-to .related-container .related-show {
+        width: 7.25rem; }
+        .show .related-to .related-container .related-show img {
+          height: 7.25rem;
+          width: 7.25rem; }
+        .show .related-to .related-container .related-show .show-list-2 {
+          width: 7.25rem;
+          height: 2rem;
+          padding-left: 0.375rem; }
+          .show .related-to .related-container .related-show .show-list-2 .goods-num {
+            font-size: 0.525rem;
+            color: #000000; }
+          .show .related-to .related-container .related-show .show-list-2 .goods-price {
+            font-size: 0.575rem;
+            color: #cd9300; }
+            .show .related-to .related-container .related-show .show-list-2 .goods-price span {
+              font-size: 0.575rem; }
+
+.active {
+  border-bottom: 0.075rem solid #cd9300;
+  color: #cd9300; }
+
+/*# sourceMappingURL=03.css.map */

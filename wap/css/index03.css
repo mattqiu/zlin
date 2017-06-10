@@ -1,0 +1,74 @@
+body {
+  width: 16rem;
+  margin: 0 auto; }
+
+.body {
+  display: flex;
+  width: 16rem; }
+  .body .container-left {
+    width: 3rem;
+    height: 28.4rem;
+    background-color: rgba(0, 0, 0, 0.5); }
+  .body .container-right {
+    position: relative;
+    width: 13rem;
+    height: 26.65rem; }
+    .body .container-right .right-header {
+      width: 13rem;
+      height: 1.5rem;
+      background-color: #e6e6e6; }
+    .body .container-right .tabbar {
+      width: 13rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding-left: 0.75rem; }
+    .body .container-right .user {
+      width: 13rem;
+      font-size: 0.5rem; }
+      .body .container-right .user .user-left {
+        width: 6.5rem; }
+        .body .container-right .user .user-left button {
+          width: 5.375rem;
+          height: 1rem;
+          line-break: 1rem;
+          background-color: #e6e6e6;
+          border: 0.025rem solid #a1a1a1;
+          border-radius: 5%; }
+      .body .container-right .user .user-right {
+        width: 6.5rem; }
+        .body .container-right .user .user-right button {
+          width: 5.375rem;
+          height: 1rem;
+          line-break: 1rem;
+          background-color: #cc9203;
+          border: 0.025rem solid #9e8957;
+          border-radius: 5%; }
+    .body .container-right .footer {
+      position: absolute;
+      left: 0;
+      bottom: -1.75rem;
+      width: 13rem;
+      height: 1.75rem;
+      line-height: 1.75rem;
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: #FFFFFF; }
+      .body .container-right .footer .footer-left {
+        width: 6.5rem;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        background-color: #dbc383; }
+      .body .container-right .footer .footer-right {
+        width: 6.5rem;
+        height: 1.75rem;
+        line-height: 1.75rem;
+        background-color: #cd9300; }
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+/*# sourceMappingURL=index03.css.map */

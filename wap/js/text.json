@@ -1,0 +1,46 @@
+{
+	"code": 200,
+	"login": 0,
+	"status": {
+		"succeed": 1,
+		"error_code": 0,
+		"error_desc": ""
+	},
+	"extension": "",
+	"extension_id": 0,
+	"OPEN_STORE_EXTENSION_STATE": 10,
+	"datas": {
+		"ordering_list": [
+			{
+				"ordering_id": "1",
+				"goods_commonid": "102808",
+				"goods_image": null,
+				"num": "40",
+				"goods_price": "355.50",
+				"total_price": "14220.00",
+				"store_goods_state": "0",
+				"goods_common_name": "\u767e\u642d\u77ed\u8896T\u6064"
+			}, {
+				"ordering_id": "1",
+				"goods_commonid": "102792",
+				"goods_image": null,
+				"num": "46",
+				"goods_price": "1165.50",
+				"total_price": "53613.00",
+				"store_goods_state": "1",
+				"goods_common_name": "\u771f\u4e1d\u62bd\u8c61\u5370\u82b1\u4e0a\u8863"
+			}, {
+				"ordering_id": "1",
+				"goods_commonid": "102793",
+				"goods_image": null,
+				"num": "67",
+				"goods_price": "1795.50",
+				"total_price": "120298.50",
+				"store_goods_state": "0",
+				"goods_common_name": "\u4e1d\u68c9\u6d41\u82cf\u65e0\u8896T\u6064"
+			}
+		]
+	},
+	"hasmore": false,
+	"page_total": 1
+}

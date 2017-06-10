@@ -1,0 +1,25 @@
+.display-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.flex-start{
+     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.space-between{
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.margin-right-20{
+    margin-right: px2rem(20);
+}
+.bar-list {
+    height: px2rem(57);
+    line-height: px2rem(57);
+}

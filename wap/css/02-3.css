@@ -1,0 +1,113 @@
+body {
+  width: 16rem;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #e6e6e6;
+  overflow: scroll; }
+
+.headers {
+  position: fixed;
+  top: 0rem;
+  left: 0rem; }
+
+.header {
+  width: 16rem;
+  height: 3.25rem;
+  background-color: #cd9300;
+  position: relative; }
+  .header .input {
+    position: absolute;
+    left: 0.5rem;
+    top: 1.25rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .header .input input {
+      background: url(../image/search.png) no-repeat 0.25rem center;
+      background-size: 1rem 1rem;
+      font-size: 0.65rem;
+      width: 13.75rem;
+      height: 1.25rem;
+      line-height: 1.25rem;
+      padding-left: 1.5rem;
+      background-color: #dec085;
+      border-radius: 0.25rem; }
+    .header .input .RichScan {
+      color: #FFFFFF;
+      font-size: 1.25rem;
+      padding-left: 0.375rem; }
+
+.bar {
+  width: 16rem;
+  height: 1.5rem;
+  background-color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-bottom: 0.05rem solid #8D8D8D; }
+  .bar .bar-list {
+    width: 15rem; }
+    .bar .bar-list .bar-list-1 {
+      width: 4rem; }
+    .bar .bar-list .bar-list-2 {
+      width: 3.25rem; }
+    .bar .bar-list .bar-list-3 {
+      width: 3rem; }
+    .bar .bar-list .bar-list-4 {
+      width: 3rem; }
+    .bar .bar-list .bar-list-5 {
+      width: 1.75rem; }
+
+.containers {
+  width: 16rem;
+  margin-top: 5rem;
+  margin-bottom: 2.75rem; }
+  .containers .show {
+    width: 16rem;
+    height: 4.6rem;
+    border-bottom: 0.025rem solid #c7c7c7; }
+    .containers .show .show-list {
+      width: 15rem;
+      height: 4.35rem;
+      background-color: #FFFFFF; }
+      .containers .show .show-list .show-list-1 {
+        width: 4.35rem;
+        height: 4.35rem; }
+        .containers .show .show-list .show-list-1 img {
+          width: 4.25rem;
+          height: 4.25rem; }
+      .containers .show .show-list .show-list-2 {
+        width: 8.15rem;
+        height: 4.25rem;
+        padding-left: 0.375rem; }
+        .containers .show .show-list .show-list-2 .goods-name {
+          margin-top: 0.75rem;
+          margin-bottom: 0.75rem;
+          font-size: 0.625rem;
+          color: #9d9d9d; }
+        .containers .show .show-list .show-list-2 .goods-num {
+          font-size: 0.525rem;
+          color: #000000; }
+        .containers .show .show-list .show-list-2 .goods-price {
+          font-size: 0.575rem;
+          color: #cd9300; }
+          .containers .show .show-list .show-list-2 .goods-price span {
+            font-size: 0.575rem; }
+      .containers .show .show-list .show-list-3 {
+        width: 2.5rem;
+        height: 2.5rem; }
+        .containers .show .show-list .show-list-3 .circle {
+          width: 1.5rem;
+          height: 1.5rem;
+          line-height: 1.5rem;
+          border-radius: 50%;
+          background-color: #cd9300;
+          color: #FFFFFF;
+          font-size: 0.65rem;
+          font-weight: 600;
+          text-align: center; }
+
+.border-right {
+  border-right: 0.025rem solid #8D8D8D; }
+
+/*# sourceMappingURL=02-3.css.map */

@@ -1,0 +1,90 @@
+@charset "UTF-8";
+@import '_px2rem';
+$designWidth: 640;
+body {
+    width: 16rem;
+    margin: 0 auto;
+}
+.body{
+   display: flex;
+   width: 16rem;
+   .container-left{
+       width: px2rem(120);
+       height: px2rem(1136);
+       background-color: rgba(0,0,0,0.5);
+   }
+   .container-right{
+       position: relative;
+       width: px2rem(520);
+       height: px2rem(1066);
+       .right-header{
+           width: px2rem(520);
+           height: px2rem(60);
+           background-color: #e6e6e6;
+       }
+       .tabbar{
+           width: px2rem(520);
+           height: px2rem(60);
+           line-height: px2rem(60);
+           font-size: px2rem(28);
+           font-weight: 700;
+           padding-left: px2rem(30);
+       }
+       .user{
+           width: px2rem(520);
+           font-size: px2rem(20);
+           .user-left{
+               width: px2rem(260);
+               button{
+                   width: px2rem(215);
+                   height: px2rem(40);
+                   line-break: px2rem(40);
+                   background-color: #e6e6e6;
+                   border: px2rem(1) solid #a1a1a1;
+                   border-radius: 5%;
+               }
+               
+           }
+           .user-right{
+               width: px2rem(260);
+               button{
+                   width: px2rem(215);
+                   height: px2rem(40);
+                   line-break: px2rem(40);
+                   background-color: #cc9203;
+                   border: px2rem(1) solid #9e8957;
+                   border-radius: 5%;
+               }
+           }
+       }
+       .footer{
+           position: absolute;
+           left: 0;
+           bottom: px2rem(-70);
+           width: px2rem(520);
+           height: px2rem(70);
+           line-height: px2rem(70);
+           font-size: px2rem(25);
+           font-weight: 700;
+           color: #FFFFFF;
+           .footer-left{
+               width: px2rem(260);
+               height: px2rem(70);
+           line-height: px2rem(70);
+           background-color: #dbc383;
+           }
+           .footer-right{
+               width: px2rem(260);
+               height: px2rem(70);
+           line-height: px2rem(70);
+           background-color: #cd9300;
+           }
+       }
+
+   }
+}
+.display-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
