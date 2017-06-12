@@ -22,7 +22,6 @@
 	<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 
-
 	<script src="../../js/tmpl/odering/index.js"></script>
 
 	<script type="text/javascript">
@@ -36,9 +35,6 @@
 					console.log(data);
 					var datas = data.datas;
 					var item = datas.ordering_list;
-					//						for(var i = 0; i < item.length; i++) {
-					//							console.log(item[i].num)
-					//						}
 					var list = [];
 					for(var i = 0; i < item.length; i++) {
 						var li = '<div class="good-show">' +
@@ -108,29 +104,33 @@
 		<div class="model-1">
 			<div class="filter display-flex">
 				<div class="filter-center display-flex">
-					<div class="filter-list display-flex">
-						<div class="big-circle display-flex">
-							<div class="small-circle filter-active">
+					<div class="filter01 display-flex">
 
+						<div class="filter-list display-flex">
+							<div class="big-circle display-flex">
+								<div class="small-circle filter-active" id="up-order">
+
+								</div>
+							</div>
+							<div class="filter-text">
+								升序
 							</div>
 						</div>
-						<div class="filter-text">
-							升序
-						</div>
-					</div>
-					<div class="filter-list display-flex">
-						<div class="big-circle display-flex">
-							<div class="small-circle">
+						<div class="filter-list display-flex">
+							<div class="big-circle display-flex">
+								<div class="small-circle" id="down-order">
 
+								</div>
+							</div>
+							<div class="filter-text">
+								降序
 							</div>
 						</div>
-						<div class="filter-text">
-							降序
-						</div>
 					</div>
+					<div class="filter02 display-flex">
 					<div class="filter-list display-flex">
 						<div class="big-circle display-flex">
-							<div class="small-circle">
+							<div class="small-circle filter-active" id="Productnumber">
 
 							</div>
 						</div>
@@ -140,7 +140,7 @@
 					</div>
 					<div class="filter-list display-flex">
 						<div class="big-circle display-flex">
-							<div class="small-circle">
+							<div class="small-circle" id="Number">
 
 							</div>
 						</div>
@@ -150,13 +150,14 @@
 					</div>
 					<div class="filter-list display-flex">
 						<div class="big-circle display-flex">
-							<div class="small-circle">
+							<div class="small-circle" id="valuesales" >
 
 							</div>
 						</div>
 						<div class="filter-text">
 							零售额
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -269,7 +270,7 @@
 					<div class="tabbar">
 						筛选客户
 					</div>
-					
+
 					<div class="users display-flex">
 						<div class="user-left display-flex">
 							<button>

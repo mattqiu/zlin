@@ -39,18 +39,42 @@ body {
       padding-left: 0.375rem; }
 
 .bar {
+  position: relative;
   width: 16rem;
   height: 1.5rem;
   background-color: #FFFFFF;
   font-size: 0.65rem;
   font-weight: 700;
   border-bottom: 0.05rem solid #8D8D8D; }
+  .bar .bar-position {
+    position: absolute;
+    width: 16rem;
+    top: 1.5rem;
+    left: 0rem;
+    background-color: #FFFFFF; }
+    .bar .bar-position .bar-pisition-list {
+      height: 1.65rem;
+      width: 16rem;
+      line-height: 1.65rem;
+      padding-left: 1.25rem;
+      font-size: 0.75rem;
+      border-bottom: 0.05rem solid #8D8D8D; }
   .bar .bar-list {
     width: 15rem; }
     .bar .bar-list .bar-list-1 {
       width: 4rem; }
+      .bar .bar-list .bar-list-1 .text {
+        margin-right: 0.3rem; }
+      .bar .bar-list .bar-list-1 img {
+        width: 0.5rem;
+        height: 0.5rem; }
     .bar .bar-list .bar-list-2 {
       width: 3.25rem; }
+      .bar .bar-list .bar-list-2 .text {
+        margin-right: 0.3rem; }
+      .bar .bar-list .bar-list-2 img {
+        width: 0.5rem;
+        height: 0.5rem; }
     .bar .bar-list .bar-list-3 {
       width: 3rem; }
     .bar .bar-list .bar-list-4 {

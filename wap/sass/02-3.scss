@@ -48,19 +48,51 @@ body {
 }
 
 .bar {
+    position: relative;
     width: px2rem(640);
     height: px2rem(60);
     background-color: #FFFFFF;
     font-size: px2rem(26);
     font-weight: 700;
     border-bottom: px2rem(2) solid #8D8D8D;
+    .bar-position{
+        position: absolute;
+        width: px2rem(640);
+        top: px2rem(60);
+        left: px2rem(0);
+        background-color: #FFFFFF;
+        .bar-pisition-list{
+            height: px2rem(66);
+            width: px2rem(640);
+            line-height: px2rem(66);
+            padding-left: px2rem(50);
+            font-size: px2rem(30);
+             border-bottom: px2rem(2) solid #8D8D8D;
+        }
+    }
     .bar-list {
         width: px2rem(600);
+        
         .bar-list-1 {
             width: px2rem(160);
+            
+            .text{
+                margin-right: px2rem(12);
+            }
+            img{
+                width: px2rem(20);
+                height: px2rem(20);
+            }
         }
         .bar-list-2 {
             width: px2rem(130);
+             .text{
+                margin-right: px2rem(12);
+            }
+            img{
+                width: px2rem(20);
+                height: px2rem(20);
+            }
         }
         .bar-list-3 {
             width: px2rem(120);
