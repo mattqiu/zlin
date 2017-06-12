@@ -2,9 +2,9 @@
 /**
  * 积分礼品管理
  *
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
+ * @license    http://demo.hzlwo.com
+ * @link       http://demo.hzlwo.com
  * @since      File available since Release v1.1
  */
 defined('InIMall') or exit('Access Invalid!');

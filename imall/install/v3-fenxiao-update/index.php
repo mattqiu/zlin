@@ -118,7 +118,7 @@ function showjsmessage($message,$n=1) {
 				<div class="main">
 				<div class="text-box" id="text-box">
 				<?php if ($current == ''){ ?>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你的版本里未安装www.zlin-e.com模块！你只需简单一步就可以安装好智琳商城V3-B12升级包了哦！感谢你对智琳商城V3的支持！<span style="color: #FF0000;">如因安装造成您原有二次开发功能的错误或丢失，www.zlin-e.com不予承担任何责任及损失，请您慎重操作。
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你的版本里未安装demo.hzlwo.com模块！你只需简单一步就可以安装好智琳商城V3-B12升级包了哦！感谢你对智琳商城V3的支持！<span style="color: #FF0000;">如因安装造成您原有二次开发功能的错误或丢失，demo.hzlwo.com不予承担任何责任及损失，请您慎重操作。
 				</span><br /><br />
 				建议在升级过程中暂时关闭网站。进行下面操作前请确认已经完成备份，程序将自动修改数据库，点击按钮开始执行。<br />
 				<br />
@@ -126,7 +126,7 @@ function showjsmessage($message,$n=1) {
 			  <div>
 			  	1、&nbsp;&nbsp;其他文件直接按文件名存放替换就可以了<br />
 			  	2、&nbsp;&nbsp;本模板只用于学习交流使用。无论您是个人组织、盈利与否、用途如何（包括以学习和研究为目的），均与智琳商城无关！<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;智琳商城只提供相关技术服务！不负责任何商业责任！还请知悉。<br />
-			  	3、&nbsp;&nbsp;智琳商城v3官方论坛：http://www.zlin-e.com<br />
+			  	3、&nbsp;&nbsp;智琳商城v3官方论坛：http://demo.hzlwo.com<br />
 
 			  	<br /><br />
 			  </div>
@@ -153,7 +153,7 @@ function showjsmessage($message,$n=1) {
 				</div>
 				</div>
 <div class="footer">
-  <h5><a href="http://www.zlin-e.com" target="_blank">智琳商城V3提供</a></h6>
+  <h5><a href="http://demo.hzlwo.com" target="_blank">智琳商城V3提供</a></h6>
 </div>
 <script type="text/javascript">
 <?php if ($_GET['go'] == '3'){ ?>

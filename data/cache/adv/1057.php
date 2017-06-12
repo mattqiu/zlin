@@ -18,7 +18,7 @@
       'adv_id' => '937',
       'ap_id' => '1057',
       'adv_title' => '女装',
-      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05246648652030280.jpg";s:11:"adv_pic_url";s:73:"www.zlin-e.com/imall/index.php?act=goods&amp;op=index&amp;goods_id=110433";}',
+      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05246648652030280.jpg";s:11:"adv_pic_url";s:73:"demo.hzlwo.com/imall/index.php?act=goods&amp;op=index&amp;goods_id=110433";}',
       'adv_start_date' => '1467820800',
       'adv_end_date' => '1532966400',
       'slide_sort' => '0',

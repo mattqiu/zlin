@@ -1,0 +1,41 @@
+/* pages/my/changePasswd.wxss */
+
+page{
+	height: 100%;
+}
+.form-item{
+	display: flex;
+	align-items: center;
+	padding: 0 20rpx;
+	height: 70rpx;
+	background-color: #fff;
+	margin: 10rpx 0;
+}
+.form-item__icon{
+	flex: 0 0 auto;
+	height: 32rpx;
+	width: 32rpx;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url(../../images/my/icon2.png);
+}
+
+.form-item__content{
+	flex: 1 0 auto;
+	color: #9fa0a0;
+}
+.form-item__content input{
+	font-size: 30rpx;
+	padding: 5rpx 20rpx;
+}
+.btn{
+	margin: 20rpx 58rpx 0;
+	font-size: 30rpx;
+	color: #fff;
+	height: 80rpx;
+	line-height: 80rpx;
+	background-color: #ce9100;
+	text-align: center;
+	border-radius: 10rpx;
+}

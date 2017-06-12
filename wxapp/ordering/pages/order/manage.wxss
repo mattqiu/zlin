@@ -1,0 +1,129 @@
+/* pages/order/manage.wxss */
+page{
+	height: 100%;
+}
+.section{
+	display: flex;
+	flex-flow: column nowrap;
+	background-color: #e6e6e6;
+	height: 100%;
+}
+.header{
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 20rpx;
+	background-color: #ce9100;
+	justify-content: space-between;
+	align-items: center;
+	flex: 0 0 auto;
+}
+.icon-prev::before{
+	content: '';
+	display: inline-block;
+	margin-right: 10rpx;
+	width: 17rpx;
+	height: 33rpx;
+	background: url(../../images/icons/icon-arrow_left_white.png) 0 0;
+	background-size: 100%;
+}
+.header-item__right{
+	font-size: 30rpx;
+	color: #fff;
+}
+
+.tab-ctrl{
+	display: flex;
+	align-items: center;
+	flex: 0 0 auto;
+	height: 65rpx;
+	background-color: #fff;
+	border-bottom: 1px solid #c9c9c9;
+}
+.tab-ctrl__item{
+	flex: 1 0 auto;
+	color: #9fa0a0;
+	text-align: center;
+}
+.tab-ctrl__item.active{
+	color: #ce9100;
+}
+.tab-ctrl__item + .tab-ctrl__item{
+	border-left: 1px solid #c9c9c9;
+}
+
+.order-item{
+	display: flex;
+	align-items: center;
+	padding: 10rpx 20rpx;
+	background-color: #fff;
+	border-bottom: 1px solid #c9c9c9;
+}
+.order-item__label{
+	width: 60rpx;
+	flex: 0 0 auto;
+}
+.order-item__main{
+	display: flex;
+	justify-content: space-between;
+	flex: 1 0 auto;
+	font-size: 20rpx;
+	line-height: 38rpx;
+	color: #9fa0a0;
+}
+.order__right,
+.order__left{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+}
+.order__right{
+	text-align: right;
+}
+.big{
+	font-size: 30rpx;
+}
+
+.main{
+	display: flex;
+	flex-flow: column nowrap;
+	flex: 1 1 auto;
+}
+.list-wrap{
+	display: flex;
+	flex: 1 1 auto;
+}
+.complated-wrap,
+.uncomplated-wrap{
+	display: flex;
+	flex-flow: column nowrap;
+	flex: 1 1 auto;
+}
+.complated-wrap .footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex: 0 0 auto;
+	padding: 0 20rpx;
+	height: 66rpx;
+	background-color: #fff;
+}
+.complated-wrap .footer .item{
+	color: #ce9100;
+}
+.complated-wrap .footer .label{
+	color: #9fa0a0;
+}
+.uncomplated-wrap .footer{
+	height: 140rpx;
+}
+.uncomplated-wrap .footer .btn{
+	margin: 20rpx 58rpx 0;
+	font-size: 30rpx;
+	color: #fff;
+	height: 80rpx;
+	line-height: 80rpx;
+	background-color: #ce9100;
+	text-align: center;
+	border-radius: 10rpx;
+}

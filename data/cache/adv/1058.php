@@ -18,7 +18,7 @@
       'adv_id' => '940',
       'ap_id' => '1058',
       'adv_title' => '羽绒服',
-      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05243179464278801.jpg";s:11:"adv_pic_url";s:75:"www.zlin-e.com/imall/index.php?act=show_store&amp;op=index&amp;store_id=126";}',
+      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05243179464278801.jpg";s:11:"adv_pic_url";s:75:"demo.hzlwo.com/imall/index.php?act=show_store&amp;op=index&amp;store_id=126";}',
       'adv_start_date' => '1467302400',
       'adv_end_date' => '1598803200',
       'slide_sort' => '0',

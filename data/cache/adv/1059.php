@@ -18,7 +18,7 @@
       'adv_id' => '939',
       'ap_id' => '1059',
       'adv_title' => '裙装',
-      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05243147249899238.jpg";s:11:"adv_pic_url";s:75:"www.zlin-e.com/imall/index.php?act=show_store&amp;op=index&amp;store_id=100";}',
+      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05243147249899238.jpg";s:11:"adv_pic_url";s:75:"demo.hzlwo.com/imall/index.php?act=show_store&amp;op=index&amp;store_id=100";}',
       'adv_start_date' => '1467820800',
       'adv_end_date' => '1596038400',
       'slide_sort' => '0',

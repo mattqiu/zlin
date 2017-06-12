@@ -141,6 +141,10 @@ page{
 	font-size: 30rpx;
 	color: #9fa0a0;
 	line-height: 40rpx;
+	height: 40rpx;
+	overflow: hidden;
+	white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .goods-item__no{
 	font-size: 30rpx;
@@ -276,9 +280,33 @@ page{
 	padding-left: 140rpx;
 }
 .filter-plane__wrap{
+	display: flex;
+	flex-flow: column nowrap;
 	height: 100%;
 	background-color: #fff;
 	padding-left: 20rpx;
+}
+
+.filter-plane__item-wrap{
+	flex: 1 1 auto;
+	display: flex;
+}
+.filter-plane__footer{
+	margin-left: -20rpx;
+	flex: 0 0 auto;
+	height: 80rpx;
+	display: flex;
+}
+.filter-plane__footer .filter-btn{
+	flex: 1 0 auto;
+	text-align: center;
+	color: #fff;
+	font-size: 30rpx;
+	background-color: #dbc284;
+	line-height: 80rpx;
+}
+.filter-plane__footer .filter-btn:last-child{
+	background-color: #ce9100
 }
 .filter-plane__item{
 	border-bottom: 1px solid #959595
@@ -320,6 +348,9 @@ page{
 	background-color: #dcdcdc;
 	border-radius: 10rpx;
 	margin-right: 10rpx;
+}
+.item__bd .opt.active{
+	background-color: #ce9100;
 }
 .filter-plane__item .opt__range{
 	display: flex;

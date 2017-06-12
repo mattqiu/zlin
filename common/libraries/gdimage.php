@@ -7,9 +7,9 @@
  *
  *
  * @package    library
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
+ * @license    http://demo.hzlwo.com
+ * @link       http://demo.hzlwo.com
  * @author	   zlin-e Team
  * @since      File available since Release v1.1
  */
@@ -122,7 +122,7 @@ class GdImage{
 	 * <?php
 	 * 		$img = new GDImage();
 	 * 		//文字水印
-	 * 		$img->wm_text = "www.zlin-e.com";
+	 * 		$img->wm_text = "demo.hzlwo.com";
 	 * 		$img->wm_text_font = "./STXINWEI.TTF";
 	 * 		//图片水印
 	 * 		$img->wm_image_name="水印图片名";

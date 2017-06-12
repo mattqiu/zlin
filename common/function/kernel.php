@@ -4,9 +4,9 @@
  *
  *
  * @package    function
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
  * @license    http://www.SrpingWater.net
- * @link       http://www.zlin-e.com
+ * @link       http://demo.hzlwo.com
  * @author	   zlin-e Team
  * @since      File available since Release v1.1
  */

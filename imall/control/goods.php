@@ -5,9 +5,9 @@
  * 
  *
  *
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
+ * @license    http://demo.hzlwo.com
+ * @link       http://demo.hzlwo.com
  * @since      File available since Release v1.1
  */
 defined('InIMall') or exit('Access Invalid!');
@@ -94,7 +94,7 @@ class goodsControl extends BaseGoodsControl {
             }
         }else{
         	//Vip 使用云币抵扣 start zhangc
-        	$goodsVip = Logic('goods')->goodsVip($goods_id);
+        	$goodsVip = Logic('goods')->goodsVip($goods_id,$_SESSION['member_id']);
         	$goods_info['vip_price'] = $goodsVip['vip_price'];
     		$goods_info['vip_points'] = ceil($goodsVip['vip_points']/C("points_trade"));
         }

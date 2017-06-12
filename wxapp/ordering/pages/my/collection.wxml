@@ -1,0 +1,30 @@
+<!--pages/my/collection.wxml-->
+<view class="section">
+	<!-- 头部 -->
+	<view class="header">
+		<view class="header-item__side">返回</view>
+		<view class="header-item__center">我的收藏</view>
+		<view class="header-item__side filter-type{{goodsListType}}" bindtap="switchGoodsType"></view>
+	</view>
+	<view class="goods-list">
+		<scroll-view scroll-y>
+			<!-- 列表 -->
+			<view class="goods-list__type{{goodsListType}}">
+				<view class="goods-item" wx:for="{{goodsList}}">
+            <navigator url="/">
+              <view class="goods-item__pic">
+                <image src="{{item.pic}}" mode="scaleToFill"></image>
+              </view>
+             </navigator>
+            <view class="goods-item__info">
+              <view class="goods-item__name">{{item.name}}</view>
+              <view class="goods-item__no">{{item.no}}</view>
+              <view class="goods-item__price">￥{{item.price}}</view>
+              <view class="goods-item__dn">{{item.dn}}</view>
+            </view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
+

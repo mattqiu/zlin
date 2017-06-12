@@ -5,9 +5,9 @@
  * 
  *
  *
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
+ * @license    http://demo.hzlwo.com
+ * @link       http://demo.hzlwo.com
  * @since      File available since Release v1.1
  */
 defined('InIMall') or exit('Access Invalid!');
@@ -766,8 +766,8 @@ class goodsModel extends Model{
      * @param int $goods_id
      * @return array
      */
-    public function getGoodsInfoAndPromotionById($goods_id) {
-        $goods_info = $this->getGoodsInfoByID($goods_id);
+    public function getGoodsInfoAndPromotionById($goods_commonid) {
+        $goods_info = $this->getGoodsInfoByID($goods_commonid);
         if (empty($goods_info)) {
             return array();
         }
@@ -1121,13 +1121,9 @@ class goodsModel extends Model{
      */
     private function getPriceClass($condition){
 
-
-    	//$condition['goodsPriceType'] = $_POST['goodsPriceType'];
-    	//$condition['goodsType'] = $_POST['goodsType'];
-    	//$condition['goods_price']="&& goods_price <='".$_POST['maxPrice']."'";
-    	//$condition['goods_price']="&& goods_price >='".$_POST['minPrice']."'";
-    	
-    	$condition['goods_price']=array(array('egt',7800),array('elt',8000));
+    	$minPrice =$_REQUEST['minPrice'];
+    	$maxPrice =$_REQUEST['maxPrice'];
+    	$condition['goods_price']=array(array('egt',$minPrice),array('elt',$maxPrice));
     	return $condition;
     }
     /**
@@ -1166,11 +1162,11 @@ class goodsModel extends Model{
      * @param string $fields 需要取得的缓存键值, 例如：'*','goods_name,store_name'
      * @return array
      */
-    public function getGoodsInfoByID($goods_id, $fields = '*') {
-        $goods_info = $this->_rGoodsCache($goods_id, $fields);
+    public function getGoodsInfoByID($goods_commonid, $fields = '*') {
+        $goods_info = $this->_rGoodsCache($goods_commonid, $fields);
         if (empty($goods_info)) {
-            $goods_info = $this->getGoodsInfo(array('goods_id'=>$goods_id));
-            $this->_wGoodsCache($goods_id, $goods_info);
+            $goods_info = $this->getGoodsInfo(array('goods_commonid'=>$goods_commonid));
+            $this->_wGoodsCache($goods_commonid, $goods_info);
         }
         return $goods_info;
     }
@@ -1256,8 +1252,8 @@ class goodsModel extends Model{
      * @param string $fields
      * @return array
      */
-    private function _rGoodsCache($goods_id, $fields) {
-        return rcache($goods_id, 'goods', $fields);
+    private function _rGoodsCache($goods_commonid, $fields) {
+        return rcache($goods_commonid, 'goods', $fields);
     }
 
     /**
@@ -1372,11 +1368,11 @@ class goodsModel extends Model{
      * @param int $goods_id
      * @return array
      */
-    public function getGoodsDetail($goods_id) {
-        if($goods_id <= 0) {
+    public function getGoodsDetail($goods_commonid) {
+        if($goods_commonid <= 0) {
             return null;
         }
-        $result1 = $this->getGoodsInfoAndPromotionById($goods_id);
+        $result1 = $this->getGoodsInfoAndPromotionById($goods_commonid);
         
         if (empty($result1)) {
             return null;

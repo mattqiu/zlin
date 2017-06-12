@@ -1,2 +1,51 @@
 <!--pages/analysis/index.wxml-->
-<text>pages/analysis/index.wxml</text>
+<!--pages/goods/checkin.wxml-->
+<view class="section">
+	<!-- 头部 -->
+	<view class="header">
+		<view class="header-item__left icon-prev"></view>
+		<view class="header-item__right">筛选</view>
+	</view>
+	<!-- 指标 -->
+	<view class="index-wrap">
+		<view class="index-item">
+			<view class="index-item__content">我的指标（元）</view>
+			<view class="index-item__content"><text class="big highcolor">5000000.00</text></view>
+			<view class="index-item__content"><text class="highcolor">5</text>款 <text class="highcolor">500</text>件</view>
+		</view>
+		<view class="index-item">
+			<view class="index-item__content">指标完成（元）</view>
+			<view class="index-item__content"><text class="big highcolor">5000000.00</text></view>
+			<view class="index-item__content"><text class="highcolor">5</text>款 <text class="highcolor">500</text>件</view>
+		</view>
+		<view class="index-item">
+			<view class="index-item__content">完成占比（元）</view>
+			<view class="index-item__content"><text class="big highcolor">522.24</text>%金额</view>
+			<view class="index-item__content"><text class="highcolor">123.5</text>%数量</view>
+		</view>
+	</view>
+	<view class="switch-type">
+		<view bindtap="switchTye" data-type="0" class="type-nav {{currentType == 0 ? 'active' : ''}}">类型</view>
+		<view bindtap="switchTye" data-type="1" class="type-nav {{currentType == 1 ? 'active' : ''}}">颜色</view>
+		<view bindtap="switchTye" data-type="2" class="type-nav {{currentType == 2 ? 'active' : ''}}">尺码</view>
+		<view bindtap="switchTye" data-type="3" class="type-nav {{currentType == 3 ? 'active' : ''}}">波段</view>
+		<view bindtap="switchTye" data-type="4" class="type-nav {{currentType == 4 ? 'active' : ''}}">价格</view>
+	</view>
+	<view class="content">
+		<view class="chart">
+			<canvas canvas-id="Canvas" class="canvas"></canvas>
+		</view>
+		<view class="chart-info">
+			<view wx:for="{{dataList}}" class="chart-info__item">
+				<view>
+					<view class="color" style="background-color:{{colors[(index+1)%colors.length]}}"></view>
+					{{item.name}}
+				</view>
+				<view>{{item.data}}件</view>
+				<view>{{item.percent}}％</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+

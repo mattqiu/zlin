@@ -1,0 +1,24 @@
+<!--pages/goods/assessment.wxml-->
+<view class="section">
+	<view class="header">
+		<view class="header-item__side">返回</view>
+		<view class="header-item__center">建议评价</view>
+	</view>
+	<view class="title">对此款商品的评价</view>
+	<view class="assessment-wrap">
+		<view class="goods">
+			<view class="goods-pic"><image src="../../images/local/pic2.png" mode="scaleToFill"></image></view>
+			<view class="goods-info">
+				<view class="goods-name">百搭针织上衣 针织毛衣上衣针织衫</view>
+				<view class="goods-no">1630188</view>
+				<view class="goods-price highlight">￥999</view>
+			</view>
+		</view>
+		<view class="assessment">
+			<textarea bindinput="inputHandler" placeholder="请输入内容" maxlength='100'/>
+			<view class="tips">（0-100字）{{currentLength}}/100</view>
+		</view>
+		<view class="more">商品评分</view>
+	</view>
+	<view class="btn">提　交</view>
+</view>

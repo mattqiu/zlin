@@ -7,39 +7,26 @@
 	</view>
 	<!-- 过滤栏目 -->
 	<view class="filter-bar">
-		<view class="filter-bar__item" bindtap="showPlane" data-idx="0">
+		<view class="filter-bar__item {{listType == 0 ? 'active' : ''}}" bindtap="listTypeFn" data-idx="0">
 			我的订单
 		</view>
-		<view class="filter-bar__item" bindtap="showPlane" data-idx="1">
+		<view class="filter-bar__item {{listType == 1 ? 'active' : ''}}" bindtap="listTypeFn" data-idx="1">
 			总排行榜
 		</view>
-		<view class="filter-bar__item icon-filter" bindtap="showPlane" data-idx="2">
+		<view class="filter-bar__item icon-filter" bindtap="showPlane">
 			筛选
 		</view>
 	</view>
 	<!-- 内容列表 -->
 	<view class="main">
-		<view class="my-order">
+		<!-- 我的订单 -->
+		<view class="my-order" wx:if="{{listType == 0}}">
 			<view class="select-list">
-				<view class="select-list__item">
-					<view class="radio abled"></view>
-					<view class="name">升序</view>
-				</view>
-				<view class="select-list__item">
-					<view class="radio"></view>
-					<view class="name">降序</view>
-				</view>
-				<view class="select-list__item">
-					<view class="radio"></view>
-					<view class="name">货号</view>
-				</view>
-				<view class="select-list__item">
-					<view class="radio"></view>
-					<view class="name">数量</view>
-				</view>
-				<view class="select-list__item">
-					<view class="radio"></view>
-					<view class="name">零售额</view>
+				<view wx:for="{{orderFilter}}" class="select-list__item"
+					data-idx="{{index}}"
+					bindtap="orderFilterFn">
+					<view class="radio {{index == orderFilterIdx ? 'abled' : ''}}"></view>
+					<view class="name">{{item.name}}</view>
 				</view>
 			</view>
 			<view class="order-list">
@@ -49,42 +36,90 @@
 					<view class="hd">零售价</view>
 					<view class="hd">零售额</view>
 				</view>
-				<scroll-view scroll-y style="height:100%">
-					<view class="order-list_item">
-						<view class="order-item">
-							<view class="item-pic">
-								<image src="../../images/local/pic2.png" mode="scaleToFill"></image>
+				<view class="order-list_bd">
+					<scroll-view scroll-y>
+						<view wx:for="{{orderGoodsList}}" class="order-list_item">
+							<view class="order-item">
+								<view class="item-pic">
+									<image src="{{item.pic}}" mode="scaleToFill"></image>
+								</view>
+								<view class="item-info">
+									<view class="name">{{item.name}}</view>
+									<view class="no">{{item.no}}</view>
+								</view>
 							</view>
-							<view class="item-info">
-								<view class="name">百搭针织上衣</view>
-								<view class="no">1630188</view>
+							<view class="order-item">
+								{{item.num}}
+							</view>
+							<view class="order-item">
+								{{item.price}}
+							</view>
+							<view class="order-item">
+								{{item.num * item.price}}
 							</view>
 						</view>
-						<view class="order-item">
-							16
+					</scroll-view>
+				</view>
+			</view>
+		</view>
+		<!-- 总榜排行 -->
+		<view class="top-order wx:else">
+			<view class="order-list">
+				<view class="order-list_hd">
+					<view class="hd">商品名称及货号</view>
+					<view class="hd">数量</view>
+					<view class="hd">零售价</view>
+					<view class="hd">零售额</view>
+					<view class="hd">排名</view>
+				</view>
+				<view class="order-list_bd">
+					<scroll-view scroll-y>
+						<view wx:for="{{topGoodsList}}" class="order-list_item">
+							<view class="order-item">
+								<view class="item-pic">
+									<image src="{{item.pic}}" mode="scaleToFill"></image>
+								</view>
+								<view class="item-info">
+									<view class="name">{{item.name}}</view>
+									<view class="no">{{item.no}}</view>
+								</view>
+							</view>
+							<view class="order-item">
+								{{item.num}}
+							</view>
+							<view class="order-item">
+								{{item.price}}
+							</view>
+							<view class="order-item">
+								{{item.num * item.price}}
+							</view>
+							<view class="order-item">
+								{{index+1}}
+							</view>
 						</view>
-						<view class="order-item">
-							600
-						</view>
-						<view class="order-item">
-							9600
-						</view>
-					</view>
-				</scroll-view>
+					</scroll-view>
+				</view>
 			</view>
 		</view>
 	</view>
 	<!-- 筛选面板 -->
-	<view class="filter-plane" wx:if="{{showPlaneType === '2'}}">
+	<view class="filter-plane" wx:if="{{isShowPlane}}">
 		<view class="filter-plane__wrap">
-			<view class="filter-plane__item">
-				<view class="item__hd">
-					筛选客户
-				</view>
-				<view class="item__bd">
-					<view class="opt">王思聪</view>
-					<view class="opt">王小明</view>
-				</view>
+			<view class="filter-plane__item-wrap">
+				<scroll-view scroll-y>
+					<view class="filter-plane__item">
+						<view class="item__hd">
+							筛选客户
+						</view>
+						<view class="item__bd">
+							<view wx:for="{{planeData}}" class="opt {{item.active ? 'active' : ''}}" data-idx="{{index}}" bindtap="chioceOpt">{{item.name}}</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="filter-plane__footer">
+				<view class="filter-btn" bindtap="resetPlane">重置</view>
+				<view class="filter-btn" bindtap="closePlane">确认</view>
 			</view>
 		</view>
 	</view>

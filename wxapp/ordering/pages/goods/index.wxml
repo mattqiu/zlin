@@ -52,7 +52,7 @@
 				<!-- 商品列表 -->
 				<view wx:if="{{!isShowList}}" class="goods-list__type{{goodsListType}}">
 					<view class="goods-item" wx:for="{{goods_list}}">
-              <navigator url="https://demo.halwo.com/wxapp/index.php?act=goods&op=index&goods_id={{item.goods_id}}">
+              <navigator url="checkin?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}">
                 <view class="goods-item__pic">
                   <image src="{{item.goods_image}}" mode="scaleToFill"></image>
                 </view>
@@ -83,18 +83,25 @@
 	<!-- 筛选面板 -->
 	<view class="filter-plane" wx:if="{{showPlaneType === '2'}}">
 		<view class="filter-plane__wrap">
-			<view wx:for="{{filter.ft.list}}" class="filter-plane__item {{item.show ? 'open' : ''}}">
-				<view class="item__hd" data-index="{{index}}" bindtap="toggleOpt">
-					{{item.title}}
-				</view>
-				<view wx:if="{{item.hasPriceRange}}" class="opt__range">
-					<input type="text" name="minPrice" bindblur="minPrice" placeholder="最低价"/>
-					-
-					<input type="text" name="maxPrice" bindblur="maxPrice" placeholder="最高价"/>
-				</view>
-				<view class="item__bd">
-					<view wx:for="{{item.opts}}" wx:for-index="idx" wx:for-item="opt" class="opt">{{opt.name}}</view>
-				</view>
+			<view class="filter-plane__item-wrap">
+					<scroll-view scroll-y>
+						<view wx:for="{{filter.ft.list}}" class="filter-plane__item {{item.show ? 'open' : ''}}">
+							<view class="item__hd" data-index="{{index}}" bindtap="toggleOpt">
+								{{item.title}}
+							</view>
+							<view wx:if="{{item.hasPriceRange}}" class="opt__range">
+								<input type="text" name="minPrice" data-index="4" bindinput="minPrice" placeholder="最低价"/>
+								-
+								<input type="text" name="maxPrice" data-index="4" bindinput="maxPrice" placeholder="最高价"/>
+							</view>
+							<view class="item__bd">
+								<view wx:for="{{item.opts}}" wx:for-index="idx" wx:for-item="opt" class="opt">{{opt.name}}</view>
+							</view>
+						</view>
+				</scroll-view>
+			</view>
+			<view class="filter-plane__footer">
+				<view class="filter-btn" bindtap="btn_submit">确认</view>
 			</view>
 		</view>
 	</view>

@@ -3,9 +3,9 @@
  * 压缩框架
  *
  * @package
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
  * @license    http://www.SrpingWater.net
- * @link       http://www.zlin-e.com
+ * @link       http://demo.hzlwo.com
  * @since      File available since Release v1.1
  */
 defined('InIMall') or exit('Access Invalid!');

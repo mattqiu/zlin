@@ -6,6 +6,7 @@ var token = wx.getStorageSync('token');//登录令牌
 var store_id = wx.getStorageSync('store_id');//店铺ID
 var member_id = wx.getStorageSync('member_id');//会员ID
 var seller_id = wx.getStorageSync('seller_id');//登录者导购ID
+
 App({
   //生命周期函数--监听小程序初始化
   onLaunch: function () {

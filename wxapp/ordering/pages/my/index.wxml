@@ -1,2 +1,46 @@
 <!--pages/my/index.wxml-->
-<text>pages/my/index.wxml</text>
+<view class="section">
+	<!-- 头部 -->
+	<view class="header">
+		<view class="header-item__center">我的</view>
+		<view class="header-item__side">退出</view>
+	</view>
+	<view class="info">
+		<view class="thumb"><image src="../../images/my/user-thumb.png" mode="scaleToFill"></image></view>
+		<view class="info-item">
+			<view class="label">客户姓名</view>
+			<view class="content">张子铭</view>
+		</view>
+		<view class="info-item">
+			<view class="label">所属地区</view>
+			<view class="content">浙江 杭州</view>
+		</view>
+	</view>
+	<view class="user-item">
+		<view class="user-item__icon icon1"></view>
+		<view class="user-item__content">客户代码</view>
+		<view class="user-item__aside">014586</view>
+	</view>
+	<view class="user-item">
+		<view class="user-item__icon icon2"></view>
+		<view class="user-item__content">更改登录密码</view>
+	</view>
+	<view class="user-item">
+		<view class="user-item__icon icon3"></view>
+		<view class="user-item__content">我的收藏</view>
+	</view>
+	<view class="user-item spc">
+		<view class="user-item__icon icon4"></view>
+		<view class="user-item__content">订货会主题</view>
+	</view>
+	<view class="user-item">
+		<view class="user-item__icon icon5"></view>
+		<view class="user-item__content">版本号</view>
+		<view class="user-item__aside">V1.3.2</view>
+	</view>
+	<view class="user-item">
+		<view class="user-item__icon icon6"></view>
+		<view class="user-item__content">店铺智能移动管理系统</view>
+		<view class="user-item__aside highlight">原创设计共享平台</view>
+	</view>
+</view>

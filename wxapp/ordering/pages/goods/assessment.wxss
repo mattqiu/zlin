@@ -1,0 +1,63 @@
+/* pages/goods/assessment.wxss */
+page{
+	height: 100%
+}
+
+.title{
+	height: 60rpx;
+	line-height: 60rpx;
+	padding: 0 20rpx;
+}
+
+.assessment-wrap{
+	padding: 0 20rpx;
+	background-color: #fff;
+}
+.goods{
+	display: flex;
+	align-items: center;
+	padding: 8rpx 0;
+}
+.goods-pic{
+	width: 200rpx;
+	height: 200rpx;
+	flex: 0 0 atuo;
+}
+.goods-info{
+	flex: 1 0 atuo;
+	padding-left: 20rpx;
+}
+.goods-name{
+	color: #9fa0a0;
+	height: 100rpx;
+}
+
+.assessment{
+	border:solid #c9c9c9;
+	border-width: 1px 0;
+}
+.assessment textarea{
+	box-sizing: border-box;
+	width: 100%;
+	padding: 10rpx 0;
+	height: 170rpx;
+}
+.tips{
+	text-align: right;
+	font-size: 20rpx;
+	color: #9fa0a0;
+	line-height: 30rpx;
+}
+.more{
+	line-height: 70rpx;
+}
+.btn{
+	margin: 35rpx 58rpx;
+	font-size: 30rpx;
+	color: #fff;
+	height: 80rpx;
+	line-height: 80rpx;
+	background-color: #ce9100;
+	text-align: center;
+	border-radius: 10rpx;
+}

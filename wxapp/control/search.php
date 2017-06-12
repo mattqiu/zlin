@@ -25,6 +25,7 @@ class searchControl extends wxappControl {
         $this->page=20;
         $termKey =$_REQUEST['key'];
         $termOrder =$_REQUEST['order'];
+
         $model_goods = Model('goods');
         $page_nums = !empty($_REQUEST['page_count'])?$_REQUEST['page_count']:$this->page; //每页显示的条数
         $page_curr = !empty($_REQUEST['curpage'])?$_REQUEST['curpage']:1; //当前显示第几页

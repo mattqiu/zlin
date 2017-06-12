@@ -1,0 +1,154 @@
+<!--pages/goods/checkin.wxml-->
+<view class="section">
+	<!-- 头部 -->
+	<view class="header">
+		<view class="header-item__left icon-prev">返回</view>
+		<view class="header-item__right icon-market"></view>
+	</view>
+	<!-- 商品参数 -->
+	<view class="ui-card">
+		<view class="goods-wrap">
+			<view class="goods-pic">
+				<image src="../../images/local/pic2.png" mode="scaleToFill"></image>
+			</view>
+			<view class="goods-info">
+				<view class="goods-info__item">
+					<view class="label">货号：</view>
+					<view class="text">{{goods_commonid}}</view>
+				</view>
+				<view class="goods-info__item">
+					<view class="label">名称：</view>
+					<view class="text">{{goods_name}}</view>
+				</view>
+				<view class="goods-info__item">
+					<view class="label">零售：</view>
+					<view class="text highlight">￥{{goods_price}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="goods-sku">
+			<view class="table-row">
+				<view class="table-col">尺码</view>
+				<view class="table-col">绿色</view>
+				<view class="table-col">粉色</view>
+				<view class="table-col">黑色</view>
+				<view class="table-col">红色</view>
+			</view>
+			<view class="table-row">
+				<view class="table-col">XS</view>
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+			</view>
+			<view class="table-row">
+				<view class="table-col">S</view>
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+			</view>
+			<view class="table-row">
+				<view class="table-col">M</view>
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+			</view>
+			<view class="table-row">
+				<view class="table-col">L</view>
+			<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+				<input class="table-col" placeholder="3" />
+			</view>
+			<view class="table-row">
+				<view class="table-col">XL</view>
+				<view class="table-col">3</view>
+				<view class="table-col">3</view>
+				<view class="table-col">3</view>
+				<view class="table-col">3</view>
+			</view>
+		</view>
+	</view>
+	<!-- 颜色 -->
+	<view class="ui-card">
+		<view class="ui-card__hd">
+			<view class="title">颜色</view>
+			<view class="other">
+				<view class="chioce-type">
+					<label class="radio-wrap">
+						<view class="radio"></view>单选
+					</label>
+					<label class="radio-wrap">
+						<view class="radio checked"></view>多选
+					</label>
+					<label class="checkbox-wrap">
+						<view class="checkbox checked"></view>
+					</label>
+				</view>
+			</view>
+		</view>
+		<view class="ui-card__bd">
+			<view class="opt-wrap">
+				<view class="opt">绿色</view>
+				<view class="opt">粉色</view>
+				<view class="opt active">黑色</view>
+				<view class="opt active">红色</view>
+			</view>
+		</view>
+	</view>
+	<!-- 尺码 -->
+	<view class="ui-card">
+		<view class="ui-card__hd">
+			<view class="title">颜色</view>
+			<view class="other">
+				<view class="chioce-type">
+					<label class="radio-wrap">
+						<view class="radio checked"></view>单选
+					</label>
+					<label class="radio-wrap">
+						<view class="radio"></view>多选
+					</label>
+					<label class="checkbox-wrap">
+						<view class="checkbox"></view>
+					</label>
+				</view>
+			</view>
+		</view>
+		<view class="ui-card__bd">
+			<view class="opt-wrap">
+				<view class="opt active">XS</view>
+				<view class="opt">S</view>
+				<view class="opt">M</view>
+				<view class="opt">L</view>
+			</view>
+		</view>
+	</view>
+	<!-- 数量 -->
+	<view class="footer ui-card">
+		<view class="ui-card__hd">
+			<view class="title">数量（件）</view>
+			<view class="other">
+				<view class="operation-num">
+					<view class="btn"></view>
+					<view class="num">0</view>
+					<view class="btn"></view>
+				</view>
+			</view>
+		</view>
+		<view class="operation-wrap">
+			<view class="item">
+				<text class="label">总件数：</text>
+				<text class="text">999件</text>
+			</view>
+			<view class="item">
+				<text class="label">总金额：</text>
+				<text class="text">13258.00元</text>
+			</view>
+		</view>
+		<view class="operation-btn">提　交</view>
+	</view>
+	
+</view>
+

@@ -1,11 +1,17 @@
 {
   "pages":[   
-    "pages/index/index",
     "pages/goods/index",
-    
+    "pages/index/index",
+    "pages/goods/checkin",
+    "pages/goods/detail",
+    "pages/goods/assessment",
     "pages/order/index",
+    "pages/order/manage",
     "pages/analysis/index",
     "pages/my/index",
+    "pages/my/collection",
+    "pages/my/changePasswd",
+    "pages/my/meeting",
     "pages/logs/logs"
   ],
   "window":{

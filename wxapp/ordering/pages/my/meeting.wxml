@@ -1,0 +1,20 @@
+<!--pages/my/meeting.wxml-->
+<view class="section">
+	<view class="banner">
+		<image src="../../images/my/banner.jpg" mode="scaleToFill"></image>
+	</view>
+	<view class="content-wrap">
+		<view class="logo"></view>
+		<view class="group highlight">音色秋季订货会</view>
+		<view class="group">音色2017秋季订货会 蝶变·自然</view>
+		<view class="hr"></view>
+		<view class="group">时间：2017年6月28日-7月3日（6天）</view>
+		<view class="group">地址：浙江 杭州九堡精品服装城</view>
+		<view class="hr"></view>
+		<view class="group highlight">温馨提示</view>
+		<view class="group">早上9点入场</view>
+		<view class="decorate left"></view>
+		<view class="decorate right"></view>
+	</view>
+	<view class="btn">返　回</view>
+</view>

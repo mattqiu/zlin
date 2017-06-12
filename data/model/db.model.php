@@ -11,9 +11,9 @@
  * backup_tables 需要备份的表名列表，为数组格式
  * md5 加密后缀
  * 
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
+ * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://demo.hzlwo.com)
+ * @license    http://demo.hzlwo.com
+ * @link       http://demo.hzlwo.com
  * @since      File available since Release v1.1
  */
 defined('InIMall') or exit('Access Invalid!');

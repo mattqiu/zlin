@@ -1,0 +1,73 @@
+/* pages/my/meeting.wxss */
+page{
+	height: 100%;
+}
+.section{
+	height: auto;
+}
+.banner{
+	height: 464rpx;
+}
+
+.content-wrap{
+	position: relative;
+	margin: 45rpx 54rpx;
+	background-color: #fff;
+	padding: 100rpx 50rpx;
+}
+
+.logo{
+	position: absolute;
+	top: -64rpx;
+	left: 50%;
+	transform: translate(-50%, 0);
+	box-shadow: 0 0 6rpx #d19f29;
+	width: 140rpx;
+	height: 140rpx;
+	border: 1px solid #d19f29;
+	background: #fff url(../../images/my/user-thumb.png) no-repeat center center;
+	background-size: 105rpx;
+	border-radius: 50%;
+}
+.group{
+	line-height: 60rpx;
+}
+.hr{
+	margin: 20rpx 0;
+	border-bottom: 1px dashed #9fa0a0;
+}
+
+.decorate{
+	position: absolute;
+	top:50%;
+	transform: translate(0, -50%);
+}
+.decorate.left{
+	left: -15rpx;
+}
+.decorate.right{
+	right: -15rpx;
+}
+.decorate::before,
+.decorate::after{
+	content: '';
+	display: block;
+	width: 30rpx;
+	height: 30rpx;
+	background-color: #e6e6e6;
+	border-radius: 50%;
+}
+.decorate::before{
+	margin-bottom: 110rpx;
+}
+
+.btn{
+	margin: 20rpx 58rpx;
+	font-size: 30rpx;
+	color: #fff;
+	height: 80rpx;
+	line-height: 80rpx;
+	background-color: #ce9100;
+	text-align: center;
+	border-radius: 10rpx;
+}

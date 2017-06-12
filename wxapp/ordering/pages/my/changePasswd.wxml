@@ -1,0 +1,28 @@
+<!--pages/my/changePasswd.wxml-->
+<view class="section">
+	<!-- 头部 -->
+	<view class="header">
+		<view class="header-item__side">返回</view>
+		<view class="header-item__side">退出</view>
+	</view>
+	<view class="form-item">
+		<view class="form-item__icon"></view>
+		<view class="form-item__content">
+			<input type="text" placeholder="原始密码" />
+		</view>
+	</view>
+	<view class="form-item">
+		<view class="form-item__icon"></view>
+		<view class="form-item__content">
+			<input type="text" placeholder="新的密码" />
+		</view>
+	</view>
+	<view class="form-item">
+		<view class="form-item__icon"></view>
+		<view class="form-item__content">
+			<input type="text" placeholder="确认密码" />
+		</view>
+	</view>
+	<view class="btn">提　交</view>
+</view>
+

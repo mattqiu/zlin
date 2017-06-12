@@ -1,0 +1,131 @@
+/* pages/goods/detail.wxss */
+.top{
+	position: relative;
+}
+.top .pic{
+	height: 750rpx;
+}
+.top .icon-prev{
+	position: absolute;
+	top: 70rpx;
+	left: 20rpx;
+	width: 60rpx;
+	height: 60rpx;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, .5) url(../../images/icons/icon-arrow_left_white.png) no-repeat center center;
+	background-size: 17rpx auto;
+}
+.top .about{
+	position: absolute;
+	width: 240rpx;
+	right: 0;
+	bottom: 40rpx;
+}
+.top .about .about-item{
+	padding-top: 64rpx;
+	font-size: 25rpx;
+	text-align: center;
+}
+.collect{
+	background: url(../../images/icons/icon-star.png) no-repeat center top;
+	background-size: 61rpx auto;
+	color: #ffb5b5;
+	margin-bottom: 48rpx;
+}
+.evaluate{
+	padding-top: 54rpx;
+	background: url(../../images/icons/icon-heart.png) no-repeat center top;
+	background-size: 50rpx auto;
+	color: #535353;
+}
+
+.info{
+	position: relative;
+	padding: 0 20rpx;
+}
+.goods-name{
+	line-height: 50rpx;
+	color: #9fa0a0;
+}
+.goods-no{
+	line-height: 40rpx;
+}
+.goods-pirce{
+	line-height: 32rpx;
+}
+.goods-dn{
+	position: absolute;
+	top:50%;
+	right: 80rpx;
+	transform: translate(0, -50%);
+	width: 70rpx;
+	height: 70rpx;
+	background-color: #ce9100;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 35rpx;
+	line-height: 70rpx;
+	text-align: center;
+}
+
+.tab-ctrl{
+	display: flex;
+	height: 70rpx;
+	background-color: #e6e6e6;
+}
+.tab-nav{
+	flex: 1 1 auto;
+	line-height: 70rpx;
+	text-align: center;
+}
+.tab-nav.active{
+	position: relative;
+	color: #ce9100;
+}
+.active::after{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 1px;
+	background-color: #ce9100;
+}
+
+.goods-attr__item{
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #c9c9c9;
+	height: 72rpx;
+	color: #aaa;
+}
+.goods-attr__item .label{
+	width: 250rpx;
+	text-align: center;
+	color: #000;
+}
+
+.goods-detail{
+	padding: 30rpx 20rpx;
+}
+.goods-empty{
+	margin: 150rpx auto;
+	width: 296rpx;
+	height: 250rpx;
+	background: url(../../images/goods/empty.png) no-repeat center center;
+	background-size: 100%;
+}
+
+.recommend{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 30rpx 20rpx;
+}
+.recommend-item{
+	flex: 1 0 auto;
+	margin-bottom: 10rpx;
+}
+.recommend-item .pic{
+	width: 340rpx;
+	height: 340rpx;
+}

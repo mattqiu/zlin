@@ -1,1 +1,90 @@
 /* pages/my/index.wxss */
+page{
+	height: 100%;
+}
+.header-item__center{
+	text-align: center;
+}
+
+.info{
+	display: flex;
+	align-items: center;
+	padding: 0 60rpx;
+	height: 170rpx;
+	background-color: #ce9100;
+	border-top: 1px solid #959595;
+	margin-bottom: 10rpx;
+}
+.thumb{
+	flex: 0 0 auto;
+	width: 120rpx;
+	height: 120rpx;
+	background-color: #fff;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.info-item{
+	flex: 1 0 auto;
+	padding: 0 20rpx;
+	line-height: 35rpx;
+}
+.info-item .label{
+	color: #dfcea5;
+	font-size: 25rpx;
+}
+.info-item .content{
+	color: #fff;
+	font-size: 20rpx;
+}
+
+.user-item{
+	display: flex;
+	align-items: center;
+	padding: 0 20rpx;
+	height: 70rpx;
+	background-color: #fff;
+	border-bottom: 1px solid #959595;
+}
+.user-item__icon{
+	flex: 0 0 auto;
+	height: 32rpx;
+	width: 32rpx;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+.user-item .icon1{
+	background-image: url(../../images/my/icon1.png);
+}
+.user-item .icon2{
+	background-image: url(../../images/my/icon2.png);
+}
+.user-item .icon3{
+	background-image: url(../../images/my/icon3.png);
+}
+.user-item .icon4{
+	background-image: url(../../images/my/icon4.png);
+}
+.user-item .icon5{
+	background-image: url(../../images/my/icon5.png);
+}
+.user-item .icon6{
+	background-image: url(../../images/my/icon6.png);
+}
+.user-item__content{
+	flex: 1 0 auto;
+	padding: 0 14rpx;
+	color: #9fa0a0;
+}
+.user-item__aside{
+	flex: 0 0 auto;
+}
+
+.spc{
+	margin: 10rpx 0;
+	border: 0;
+	background-color: #dfcea5;
+}
+.spc .user-item__content{
+	color: #ce9100;
+}

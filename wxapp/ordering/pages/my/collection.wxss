@@ -1,0 +1,134 @@
+/* pages/my/collection.wxss */
+page{
+	height: 100%
+}
+.header{
+	flex: 0 0 auto;
+}
+
+.filter-type1::after{
+	content: '';
+	display: block;
+	width: 30rpx;
+	height: 30rpx;
+	background: url(../../images/my/type1.png) no-repeat 0 0;
+	background-size: 100%;
+}
+.filter-type2::after{
+	content: '';
+	display: block;
+	width: 30rpx;
+	height: 30rpx;
+	background: url(../../images/my/type2.png) no-repeat 0 0;
+	background-size: 100%;
+}
+
+.goods-list{
+	display: flex;
+	flex: 1 1 auto;
+	width: 100%;
+	overflow: hidden;
+}
+
+.goods-item__pic image{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.goods-item__name{
+	font-size: 30rpx;
+	color: #9fa0a0;
+	line-height: 40rpx;
+	height: 40rpx;
+	overflow: hidden;
+	white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.goods-item__no{
+	font-size: 30rpx;
+	color: #000;
+	line-height: 38rpx;
+}
+.goods-item__price{
+	font-size: 35rpx;
+	color: #ce9100;
+	line-height: 36rpx;
+}
+.goods-item__dn{
+	width: 70rpx;
+	height: 70rpx;
+	border-radius: 50%;
+	background-color: #ce9100;
+	font-size: 35rpx;
+	color: #fff;
+	line-height: 70rpx;
+	text-align: center;
+}
+
+/*商品列表风格1 小图*/
+.goods-list__type1{
+	display: flex;
+	box-sizing: border-box;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding: 10rpx 20rpx;
+}
+.goods-list__type1 .goods-item{
+	box-sizing: border-box;
+	width: 350rpx;
+	background-color: #fff;
+	padding: 3rpx;
+}
+.goods-list__type1 .goods-item__pic{
+	width: 344rpx;
+	height: 344rpx;
+}
+.goods-list__type1 .goods-item__info{
+	position: relative;
+}
+.goods-list__type1 .goods-item__name{
+	border-bottom: 1px dashed #535353;
+}
+.goods-list__type1 .goods-item__dn{
+	position: absolute;
+	bottom: 5rpx;
+	right: 33rpx;
+}
+/*商品列表风格2 大图*/
+.goods-list__type2{
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: flex-start;
+	padding: 10rpx 20rpx;
+}
+.goods-list__type2 .goods-item{
+	display: flex;
+	box-sizing: border-box;
+	background-color: #fff;
+	padding: 3rpx;
+}
+.goods-list__type2 .goods-item + .goods-item{
+	margin-top: 10rpx;
+}
+.goods-list__type2 .goods-item__pic{
+	width: 196rpx;
+	height: 196rpx;
+	flex: 0 1 auto;
+}
+.goods-list__type2 .goods-item__info{
+	position: relative;
+	flex: 1 0 auto;
+	padding-left: 20rpx;
+}
+.goods-list__type2 .goods-item__name{
+	box-sizing: border-box;
+	padding-top: 26rpx;
+	min-height: 114rpx;
+}
+.goods-list__type2 .goods-item__dn{
+	position: absolute;
+	top: 50%;
+	right: 24rpx;
+
+	transform: translate(0, -50%);
+}

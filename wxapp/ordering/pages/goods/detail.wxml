@@ -1,0 +1,54 @@
+<!--pages/goods/detail.wxml-->
+<view class="section">
+	<view class="top">
+		<view class="pic"><image src="../../images/local/pic2.png" mode="scaleToFill"></image></view>
+		<view class="icon-prev"></view>
+		<view class="about">
+			<view class="about-item collect">
+				加入收藏
+			</view>
+			<view class="about-item evaluate">
+				对我的评价
+			</view>
+		</view>
+	</view>
+	<view class="info">
+		<view class="goods-name">百搭针织上衣 </view>
+		<view class="goods-no">1630188</view>
+		<view class="goods-pirce highlight">￥999</view>
+		<view class="goods-dn">260</view>
+	</view>
+	<view class="tab-ctrl">
+		<view bindtap="switchTab" data-idx="0" class="tab-nav {{tabIndex == 0 ? 'active' : ''}}">商品属性</view>
+		<view bindtap="switchTab" data-idx="1" class="tab-nav {{tabIndex == 1 ? 'active' : ''}}">商品卖点</view>
+		<view bindtap="switchTab" data-idx="2" class="tab-nav {{tabIndex == 2 ? 'active' : ''}}">相关推荐</view>
+	</view>
+	<view wx:if="{{tabIndex == 0}}" class="goods-attr">
+		<view class="goods-attr__item">
+			<view class="label">品牌名称</view>百搭针织上衣
+		</view>
+		<view class="goods-attr__item">
+			<view class="label">货　　号</view>1630188
+		</view>
+	</view>
+	<view wx:if="{{tabIndex == 1}}" class="goods-detail">
+		<view class="goods-empty"></view>
+	</view>
+	<view wx:if="{{tabIndex == 2}}" class="recommend">
+		<view class="recommend-item">
+			<view class="pic"><image src="../../images/local/pic2.png" mode="scaleToFill"></image></view>
+			<view class="goods-no">1630188</view>
+			<view class="goods-pirce highlight">￥999</view>
+		</view>
+		<view class="recommend-item">
+			<view class="pic"><image src="../../images/local/pic2.png" mode="scaleToFill"></image></view>
+			<view class="goods-no">1630188</view>
+			<view class="goods-pirce highlight">￥999</view>
+		</view>
+		<view class="recommend-item">
+			<view class="pic"><image src="../../images/local/pic2.png" mode="scaleToFill"></image></view>
+			<view class="goods-no">1630188</view>
+			<view class="goods-pirce highlight">￥999</view>
+		</view>
+	</view>
+</view>

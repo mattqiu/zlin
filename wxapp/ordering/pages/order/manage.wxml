@@ -1,0 +1,92 @@
+<!--pages/order/manage.wxml-->
+<view class="section">
+	<!-- 头部 -->
+	<view class="header">
+		<view class="header-item__left icon-prev"></view>
+		<view class="header-item__right">订单管理</view>
+	</view>
+	
+	<!-- 切换导航 -->
+	<view class="tab-ctrl">
+		<view class="tab-ctrl__item {{listType == 0 ? 'active' : ''}}" data-type="0" bindtap="switchType">
+			已完成的订单
+		</view>
+		<view class="tab-ctrl__item {{listType == 1 ? 'active' : ''}}" data-type="1" bindtap="switchType">
+			未完成的订单
+		</view>
+	</view>
+
+	<view class="main">
+		<view wx:if="{{listType == 0}}" class="complated-wrap">
+			<view class="list-wrap">
+				<scroll-view scroll-y>
+					<view class="order-item">
+						<view class="order-item__main">
+							<view class="order__left">
+								<view class="item-content highlight">款号 ZFQ1254888</view>
+								<view class="item-content big">12款256件</view>
+							</view>
+							<view class="order__right">
+								<view class="item-content">2017-06-06 18:20:20</view>
+								<view class="item-content">张小明</view>
+								<view class="item-content big">6589元</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="footer">
+				<view class="item"><text class="label">合计：</text>22款500件</view>
+				<view class="item"><text class="label">总金额：</text>6589元</view>
+			</view>
+		</view>
+
+		<view wx:else class="uncomplated-wrap">
+			<view class="list-wrap">
+				<scroll-view scroll-y>
+					<view class="order-item">
+						<view class="order-item__label">
+							<label class="checkbox-wrap">
+								<view class="checkbox"></view>
+							</label>
+						</view>
+						<view class="order-item__main">
+							<view class="order__left">
+								<view class="item-content highlight">款号 ZFQ1254888</view>
+								<view class="item-content big">12款256件</view>
+							</view>
+							<view class="order__right">
+								<view class="item-content">2017-06-06 18:20:20</view>
+								<view class="item-content">张小明</view>
+								<view class="item-content big">6589元</view>
+							</view>
+						</view>
+					</view>
+					<view class="order-item">
+						<view class="order-item__label">
+							<label class="checkbox-wrap">
+								<view class="checkbox checked"></view>
+							</label>
+						</view>
+						<view class="order-item__main">
+							<view class="order__left">
+								<view class="item-content highlight">款号 ZFQ1254888</view>
+								<view class="item-content big">12款256件</view>
+							</view>
+							<view class="order__right">
+								<view class="item-content">2017-06-06 18:20:20</view>
+								<view class="item-content">张小明</view>
+								<view class="item-content big">6589元</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="footer">
+				<view class="btn">提　交</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+

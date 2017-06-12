@@ -65,6 +65,7 @@ CREATE TABLE `zlin_ordering_goods` (
   `goods_contractid` varchar(100) DEFAULT NULL COMMENT '商品开启的消费者保障服务id',
   `commis_totals` decimal(10,2) DEFAULT '0.00' COMMENT '返佣金额',
   `rebate_amount` decimal(10,2) DEFAULT '0.00' COMMENT '返利金额',
+  `store_goods_state` tinyint(1) DEFAULT '0' COMMENT '商家商品状态 默认0 正常1下架',
   PRIMARY KEY (`rec_id`),
   KEY `ordering_id` (`ordering_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='订货订单商品表';

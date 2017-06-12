@@ -11,6 +11,8 @@ Page({
     goods_name:'',
     goods_price:'',
     goods_id:'',
+    minPrice:'',
+    maxPrice:'',
     showPlaneType: '',  // 筛选面板 ‘’不展开 0排序 1拥有 2筛选
     filter:{
       // 排序筛选 key  代表排序的类别 1 默认排序 2 所有  3 陈列  4 筛选  order  代表下拉的顺序
@@ -115,8 +117,7 @@ Page({
       }
     },
     goodsListType: 1, //1小图 2大图
-    goodsList: [
-    ],
+    goodsList: [],
     isShowList: false,  //是否展示陈列
     // 陈列列表
     showList: [
@@ -175,7 +176,7 @@ Page({
        that.setData({
          goods_list: res.datas,        
        })
-       //console.log('提交返回排序数据', that.data.goods_list)      
+       //console.log('提交返回排序', res)      
      });
      
     let filterData = this.data.filter;
@@ -192,6 +193,12 @@ Page({
     // 展现陈列时不变
     // if(this.data.isShowList) return;
     // doing
+  },
+  minPrice:function(e){
+    this.data.minPrice = e.detail.value
+  },
+  maxPrice:function(e){
+    this.data.maxPrice = e.detail.value
   },
   toggleShow: function(){
     // 陈列开关
@@ -221,34 +228,21 @@ Page({
       filter: filter
     })
   },
-  onLoad:function(options){
+  onLoad:function(res){
+    var that = this;
+    var data = {
+      token: app.globalData.token,
+      key: '1',
+      order: '0'
+    };
+    util.Ajax("search/index", data, function (res) {
+      that.setData({
+        goods_list: res.datas,
+      })
+      console.log('提交返回排序', res)      
+    });
     console.log('跳转成功：', app.globalData);
     // 页面初始化 options为页面跳转所带来的参数
-    var that = this;
-    //console.log('商品列表：', options);
-    wx.request({
-      url: goodsListUrl,
-      data:{
-        token: app.globalData.token,
-        store_id: app.globalData.store_id,
-        member_id: app.globalData.member_id,
-        seller_id: app.globalData.seller_id,
-      },
-      method:'post',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res){
-        //console.log('商品列表：', res.data.datas.goods_list);
-        that.setData({
-          goods_list:res.data.datas.goods_list
-        });
-      },
-      fail: function (err) {
-        app.showErrMsg(err);
-        console.log('跳转失败：', err);
-      }
-    })
   },
   loadMore: function (e) {
     this.showLoading('正在加载图片中');
@@ -280,6 +274,20 @@ Page({
         that.hideLoading();
       }
     })
+  },
+  btn_submit:function(e){
+    var that = this;
+    var data = {
+      key: '4',
+      minPrice: this.data.minPrice,
+      maxPrice: this.data.maxPrice,
+    };
+    util.Ajax("search/index", data, function (res) {
+      that.setData({
+        goods_list: res,
+      })
+      console.log('提交返回排序数据', res)      
+    });
   },
   onReady:function(){
     // 页面渲染完成

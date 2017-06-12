@@ -18,7 +18,7 @@
       'adv_id' => '962',
       'ap_id' => '1078',
       'adv_title' => '奶粉',
-      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05246622536636950.jpg";s:11:"adv_pic_url";s:75:"www.zlin-e.com/imall/index.php?act=show_store&amp;op=index&amp;store_id=122";}',
+      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05246622536636950.jpg";s:11:"adv_pic_url";s:75:"demo.hzlwo.com/imall/index.php?act=show_store&amp;op=index&amp;store_id=122";}',
       'adv_start_date' => '1469980800',
       'adv_end_date' => '1693411200',
       'slide_sort' => '0',

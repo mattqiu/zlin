@@ -18,7 +18,7 @@
       'adv_id' => '951',
       'ap_id' => '1069',
       'adv_title' => '戒指',
-      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05246618064578453.jpg";s:11:"adv_pic_url";s:94:"www.zlin-e.com/imall/index.php?act=show_store&amp;op=goods_all&amp;store_id=123&amp;stc_id=198";}',
+      'adv_content' => 'a:2:{s:7:"adv_pic";s:21:"05246618064578453.jpg";s:11:"adv_pic_url";s:94:"demo.hzlwo.com/imall/index.php?act=show_store&amp;op=goods_all&amp;store_id=123&amp;stc_id=198";}',
       'adv_start_date' => '1469376000',
       'adv_end_date' => '1596124800',
       'slide_sort' => '0',
