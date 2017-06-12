@@ -97,7 +97,7 @@ image{
 	display: block;
 	width: 25rpx;
 	height: 24rpx;
-	background: url(/images/icons/icon-tick.png) no-repeat 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-tick.png) no-repeat 0 0;
 	background-size: 100%;
 	margin: 4rpx auto 0;
 }

@@ -27,7 +27,7 @@
 	margin-right: 10rpx;
 	width: 17rpx;
 	height: 33rpx;
-	background: url(../../images/icons/icon-arrow_left_white.png) 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-arrow_left_white.png) 0 0;
 	background-size: 100%;
 }
 .icon-market::before{
@@ -35,7 +35,7 @@
 	display: inline-block;
 	width: 42rpx;
 	height: 42rpx;
-	background: url(../../images/icons/icon-market.png) 0 0;
+	background: url(https://demo.hzlwo.com/wxapp/ordering/images/icons/icon-market.png) 0 0;
 	background-size: 100%;
 }
 

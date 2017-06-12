@@ -14,15 +14,15 @@
 			<view class="goods-info">
 				<view class="goods-info__item">
 					<view class="label">货号：</view>
-					<view class="text">{{goods_commonid}}</view>
+					<view class="text">{{goods_info.goods_commonid}}</view>
 				</view>
 				<view class="goods-info__item">
 					<view class="label">名称：</view>
-					<view class="text">{{goods_name}}</view>
+					<view class="text">{{goods_info.goods_name}}</view>
 				</view>
 				<view class="goods-info__item">
 					<view class="label">零售：</view>
-					<view class="text highlight">￥{{goods_price}}</view>
+					<view class="text highlight">￥{{goods_info.goods_price}}</view>
 				</view>
 			</view>
 		</view>

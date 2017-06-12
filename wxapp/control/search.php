@@ -66,7 +66,10 @@ class searchControl extends wxappControl {
         }else{
         	$goods_list = $model_goods->getGoodsListByCommonidDistinct($condition, $fields,'goods_commend desc,goods_edittime desc,goods_addtime desc', $this->page);
         }
-        
+        // 整理输出的数据格式
+        foreach ($goods_list as $key => $value) {
+        	$goods_list[$key]['goods_image'] = cthumb($goods_list[$key]['goods_image']);
+        }
     output_data($goods_list, "加载成功");
     }
 	

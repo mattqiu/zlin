@@ -1,5 +1,6 @@
 // pages/analysis/index.js
 let wxCharts = require('../../utils/wxcharts.js');
+var app = new getApp();
 Page({
   data:{
     colors: ['#dfcea5', '#8f690d', '#9e8446', '#dbb864', '#ae7122', '#ce9100', '#f6a526'],  // 图表配色

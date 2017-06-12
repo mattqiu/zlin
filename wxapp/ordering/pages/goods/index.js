@@ -286,7 +286,7 @@ Page({
       that.setData({
         goods_list: res,
       })
-      console.log('提交返回排序数据', res)      
+      //console.log('提交返回排序数据', res)      
     });
   },
   onReady:function(){

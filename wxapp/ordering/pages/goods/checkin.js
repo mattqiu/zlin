@@ -1,6 +1,5 @@
 // pages/goods/checkin.js
 var util = require('../../utils/util.js');
-var goodsAdd = require('../../config').goodsAdd;
 var app = new getApp();
 Page({
   data:{
@@ -16,26 +15,18 @@ Page({
       goods_commonid: options.goods_commonid
     };
     util.Ajax("goods/goods_detail", data, function (res) {
+      //console.log("a结果：", res);
       that.setData({
-        goods_commonid: res.datas.goods_commonid,
-        goods_price: res.goods_price,
-        
+        goods_info: res.datas
       })
-      console.log('提交返回数据2', res.datas.goods_name)      
     });
-    /*var goods_commonid
-    this.setData({
-      goods_commonid: options.goods_commonid,
-      goods_price:options.goods_price,
-      goods_name:options.goods_name
-    })
-    console.log('获取到goods_commonid', options.goods_commonid)*/
   },
   onReady:function(){
     // 页面渲染完成
   },
   onShow:function(){
     // 页面显示
+    
   },
   onHide:function(){
     // 页面隐藏

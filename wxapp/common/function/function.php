@@ -13,7 +13,7 @@
  */
 defined('InIMall') or exit('Access Invalid!');
 
-function output_data($datas, $message,$extend_data = array()) {
+function output_data($datas, $message='成功获取',$extend_data = array()) {
     $data = array();
     $data['code'] = 200;	
 	$data['datas'] = $datas;
