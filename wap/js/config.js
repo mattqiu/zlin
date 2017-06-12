@@ -1,3 +1,4 @@
+
 var SiteUrl = "http://demo.hzlwo.com/imall";
 var ApiUrl = "http://demo.hzlwo.com/mobile";
 var WapSiteUrl = "http://demo.hzlwo.com/wap";
