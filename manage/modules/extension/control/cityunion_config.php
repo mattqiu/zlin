@@ -115,11 +115,11 @@ class cityunion_configControl extends BaseExtensionControl {
 		$data['mc_id']       = $_POST['mc_id'];
 		$data['sub_nums']    = $_POST['sub_nums'];
 		$data['child_nums']  = $_POST['child_nums'];
-		$data['order_nums']  = $_POST['order_nums'];		
+		$data['order_nums']  = $_POST['order_nums'];
 		$data['achieve_val'] = $_POST['achieve_val'];
-		$data['award_rate']= $_POST['award_rate'];
+		$data['award_rate']	 = $_POST['award_rate'];
 		$data['award_level'] = $_POST['award_level'];
-		$data['points_rate']= $_POST['points_rate'];
+		$data['points_rate'] = $_POST['points_rate'];
 		
 		if($_POST['em_id'] != '') {
 			$where=array();

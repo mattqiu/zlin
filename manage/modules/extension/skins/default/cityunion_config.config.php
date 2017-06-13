@@ -42,7 +42,7 @@
         <tr class="noborder">
           <td class="required tr"><label class="validation" for="gl_invite_require">成为合伙人条件<?php echo $lang['im_colon'];?></label></td>
           <td class="vatop rowform" align="left">
-           	邀请码金额：<input type="text" class="txt" value="<?php echo $output['gl_invite_money']?$output['gl_invite_money']:0;?>" style="width:30px" name="gl_invite_money">
+           	邀请码金额：<input type="text" class="txt" value="<?php echo $output['gl_invite_money']?$output['gl_invite_money']:0;?>" style="width:60px" name="gl_invite_money">
           	&nbsp;&nbsp;&nbsp;&nbsp;
           	最低购买 <input type="text" class="txt" value="<?php echo $output['gl_invite_min']?$output['gl_invite_min']:0;?>" style="width:30px" name="gl_invite_min">个
           </td>
