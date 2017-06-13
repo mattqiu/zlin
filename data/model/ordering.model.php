@@ -76,7 +76,25 @@ class orderingModel extends Model {
 
         return $order_list;
     }
-
+    /**
+     * 添加ordering_goods表订单信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
+    public function add_Ordering_Goods($data) {
+    	
+    	$insert = $this->table('ordering_goods')->insert($data);
+    	
+    	return $insert;
+    }
+    public function add_Ordering($param) {
+    	
+    	$insert = $this->table('ordering')->insert($data);
+    	
+    	return $insert;
+    }
 
 
 }

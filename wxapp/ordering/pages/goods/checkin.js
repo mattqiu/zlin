@@ -12,7 +12,9 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
     var data = {
-      goods_commonid: options.goods_commonid
+      goods_commonid: options.goods_commonid,
+      goods_name: options.goods_name,
+      goods_price: options.goods_price
     };
     util.Ajax("goods/goods_detail", data, function (res) {
       //console.log("a结果：", res);
@@ -24,8 +26,17 @@ Page({
   btn_submit:function(e){
     var that = this;
     var data ={
-      goods_id:goods_id,
-      quantity:quantity,
+      goods_info:[
+        {
+          goods_id: goods_id,
+          quantity: quantity,
+        }
+      ],
+      goods_commonid: goods_commonid,
+      goods_name: goods_name,
+      goods_price: goods_price,
+      member_id: app.globalData.member_id,
+      store_id: app.globalData.store_id
     };
     util.Ajax("member_cart/cart_add",data,function(options){
       console.log("购物城返回结果：",options);
