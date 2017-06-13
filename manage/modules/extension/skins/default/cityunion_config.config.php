@@ -18,7 +18,7 @@
     </ul>
   </div>
   <div class="fixed-empty"></div>
-  <form id="form_config" name="form_config" enctype="multipart/form-data" method="post" action="<?php echo urlAdmin('cityunion_config', 'config_save');?>">
+  <form id="form_config" name="form_config" enctype="multipart/form-data" method="post" action="<?php echo urlAdminExtension('cityunion_config', 'config_save');?>">
     <input type="hidden" name="form_submit" value="ok" />
     <table class="table tb-type2 nobdb">
       <tbody>
