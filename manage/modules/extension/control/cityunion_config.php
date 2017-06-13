@@ -78,8 +78,8 @@ class cityunion_configControl extends BaseExtensionControl {
 	 *
 	 */
     public function manageOp() {
-        $model_manage = Model('cityunion_manageaward');
-		$manage_list = $model_manage->getExtensionManageAwardListByStoreID(GENERAL_PLATFORM_EXTENSION_ID);		
+        $model_manage = Model('extension_manageaward');
+		$manage_list = $model_manage->getExtensionManageAwardListByStoreID(GENERAL_PLATFORM_EXTENSION_ID,'*',1);		
 		Tpl::output('manage_list',$manage_list);
 		
 		Tpl::output('top_link',$this->sublink($this->links,'manage'));
@@ -91,10 +91,10 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * 编辑管理服务奖励方案
 	 */
 	public function manage_editOp(){
-		$model_manage = Model('cityunion_manageaward');
+		$model_manage = Model('extension_manageaward');
 
 		$em_id = intval($_GET["em_id"]);
-		$manage_info = $model_manage->getExtensionManageAwardByID($em_id);		
+		$manage_info = $model_manage->getExtensionManageAwardByID($em_id,'*',1);		
 		Tpl::output('manage_info',$manage_info);
 		
 		Tpl::setDirquna('extension');
@@ -107,7 +107,7 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * @return 
 	 */
 	public function manage_saveOp() {
-		$model_manage	= Model('cityunion_manageaward');
+		$model_manage	= Model('extension_manageaward');
 		
 		$data=array();
 		$data['store_id']    = GENERAL_PLATFORM_EXTENSION_ID;
@@ -120,7 +120,7 @@ class cityunion_configControl extends BaseExtensionControl {
 		$data['award_rate']	 = $_POST['award_rate'];
 		$data['award_level'] = $_POST['award_level'];
 		$data['points_rate'] = $_POST['points_rate'];
-		
+		$data['extend_type'] = 1; //表示城市联盟（B2B）
 		if($_POST['em_id'] != '') {
 			$where=array();
 			$where['em_id']=intval($_POST['em_id']);
@@ -147,7 +147,7 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * @return 
 	 */
 	public function manage_delOp() {
-		$model_manage	= Model('cityunion_manageaward');		
+		$model_manage	= Model('extension_manageaward');		
 	
 		if($_GET['em_id'] != '') {
 			$where=array();
