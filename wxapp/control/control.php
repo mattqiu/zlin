@@ -23,7 +23,7 @@ class wxappControl{
 	public function __construct() {
         Language::read('wxapp');
         //分页数处理
-        $page = intval($_GET['page']);
+        $page = intval($_REQUEST['page']);
         if($page > 0) {
             $this->page = $page;
         }

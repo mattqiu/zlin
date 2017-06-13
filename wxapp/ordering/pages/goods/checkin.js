@@ -21,6 +21,16 @@ Page({
       })
     });
   },
+  btn_submit:function(e){
+    var that = this;
+    var data ={
+      goods_id:goods_id,
+      quantity:quantity,
+    };
+    util.Ajax("member_cart/cart_add",data,function(options){
+      console.log("购物城返回结果：",options);
+    })
+  },
   onReady:function(){
     // 页面渲染完成
   },

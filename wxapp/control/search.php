@@ -29,7 +29,7 @@ class searchControl extends wxappControl {
         $model_goods = Model('goods');
         $page_nums = !empty($_REQUEST['page_count'])?$_REQUEST['page_count']:$this->page; //每页显示的条数
         $page_curr = !empty($_REQUEST['curpage'])?$_REQUEST['curpage']:1; //当前显示第几页
-        $fields = 'goods_id,goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_addtime,goods_image,goods_state,goods_collect,goods_salenum,up_id,promotion_cid';
+        $fields = 'goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_addtime,goods_image,goods_state,promotion_cid';
         if($termKey == "1"){
         	switch ($termOrder) {
         		case '1':
@@ -45,7 +45,7 @@ class searchControl extends wxappControl {
         			$goods_list = $model_goods->getGoodsOnlineList($condition, $fields, $this->page,'goods_price asc');
         			break;
         		default:
-        			$goods_list = $model_goods->getGoodsListByCommonidDistinct($condition, $fields,'goods_commend desc,goods_edittime desc,goods_addtime desc', $this->page);
+        			$goods_list = $model_goods->getGoodsOnlineList($condition, $fields, $this->page,'goods_commend desc,goods_addtime desc');
         			break;
         	}
         }else if($termKey == "2"){
@@ -57,14 +57,14 @@ class searchControl extends wxappControl {
         			$goods_list = $model_goods->getGoodsOnlineList($condition, $fields, $this->page);
         			break;
         		default:
-        			$goods_list = $model_goods->getGoodsListByCommonidDistinct($condition, $fields,'goods_commend desc,goods_edittime desc,goods_addtime desc', $this->page);
+        			$goods_list = $model_goods->getGoodsOnlineList($condition, $fields, $this->page,'goods_commend desc,goods_addtime desc');
         			break;
         	}
         }else if($termKey == "4"){
         			$goods_list = $model_goods->getGoodsChoseList($condition, $fields, $this->page,'goods_price desc');
         			
         }else{
-        	$goods_list = $model_goods->getGoodsListByCommonidDistinct($condition, $fields,'goods_commend desc,goods_edittime desc,goods_addtime desc', $this->page);
+        	$goods_list = $model_goods->getGoodsOnlineList($condition, $fields, $this->page,'goods_commend desc,goods_addtime desc');
         }
         // 整理输出的数据格式
         foreach ($goods_list as $key => $value) {

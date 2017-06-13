@@ -147,7 +147,7 @@
 				<text class="text">13258.00元</text>
 			</view>
 		</view>
-		<view class="operation-btn">提　交</view>
+		<view class="operation-btn" bindtap="btn_submit">提　交</view>
 	</view>
 	
 </view>
