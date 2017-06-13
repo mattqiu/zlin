@@ -178,6 +178,18 @@ $(function() {
 			height: 'toggle'
 		})
 	})
+		$('#Samplesoftables').click(function() {
+		if($('.iconfont01').css('display') == 'block'){
+			$('.iconfont01').css('display','none').siblings().css('display', 'block');
+		}else{
+			$('.iconfont01').css('display','block').siblings().css('display', 'none');
+		}
+		if($('#show1').css('display') == 'block') {
+			$('#show1').css('display', 'none').siblings().css('display', 'block')
+		} else {
+			$('#show1').css('display', 'block').siblings().css('display', 'none')
+		}
+	})
 	/*页面加载完成执行ajax 加载我的订单默认数据*/
 	ajaxCommit('order');
 })
