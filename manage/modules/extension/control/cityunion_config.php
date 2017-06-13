@@ -37,13 +37,15 @@ class cityunion_configControl extends BaseExtensionControl {
 		
 		$cityunion_setting = $model_setting->getListSetting();
 		
-		$gl_promotion_reg = $cityunion_setting['gl_promotion_reg'];
-		$gl_promotion_level = $cityunion_setting['gl_promotion_level'];
-		$gl_promotion_require = $cityunion_setting['gl_promotion_require'];		
+		$gl_partner_reg = $cityunion_setting['gl_partner_reg'];
+		$gl_partner_level = $cityunion_setting['gl_partner_level'];
+		$gl_invite_money = $cityunion_setting['gl_invite_money'];
+		$gl_invite_min = $cityunion_setting['gl_invite_min'];		
 				
-		Tpl::output('gl_promotion_reg',$gl_promotion_reg);
-		Tpl::output('gl_promotion_level',$gl_promotion_level);
-		Tpl::output('gl_promotion_require',$gl_promotion_require);
+		Tpl::output('gl_partner_reg',$gl_partner_reg);
+		Tpl::output('gl_partner_level',$gl_partner_level);
+		Tpl::output('gl_invite_money',$gl_invite_money);
+		Tpl::output('gl_invite_min',$gl_invite_min);
 
         Tpl::output('top_link',$this->sublink($this->links,'config'));
         Tpl::setDirquna('extension');
@@ -55,9 +57,10 @@ class cityunion_configControl extends BaseExtensionControl {
 			$model_setting = Model('setting');
 			
 			$data = array();
-			$data['gl_promotion_reg'] = $_POST['gl_promotion_reg'];
-			$data['gl_promotion_level'] = $_POST['gl_promotion_level'];
-			$data['gl_promotion_require'] = $_POST['gl_promotion_require'];
+			$data['gl_partner_reg'] = $_POST['gl_partner_reg'];
+			$data['gl_partner_level'] = $_POST['gl_partner_level'];//合伙人等级
+			$data['gl_invite_money'] = $_POST['gl_invite_money'];//合伙人条件
+			$data['gl_invite_min'] = $_POST['gl_invite_min'];//合伙人条件
 			
 			$result = $model_setting->updateSetting($data);
 			if ($result === true){
