@@ -33,14 +33,16 @@ class extension_manageawardModel extends Model {
      * 根据店铺ID取得推广管理奖励标准列表
      * @param unknown $condition
      * @param string $fields
+     * @param $extend_type 区别是为0：B2C（会员推广）还是为1：B2B（城市联盟）推广
      */
-    public function getExtensionManageAwardListByStoreID($store_id = '', $fields = '*') {
+    public function getExtensionManageAwardListByStoreID($store_id = '', $fields = '*',$extend_type = 0) {
 		if (OPEN_STORE_EXTENSION_STATE == 10){$store_id = GENERAL_PLATFORM_EXTENSION_ID;}
 		
 		$award_list = array();
 		if (!empty($store_id)){
 		    $condition = array();
 		    $condition['store_id'] = $store_id;
+		    $condition['extend_type'] = $extend_type;
 			$award_list = $this->getExtensionManageAwardList($condition,$fields);
 		}
         return $award_list;
@@ -50,14 +52,16 @@ class extension_manageawardModel extends Model {
      * 根据店铺ID取得推广管理奖励标准列表并按奖励类型作为关键字
      * @param unknown $condition
      * @param string $fields
+     * @param $extend_type 表示区别是为0：B2C（会员推广）还是为1：B2B（城市联盟）推广
      */
-    public function getExtensionManageAwardListSortByTypeByStoreID($store_id = '', $fields = '*') {
+    public function getExtensionManageAwardListSortByTypeByStoreID($store_id = '', $fields = '*',$extend_type = 0) {
 		if (OPEN_STORE_EXTENSION_STATE == 10){$store_id = GENERAL_PLATFORM_EXTENSION_ID;}
 		
 		$manageaward_list = array();
 		if (!empty($store_id)){
 		    $condition = array();
 		    $condition['store_id'] = $store_id;
+		    $condition['extend_type'] = $extend_type;
 			$award_list = $this->getExtensionManageAwardList($condition);
 			if (!empty($award_list)){
 				foreach ($award_list as $vk=>$award_info) {
@@ -82,11 +86,12 @@ class extension_manageawardModel extends Model {
      * @param unknown $condition
      * @param string $fields
      */
-    public function getExtensionManageAwardByID($em_id = '', $fields = '*') {
+    public function getExtensionManageAwardByID($em_id = '', $fields = '*',$extend_type = 0) {
         $award_info = array();
 		if (!empty($em_id)){
 		    $condition = array();
 		    $condition['em_id'] = $em_id;
+		    $condition['extend_type'] = $extend_type;
 			$award_info = $this->getExtensionManageAwardInfo($condition,$fields);
 		}
         return $award_info;
