@@ -220,6 +220,10 @@ $(function() {
 	$('.body .container-left').click(function(){
 		$('.body').animate({left:'100%'})
 	})
+	$('#submit').click(function(){
+		var min = $('.filter-input #input1').val()
+		var max = $('.filter-input #input2').val()
+	})
 	/*页面加载完成执行ajax 加载我的订单默认数据*/
 	//	ajaxCommit('order');
 })
