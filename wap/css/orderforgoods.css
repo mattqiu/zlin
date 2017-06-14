@@ -1,0 +1,113 @@
+body {
+  width: 16rem;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #e6e6e6;
+  overflow: scroll;
+  max-width: 16rem; }
+
+.headers {
+  position: fixed;
+  top: 0rem;
+  left: 0rem; }
+
+.header {
+  width: 16rem;
+  height: 2.75rem;
+  background-color: #cd9300;
+  position: relative;
+  border-bottom: 0.075rem solid #ab9555; }
+  .header .input {
+    position: absolute;
+    left: 0.5rem;
+    top: 1.25rem;
+    width: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .header .input .header-list1 {
+      width: 3rem;
+      font-size: 0.7rem;
+      color: #FFFFFF; }
+    .header .input .header-list2 {
+      width: 10rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #FFFFFF; }
+
+.center {
+  margin-top: 2.75rem; }
+  .center .bar {
+    width: 16rem;
+    height: 1.425rem;
+    background-color: #FFFFFF;
+    border-bottom: 0.075rem solid #c5c5c5; }
+    .center .bar .bar_center {
+      width: 15rem;
+      height: 0.625rem; }
+      .center .bar .bar_center .ready {
+        width: 7.5rem;
+        height: 0.625rem;
+        font-size: 0.625rem;
+        color: #9b9b9b; }
+  .center .order_list {
+    width: 16rem;
+    height: 3rem;
+    background-color: #FFFFFF;
+    border-bottom: 0.075rem solid #c5c5c5; }
+    .center .order_list .order_center {
+      width: 15rem; }
+      .center .order_list .order_center .row01 {
+        width: 15rem;
+        height: 1.125rem;
+        font-size: 0.5rem; }
+        .center .order_list .order_center .row01 .row_list1 {
+          width: 7.5rem;
+          color: #ab8c34;
+          text-align: left; }
+        .center .order_list .order_center .row01 .row_list2 {
+          width: 7.5rem;
+          color: #9b9b9b;
+          text-align: right; }
+      .center .order_list .order_center .row02 {
+        width: 15rem;
+        height: 0.75rem;
+        font-size: 0.5rem; }
+        .center .order_list .order_center .row02 .row_list1 {
+          width: 7.5rem; }
+        .center .order_list .order_center .row02 .row_list2 {
+          width: 7.5rem;
+          color: #9b9b9b;
+          text-align: right; }
+      .center .order_list .order_center .row03 {
+        width: 15rem;
+        height: 1.125rem;
+        font-size: 0.675rem;
+        color: #9b9b9b; }
+        .center .order_list .order_center .row03 .row_list1 {
+          width: 7.5rem;
+          text-align: left; }
+        .center .order_list .order_center .row03 .row_list2 {
+          width: 7.5rem;
+          text-align: right; }
+
+.footer {
+  position: fixed;
+  left: 0rem;
+  bottom: 0rem;
+  width: 16rem;
+  height: 1.5rem;
+  background-color: #FFFFFF; }
+  .footer .footer_center {
+    width: 15rem; }
+    .footer .footer_center .list {
+      width: 7.5rem;
+      font-size: 0.7rem;
+      color: #9b9b9b; }
+      .footer .footer_center .list span {
+        color: #ab8c34; }
+
+.active {
+  color: #ab8c34 !important; }
+
+/*# sourceMappingURL=orderforgoods.css.map */

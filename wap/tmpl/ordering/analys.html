@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>analys</title>
+	</head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telphone=no,email=no" />
+	<meta name="hotcss" content="max-width=640">
+	<title>手机端商城</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="../../satic/font_kdsuj6w2ht5oecdi/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+	<link rel="stylesheet" type="text/css" href="../../css/analys.css" />
+	<!--适应手机的hotcss-->
+
+	<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+	<script src="../../js/tmpl/odering/analys.js"></script>
+
+	<body>
+		<!--头部的固定的-->
+		<div class="headers">
+			<div class="header">
+				<div class="input">
+					<div class="header-list1">
+
+					</div>
+					<div class="header-list2">
+						分析
+					</div>
+					<div class="header-list1">
+						筛选
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="center">
+			<div class="center_header display-flex">
+				<div class="header_center display-flex">
+					<div class="center_list border-right-dash">
+						<div class="text">我的指标(元)</div>
+						<div class="text"><span>5000000</span></div>
+						<div class="text"><span>5</span>款<span>500</span>件</div>
+
+					</div>
+					<div class="center_list border-right-dash">
+						<div class="text">指标完成(元)</div>
+						<div class="text"><span>3800000</span></div>
+						<div class="text"><span>5</span>款<span>500</span>件</div>
+					</div>
+					<div class="center_list">
+						<div class="text">完成比例(元)</div>
+						<div class="text"><span>522.24</span>%金额</div>
+						<div class="text"><span>123.5</span>%数量</div>
+					</div>
+				</div>
+			</div>
+			<div class="center_tabbar display-flex">
+				<div class="tabbar_button display-flex">
+					<div class="button button_active">
+						类型
+					</div>
+					<div class="button">
+						颜色
+					</div>
+					<div class="button">
+						尺码
+					</div>
+					<div class="button">
+						波段
+					</div>
+					<div class="button">
+						价格
+					</div>
+				</div>
+			</div>
+			<div class="analys">
+				<div id="container" style="width: px2rem(640);height:px2rem(390)"></div>
+			</div>
+			<div class="anails_num">
+				<div class="anails_num_list display-flex">
+					<div class="num_list01 display-flex">
+						<div class="color">
+							
+						</div>
+					</div>
+					<div class="num_list02 text-center">
+						女装-羊剪绒大衣
+					</div>
+					<div class="num_list03 text-center">
+						200件
+					</div>
+					<div class="num_list04 text-center">
+						32.47%
+					</div>
+				</div>
+				<div class="anails_num_list">
+					
+				</div>
+				<div class="anails_num_list">
+					
+				</div>
+				<div class="anails_num_list">
+					
+				</div>
+			</div>
+		</div>
+		<!--页面的底部-->
+		<div class="footer ">
+			<div class="row">
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe60b;</span>
+					<p>商品</p>
+				</div>
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe613;</span>
+					<p>订单</p>
+				</div>
+
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe608;</span>
+					<p>分析</p>
+				</div>
+				<div class="col-3 text-center">
+					<span class="iconfont">&#xe60f;</span>
+					<p>我的</p>
+				</div>
+			</div>
+		</div>
+		<!--筛选-->
+		<!--<div class="body">
+			<div class="container-left">
+
+			</div>
+			<div class="container-right">
+				<div class="header-list list-1">
+
+				</div>
+				<div class="right-cneter">
+					<div class="right-center">
+						<div class="filters flex-start border-bottom">
+							<div class="right-center-left">
+								波段
+							</div>
+							<div class="right-center-right text-center iconfont">
+								&#xe635;
+							</div>
+						</div>
+						<div class="filters flex-start border-bottom">
+							<div class="right-center-left">
+								所有
+							</div>
+							<div class="right-center-right text-center iconfont">
+								&#xe635;
+							</div>
+							<div class="hidden-button flex-start">
+								<button>必定款</button>
+								<button>特价款</button>
+								<button></button>
+							</div>
+
+						</div>
+
+						<div class="filters flex-start">
+							<div class="right-center-left">
+								价格区间（元）
+							</div>
+							<div class="right-center-right text-center iconfont">
+								&#xe635;
+							</div>
+						</div>
+
+						<div class="filters flex-start border-bottom">
+							<div class="filter-input display-flex">
+								<input type="text" name="" id="input1" value="最低价" onfocus='if(this.value=="最低价"){this.value="";}; ' onblur='if(this.value==""){this.value="最低价";};' />
+								<div class="input-center">-</div>
+								<input type="text" name="" id="input1" value="最高价" onfocus='if(this.value=="最高价"){this.value="";}; ' onblur='if(this.value==""){this.value="最高价";};'/>
+							</div>
+						</div>
+
+						<div class="filters flex-start">
+							<div class="right-center-left">
+								女装
+							</div>
+							<div class="right-center-right text-center iconfont">
+								&#xe635;
+							</div>
+							<div class="hidden-button flex-start">
+								<button>必定款</button>
+								<button>特价款</button>
+								<button></button>
+								<button></button>
+								<button></button>
+								<button></button>
+								<button></button>
+								<button></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		
+	</body>
+</html>
