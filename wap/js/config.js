@@ -1,6 +1,7 @@
 var SiteUrl = "http://demo.hzlwo.com/imall";
 var ApiUrl = "http://demo.hzlwo.com/mobile";
 var WapSiteUrl = "http://demo.hzlwo.com/wap";
+var WxappSiteUrl = "http://demo.hzlwo.com/wxapp";
 var IOSSiteUrl = "https://itunes.apple.com/us/app/";
 var AndroidSiteUrl = "http://demo.hzlwo.com/data/upload/app/download/qcmmt.apk";
 var WeiXinOauth = true;
