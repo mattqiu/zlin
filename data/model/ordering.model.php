@@ -109,7 +109,7 @@ class orderingModel extends Model {
      * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
      * @return unknown
      */
-    public function add_Ordering_Goods($data) {
+    public function addd_Ordering_Goods($data) {
     	 
     	$updata = $this->table('ordering_goods')->updata($data);
     	 
