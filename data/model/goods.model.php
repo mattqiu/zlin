@@ -104,7 +104,6 @@ class goodsModel extends Model{
     			break;
     		case '3':
     			$goods_total = 'goods_price desc';
-    			print_r($goods_total);
     			break;
     		case '4':
     			$goods_total = 'goods_price asc';
