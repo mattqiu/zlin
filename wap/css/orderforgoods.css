@@ -50,46 +50,115 @@ body {
         height: 0.625rem;
         font-size: 0.625rem;
         color: #9b9b9b; }
-  .center .order_list {
-    width: 16rem;
-    height: 3rem;
-    background-color: #FFFFFF;
-    border-bottom: 0.075rem solid #c5c5c5; }
-    .center .order_list .order_center {
-      width: 15rem; }
-      .center .order_list .order_center .row01 {
-        width: 15rem;
-        height: 1.125rem;
-        font-size: 0.5rem; }
-        .center .order_list .order_center .row01 .row_list1 {
-          width: 7.5rem;
-          color: #ab8c34;
-          text-align: left; }
-        .center .order_list .order_center .row01 .row_list2 {
-          width: 7.5rem;
-          color: #9b9b9b;
-          text-align: right; }
-      .center .order_list .order_center .row02 {
-        width: 15rem;
-        height: 0.75rem;
-        font-size: 0.5rem; }
-        .center .order_list .order_center .row02 .row_list1 {
-          width: 7.5rem; }
-        .center .order_list .order_center .row02 .row_list2 {
-          width: 7.5rem;
-          color: #9b9b9b;
-          text-align: right; }
-      .center .order_list .order_center .row03 {
-        width: 15rem;
-        height: 1.125rem;
-        font-size: 0.675rem;
-        color: #9b9b9b; }
-        .center .order_list .order_center .row03 .row_list1 {
-          width: 7.5rem;
-          text-align: left; }
-        .center .order_list .order_center .row03 .row_list2 {
-          width: 7.5rem;
-          text-align: right; }
+  .center #ready {
+    display: block; }
+    .center #ready .order_list {
+      width: 16rem;
+      background-color: #FFFFFF;
+      border-bottom: 0.075rem solid #c5c5c5; }
+      .center #ready .order_list .order_center {
+        width: 15rem; }
+        .center #ready .order_list .order_center .row01 {
+          width: 15rem;
+          height: 1.125rem;
+          font-size: 0.5rem; }
+          .center #ready .order_list .order_center .row01 .row_list1 {
+            width: 7.5rem;
+            color: #ab8c34;
+            text-align: left; }
+          .center #ready .order_list .order_center .row01 .row_list2 {
+            width: 7.5rem;
+            color: #9b9b9b;
+            text-align: right; }
+        .center #ready .order_list .order_center .row02 {
+          width: 15rem;
+          height: 0.75rem;
+          font-size: 0.5rem; }
+          .center #ready .order_list .order_center .row02 .row_list1 {
+            width: 7.5rem; }
+          .center #ready .order_list .order_center .row02 .row_list2 {
+            width: 7.5rem;
+            color: #9b9b9b;
+            text-align: right; }
+        .center #ready .order_list .order_center .row03 {
+          width: 15rem;
+          height: 1.125rem;
+          font-size: 0.675rem;
+          color: #9b9b9b; }
+          .center #ready .order_list .order_center .row03 .row_list1 {
+            width: 7.5rem;
+            text-align: left; }
+          .center #ready .order_list .order_center .row03 .row_list2 {
+            width: 7.5rem;
+            text-align: right; }
+  .center #not_ready {
+    display: none; }
+    .center #not_ready .order_list {
+      width: 16rem;
+      height: 3rem;
+      background-color: #FFFFFF;
+      border-bottom: 0.075rem solid #c5c5c5; }
+      .center #not_ready .order_list .order_center {
+        width: 15rem; }
+        .center #not_ready .order_list .order_center .center_left {
+          width: 1.5rem; }
+          .center #not_ready .order_list .order_center .center_left .checkbox {
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 0.075rem solid #c5c5c5;
+            border-radius: 10%; }
+        .center #not_ready .order_list .order_center .center_right {
+          width: 13.5rem; }
+          .center #not_ready .order_list .order_center .center_right .row01 {
+            width: 13.5rem;
+            height: 1.125rem;
+            font-size: 0.5rem; }
+            .center #not_ready .order_list .order_center .center_right .row01 .row_list1 {
+              width: 6.75rem;
+              color: #ab8c34;
+              text-align: left; }
+            .center #not_ready .order_list .order_center .center_right .row01 .row_list2 {
+              width: 6.75rem;
+              color: #9b9b9b;
+              text-align: right; }
+          .center #not_ready .order_list .order_center .center_right .row02 {
+            width: 13.5rem;
+            height: 0.75rem;
+            font-size: 0.5rem; }
+            .center #not_ready .order_list .order_center .center_right .row02 .row_list1 {
+              width: 6.75rem; }
+            .center #not_ready .order_list .order_center .center_right .row02 .row_list2 {
+              width: 6.75rem;
+              color: #9b9b9b;
+              text-align: right; }
+          .center #not_ready .order_list .order_center .center_right .row03 {
+            width: 13.5rem;
+            height: 1.125rem;
+            font-size: 0.675rem;
+            color: #9b9b9b; }
+            .center #not_ready .order_list .order_center .center_right .row03 .row_list1 {
+              width: 6.75rem;
+              text-align: left; }
+            .center #not_ready .order_list .order_center .center_right .row03 .row_list2 {
+              width: 6.75rem;
+              text-align: right; }
+
+.checkbox_sure {
+  background: url(../image/sure.png) no-repeat center;
+  background-size: 0.9rem 0.9rem; }
+
+.submit {
+  position: fixed;
+  left: 0rem;
+  bottom: 1rem;
+  width: 16rem;
+  height: 1.5rem; }
+  .submit #submit {
+    border-radius: 0.5rem;
+    width: 12.75rem;
+    height: 1.75rem;
+    background-color: #cd9300;
+    font-size: 0.65rem; }
 
 .footer {
   position: fixed;
