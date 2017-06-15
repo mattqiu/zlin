@@ -113,7 +113,7 @@ class goodsModel extends Model{
     			$goods_total = 'goods_total desc,goods_price desc';
     			break;
     	}
-	    $sql = 'select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' and is_ordering='.$is_ordering.' order by '.$goods_total.' limit 40';
+	    $sql = 'select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' and is_ordering='.$is_ordering.' order by '.$goods_total.' limit 40';
 		$db=Model();  
 		$goods_list=$db->query($sql);
     	return $goods_list;
