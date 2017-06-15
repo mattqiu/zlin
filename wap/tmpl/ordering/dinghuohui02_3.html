@@ -21,6 +21,8 @@
 	<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../js/jquery-3.1.1.min.js"></script>
 	<script src="../../js/tmpl/odering/index.js"></script>
+	<script src="../../js/config.js"></script>
+	<script src="../../js/tmpl/goods/goods.js"></script>
 
 	<body>
 		<div class="headers">
@@ -93,96 +95,14 @@
 
 		<div class="containers">
 			<!--列表渲染模板-->
-			<div id="show1">
-				<div class="show1 display-flex">
-					<div class="show-list display-flex">
-						<div class="show-list-1 display-flex">
-							<div class="image">
-								<img src="image/solution1.jpg" />
-							</div>
-						</div>
-						<div class="show-list-2">
-							<div class="goods-name">百搭针织上衣</div>
-							<div class="goods-num">45455645645</div>
-							<div class="goods-price "><span class="iconfont">&#xe600;</span><span>999</span></div>
-						</div>
-						<div class="show-list-3 display-flex">
-							<div class="circle">
-								260
-							</div>
-						</div>
-					</div>
-				</div>
+			<div id="show1">				
 			</div>
 			<!--列表渲染模板结束-->
 			<!--表格渲染模板-->
 			<div id="show2">
 				<div class="show2 display-flex">
-					<div class="show_center space-between">
-						<div class="show_list">
-							<div class="img">
-								<img src="../../image/solution1.jpg" />
-							</div>
-							<div class="name">
-								百搭针织上衣 针织毛衣上衣针织衫
-							</div>
-							<div class="text display-flex">
-								<div class="show-list-2">
-									<div class="goods-num">
-										4564545
-									</div>
-									<div class="goods-price ">
-										<span class="iconfont">&#xe600;</span>999
-									</div>
-								</div>
-								<div class="show-list-3 display-flex">
-									<div class="circle">
-										260
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="show_list">
-							<div class="img">
-								<img src="../../image/solution1.jpg" />
-							</div>
-							<div class="name">
-								百搭针织上衣 针织毛衣上衣针织衫
-							</div>
-							<div class="text display-flex">
-								<div class="show-list-2">
-									<div class="goods-num">
-										4564545
-									</div>
-									<div class="goods-price ">
-										<span class="iconfont">&#xe600;</span>999
-									</div>
-								</div>
-								<div class="show-list-3 display-flex">
-									<div class="circle">
-										260
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="show_list">
-							<div class="img">
-								<img src="../../image/solution1.jpg" />
-							</div>
-							<div class="name">
-								百搭针织上衣 针织毛衣上衣针织衫
-							</div>
-							<div class="text display-flex">
-								<div class="show-list-2">
-
-								</div>
-								<div class="show-list-3">
-									<div class="circle">
-										260
-									</div>
-								</div>
-							</div>
-						</div>
+					<div class="show_center space-between" id="two">
+						
 					</div>
 				</div>
 			</div>
@@ -195,7 +115,7 @@
 						</div>
 						<div class="text display-flex">
 							<div class="show-list-2 ">
-								百搭针织上衣
+								百搭针织上衣22
 							</div>
 							<div class="show-list-3 display-flex">
 								<div class="circle">
@@ -279,9 +199,9 @@
 
 						<div class="filters flex-start border-bottom">
 							<div class="filter-input display-flex">
-								<input type="text" name="" id="input1" value="最低价" onfocus='if(this.value=="最低价"){this.value="";}; ' onblur='if(this.value==""){this.value="最低价";};' />
+								<input type="text" name="" id="input1" value="0" onfocus='if(this.value=="0"){this.value="";}; ' onblur='if(this.value==""){this.value="0";};'  />
 								<div class="input-center">-</div>
-								<input type="text" name="" id="input2" value="最高价" onfocus='if(this.value=="最高价"){this.value="";}; ' onblur='if(this.value==""){this.value="最高价";};'/>
+								<input type="text" name="" id="input2" value="100000" onfocus='if(this.value=="100000"){this.value="";}; ' onblur='if(this.value==""){this.value="100000";};' />
 							</div>
 						</div>
 
