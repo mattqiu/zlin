@@ -78,11 +78,45 @@ class goodsModel extends Model{
      */
     public function getGoodsList($condition, $field = '*', $group = '',$order = '', $limit = 0, $page = 0, $count = 0) {
         $condition = $this->_getRecursiveClass($condition);
-        return $this->table('goods')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
+        return $this->table('goods_common')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
     }
     public function getGoodsPriceList($condition, $field = '*', $group = '',$order = '', $limit = 0, $page = 0, $count = 0) {
-    	$condition = $this->getPriceClass($condition);
-    	return $this->table('goods')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
+    	//$condition = $this->getPriceClass($condition);
+    	$minPrice =$_REQUEST['minPrice'];
+    	$maxPrice =$_REQUEST['maxPrice'];
+    	$goods_total = $_REQUEST['goods_total'];
+    	$is_ordering = $_REQUEST['is_ordering'];
+    	if(empty($is_ordering)){
+    		$is_ordering = 0;
+    	}
+    	if(empty($minPrice)){
+    		$minPrice = 0;
+    	}
+    	if(empty($maxPrice)){
+    		$maxPrice = 1000000;
+    	}
+    	switch ($goods_total) {
+    		case '1':
+    			$goods_total = 'goods_total desc';
+    			break;
+    		case '2':
+    			$goods_total = 'goods_total asc';
+    			break;
+    		case '3':
+    			$goods_total = 'goods_price desc';
+    			print_r($goods_total);
+    			break;
+    		case '4':
+    			$goods_total = 'goods_price asc';
+    			break;
+    		default:
+    			$goods_total = 'goods_total desc,goods_price desc';
+    			break;
+    	}
+	    $sql = 'select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' and is_ordering='.$is_ordering.' order by '.$goods_total.' limit 40';
+		$db=Model();  
+		$goods_list=$db->query($sql);
+    	return $goods_list;
     }
 	/**
      * 获取指定分类指定店铺下的随机商品列表
@@ -227,12 +261,15 @@ class goodsModel extends Model{
      * @param boolean $lock 是否锁定
      * @return array
      */
-	public function getGoodsOnlineList($condition, $field = '*', $page = 0, $order = 'goods_id desc', $limit = 0, $group = '', $lock = false, $count = 0) {
-        $condition['goods_state']   = self::STATE1;
+	public function getGoodsOnlineList($condition, $field = '*', $page = 0, $order = 'goods_commonid desc', $limit = 0, $group = '', $lock = false, $count = 0) {
+
+		$condition['goods_state']   = self::STATE1;
         $condition['goods_verify']  = self::VERIFY1;
+        
         return $this->getGoodsList($condition, $field, $group, $order, $limit, $page, $count);
     }
-    public function getGoodsChoseList($condition, $field = '*', $page = 0, $order = 'goods_id desc', $limit = 0, $group = '', $lock = false, $count = 0) {
+    public function getGoodsChoseList($condition, $field = '*', $page = 0, $order = 'goods_commonid desc', $limit = 0, $group = '', $lock = false, $count = 0) {
+		
     	$condition['goods_state']   = self::STATE1;
     	$condition['goods_verify']  = self::VERIFY1;
     	return $this->getGoodsPriceList($condition, $field, $group, $order, $limit, $page, $count);
@@ -1112,20 +1149,10 @@ class goodsModel extends Model{
                 $condition['gc_id'] = array('in', $gc_id);
             }
         }
+       
         return $condition;
     }
-    /**
-     * 获得商品子分类的ID及商品价格
-     * @param array $condition
-     * @return array
-     */
-    private function getPriceClass($condition){
 
-    	$minPrice =$_REQUEST['minPrice'];
-    	$maxPrice =$_REQUEST['maxPrice'];
-    	$condition['goods_price']=array(array('egt',$minPrice),array('elt',$maxPrice));
-    	return $condition;
-    }
     /**
      * 由ID取得在售单个虚拟商品信息
      * @param unknown $goods_id
@@ -1163,11 +1190,12 @@ class goodsModel extends Model{
      * @return array
      */
     public function getGoodsInfoByID($goods_commonid, $fields = '*') {
-        $goods_info = $this->_rGoodsCache($goods_commonid, $fields);
+        /*$goods_info = $this->_rGoodsCache($goods_commonid, $fields);
         if (empty($goods_info)) {
             $goods_info = $this->getGoodsInfo(array('goods_commonid'=>$goods_commonid));
             $this->_wGoodsCache($goods_commonid, $goods_info);
-        }
+        }*/
+        $goods_info = $this->getGoodsInfo(array('goods_commonid'=>$goods_commonid));
         return $goods_info;
     }
 
@@ -1365,7 +1393,7 @@ class goodsModel extends Model{
     /**
      * 获取单条商品信息
      *
-     * @param int $goods_id
+     * @param int $goods_commonid
      * @return array
      */
     public function getGoodsDetail($goods_commonid) {

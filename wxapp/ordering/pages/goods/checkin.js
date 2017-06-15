@@ -28,15 +28,21 @@ Page({
     var data ={
       goods_info:[
         {
-          goods_id: goods_id,
-          quantity: quantity,
+          goods_id: '55',
+          quantity: '15',
+        },
+        {
+          goods_id: '56',
+          quantity: '15',
         }
       ],
-      goods_commonid: goods_commonid,
-      goods_name: goods_name,
-      goods_price: goods_price,
-      member_id: app.globalData.member_id,
-      store_id: app.globalData.store_id
+      goods_commonid: '100008',
+      goods_name: 'goods_name',
+      goods_price: '600',
+      /*member_id: app.globalData.member_id,
+      store_id: app.globalData.store_id*/
+      buyer_id: '0001',
+      store_id: '1'
     };
     util.Ajax("member_cart/cart_add",data,function(options){
       console.log("购物城返回结果：",options);

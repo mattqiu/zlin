@@ -77,7 +77,7 @@ class orderingModel extends Model {
         return $order_list;
     }
     /**
-     * 添加ordering_goods表订单信息
+     * 添加goods表订单信息
      *
      * @param unknown_type $condition
      * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
@@ -89,12 +89,31 @@ class orderingModel extends Model {
     	
     	return $insert;
     }
+    /**
+     * 添加goods_common表订单信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
     public function add_Ordering($param) {
     	
     	$insert = $this->table('ordering')->insert($data);
     	
     	return $insert;
     }
-
+    /**
+     * 更新ordering_goods表订单信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
+    public function add_Ordering_Goods($data) {
+    	 
+    	$updata = $this->table('ordering_goods')->updata($data);
+    	 
+    	return $updata;
+    }
 
 }

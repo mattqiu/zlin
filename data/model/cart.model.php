@@ -197,11 +197,9 @@ class cartModel extends Model {
 	public function listCart($type, $condition = array(), $limit = '') {
         if ($type == 'db') {
     		$cart_list = $this->where($condition)->limit($limit)->select();
-        } elseif ($type == 'cookie') {
+        } else {
         	//去除斜杠
-        	$cart_str = get_magic_quotes_gpc() ? stripslashes(cookie('cart')) : cookie('cart');
-        	$cart_str = base64_decode(decrypt($cart_str));
-        	$cart_list = @unserialize($cart_str);
+        	output_error('数据错误'.$cart_list);
         }
         $cart_list = is_array($cart_list) ? $cart_list : array();
         //顺便设置购物车商品数和总金额

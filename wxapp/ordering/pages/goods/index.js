@@ -13,7 +13,7 @@ Page({
     goods_id:'',
     minPrice:'',
     maxPrice:'',
-    showPlaneType: '',  // 筛选面板 ‘’不展开 0排序 1拥有 2筛选
+    showPlaneType: '',  // 筛选面板 ‘’不展开 0排序 1所有 2筛选
     filter:{
       // 排序筛选 key  代表排序的类别 1 默认排序 2 所有  3 陈列  4 筛选  order  代表下拉的顺序
       sort: {
@@ -21,24 +21,19 @@ Page({
         list: [
           {
             name: '默认排序',
-            key: 1,
-            order:0
+            goods_total: 0
           },{
             name: '定量从高到低',
-            key: 1,
-            order:1
+            goods_total: 1
           },{
             name: '定量从低到高',
-            key: 1,
-            order: 2
+            goods_total: 2
           },{
             name: '价格从高到低',
-            key: 1,
-            order:3
+            goods_total: 3
           },{
             name: '价格从低到高',
-            key: 1,
-            order: 4
+            goods_total: 4
           }
         ]
       },
@@ -48,16 +43,13 @@ Page({
         list: [
           {
             name: '所有',
-            key: 2,
-            order:0
+            is_ordering: 0
           },{
             name: '已定',
-            key:2,
-            order:1
+            is_ordering:1
           },{
             name: '未定',
-            key:2,
-            order:2
+            is_ordering:2
           }
         ]
       },
@@ -70,7 +62,7 @@ Page({
               {
                 name: '所有',
                 key: 4,
-                order:0
+                order_4:0
               }
             ]
           },
@@ -80,11 +72,11 @@ Page({
               {
                 name: '必定款',
                 key: 4,
-                order:1
+                order_4:1
               },{
                 name: '特价款',
                 key:4,
-                order:2
+                order_4:2
               }
             ]
           },
@@ -95,7 +87,7 @@ Page({
               {
                 name: '所有',
                 key: 4,
-                order:3
+                order_4:3
               }
             ]
           },
@@ -105,11 +97,11 @@ Page({
               {
                 name: 'T恤',
                 key: 4,
-                order:4
+                order_4:4
               },{
                 name: '针织衫',
                 key:4,
-                order:5
+                order_4:5
               }
             ]
           }
@@ -164,13 +156,13 @@ Page({
     //console.log(e);
     var that = this;
     let dataSet = e.currentTarget.dataset,
-     order = dataSet.index,
-     key = dataSet.id;
+     goods_total = dataSet.id;
      //console.log('测试key', key);
      //console.log('测试order', order);
      var data = {
-       key: key,
-       order: order,
+       goods_total: goods_total,
+       minPrice: '100',
+       maxPrice: '400',
      };
      util.Ajax("search/index",data,function(res){
        that.setData({

@@ -27,7 +27,7 @@
 		<view class="plane" wx:if="{{showPlaneType === '0'}}">
 				<view class="plane-item"
 					wx:for="{{filter.sort.list}}" 
-					data-id="{{item.key}}" 
+					data-id="{{item.goods_total}}" 
 					data-index="{{item.order}}"
 					data-type="sort"
 					bindtap="selectPlaneItem">
@@ -37,8 +37,8 @@
 		<view class="plane" wx:if="{{showPlaneType === '1'}}">
 				<view class="plane-item" 
 					wx:for="{{filter.has.list}}" 
-					data-id="{{item.id}}" 
-					data-index="{{index}}"
+					data-id="{{item.key_2}}" 
+					data-index="{{item.order_2}}"
 					data-type="has"
 					bindtap="selectPlaneItem">
 					{{item.name}}
@@ -59,9 +59,9 @@
                </navigator>
               <view class="goods-item__info">
                 <view class="goods-item__name">{{item.goods_name}}</view>
-                <view class="goods-item__no">{{item.goods_serial}}</view>
+                <view class="goods-item__no">{{item.goods_commonid}}</view>
                 <view class="goods-item__price">￥{{item.goods_price}}</view>
-                <view class="goods-item__dn">{{item.goods_salenum}}</view>
+                <view class="goods-item__dn">{{item.goods_total}}</view>
               </view>
 					</view>
 				</view>
