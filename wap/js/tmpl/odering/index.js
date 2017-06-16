@@ -1,11 +1,10 @@
 $(function() {
-
 	let state_type = 'state_new';
 	let size = '';
 	let sc = 'asc';
 	let order = 'goods_commonid';
 	let page = '10';
-	var ajaxCommit = function(type) {
+	function ajaxCommit(type) {
 
 		//我的订单
 		if(type == 'order') {
@@ -13,6 +12,8 @@ $(function() {
 			//总排行榜	
 		} else if(type == 'total') {
 			$("#total").empty();
+		}else if(type == 'ordermanager') {
+			$('#order_completed').empty();
 		}
 
 		$.ajax({
@@ -86,6 +87,7 @@ $(function() {
 						list.push(li);
 					}
 					$('#total').append(list);
+				
 				}
 
 			},
@@ -229,6 +231,9 @@ $(function() {
 	});
 	$("#goods").click(function(){
 		window.location.href = WapSiteUrl+"/tmpl/ordering/dinghuohui02_3.html";
+	});
+	$("#ordermanager").click(function(){
+		window.location.href = WapSiteUrl+"/tmpl/ordering/orderforgoods.html";
 	});
 	/*页面加载完成执行ajax 加载我的订单默认数据*/
 	ajaxCommit('order');

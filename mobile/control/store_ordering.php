@@ -100,16 +100,29 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
             
           
         }
+        if(!$ordering_list){
+            $ordering_list = array();
+            if($size == 'order'){
+                $bottom = array();
+                output_data(array('ordering_list' => $ordering_list,'bottom'=>$bottom), mobile_page(0));
+                exit;
+            }
+            output_data(array('ordering_list' => $ordering_list), mobile_page(0));
+            exit;
+        }
         $ordernum = count($ordering_list);
-        if($ordernum == 1 && $size!='order'){
+        if($ordernum == 1 && $size!='order' && $size!='total'){
             $ordering_list = $ordering_list[0];
-        }elseif ($size == 'total') {
+        }else if ($size == 'total') {
             //总排行榜 添加排名
+            if($ordernum == 1){
+                $ordering_list = $ordering_list[0];
+            }
             foreach ($ordering_list as $key => $value) {
                 $ordering_list[$key]['sort'] = $key+1;             
             }
             
-        }elseif ($size == 'order') {
+        }else if ($size == 'order') {
             //请求数据为订单管理时 数据处理
             foreach ($ordering_list as $key => $value) {
                 $new_ordering_list[$key]['style_num'] = count($value);
@@ -119,22 +132,25 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                     $new_ordering_list[$key]['total_price'] += $v['total_price'];
                 }
             }
+            
+            $bottom = array();
             foreach ($new_ordering_list as $key => $value) {
                 $model = Model();
                 $ordeiing_info = $model->table('ordering')->where(array('ordering_id'=>$value['ordering_id']))->field("add_time")->find();
                 $new_ordering_list[$key]['addtime'] = date("Y-m-d H:i:s",$ordeiing_info['add_time']);
-                //订单管理 底部栏显示信息 合计  总金额
-                $bottom = array();
-                $bottom['total_style_num'] += $value['style_num'];
-                $bottom['total_piece_num'] += $value['piece_num'];
-                $bottom['total_price']     += $value['total_price'];
-                
+                //订单管理 已完成订单 底部栏显示信息 合计  总金额
+                if($_GET["state_type"] == "state_commit"){    
+                    $bottom['total_style_num'] += $value['style_num'];
+                    $bottom['total_piece_num'] += $value['piece_num'];
+                    $bottom['total_price']     += $value['total_price'];
+                    
+                }
             }
+            
             $ordering_list = $new_ordering_list;
 
             
         }
-
         $totalPage = $model_order->totalPage;//获取总页数
 
         if($_GET["state_type"] == "state_commit"){

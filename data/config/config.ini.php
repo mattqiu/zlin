@@ -3,7 +3,7 @@ defined('InIMall') or exit('Access Invalid!');
 $config = array();
 $config['main_site_url'] 		= 'http://demo.hzlwo.com';
 $config['shop_site_url'] 		= 'http://demo.hzlwo.com/imall';
-$config['shop_modules_url']      = 'http://demo.hzlwo.com/manage/modules/shop';
+$config['shop_modules_url']     = 'http://demo.hzlwo.com/manage/modules/shop';
 $config['cms_site_url'] 		= 'http://demo.hzlwo.com/cms';
 $config['cms_modules_url']      = 'http://demo.hzlwo.com/manage/modules/cms';
 $config['microshop_site_url'] 	= 'http://demo.hzlwo.com/microshop';

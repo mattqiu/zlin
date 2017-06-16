@@ -19,7 +19,10 @@
 
 	<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../js/jquery-3.1.1.min.js"></script>
+	
+	<script type="text/javascript" src="../../js/config.js"></script>
     <script src="../../js/tmpl/odering/orderforgoods.js"></script>
+
 	<body>
 		<!--头部的固定的-->
 		<div class="headers">
@@ -40,160 +43,28 @@
 		<div class="center">
 			<div class="bar display-flex">
 				<div class="bar_center display-flex">
-					<div class="ready active text-center">
+					<div class="ready active text-center" id="already_order">
 						已完成订单
 					</div>
-					<div class="ready text-center">
+					<div class="ready text-center" id="unfinished_order">
 						未完成订单
 					</div>
 				</div>
 			</div>
 			<div id="ready">
-				<div class="order_list display-flex">
-					<div class="order_center ">
-						<div class="row01 display-flex">
-							<div class="row_list1">
-								款号ZFQ1234555
-							</div>
-							<div class="row_list2">
-								2016-06-06 18:20:20
-							</div>
-						</div>
-						<div class="row02 display-flex">
-							<div class="row_list1">
+				<div class="order_list display-flex" id="order_completed">
 
-							</div>
-							<div class="row_list2">
-								张小明
-							</div>
-						</div>
-						<div class="row03 display-flex">
-							<div class="row_list1">
-								12款256件
-							</div>
-							<div class="row_list2">
-								6589元
-							</div>
-						</div>
-					</div>
+
 				</div>
-				<div class="footer display-flex">
-					<div class="footer_center display-flex">
-						<div class="list">
-							合计:<span>22款500件</span>
-						</div>
-						<div class="list text-right">
-							总金额:<span>1000元</span>
-						</div>
-					</div>
+				<div class="footer display-flex" id="bottom">
+					
 				</div>
 			</div>
 			<!--notready-->
 			<div id="not_ready">
-				<div class="order_list display-flex">
-					<div class="order_center display-flex">
-						<div class="center_left display-flex">
-							<div class="checkbox">
 
-							</div>
-						</div>
-						<div class="center_right">
-							<div class="row01 display-flex">
-								<div class="row_list1">
-									款号ZFQ1234555
-								</div>
-								<div class="row_list2">
-									2016-06-06 18:20:20
-								</div>
-							</div>
-							<div class="row02 display-flex">
-								<div class="row_list1">
 
-								</div>
-								<div class="row_list2">
-									张小明
-								</div>
-							</div>
-							<div class="row03 display-flex">
-								<div class="row_list1">
-									12款256件
-								</div>
-								<div class="row_list2">
-									6589元
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="order_list display-flex">
-						<div class="order_center display-flex">
-							<div class="center_left display-flex">
-								<div class="checkbox">
-
-								</div>
-							</div>
-							<div class="center_right">
-								<div class="row01 display-flex">
-									<div class="row_list1">
-										款号ZFQ1234555
-									</div>
-									<div class="row_list2">
-										2016-06-06 18:20:20
-									</div>
-								</div>
-								<div class="row02 display-flex">
-									<div class="row_list1">
-
-									</div>
-									<div class="row_list2">
-										张小明
-									</div>
-								</div>
-								<div class="row03 display-flex">
-									<div class="row_list1">
-										12款256件
-									</div>
-									<div class="row_list2">
-										6589元
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="order_list display-flex">
-						<div class="order_center display-flex">
-							<div class="center_left display-flex">
-								<div class="checkbox checkbox_sure">
-								</div>
-							</div>
-							<div class="center_right">
-								<div class="row01 display-flex">
-									<div class="row_list1">
-										款号ZFQ1234555
-									</div>
-									<div class="row_list2">
-										2016-06-06 18:20:20
-									</div>
-								</div>
-								<div class="row02 display-flex">
-									<div class="row_list1">
-
-									</div>
-									<div class="row_list2">
-										张小明
-									</div>
-								</div>
-								<div class="row03 display-flex">
-									<div class="row_list1">
-										12款256件
-									</div>
-									<div class="row_list2">
-										6589元
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+	
 				<div class="submit display-flex">
 				<button id="submit">
 					提交
