@@ -1,7 +1,7 @@
 {
   "pages":[   
-    "pages/goods/index",
     "pages/index/index",
+    "pages/goods/index",
     "pages/goods/checkin",
     "pages/goods/detail",
     "pages/goods/assessment",

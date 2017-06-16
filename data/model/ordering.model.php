@@ -26,7 +26,33 @@ class orderingModel extends Model {
         }
         return $order_info;
     }
+    
+    /**
+     * 获取商品的总订单数量
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
+    public function getGoodsCommon($goods_data,$fields = '*', $order = '') {
+    	$goods_info = $this->table('goods_common')->field($fields)->where($goods_data)->order($order)->select();
 
+    	return $goods_info;
+    }
+    
+    /**
+     * 判断ordering_goods表中是否已经存在该用户的购买信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
+    public function get_Buyer_Info($condition = array(),$fields = '*', $order = '') {
+    
+    	$buyer_info = $this->table('ordering_goods')->field($fields)->where($condition)->order($order)->select();
+    
+    	return $buyer_info;
+    }
 
     /**
      * 取得订货订单商品列表(按照商品公共id进行分组)
@@ -76,6 +102,7 @@ class orderingModel extends Model {
 
         return $order_list;
     }
+    
     /**
      * 添加goods表订单信息
      *
@@ -90,20 +117,20 @@ class orderingModel extends Model {
     	return $insert;
     }
     /**
-     * 添加goods_common表订单信息
+     * 添加ordering表订单信息
      *
      * @param unknown_type $condition
      * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
      * @return unknown
      */
     public function add_Ordering($param) {
-    	
-    	$insert = $this->table('ordering')->insert($data);
+
+    	$insert = $this->table('ordering')->insert($param);
     	
     	return $insert;
     }
     /**
-     * 更新ordering_goods表订单信息
+     * 首次插入ordering_goods表订单信息
      *
      * @param unknown_type $condition
      * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
@@ -111,9 +138,35 @@ class orderingModel extends Model {
      */
     public function addd_Ordering_Goods($data) {
     	 
-    	$updata = $this->table('ordering_goods')->updata($data);
+    	$insert = $this->table('ordering_goods')->insert($data);
     	 
-    	return $updata;
+    	return $insert;
     }
+	
+    /**
+     * 更新ordering_goods表订单信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
+    public function update_Ordering_Goods($change,$where) {
 
+    	$update = $this->table('ordering_goods')->where($where)->update($change);
+    
+    	return $update;
+    }
+    /**
+     * 更新goods_common表订单总数的信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('order_common','order_goods','store')
+     * @return unknown
+     */
+    public function update_Goods_Total($goods_total_info,$goods_data) {
+    	
+    	$goods_common_total = $this->table('goods_common')->where($goods_data)->update($goods_total_info);
+    
+    	return $goods_common_total;
+    }
 }
