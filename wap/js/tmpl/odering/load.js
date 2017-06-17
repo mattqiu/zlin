@@ -39,7 +39,6 @@ $(function() {
 						for(var i = 0; i < item.length; i++) {
 							var li1 = '<div class="show1 display-flex">' +
 								'<div class="show-list display-flex">' +
-
 								'<div class="show-list-1 display-flex">' +
 								'<div class="image">' +
 								'<img src="' +
@@ -94,8 +93,8 @@ $(function() {
 							list.push(li1);
 							list2.push(li2);
 						}
-						$('#show1').append(list);
-						$('#two').append(list2);
+//						$('#show1').append(list);
+//						$('#two').append(list2);
 						// 为了测试，延迟1秒加载
 						setTimeout(function() {
 							$('#show1').html(list);
@@ -111,7 +110,6 @@ $(function() {
 					},
 					error: function(xhr, type) {
 						alert('Ajax error!');
-						// 即使加载出错，也得重置
 						me.resetload();
 					}
 				});
@@ -128,15 +126,65 @@ $(function() {
 					url: WxappSiteUrl + "/index.php?act=search&op=index&goods_total=" + goods_total + "&is_ordering=" + is_ordering + "&minPrice=" + minPrice + "&maxPrice=" + maxPrice,
 					dataType: 'json',
 					success: function(data) {
-						var arrLen = data.length;
-						if(arrLen > 0) {
-							for(var i = 0; i < arrLen; i++) {
-								result += '<a class="item opacity" href="' + data[i].link + '">' +
-									'<img src="' + data[i].pic + '" alt="">' +
-									'<h3>' + data[i].title + '</h3>' +
-									'<span class="date">' + data[i].date + '</span>' +
-									'</a>';
-							}
+						var datas = data.datas;
+						var item = datas;
+						var list = [];
+						var list2 = [];
+						if(item.length > 0) {
+							for(var i = 0; i < item.length; i++) {
+							list += '<div class="show1 display-flex">' +
+								'<div class="show-list display-flex">' +
+								'<div class="show-list-1 display-flex">' +
+								'<div class="image">' +
+								'<img src="' +
+								item[i].goods_image +
+								'" />' +
+								'</div>' +
+								'</div>' +
+								'<div class="show-list-2">' +
+								'<div class="goods-name">' +
+								item[i].goods_name +
+								'</div>' +
+								'<div class="goods-num">' +
+								item[i].goods_commonid +
+								'</div>' +
+								'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>' +
+								item[i].goods_price +
+								'</span></div>' +
+								'</div>' +
+								'<div class="show-list-3 display-flex">' +
+								'<div class="circle">' +
+								item[i].goods_total + '</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>'
+							list2 += '<div class="show_list">' +
+								'<div class="img">' +
+								'<img src="' +
+								item[i].goods_image +
+								'" />' +
+								'</div>' +
+								'<div class="name">' +
+								item[i].goods_name +
+								'</div>' +
+								'<div class="text display-flex">' +
+								'<div class="show-list-2">' +
+								'<div class="goods-num">' +
+								item[i].goods_commonid +
+								'</div>' +
+								'<div class="goods-price ">' +
+								'<span class="iconfont">&#xe600;</span>' +
+								item[i].goods_price +
+								'</div>' +
+								'</div>' +
+								'<div class="show-list-3 display-flex">' +
+								'<div class="circle">' +
+								item[i].goods_total +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>'
+						}
 							// 如果没有数据
 						} else {
 							// 锁定
@@ -147,7 +195,8 @@ $(function() {
 						// 为了测试，延迟1秒加载
 						setTimeout(function() {
 							// 插入数据到页面，放到最后面
-							$(center).append(result);
+							$('#show1').append(list);
+							$('#two').append(list2);
 							// 每次数据插入，必须重置
 							me.resetload();
 						}, 1000);
