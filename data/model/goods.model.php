@@ -122,8 +122,33 @@ class goodsModel extends Model{
 			    }
 			   
     			break;
+    		case '7':
+    			$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
+    			$buy_commonid = array();
+    			$order_info = array();
+    			$residue = array();
+    			foreach ($buy_list_info as $key => $v){
+    				if(!in_array($v,$buy_commonid)){
+    					$buy_commonid[]= $v;
+    				}
+    			}
+    			$all_commonid = $this ->table('goods_common')->field('goods_commonid')->select();
+    			$residue = array_udiff($buy_commonid, $all_commonid, function ($a, $b) {
+    				if ($a === $b) {
+    					return 0;
+    				}
+    				return ($a > $b) ? 1 : -1;
+    			}); 
+
+    			foreach ($residue as $value){
+    				$residue_commonid['goods_commonid'] = $value;
+    				$residue_info = $this ->table('goods_common')->field('*')->where($residue_commonid)->order($order)->select();
+    				return $residue_info;
+    			}
+    			
+    			break;
     		default:
-    			$goods_total = 'goods_total desc,goods_price desc';
+    				$goods_total = 'goods_total desc,goods_price desc';
     			break;
     	}
 	    $sql = 'select goods_commonid,goods_name,goods_price,goods_total,store_name,store_id from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' order by '.$goods_total.' limit 40';

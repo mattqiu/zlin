@@ -1,0 +1,12 @@
+[2017-06-17 09:42:38] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40
+[2017-06-17 09:45:39] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40
+[2017-06-17 16:02:21] /wxapp/index.php?act=goods&op=goods_detail&goods_commonid=100008 ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'goods_spec' in 'field list'
+SELECT goods_spec,goods_id,store_id,goods_image,color_id FROM `zlin`.`zlin_goods_common` WHERE ( goods_commonid = '100008' ) LIMIT 1000  
+[2017-06-17 16:03:33] /wxapp/index.php?act=goods&op=goods_detail&goods_commonid=100008 ( act=goods&op=goods_detail ) 
+ERR: Db Error: Unknown column 'goods_spec' in 'field list'
+SELECT goods_spec,goods_id,store_id,goods_image,color_id FROM `zlin`.`zlin_goods_common` WHERE ( goods_commonid = '100008' ) LIMIT 1000  
