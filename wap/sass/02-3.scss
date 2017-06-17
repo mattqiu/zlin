@@ -3,11 +3,11 @@
 $designWidth: 640;
 body {
     width: 16rem;
-    overflow: hidden;
+//  overflow: hidden;
     margin: 0 auto;
     background-color: #e6e6e6;
     overflow:scroll;
-    overflow-y:hidden;
+//  overflow-y:hidden;
     max-width: px2rem(640);
 }
 
@@ -69,7 +69,6 @@ body {
             width: px2rem(640);
             line-height: px2rem(66);
             padding-left: px2rem(50);
-            font-size: px2rem(30);
             border-bottom: px2rem(2) solid #8D8D8D;
         }
     }
@@ -85,14 +84,13 @@ body {
             width: px2rem(640);
             line-height: px2rem(66);
             padding-left: px2rem(50);
-            font-size: px2rem(30);
             border-bottom: px2rem(2) solid #8D8D8D;
         }
     }
     .bar-list {
         width: px2rem(600);
         .bar-list-1 {
-            width: px2rem(160);
+            width: px2rem(200);
             .text {
                 margin-right: px2rem(12);
             }
@@ -102,7 +100,7 @@ body {
             }
         }
         .bar-list-2 {
-            width: px2rem(130);
+            width: px2rem(120);
             .text {
                 margin-right: px2rem(12);
             }
@@ -112,16 +110,16 @@ body {
             }
         }
         .bar-list-3 {
-            width: px2rem(120);
+            width: px2rem(110);
         }
         .bar-list-4 {
-            width: px2rem(120);
+            width: px2rem(110);
             span {
                 font-size: px2rem(30);
             }
         }
         .bar-list-5 {
-            width: px2rem(70);
+            width: px2rem(60);
             span {
                 font-size: px2rem(40);
             }
@@ -134,11 +132,10 @@ body {
         }
     }
 }
-
 .containers {
     width: 16rem;
     margin-top: px2rem(200);
-    margin-bottom: px2rem(110);
+    margin-bottom: px2rem(90);
     #show1 {
         display: block;
         .show1 {
@@ -162,17 +159,21 @@ body {
                     height: px2rem(170);
                     padding-left: px2rem(15);
                     .goods-name {
-                        margin-top: px2rem(30);
-                        margin-bottom: px2rem(30);
                         font-size: px2rem(25);
+                        height: px2rem(120);
                         color: #9d9d9d;
                     }
                     .goods-num {
                         font-size: px2rem(21);
+                        height: px2rem(25);
+                        line-height: px2rem(25);
                         color: #000000;
                     }
                     .goods-price {
                         font-size: px2rem(23);
+                        height: px2rem(25);
+                        line-height: px2rem(25);
+                        
                         color: #cd9300;
                         span {
                             font-size: px2rem(23);
@@ -198,7 +199,7 @@ body {
         }
     }
     #show2 {
-                display: none;
+            display: none;
         .show2 {
             width: 16rem;
             .show_center {

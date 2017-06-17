@@ -90,10 +90,21 @@ body {
                 width: px2rem(100);
                 display: inline-block;
                 text-align: justify;
-//              vertical-align: top;
-
             }
-            .public::after {
+            .public:after {
+                content: "";
+                display: inline-block;
+                width: 100%;
+                overflow: hidden;
+                height: 0;
+            }
+             .publics {
+                padding-left: px2rem(20);
+                width: px2rem(420);
+                display: inline-block;
+                text-align: left;
+            }
+            .publics:after {
                 content: "";
                 display: inline-block;
                 width: 100%;

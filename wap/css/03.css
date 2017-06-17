@@ -72,7 +72,18 @@ body {
         width: 2.5rem;
         display: inline-block;
         text-align: justify; }
-      .show .attribute .attribute-list .public::after {
+      .show .attribute .attribute-list .public:after {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        overflow: hidden;
+        height: 0; }
+      .show .attribute .attribute-list .publics {
+        padding-left: 0.5rem;
+        width: 10.5rem;
+        display: inline-block;
+        text-align: left; }
+      .show .attribute .attribute-list .publics:after {
         content: "";
         display: inline-block;
         width: 100%;

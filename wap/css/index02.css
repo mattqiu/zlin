@@ -67,10 +67,15 @@ body {
     height: 2.5rem; }
   .center .text {
     width: 2.75rem;
-    margin-left: 0.125rem; }
+    font-size: 0.6rem; }
 
 .gray {
-  color: #e5e5e5; }
+  color: #e5e5e5;
+  height: 0.625rem;
+  width: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
 
 .flex-start {
   display: flex;

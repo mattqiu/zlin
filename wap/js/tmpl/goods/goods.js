@@ -1,4 +1,4 @@
-$(function() {
+
 	var goods_total = 0;
 	var is_ordering = 0;
 	var minPrice    = 0;
@@ -105,4 +105,3 @@ $(function() {
 		ajaxCommit();
 	});
 	ajaxCommit();
-});

@@ -13,13 +13,17 @@
 	<title>手机端商城</title>
 	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.css" />
 	<link rel="stylesheet" type="text/css" href="../../css/02-3.css" />
-	<!--<link rel="stylesheet" type="text/css" href="../../css/index04.css" />-->
 	<link rel="stylesheet" type="text/css" href="../../satic/font_kdsuj6w2ht5oecdi/iconfont.css" />
-
+	<link rel="stylesheet" type="text/css" href="../../css/dropload.css"/>
+	<!--<link rel="stylesheet" type="text/css" href="../../js/load/dropload.css"/>-->
 	<!--适应手机的hotcss-->
 
 	<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
 	<script src="../../js/jquery-3.1.1.min.js"></script>
+	<script src="../../js/load/dropload.min.js"></script>
+	<script src="../../js/load/dropload.js"></script>
+	<script src="../../js/tmpl/odering/load.js"></script>
+	<script src="../../js/tmpl/odering/function.js"></script>
 	<script src="../../js/tmpl/odering/index.js"></script>
 	<script src="../../js/config.js"></script>
 	<script src="../../js/tmpl/goods/goods.js"></script>
@@ -95,14 +99,16 @@
 
 		<div class="containers">
 			<!--列表渲染模板-->
-			<div id="show1">				
+			<div id="show1">
+				
 			</div>
 			<!--列表渲染模板结束-->
+
 			<!--表格渲染模板-->
 			<div id="show2">
 				<div class="show2 display-flex">
 					<div class="show_center space-between" id="two">
-						
+
 					</div>
 				</div>
 			</div>
@@ -126,13 +132,9 @@
 					</div>
 				</div>
 			</div>
-
 			<!--请求数据加载的地方结束-->
 		</div>
-		</div>
-		<div class="footer-top">
-			已经加载全部的
-		</div>
+	</div>
 		<div class="footer ">
 			<div class="row">
 				<div class="col-3 text-center">
@@ -185,9 +187,7 @@
 								<button>特价款</button>
 								<button></button>
 							</div>
-
 						</div>
-
 						<div class="filters flex-start">
 							<div class="right-center-left">
 								价格区间（元）
@@ -199,7 +199,7 @@
 
 						<div class="filters flex-start border-bottom">
 							<div class="filter-input display-flex">
-								<input type="text" name="" id="input1" value="0" onfocus='if(this.value=="0"){this.value="";}; ' onblur='if(this.value==""){this.value="0";};'  />
+								<input type="text" name="" id="input1" value="0" onfocus='if(this.value=="0"){this.value="";}; ' onblur='if(this.value==""){this.value="0";};' />
 								<div class="input-center">-</div>
 								<input type="text" name="" id="input2" value="100000" onfocus='if(this.value=="100000"){this.value="";}; ' onblur='if(this.value==""){this.value="100000";};' />
 							</div>
@@ -229,8 +229,9 @@
 		    	提交
 		    </button>
 			</div>
-		    
+
 		</div>
+
 	</body>
 
 </html>
