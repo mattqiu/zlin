@@ -101,6 +101,7 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
           
         }
         if(!$ordering_list){
+            //为空则返回空数组
             $ordering_list = array();
             if($size == 'order'){
                 $bottom = array();
