@@ -49,7 +49,7 @@ Page({
             goods_total:6
           },{
             name: '未定',
-            goods_total:7
+            goods_total:5
           }
         ]
       },
