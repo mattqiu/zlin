@@ -318,10 +318,10 @@ class goodsControl extends mobileHomeControl{
      * 商品详细页
      */
     public function goods_detailOp() {
-        $goods_id = intval($_GET['goods_id']);
+        $goods_commonid = intval($_GET['goods_commonid']);
         // 商品详细信息
         $model_goods = Model('goods');
-        $goods_detail = $model_goods->getGoodsDetail($goods_id);
+        $goods_detail = $model_goods->getGoodsDetail($goods_commonid);
         if (empty($goods_detail['goods_info'])) {
             output_error('商品不存在');
         }

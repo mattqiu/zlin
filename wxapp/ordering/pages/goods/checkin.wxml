@@ -9,7 +9,7 @@
 	<view class="ui-card">
 		<view class="goods-wrap">
 			<view class="goods-pic">
-				<image src="../../images/local/pic2.png" mode="scaleToFill"></image>
+				<image src="{{goods_info.goods_image}}" mode="scaleToFill"></image>
 			</view>
 			<view class="goods-info">
 				<view class="goods-info__item">

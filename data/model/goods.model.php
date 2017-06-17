@@ -85,10 +85,7 @@ class goodsModel extends Model{
     	$minPrice =$_REQUEST['minPrice'];
     	$maxPrice =$_REQUEST['maxPrice'];
     	$goods_total = $_REQUEST['goods_total'];
-    	$is_ordering = $_REQUEST['is_ordering'];
-    	if(empty($is_ordering)){
-    		$is_ordering = 0;
-    	}
+    	
     	if(empty($minPrice)){
     		$minPrice = 0;
     	}
@@ -108,15 +105,34 @@ class goodsModel extends Model{
     		case '4':
     			$goods_total = 'goods_price asc';
     			break;
+    		case '6':
+    			$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
+    			$new_array = array();
+    			$order_info = array();
+			    foreach ($buy_list_info as $key => $v){			    	
+			    	if(!in_array($v['goods_commonid'],$new_array)){
+			    		$new_array[]= $v['goods_commonid'];
+			    	}
+			    }
+			    
+			    foreach ($new_array as $value){
+			    	$order_commonid['goods_commonid'] = $value;
+			    	$order_info = $this ->table('goods_common')->field('*')->where($order_commonid)->order($order)->select();
+			    	return $order_info;
+			    }
+			   
+    			break;
     		default:
     			$goods_total = 'goods_total desc,goods_price desc';
     			break;
     	}
-	    $sql = 'select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' and is_ordering='.$is_ordering.' order by '.$goods_total.' limit 40';
-		$db=Model();  
+	    $sql = 'select goods_commonid,goods_name,goods_price,goods_total,store_name,store_id from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' order by '.$goods_total.' limit 40';
+
+	    $db=Model();  
 		$goods_list=$db->query($sql);
     	return $goods_list;
     }
+    
 	/**
      * 获取指定分类指定店铺下的随机商品列表
      *
@@ -869,11 +885,12 @@ class goodsModel extends Model{
      * @return array
      */
     public function getGoodsCommonInfoByID($goods_commonid, $fields = '*') {
-        $common_info = $this->_rGoodsCommonCache($goods_commonid, $fields);
+        /*$common_info = $this->_rGoodsCommonCache($goods_commonid, $fields);
         if (empty($common_info)) {
             $common_info = $this->getGoodsCommonInfo(array('goods_commonid'=>$goods_commonid));
             $this->_wGoodsCommonCache($goods_commonid, $common_info);
-        }
+        }*/
+        $common_info = $this->getGoodsCommonInfo(array('goods_commonid'=>$goods_commonid));
         return $common_info;
     }
 	
@@ -1409,7 +1426,7 @@ class goodsModel extends Model{
 		
         $result2 = $this->getGoodsCommonInfoByID($result1['goods_commonid']);
         $goods_info = array_merge($result2, $result1);
-
+		return $goods_info;
         $goods_info['spec_value'] = unserialize($goods_info['spec_value']);
         $goods_info['spec_name'] = unserialize($goods_info['spec_name']);
         $goods_info['goods_spec'] = unserialize($goods_info['goods_spec']);
@@ -1770,5 +1787,19 @@ class goodsModel extends Model{
      */
     public function getGoodsBarcodeInfo($condition, $field = '*') {
     	return $this->table('goods_barcode')->field($field)->where($condition)->find();
+    }
+    
+    /**
+     * 获取店铺所有产品信息
+     *
+     * @param array $condition 条件
+     * @param array $field 字段
+     * @param string $page 分页
+     * @param string $order 排序
+     * @return array
+     */
+    public function getStoreDetail($condition, $field = '*', $page = 0, $order = '', $limit = '6') {
+
+    	return $this->table('goods_common')->field($field)->where($condition)->order($order)->limit($limit)->page($page)->select();
     }
 }

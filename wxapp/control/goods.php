@@ -210,10 +210,13 @@ class goodsControl extends wxappHomeControl{
         // 商品详细信息
         $model_goods = Model('goods');
         $goods_detail = $model_goods->getGoodsDetail($goods_commonid);
-
-	    output_data($goods_detail,'成功获取商品信息');
-
-        
+		$condition['store_id'] = $goods_detail['store_id'];
+		$goods_detail['store_info'] = $model_goods->getStoreDetail($condition);
+		$store_info = $model_goods->getStoreDetail($condition);
+		$all_info['goods_detail'] = $goods_detail;
+		$all_info['store_info'] = $store_info;
+		print_r($all_info);
+		//output_data($all_info,'成功获取商品信息');
     }
 
     /**

@@ -1,4 +1,6 @@
 // pages/goods/detail.js
+var util = require('../../utils/util.js');
+var app = new getApp();
 Page({
   data:{
     tabIndex: 0 //0:商品属性 1：商品买点 2：相关推荐
@@ -12,6 +14,23 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    var that = this;
+    var data = {
+      token: app.globalData.token,
+      goods_commonid: options.goods_commonid,
+      goods_name: options.goods_name,
+      goods_price: options.goods_price
+    };
+    util.Ajax("goods/goods_detail", data, function (res) {
+      //console.log("a结果：", res);
+      let goods_info;
+      let store_info;
+      that.setData({
+        goods_info: res.datas.goods_detail,
+        store_info: res.datas.store_info
+      });
+      console.log("a结果：", res.datas.store_info);
+    });
   },
   onReady:function(){
     // 页面渲染完成

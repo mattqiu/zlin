@@ -43,13 +43,13 @@ Page({
         list: [
           {
             name: '所有',
-            is_ordering: 0
+            goods_total: 5
           },{
             name: '已定',
-            is_ordering:1
+            goods_total:6
           },{
             name: '未定',
-            is_ordering:2
+            goods_total:7
           }
         ]
       },
@@ -161,6 +161,7 @@ Page({
      //console.log('测试order', order);
      var data = {
        goods_total: goods_total,
+       buyer_id: '1',
        minPrice: '100',
        maxPrice: '400',
      };
@@ -224,8 +225,7 @@ Page({
     var that = this;
     var data = {
       token: app.globalData.token,
-      key: '1',
-      order: '0'
+      goods_total: '1' 
     };
     util.Ajax("search/index", data, function (res) {
       that.setData({
@@ -270,7 +270,8 @@ Page({
   btn_submit:function(e){
     var that = this;
     var data = {
-      key: '4',
+      goods_total: '4',
+      buyer_id:'1',
       minPrice: this.data.minPrice,
       maxPrice: this.data.maxPrice,
     };

@@ -1,9 +1,9 @@
 {
   "pages":[   
-    "pages/index/index",
     "pages/goods/index",
-    "pages/goods/checkin",
     "pages/goods/detail",
+    "pages/index/index",
+    "pages/goods/checkin",
     "pages/goods/assessment",
     "pages/order/index",
     "pages/order/manage",

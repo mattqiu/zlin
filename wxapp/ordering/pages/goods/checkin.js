@@ -30,19 +30,19 @@ Page({
       list:[
         {
           goods_id: '55',
-          quantity: '15',
+          quantity: '78',
         },
         {
           goods_id: '56',
-          quantity: '15',
+          quantity: '105',
         },
         {
           goods_id: '57',
-          quantity: '25',
+          quantity: '125',
         },
         {
           goods_id: '58',
-          quantity: '35',
+          quantity: '135',
         }
       ],
       token: app.globalData.token,

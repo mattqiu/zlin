@@ -37,7 +37,7 @@
 		<view class="plane" wx:if="{{showPlaneType === '1'}}">
 				<view class="plane-item" 
 					wx:for="{{filter.has.list}}" 
-					data-id="{{item.key_2}}" 
+					data-id="{{item.goods_total}}" 
 					data-index="{{item.order_2}}"
 					data-type="has"
 					bindtap="selectPlaneItem">
@@ -52,7 +52,7 @@
 				<!-- 商品列表 -->
 				<view wx:if="{{!isShowList}}" class="goods-list__type{{goodsListType}}">
 					<view class="goods-item" wx:for="{{goods_list}}">
-              <navigator url="checkin?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}">
+              <navigator url="detail?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}">
                 <view class="goods-item__pic">
                   <image src="{{item.goods_image}}" mode="scaleToFill"></image>
                 </view>
@@ -61,7 +61,7 @@
                 <view class="goods-item__name">{{item.goods_name}}</view>
                 <view class="goods-item__no">{{item.goods_commonid}}</view>
                 <view class="goods-item__price">￥{{item.goods_price}}</view>
-                <view class="goods-item__dn">{{item.goods_total}}</view>
+                <navigator url="checkin?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}"><view class="goods-item__dn">{{item.goods_total}}</view></navigator>
               </view>
 					</view>
 				</view>
