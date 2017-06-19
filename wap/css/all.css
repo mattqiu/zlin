@@ -17,22 +17,23 @@
   flex-wrap: wrap; }
 
 .margin-right-20 {
-  margin-right: px2rem(20); }
+  margin-right: 0.5rem; }
 
 .bar-list {
-  height: px2rem(57);
-  line-height: px2rem(57); }
+  height: 1.425rem;
+  line-height: 1.425rem; }
 
 .footer {
-  border-top: px2rem(1) solid red;
-  font-size: px2rem(27);
+  background-color: #FFFFFF;
+  border-top: 0.025rem solid red;
+  font-size: 0.675rem;
   width: 16rem;
-  height: px2rem(87);
+  height: 2.175rem;
   position: fixed;
   bottom: 0;
   left: 0; }
   .footer span {
-    font-size: px2rem(27);
-    margin-top: px2rem(20); }
+    font-size: 0.675rem;
+    margin-top: 0.5rem; }
 
 /*# sourceMappingURL=all.css.map */

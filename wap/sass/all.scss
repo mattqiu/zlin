@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import '_px2rem';
+$designWidth: 640;
 .display-flex{
     display: flex;
     justify-content: center;
@@ -24,7 +27,9 @@
     height: px2rem(57);
     line-height: px2rem(57);
 }
+
 .footer{
+    background-color: #FFFFFF;
     border-top: px2rem(1) solid red;
     font-size: px2rem(27);
     width: 16rem;

@@ -145,6 +145,5 @@ $(function(){
 		state_type = 'state_new';
 		ajaxCommit('ordermanager_unfinished');
 	});
-	
 	ajaxCommit('ordermanager');
 })

@@ -2,6 +2,7 @@
 defined('InIMall') or exit('Access Invalid!');
 $config = array();
 $config['main_site_url'] 		= 'http://demo.hzlwo.com';
+$config['shop_site_url'] 		= 'http://demo.hzlwo.com/imall';
 $config['shop_modules_url']      = 'http://demo.hzlwo.com/manage/modules/shop';
 $config['cms_site_url'] 		= 'http://demo.hzlwo.com/cms';
 $config['cms_modules_url']      = 'http://demo.hzlwo.com/manage/modules/cms';
@@ -11,7 +12,6 @@ $config['circle_site_url'] 		= 'http://demo.hzlwo.com/circle';
 $config['circle_modules_url']   = 'http://demo.hzlwo.com/manage/modules/circle';
 $config['admin_site_url'] 		= 'http://demo.hzlwo.com/manage';
 $config['admin_modules_url']    = 'http://demo.hzlwo.com/manage/modules/system';
-$config['shop_site_url'] 		= 'http://demo.hzlwo.com/imall';
 $config['mobile_site_url'] 		= 'http://demo.hzlwo.com/mobile';
 $config['mobile_modules_url']   = 'http://demo.hzlwo.com/manage/modules/mobile';
 $config['consumercard_modules_url'] = 'http://demo.hzlwo.com/manage/modules/consumercard';
