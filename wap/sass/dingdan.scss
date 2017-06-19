@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import '_px2rem';
+$designWidth: 640;
+body {
+    width: 16rem;
+    overflow: hidden;
+    margin: 0 auto;
+    background-color: #e6e6e6;
+    overflow:scroll;
+
+    max-width: px2rem(640);
+}
+.headers {
+    position: fixed;
+    top: px2rem(0);
+    left: px2rem(0);
+}
+
+.header {
+    width: px2rem(640);
+    height: px2rem(130);
+    background-color: #cd9300;
+    position: relative;
+    .input {
+        position: absolute;
+        left: px2rem(20);
+        top: px2rem(50);
+        width: px2rem(600);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        input {
+            background: url(../image/search.png) no-repeat px2rem(10) center;
+            background-size: px2rem(40) px2rem(40);
+            font-size: px2rem(26);
+            width: px2rem(550);
+            height: px2rem(50);
+            line-height: px2rem(50);
+            padding-left: px2rem(60);
+            background-color: #dec085;
+            border-radius: px2rem(10);
+        }
+        .RichScan {
+            color: #FFFFFF;
+            font-size: px2rem(50);
+            padding-left: px2rem(15);
+        }
+    }
+}

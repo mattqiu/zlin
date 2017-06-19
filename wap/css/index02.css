@@ -1,7 +1,7 @@
 body {
   width: 16rem;
-  overflow: hidden;
-  margin: 0 auto; }
+  margin: 0 auto;
+  overflow: scroll; }
 
 .bar-list {
   font-size: 0.7rem;
@@ -176,7 +176,7 @@ body {
             background-color: #cc9203;
             border: 0.025rem solid #9e8957;
             border-radius: 5%; }
-      .model-3 .body .container-right .footer {
+      .model-3 .body .container-right .footers {
         position: absolute;
         left: 0;
         bottom: -1.75rem;
@@ -186,16 +186,29 @@ body {
         font-size: 0.625rem;
         font-weight: 700;
         color: #FFFFFF; }
-        .model-3 .body .container-right .footer .footer-left {
+        .model-3 .body .container-right .footers .footer-left {
           width: 6.5rem;
           height: 1.75rem;
           line-height: 1.75rem;
           background-color: #dbc383; }
-        .model-3 .body .container-right .footer .footer-right {
+        .model-3 .body .container-right .footers .footer-right {
           width: 6.5rem;
           height: 1.75rem;
           line-height: 1.75rem;
           background-color: #cd9300; }
+
+.footer {
+  border-top: 0.025rem solid red;
+  font-size: 0.675rem;
+  width: 16rem;
+  height: 2.25rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #FFFFFF; }
+  .footer span {
+    font-size: 0.675rem;
+    margin-top: 0.5rem; }
 
 .display-flex {
   display: flex;

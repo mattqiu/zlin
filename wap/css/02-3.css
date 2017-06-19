@@ -2,8 +2,7 @@ body {
   width: 16rem;
   margin: 0 auto;
   background-color: #e6e6e6;
-  overflow: scroll;
-  max-width: 16rem; }
+  overflow: scroll; }
 
 .headers {
   position: fixed;
@@ -333,31 +332,5 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap; }
-
-.footer-top {
-  width: 16rem;
-  height: 0.5rem;
-  background-color: #a0a0a0;
-  color: #d5332f;
-  font-size: 0.4rem;
-  height: 0.5rem;
-  line-height: 0.5rem;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 2.25rem; }
-
-.footer {
-  border-top: 0.025rem solid red;
-  font-size: 0.675rem;
-  width: 16rem;
-  height: 2.25rem;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  background-color: #FFFFFF; }
-  .footer span {
-    font-size: 0.675rem;
-    margin-top: 0.5rem; }
 
 /*# sourceMappingURL=02-3.css.map */

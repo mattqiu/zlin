@@ -23,4 +23,16 @@
   height: px2rem(57);
   line-height: px2rem(57); }
 
+.footer {
+  border-top: px2rem(1) solid red;
+  font-size: px2rem(27);
+  width: 16rem;
+  height: px2rem(87);
+  position: fixed;
+  bottom: 0;
+  left: 0; }
+  .footer span {
+    font-size: px2rem(27);
+    margin-top: px2rem(20); }
+
 /*# sourceMappingURL=all.css.map */

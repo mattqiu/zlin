@@ -23,9 +23,8 @@
 	<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="../../js/config.js"></script>
 	<script src="../../js/tmpl/odering/index.js"></script>
+	<script src="../../js/tmpl/odering/function.js"></script>
 	<!--刷新列表-->
-	<script src="../../js/tmpl/odering/load.js"></script>
-
 	<body>
 		<div class="header">
 			<div class="row color-write header_list">
@@ -194,7 +193,7 @@
        				</button>
 						</div>
 					</div>
-					<div class="footer display-flex">
+					<div class="footers display-flex">
 						<div class="footer-left text-center">
 							重置
 						</div>
@@ -205,33 +204,25 @@
 				</div>
 			</div>
 		</div>
-		<!--footer-->
-		<div class="footer ">
-			<div class="row">
+		<!--页面的底部公用的部分-->
+		<div class="footer display-flex">
 				<div class="col-3 text-center" id="goods">
 					<span class="iconfont">&#xe60b;</span>
-					<p>商品</p>
+					<div>商品</div>
 				</div>
 				<div class="col-3 text-center" id="order">
 					<span class="iconfont">&#xe613;</span>
-					<p>订单</p>
+					<div>订单</div>
 				</div>
-
 				<div class="col-3 text-center">
 					<span class="iconfont">&#xe608;</span>
-					<p>分析</p>
+					<div>分析</div>
 				</div>
 				<div class="col-3 text-center">
 					<span class="iconfont">&#xe60f;</span>
-					<p>我的</p>
+					<div>我的</div>
 				</div>
-			</div>
 		</div>
-
-		<!--<div data-role="page" id="pageone">
-
-		</div>-->
-
 		<script>
 			$(document).on("pageinit", "#pageone", function() {
 				$(".model-3").on("swiperight", function() {

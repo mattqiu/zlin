@@ -8,52 +8,36 @@ $(function() {
         }
       })(jQuery);
       var goods_commonid = $.getUrlParam('goods_commonid');
-
-      alert(goods_commonid);
-
 			$.ajax({
 			type: "get",
 			url: WxappSiteUrl + "/index.php?act=goods&op=goods_detail&goods_commonid="+goods_commonid,
 			dataType: "json",
 			success: function(data) {
 				var goods_detail = data.datas.goods_detail;
+				var spec_name = data.datas.goods_detail.spec_name;
+				var spec_value = data.datas.goods_detail.spec_value;
 				var store_info   = data.datas.store_info;
-				console.log(store_info);
-
+			  /*console.log(spec_name);
+				console.log(spec_value);
+				console.log(spec_name.length);
+				console.log(spec_value.length);*/
+				//商品属性
 				var li = '<div class="attribute-list">'+
-                	'<div class="public">品牌名称</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
+                	'<div class="public">品牌名称</div><div class="publics">'+goods_detail.gc_name+'</div>'+
                 '</div>'+
                 '<div class="attribute-list">'+
-                	'<div class="public">货号</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">颜色</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">尺码</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">类型</div><div class="publics">'+goods_detail.gc_name+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">季节</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">上市日期</div><div class="publics">'+goods_detail.goods_selltime+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">波段</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">面料</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
-                '</div>'+
-                '<div class="attribute-list">'+
-                	'<div class="public">里料</div><div class="publics">'+goods_detail.goods_commonid+'</div>'+
+                	'<div class="public">货号</div><div class="publics">'+goods_detail.goods_serial+'</div>'+
                 '</div>';
+                for (var i = 0; i < spec_name.length; i++) {
+                	li +='<div class="attribute-list">'+
+                	'<div class="public">'+spec_name[i]+'</div><div class="publics">'+goods_detail.spec_value[i]+'</div>'+
+                '</div>';
+                }
+                //商品详情
                 var li2 = 
                 '<div class="show-list-2">'+
 					'<div class="goods-name">'+goods_detail.goods_name+'</div>'+
-					'<div class="goods-num">'+goods_detail.goods_commonid+'</div>'+
+					'<div class="goods-num">'+goods_detail.goods_serial+'</div>'+
 					'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+goods_detail.goods_commonid+'</span></div>'+
 				'</div>'+
 				'<div class="show-list-3 display-flex">'+
@@ -61,6 +45,7 @@ $(function() {
 						goods_detail.goods_total
 					+'</div>'+
 				'</div>';
+				//商品图片
 				var li3 = 
 				'<img src="'+goods_detail.goods_image+'" />';
 				$('.attribute').append(li);
@@ -81,6 +66,10 @@ $(function() {
 					list.push(li4);
 				}
 				$('#about_goods').append(list);
+				//商品卖点
+				li5 = goods_detail.goods_jingle;
+				$('.selling').empty();
+				$('.selling').append(li5);
 			},
 					
 

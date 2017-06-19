@@ -21,6 +21,7 @@ function ajaxCommit(type) {
 		url: ApiUrl + "/index.php?act=store_ordering&op=ordering_list&state_type=" + state_type + "&size=" + size + "&order=" + order + "&sc=" + sc + "&page=" + page + "&curpage=1",
 		dataType: "json",
 		success: function(data) {
+			console.log(data);
 			var datas = data.datas;
 			var item = datas.ordering_list;
 			var list = [];
