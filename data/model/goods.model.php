@@ -80,53 +80,62 @@ class goodsModel extends Model{
         $condition = $this->_getRecursiveClass($condition);
         return $this->table('goods_common')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
     }
+    /**
+     * 商品首页列表查询功能
+     *
+     * @param array $condition 条件
+     * @param string $field 字段
+     * @param string $group 分组
+     * @param string $order 排序
+     * @param int $limit 限制
+     * @param int $page 分页
+     * @return array 二维数组
+     */
+    public function getGoodsOrderList($condition, $field = 'goods_commonid,goods_total,goods_price,goods_name,goods_image', $order = '', $limit = '100') {	
+    	
+    	$goods_list = $this->table('goods_common')->field($field)->where($condition)->order($order)->limit($limit)->select();
+    	return $goods_list;
+    }
+    /**
+     * 查询所有商品goods_commonid
+     *
+     * @param array $condition 条件
+     * @param string $field 字段
+     * @param string $group 分组
+     * @param string $order 排序
+     * @param int $limit 限制
+     * @param int $page 分页
+     * @return array 二维数组
+     */
+    public function getGoodsCommonidList($condition, $field = 'goods_commonid', $order = '',$limit='') {
+    	 
+    	$all_commonid_list = $this->table('goods_common')->field($field)->limit($limit)->select();
+    	return $all_commonid_list;
+    }
+    /**
+     * 商品首页列表查询功能
+     *
+     * @param array $condition 条件
+     * @param string $field 字段
+     * @param string $group 分组
+     * @param string $order 排序
+     * @param int $limit 限制
+     * @param int $page 分页
+     * @return array 二维数组
+     */
     public function getGoodsPriceList($condition, $field = '*', $group = '',$order = '', $limit = 0, $page = 0, $count = 0) {
     	//$condition = $this->getPriceClass($condition);
     	$minPrice =$_REQUEST['minPrice'];
     	$maxPrice =$_REQUEST['maxPrice'];
     	$goods_total = $_REQUEST['goods_total'];
-    	
+    	 
     	if(empty($minPrice)){
     		$minPrice = 0;
     	}
     	if(empty($maxPrice)){
     		$maxPrice = 1000000;
     	}
-    	switch ($goods_total) {
-    		case '1':
-    			$goods_total = 'goods_total desc';
-    			break;
-    		case '2':
-    			$goods_total = 'goods_total asc';
-    			break;
-    		case '3':
-    			$goods_total = 'goods_price desc';
-    			break;
-    		case '4':
-    			$goods_total = 'goods_price asc';
-    			break;
-    		case '6':
-    			$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
-    			$new_array = array();
-    			$order_info = array();
-			    foreach ($buy_list_info as $key => $v){			    	
-			    	if(!in_array($v['goods_commonid'],$new_array)){
-			    		$new_array[]= $v['goods_commonid'];
-			    	}
-			    }
-			    
-			    foreach ($new_array as $value){
-			    	$order_commonid['goods_commonid'] = $value;
-			    	$order_info[] = $this ->table('goods_common')->field('*')->where($order_commonid)->order($order)->select();
-			    	
-			    }
-			    foreach($order_info as $key=>$val){
-			    	foreach($val as $k=>$v){
-			    		$newArr[] = $v;
-			    	}
-			    }
-			    return $newArr ;
-    			break;
+    	
     		case '7':
     			$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
     			$buy_commonid = array();
@@ -143,7 +152,7 @@ class goodsModel extends Model{
     				}
     			}
     			//$all_commonid = $this ->table('goods_common')->field('goods_commonid')->select();
-    			$sql = 'select goods_commonid from zlin_goods_common';    			
+    			$sql = 'select goods_commonid from zlin_goods_common';
     			$db=Model();
     			$all_commonid=$db->query($sql);
     			foreach($all_commonid as $key=>$val){
@@ -151,7 +160,7 @@ class goodsModel extends Model{
     					$newAllCommonid[] = $v;
     				}
     			}
-    			
+    			 
     			$residue = array_diff($newAllCommonid, $newBuyCommonid);
     			foreach ($residue as $value){
     				$residue_commonid['goods_commonid'] = $value;
@@ -163,19 +172,18 @@ class goodsModel extends Model{
     					$new_residue_info[] = $v;
     				}
     			}
-			return $new_residue_info;
+    			return $new_residue_info;
     			break;
     		default:
     			$goods_total = 'goods_total desc,goods_price desc';
     			break;
     	}
-	    $sql = 'select goods_commonid,goods_name,goods_price,goods_total,store_name,store_id from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' order by '.$goods_total.' limit 40';
-
-	    $db=Model();  
-		$goods_list=$db->query($sql);
+    	$sql = 'select goods_commonid,goods_name,goods_price,goods_total,store_name,store_id from zlin_goods_common where goods_price between '.$minPrice.' and '.$maxPrice.' order by '.$goods_total.' limit 40';
+    
+    	$db=Model();
+    	$goods_list=$db->query($sql);
     	return $goods_list;
     }
-    
 	/**
      * 获取指定分类指定店铺下的随机商品列表
      *

@@ -12,7 +12,7 @@ class orderingModel extends Model {
     public $count;//记录总条数
     public $totalPage;//记录总页数
 
-	/**
+    /**
      * 取订单信息
      *
      * @param unknown_type $condition
@@ -20,13 +20,27 @@ class orderingModel extends Model {
      * @return unknown
      */
     public function getOrderingInfo($condition = array(),$fields = '*', $order = '') {
-        $order_info = $this->table('ordering')->field($fields)->where($condition)->order($order)->select();
-        if (empty($order_info)) {
-            return array();
-        }
-        return $order_info;
+    	$order_info = $this->table('ordering')->field($fields)->where($condition)->order($order)->select();
+    	if (empty($order_info)) {
+    		return array();
+    	}
+    	return $order_info;
+    }
+	/**
+     * 获取买家购买的所有商品信息列表
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('goods_commonid','goods_num','goods_name')
+     * @return unknown
+     */
+    public function getBuyOrderingInfo($condition = array(),$field = '*') {
+    	
+        $goods_commonid_list = $this->table('ordering_goods')->field($field)->where($condition)->select();
+
+        return $goods_commonid_list;
     }
     
+ 
     /**
      * 获取商品的总订单数量
      *

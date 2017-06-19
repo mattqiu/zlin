@@ -23,13 +23,100 @@ class searchControl extends wxappControl {
         Language::read('home_goods_class_index');
         $this->_model_search = Model('search');
         $this->page=40;
-        $termKey =$_REQUEST['goods_total'];
-        $condition['buyer_id'] = intval($_REQUEST['buyer_id']);
+        $minPrice =$_REQUEST['minPrice'];
+        $maxPrice =$_REQUEST['maxPrice'];
+        $goods_total = $_REQUEST['goods_total'];
+        //$condition['buyer_id'] = intval($_REQUEST['buyer_id']);
         $model_goods = Model('goods');
+        $model_ordering = Model('ordering');
         $page_nums = !empty($_REQUEST['page_count'])?$_REQUEST['page_count']:$this->page; //每页显示的条数
         $page_curr = !empty($_REQUEST['curpage'])?$_REQUEST['curpage']:1; //当前显示第几页
         $fields = 'goods_commonid,goods_name,goods_price,goods_image,goods_total,goods_state,promotion_cid';
-        $goods_list = $model_goods->getGoodsPriceList($condition, $fields, $this->page);
+        if(empty($minPrice)){
+        	$minPrice = 0;
+        }
+        if(empty($maxPrice)){
+        	$maxPrice = 1000000;
+        }
+        switch ($goods_total) {
+        	case '1':
+        		$order = 'goods_total desc';
+        		$goods_list = $model_goods->getGoodsOrderList($condition, $fields,$order, $this->page);
+        		break;
+        	case '2':
+        		$order = 'goods_total asc';
+        		$goods_list = $model_goods->getGoodsOrderList($condition, $fields,$order, $this->page);
+        		break;
+        	case '3':
+        		$order = 'goods_price desc';
+        		$goods_list = $model_goods->getGoodsOrderList($condition, $fields,$order, $this->page);
+        		break;
+        	case '4':
+        		$order = 'goods_price asc';
+        		$goods_list = $model_goods->getGoodsOrderList($condition, $fields,$order, $this->page);
+        		break;
+        	case '5':
+        		$order = 'goods_total desc,goods_price desc';
+        		$goods_list = $model_goods->getGoodsOrderList($condition, $fields,$order, $this->page);
+        		break;
+        	case '6':
+        		$fields ='goods_commonid';
+        		$condition['buyer_id'] = intval($_REQUEST['buyer_id']);
+        		$goods_commonid_list = $model_ordering->getBuyOrderingInfo($condition,$fields);
+        		//$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
+
+        		foreach ($goods_commonid_list as $key =>$val){
+        				$buy_commonid_info = $val;
+        				$order_info[] = $model_goods ->getGoodsOrderList($buy_commonid_info);
+        			      			
+        		}
+
+        		foreach ($order_info as $key =>$val){
+        			foreach ($val as $key =>$value){
+        				$buyer_order_info[] = $value;
+        			}
+        		}
+        		//print_r($order_info);
+        		//print_r($buyer_order_info);
+        		output_data($buyer_order_info,'成功获取商品信息');
+        		break;
+        		
+        	case '7':
+        		$field ='goods_commonid';
+        		$condition['buyer_id'] = intval($_REQUEST['buyer_id']);
+        		$goods_commonid_list = $model_ordering->getBuyOrderingInfo($condition,$field);//已经购买的goods_commonid
+        		$all_commonid_list = $model_goods ->getGoodsCommonidList($field);//所有商品goods_commonid
+        		
+        		foreach($goods_commonid_list as $key=>$val){
+        			foreach($val as $k=>$v){
+        				$new_goods_commonid_list[] = $v;
+        			}
+        		}
+        		foreach($all_commonid_list as $key=>$val){
+        			foreach($val as $k=>$v){
+        				$new_all_commonid_list[] = $v;
+        			}
+        		}
+
+        		$residue = array_diff($new_all_commonid_list, $new_goods_commonid_list);
+        		foreach ($residue as $value){
+        			$residue_commonid['goods_commonid'] = $value;
+        			$residue_info[] = $model_goods ->getGoodsOrderList($residue_commonid);
+        		}
+        		foreach($residue_info as $key=>$val){
+        			foreach($val as $k=>$v){
+        				$new_residue_info[] = $v;
+        			}
+        		}
+        		
+        		output_data($new_residue_info,'成功获取商品信息');
+        		break;
+        	default:
+        		$goods_total = 'goods_total desc,goods_price desc';
+        		break;
+        }
+    
+
         
         // 整理输出的数据格式
         foreach ($goods_list as $key => $value) {
