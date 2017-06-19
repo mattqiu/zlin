@@ -117,10 +117,15 @@ class goodsModel extends Model{
 			    
 			    foreach ($new_array as $value){
 			    	$order_commonid['goods_commonid'] = $value;
-			    	$order_info = $this ->table('goods_common')->field('*')->where($order_commonid)->order($order)->select();
-			    	return $order_info;
+			    	$order_info[] = $this ->table('goods_common')->field('*')->where($order_commonid)->order($order)->select();
+			    	
 			    }
-			   
+			    foreach($order_info as $key=>$val){
+			    	foreach($val as $k=>$v){
+			    		$newArr[] = $v;
+			    	}
+			    }
+			    return $newArr ;
     			break;
     		case '7':
     			$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
@@ -145,7 +150,7 @@ class goodsModel extends Model{
     				$residue_info = $this ->table('goods_common')->field('*')->where($residue_commonid)->order($order)->select();
     				return $residue_info;
     			}
-    			
+
     			break;
     		default:
     				$goods_total = 'goods_total desc,goods_price desc';

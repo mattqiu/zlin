@@ -3,12 +3,9 @@
 $designWidth: 640;
 body {
     width: 16rem;
-//  overflow: hidden;
     margin: 0 auto;
     background-color: #e6e6e6;
     overflow:scroll;
-//  overflow-y:hidden;
-    max-width: px2rem(640);
 }
 
 .headers {
@@ -422,31 +419,4 @@ body {
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-}
-.footer-top{
-    width: 16rem;
-    height: px2rem(20);
-    background-color: #a0a0a0;
-    color: #d5332f;
-    font-size: px2rem(16);
-    height: px2rem(20);
-    line-height: px2rem(20);
-    text-align: center;
-    position: fixed;
-    left: 0;
-    bottom: px2rem(90);
-}
-.footer{
-    border-top: px2rem(1) solid red;
-    font-size: px2rem(27);
-    width: 16rem;
-    height: px2rem(90);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    background-color: #FFFFFF;
-    span{
-        font-size: px2rem(27);
-        margin-top: px2rem(20);
-    }
 }

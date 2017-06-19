@@ -1,0 +1,30 @@
+[2017-06-16 18:02:08] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40
+[2017-06-16 18:02:19] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40
+[2017-06-16 18:02:22] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40
+[2017-06-16 18:02:23] /wxapp/index.php?act=search&op=index&goods_total=1&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc limit 40
+[2017-06-16 18:02:24] /wxapp/index.php?act=search&op=index&goods_total=2&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total asc limit 40
+[2017-06-16 18:02:24] /wxapp/index.php?act=search&op=index&goods_total=3&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_price desc limit 40
+[2017-06-16 18:02:24] /wxapp/index.php?act=search&op=index&goods_total=4&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_price asc limit 40
+[2017-06-16 18:02:29] /wxapp/index.php?act=search&op=index&goods_total=4&is_ordering=1&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=1 order by goods_price asc limit 40
+[2017-06-16 18:02:33] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40
+[2017-06-16 18:02:35] /wxapp/index.php?act=search&op=index&goods_total=0&is_ordering=0&minPrice=0&maxPrice=0 ( act=search&op=index ) 
+ERR: Db Error: Unknown column 'goods_total' in 'field list'
+select goods_commonid,goods_name,goods_price,goods_marketprice,goods_tradeprice,goods_total,goods_addtime,goods_image,goods_state,promotion_cid from zlin_goods_common where goods_price between 0 and 1000000 and is_ordering=0 order by goods_total desc,goods_price desc limit 40

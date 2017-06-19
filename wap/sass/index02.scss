@@ -3,8 +3,8 @@
 $designWidth: 640;
 body {
     width: 16rem;
-    overflow: hidden;
     margin: 0 auto;
+    overflow: scroll;
 }
 
 .bar-list {
@@ -221,7 +221,7 @@ body {
                     }
                 }
             }
-            .footer {
+            .footers {
                 position: absolute;
                 left: 0;
                 bottom: px2rem(-70);
@@ -247,7 +247,20 @@ body {
         }
     }
 }
-
+.footer{
+    border-top: px2rem(1) solid red;
+    font-size: px2rem(27);
+    width: 16rem;
+    height: px2rem(90);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #FFFFFF;
+    span{
+        font-size: px2rem(27);
+        margin-top: px2rem(20);
+    }
+}
 .display-flex {
     display: flex;
     justify-content: center;
