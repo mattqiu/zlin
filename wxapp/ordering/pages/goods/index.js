@@ -161,9 +161,7 @@ Page({
      //console.log('测试order', order);
      var data = {
        goods_total: goods_total,
-       buyer_id: '1',
-       minPrice: '100',
-       maxPrice: '400',
+       buyer_id: '1'
      };
      util.Ajax("search/index",data,function(res){
        that.setData({

@@ -109,7 +109,7 @@ class searchControl extends wxappControl {
         		
         		output_data($goods_list,'成功获取商品信息');
         		break;
-        		case '8':
+        		case '8': //金额筛选
         			$field ='goods_commonid';
         			$condition['buyer_id'] = intval($_REQUEST['buyer_id']);
         			$goods_commonid_list = $model_ordering->getBuyOrderingInfo($condition,$field);//已经购买的goods_commonid
