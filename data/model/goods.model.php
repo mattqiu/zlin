@@ -77,9 +77,10 @@ class goodsModel extends Model{
      * @return array 二维数组
      */
     public function getGoodsList($condition, $field = '*', $group = '',$order = '', $limit = 0, $page = 0, $count = 0) {
-        $condition = $this->_getRecursiveClass($condition);
-        return $this->table('goods_common')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
+    	$condition = $this->_getRecursiveClass($condition);
+    	return $this->table('goods')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
     }
+    
     /**
      * 商品首页列表查询功能
      *
@@ -327,15 +328,15 @@ class goodsModel extends Model{
      * @param boolean $lock 是否锁定
      * @return array
      */
-	public function getGoodsOnlineList($condition, $field = '*', $page = 0, $order = 'goods_commonid desc', $limit = 0, $group = '', $lock = false, $count = 0) {
+	public function getGoodsOnlineList($condition, $field = '*', $page = 0, $order = 'goods_id desc', $limit = 0, $group = '', $lock = false, $count = 0) {
 
 		$condition['goods_state']   = self::STATE1;
         $condition['goods_verify']  = self::VERIFY1;
         
         return $this->getGoodsList($condition, $field, $group, $order, $limit, $page, $count);
     }
-    public function getGoodsChoseList($condition, $field = '*', $page = 0, $order = 'goods_commonid desc', $limit = 0, $group = '', $lock = false, $count = 0) {
-		
+    public function getGoodsChoseList($condition, $field = '*', $page = 0, $order = 'goods_id desc', $limit = 0, $group = '', $lock = false, $count = 0) {
+
     	$condition['goods_state']   = self::STATE1;
     	$condition['goods_verify']  = self::VERIFY1;
     	return $this->getGoodsPriceList($condition, $field, $group, $order, $limit, $page, $count);
@@ -936,12 +937,12 @@ class goodsModel extends Model{
      * @return array
      */
     public function getGoodsCommonInfoByID($goods_commonid, $fields = '*') {
-        /*$common_info = $this->_rGoodsCommonCache($goods_commonid, $fields);
+        $common_info = $this->_rGoodsCommonCache($goods_commonid, $fields);
         if (empty($common_info)) {
             $common_info = $this->getGoodsCommonInfo(array('goods_commonid'=>$goods_commonid));
             $this->_wGoodsCommonCache($goods_commonid, $common_info);
-        }*/
-        $common_info = $this->getGoodsCommonInfo(array('goods_commonid'=>$goods_commonid));
+        }
+            
         return $common_info;
     }
 	
@@ -1257,12 +1258,11 @@ class goodsModel extends Model{
      * @return array
      */
     public function getGoodsInfoByID($goods_commonid, $fields = '*') {
-        /*$goods_info = $this->_rGoodsCache($goods_commonid, $fields);
+        $goods_info = $this->_rGoodsCache($goods_commonid, $fields);
         if (empty($goods_info)) {
             $goods_info = $this->getGoodsInfo(array('goods_commonid'=>$goods_commonid));
             $this->_wGoodsCache($goods_commonid, $goods_info);
-        }*/
-        $goods_info = $this->getGoodsInfo(array('goods_commonid'=>$goods_commonid));
+        }
         return $goods_info;
     }
 
@@ -1460,7 +1460,7 @@ class goodsModel extends Model{
     /**
      * 获取单条商品信息
      *
-     * @param int $goods_commonid
+     * @param int $goods_id
      * @return array
      */
     public function getGoodsDetail($goods_commonid) {

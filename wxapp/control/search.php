@@ -63,7 +63,6 @@ class searchControl extends wxappControl {
         		$fields ='goods_commonid';
         		$condition['buyer_id'] = intval($_REQUEST['buyer_id']);
         		$goods_commonid_list = $model_ordering->getBuyOrderingInfo($condition,$fields);
-        		//$buy_list_info = $this->table('ordering_goods')->field('goods_commonid')->where($condition)->order($order)->select();
 
         		foreach ($goods_commonid_list as $key =>$val){
         				$buy_commonid_info = $val;
@@ -73,12 +72,11 @@ class searchControl extends wxappControl {
 
         		foreach ($order_info as $key =>$val){
         			foreach ($val as $key =>$value){
-        				$buyer_order_info[] = $value;
+        				$goods_list[] = $value;
         			}
         		}
-        		//print_r($order_info);
-        		//print_r($buyer_order_info);
-        		output_data($buyer_order_info,'成功获取商品信息');
+
+        		output_data($goods_list,'成功获取商品信息');
         		break;
         		
         	case '7':
@@ -105,14 +103,44 @@ class searchControl extends wxappControl {
         		}
         		foreach($residue_info as $key=>$val){
         			foreach($val as $k=>$v){
-        				$new_residue_info[] = $v;
+        				$goods_list[] = $v;
         			}
         		}
         		
-        		output_data($new_residue_info,'成功获取商品信息');
+        		output_data($goods_list,'成功获取商品信息');
         		break;
+        		case '8':
+        			$field ='goods_commonid';
+        			$condition['buyer_id'] = intval($_REQUEST['buyer_id']);
+        			$goods_commonid_list = $model_ordering->getBuyOrderingInfo($condition,$field);//已经购买的goods_commonid
+        			$all_commonid_list = $model_goods ->getGoodsCommonidList($field);//所有商品goods_commonid
+        		
+        			foreach($goods_commonid_list as $key=>$val){
+        				foreach($val as $k=>$v){
+        					$new_goods_commonid_list[] = $v;
+        				}
+        			}
+        			foreach($all_commonid_list as $key=>$val){
+        				foreach($val as $k=>$v){
+        					$new_all_commonid_list[] = $v;
+        				}
+        			}
+        		
+        			$residue = array_diff($new_all_commonid_list, $new_goods_commonid_list);
+        			foreach ($residue as $value){
+        				$residue_commonid['goods_commonid'] = $value;
+        				$residue_info[] = $model_goods ->getGoodsOrderList($residue_commonid);
+        			}
+        			foreach($residue_info as $key=>$val){
+        				foreach($val as $k=>$v){
+        					$goods_list[] = $v;
+        				}
+        			}
+        		
+        			output_data($goods_list,'成功获取商品信息');
+        			break;
         	default:
-        		$goods_total = 'goods_total desc,goods_price desc';
+        		$goods_list = 'goods_total desc,goods_price desc';
         		break;
         }
     
