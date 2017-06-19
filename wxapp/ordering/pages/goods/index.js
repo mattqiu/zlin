@@ -49,7 +49,7 @@ Page({
             goods_total:6
           },{
             name: '未定',
-            goods_total:5
+            goods_total:7
           }
         ]
       },
@@ -169,7 +169,7 @@ Page({
        that.setData({
          goods_list: res.datas,        
        })
-       //console.log('提交返回排序', res)      
+       console.log('提交返回排序', res)      
      });
      
     let filterData = this.data.filter;
