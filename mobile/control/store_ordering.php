@@ -29,7 +29,7 @@ class store_orderingControl extends mobileHomeControl{
     请求参数：
         size       传空值 
         state_type 订单状态 表示未提交:state_new
-        order      排序字段 零售额:total_price 货号:goods_commonid 数量：num
+        order      排序字段 零售额:total_price 货号:goods_serial 数量：num
         sc         排序方式   正序：asc 倒序 ：desc
         page       每页显示条数  默认10
         curpage    当前页码  分页用
@@ -89,12 +89,12 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                 }
                 $ordering_id = implode(',',$ordering_id);
                 $condition['ordering_id'] = array('in',$ordering_id);
-                $ordering_list = $model_order->getOrderingList($condition, $page, 'goods_commonid,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
+                $ordering_list = $model_order->getOrderingList($condition, $page, 'goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
             }else{
             //其他请求时 获取数据(多获取了订单id ordering_id字段)
                 foreach ($ordering_info as $key => $value) {
                     $condition['ordering_id'] = $value['ordering_id'];
-                    $ordering_list[] = $model_order->getOrderingList($condition, $page, 'ordering_id,goods_commonid,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
+                    $ordering_list[] = $model_order->getOrderingList($condition, $page, 'ordering_id,goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
                 }
             }
             

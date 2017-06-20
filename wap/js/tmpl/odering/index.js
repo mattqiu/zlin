@@ -9,7 +9,7 @@ $(function() {
 		ajaxCommit('order');
 	})
 	$('#Productnumber').click(function() {
-		order = 'goods_commonid';
+		order = 'goods_serial';
 		ajaxCommit('order');
 	})
 	$('#Number').click(function() {

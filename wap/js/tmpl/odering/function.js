@@ -1,7 +1,7 @@
 let state_type = 'state_new';
 let size = '';
 let sc = 'asc';
-let order = 'goods_commonid';
+let order = 'goods_serial';
 let page = '10';
 
 function ajaxCommit(type) {
@@ -35,7 +35,7 @@ function ajaxCommit(type) {
 						'<img src="../image/solution1.jpg" />' +
 						'<div class="text">' +
 						'<div class="gray">' + item[i].goods_common_name + '</div>' +
-						'<div>' + item[i].goods_commonid + '</div>' +
+						'<div>' + item[i].goods_serial + '</div>' +
 						'</div>' +
 						'</div>' +
 						'<div class="modellist-2 border-rights list-height display-flex text-center">' +
@@ -66,7 +66,7 @@ function ajaxCommit(type) {
 						item[i].goods_common_name +
 						'</div>' +
 						'<div>' +
-						item[i].goods_commonid +
+						item[i].goods_serial +
 						'</div>' +
 						'</div>' +
 						'</div>' +
