@@ -20,6 +20,12 @@ $designWidth: 640;
     align-items: center;
     flex-wrap: wrap;
 }
+.flex-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
 .margin-right-20{
     margin-right: px2rem(20);
 }
@@ -27,7 +33,15 @@ $designWidth: 640;
     height: px2rem(57);
     line-height: px2rem(57);
 }
-
+.margin-left-10{
+    margin-left: px2rem(10);
+}
+.margin-right-20{
+    margin-right: px2rem(20);
+}
+.margin-right-40{
+     margin-right: px2rem(40);
+}
 .footer{
     background-color: #FFFFFF;
     border-top: px2rem(1) solid red;

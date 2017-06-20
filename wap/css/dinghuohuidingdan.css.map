@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGA,IAAK;EACD,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,MAAM;EACd,gBAAgB,EAAE,OAAO;EACzB,QAAQ,EAAC,MAAM",
+"sources": ["../sass/dinghuohuidingdan.scss"],
+"names": [],
+"file": "dinghuohuidingdan.css"
+}

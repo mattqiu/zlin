@@ -9,34 +9,131 @@ body {
 .headers {
   position: fixed;
   top: 0rem;
-  left: 0rem; }
-
-.header {
+  left: 0rem;
   width: 16rem;
-  height: 3.25rem;
+  height: 1.225rem;
   background-color: #cd9300;
-  position: relative; }
-  .header .input {
-    position: absolute;
-    left: 0.5rem;
-    top: 1.25rem;
-    width: 15rem;
-    display: flex;
-    justify-content: center;
-    align-items: center; }
-    .header .input input {
-      background: url(../image/search.png) no-repeat 0.25rem center;
-      background-size: 1rem 1rem;
-      font-size: 0.65rem;
-      width: 13.75rem;
-      height: 1.25rem;
-      line-height: 1.25rem;
-      padding-left: 1.5rem;
-      background-color: #dec085;
+  color: #FFFFFF; }
+  .headers .header_center {
+    width: 15rem; }
+    .headers .header_center .back {
+      width: 1.5rem;
+      font-size: 0.7rem; }
+    .headers .header_center .center {
+      width: 12rem; }
+    .headers .header_center .delete {
+      width: 1.5rem;
+      font-size: 1.125rem; }
+
+.containers {
+  margin-top: 1.25rem; }
+  .containers .containers_header {
+    background-color: #FFFFFF;
+    width: 16rem;
+    height: 3rem;
+    border-bottom: 0.075rem solid black; }
+    .containers .containers_header .header_center {
+      width: 15rem;
+      height: 2.5rem; }
+      .containers .containers_header .header_center .img {
+        width: 3rem;
+        height: 2.5rem; }
+        .containers .containers_header .header_center .img img {
+          width: 2.5rem;
+          height: 2.5rem; }
+      .containers .containers_header .header_center .text {
+        width: 12rem;
+        height: 2.5rem;
+        font-size: 0.7rem; }
+        .containers .containers_header .header_center .text .list {
+          height: 0.825rem;
+          line-height: 0.825rem; }
+          .containers .containers_header .header_center .text .list .name {
+            width: 2.5rem;
+            display: inline-block;
+            text-align: justify; }
+          .containers .containers_header .header_center .text .list .name:after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            height: 0; }
+          .containers .containers_header .header_center .text .list .num {
+            padding-left: 0.5rem;
+            width: 9rem;
+            display: inline-block;
+            text-align: left; }
+          .containers .containers_header .header_center .text .list .num:after {
+            content: "";
+            display: inline-block;
+            width: 100%;
+            overflow: hidden;
+            height: 0; }
+  .containers .size {
+    width: 16rem;
+    background-color: #FFFFFF; }
+    .containers .size .size_center {
+      width: 15rem; }
+    .containers .size .center_list {
+      width: 15rem;
+      height: 1.5rem; }
+      .containers .size .center_list .list {
+        width: 2.5rem;
+        height: 1.5rem;
+        line-height: 1.5rem;
+        font-size: 0.7rem;
+        text-align: center; }
+        .containers .size .center_list .list input {
+          width: 2.5rem;
+          height: 1.5rem;
+          line-height: 1.5rem;
+          font-size: 0.7rem;
+          text-align: center;
+          border: none;
+          outline: medium; }
+  .containers .color {
+    width: 16rem;
+    background-color: #FFFFFF;
+    font-size: 0.7rem; }
+    .containers .color .color_center {
+      width: 15rem;
+      height: 1.5rem; }
+      .containers .color .color_center .left {
+        width: 2.5rem; }
+      .containers .color .color_center .center {
+        width: 10rem; }
+        .containers .color .color_center .center .bigcircle {
+          width: 0.75rem;
+          height: 0.75rem;
+          border: 0.025rem solid black;
+          border-radius: 50%; }
+          .containers .color .color_center .center .bigcircle .smallcircle {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%; }
+      .containers .color .color_center .right {
+        width: 2.5rem; }
+        .containers .color .color_center .right .all {
+          width: 0.75rem;
+          height: 0.75rem;
+          border: 0.025rem solid black; }
+    .containers .color button {
+      background: none;
+      width: 2.5rem;
+      line-height: 1rem;
+      border: 0.025rem solid black;
       border-radius: 0.25rem; }
-    .header .input .RichScan {
-      color: #FFFFFF;
-      font-size: 1.25rem;
-      padding-left: 0.375rem; }
+
+.all_active {
+  background: url(../image/sure.png) no-repeat center;
+  background-size: 0.65rem 0.65rem; }
+
+.active {
+  background-color: red; }
+
+.button_active {
+  background-color: #cd9300 !important;
+  color: #FFFFFF;
+  border: 0.025rem solid #cd9300 !important; }
 
 /*# sourceMappingURL=dingdan.css.map */
