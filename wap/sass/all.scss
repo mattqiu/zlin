@@ -36,11 +36,23 @@ $designWidth: 640;
 .margin-left-10{
     margin-left: px2rem(10);
 }
+.margin-left-60{
+    margin-left: px2rem(60);
+}
 .margin-right-20{
     margin-right: px2rem(20);
 }
 .margin-right-40{
      margin-right: px2rem(40);
+}
+.margin-bottom-10{
+    margin-bottom: px2rem(10);
+}
+.margin-top-20{
+    margin-top: px2rem(20);
+}
+.border-bottom-dash{
+    border-bottom: px2rem(1) dashed black;
 }
 .footer{
     background-color: #FFFFFF;

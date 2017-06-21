@@ -97,7 +97,7 @@ body {
     font-size: 0.7rem; }
     .containers .color .color_center {
       width: 15rem;
-      height: 1.5rem; }
+      line-height: 1.5rem; }
       .containers .color .color_center .left {
         width: 2.5rem; }
       .containers .color .color_center .center {
@@ -117,12 +117,120 @@ body {
           width: 0.75rem;
           height: 0.75rem;
           border: 0.025rem solid black; }
-    .containers .color button {
-      background: none;
-      width: 2.5rem;
-      line-height: 1rem;
-      border: 0.025rem solid black;
-      border-radius: 0.25rem; }
+      .containers .color .color_center button {
+        background: none;
+        width: 2.625rem;
+        line-height: 1rem;
+        border: 0.025rem solid black;
+        border-radius: 0.25rem;
+        margin-top: 0.375rem;
+        margin-left: 1.5rem; }
+  .containers .sizes {
+    width: 16rem;
+    background-color: #FFFFFF;
+    font-size: 0.7rem; }
+    .containers .sizes .sizes_center {
+      width: 15rem;
+      line-height: 1.5rem; }
+      .containers .sizes .sizes_center .left {
+        width: 2.5rem; }
+      .containers .sizes .sizes_center .centers {
+        width: 10rem; }
+        .containers .sizes .sizes_center .centers .bigcircle {
+          width: 0.75rem;
+          height: 0.75rem;
+          border: 0.025rem solid black;
+          border-radius: 50%; }
+          .containers .sizes .sizes_center .centers .bigcircle .smallcircle {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 50%; }
+      .containers .sizes .sizes_center .right {
+        width: 2.5rem; }
+        .containers .sizes .sizes_center .right .all {
+          width: 0.75rem;
+          height: 0.75rem;
+          border: 0.025rem solid black; }
+      .containers .sizes .sizes_center input {
+        background: none;
+        width: 2.625rem;
+        line-height: 1rem;
+        border: 0.025rem solid black;
+        border-radius: 0.25rem;
+        margin-top: 0.375rem;
+        margin-left: 1.5rem; }
+      .containers .sizes .sizes_center button {
+        background: none;
+        width: 2.625rem;
+        line-height: 1rem;
+        border: 0.025rem solid black;
+        border-radius: 0.25rem;
+        margin-top: 0.375rem;
+        margin-left: 1.5rem; }
+  .containers .submit {
+    width: 16rem;
+    height: 2.5rem;
+    background-color: #FFFFFF; }
+    .containers .submit input {
+      width: 7.5rem;
+      height: 2rem;
+      font-size: 0.7rem;
+      color: #FFFFFF;
+      background-color: #cd9300;
+      border-radius: 0.5rem; }
+  .containers .num {
+    width: 16rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    background-color: #ffffff; }
+    .containers .num .num_center {
+      width: 15rem;
+      height: 1.5rem; }
+      .containers .num .num_center .left {
+        width: 3.75rem; }
+      .containers .num .num_center .right {
+        width: 11.25rem; }
+        .containers .num .num_center .right .down {
+          border-radius: 0.5rem 0rem 0rem 0.5rem; }
+        .containers .num .num_center .right .up {
+          border-radius: 0rem 0.5rem 0.5rem 0rem; }
+        .containers .num .num_center .right button {
+          width: 2.5rem;
+          height: 1.5rem;
+          background-color: #cd9300; }
+        .containers .num .num_center .right input {
+          width: 2.5rem;
+          height: 1.5rem;
+          border: none;
+          outline: medium;
+          text-align: center; }
+  .containers .allnum {
+    width: 16rem;
+    height: 2rem;
+    font-size: 0.7rem;
+    background-color: #FFFFFF; }
+    .containers .allnum .allnum_center {
+      width: 15rem;
+      height: 1.5rem; }
+      .containers .allnum .allnum_center .left {
+        width: 3.75rem;
+        height: 1.5rem;
+        line-height: 1.5rem; }
+        .containers .allnum .allnum_center .left span {
+          color: #cd9300; }
+      .containers .allnum .allnum_center .right {
+        text-align: right;
+        width: 11.25rem;
+        height: 1.5rem;
+        line-height: 1.5rem; }
+        .containers .allnum .allnum_center .right span {
+          color: #cd9300; }
+
+.sizes_center button:nth-child(4n+1) {
+  margin-left: 0rem !important; }
+
+.color_center button:nth-child(4n+1) {
+  margin-left: 0rem !important; }
 
 .all_active {
   background: url(../image/sure.png) no-repeat center;
