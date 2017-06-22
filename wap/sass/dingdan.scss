@@ -40,7 +40,7 @@ body {
         background-color: #FFFFFF;
         width: px2rem(640);
         height: px2rem(120);
-        border-bottom: px2rem(3) solid black;
+        border-bottom: px2rem(1) solid black !important;
         .header_center {
             width: px2rem(600);
             height: px2rem(100);
@@ -73,7 +73,7 @@ body {
                     }
                     .num {
                         padding-left: px2rem(20);
-                        width: px2rem(360);
+                        width: px2rem(0);
                         display: inline-block;
                         text-align: left;
                     }
@@ -151,6 +151,7 @@ body {
                 background: none;
                 width: px2rem(105);
                 line-height: px2rem(40);
+                outline: none;
                 border: px2rem(1) solid black;
                 border-radius: px2rem(10);
                 margin-top: px2rem(15);
@@ -202,6 +203,7 @@ body {
             button {
                 background: none;
                 width: px2rem(105);
+                outline: none;
                 line-height: px2rem(40);
                 border: px2rem(1) solid black;
                 border-radius: px2rem(10);
@@ -218,6 +220,7 @@ body {
             width: px2rem(300);
             height: px2rem(80);
             font-size: px2rem(28);
+            outline: none;
             color: #FFFFFF;
             background-color: #cd9300;
             border-radius: px2rem(20);
@@ -246,6 +249,7 @@ body {
                     width: px2rem(100);
                     height: px2rem(60);
                     background-color: #cd9300;
+                    outline: none;
                 }
                 input{
                     width: px2rem(100);
@@ -298,7 +302,10 @@ body {
 .active {
     background-color: red;
 }
-
+.input_active{
+    background-color: #cd9300;
+    color: #FFFFFF;
+}
 .button_active {
     background-color: #cd9300 !important;
     color: #FFFFFF;
