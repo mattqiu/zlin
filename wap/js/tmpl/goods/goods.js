@@ -1,22 +1,25 @@
-
-	var goods_total = 0;
-	var is_ordering = 0;
+$(function() {
+	var token 		= 0;
+	var member_id 	= 0;
+	var keyword 	= 0;
+	var filter_type = 0;
+	var sort_id 	= 0;
+	var has_id 		= 0;
 	var minPrice    = 0;
 	var maxPrice    = 0;
-	var ajaxCommit = function() {
-		//我的订单
+	var curpage    	= 1;
+	var ajaxCommit 	= function() {
 		$("#show1").empty();
 		$("#two").empty();
 		$.ajax({
 			type: "get",
-			url: WxappSiteUrl + "/index.php?act=search&op=index&goods_total="+goods_total+"&is_ordering="+is_ordering+"&minPrice="+minPrice+"&maxPrice="+maxPrice,
+			url: WxappSiteUrl + "/index.php?act=ordering_goods&op=index&token="+token+"&member_id="+member_id+"&keyword="+keyword+"&filter_type="+filter_type+"&sort_id="+sort_id+"&has_id="+has_id+"&minPrice="+minPrice+"&maxPrice="+maxPrice+"&curpage="+curpage,
 			dataType: "json",
 			success: function(data) {
 				var datas = data.datas;
 				var item  = datas;
 				var list  = [];
 				var list2 = [];
-				//我的订单 数据模板
 					for(var i = 0; i < item.length; i++) {
 						var li1 = '<div class="show1 display-flex">'+
 					'<div class="show-list display-flex">'+
@@ -33,7 +36,7 @@
 							item[i].goods_name
 							+'</div>'+
 							'<div class="goods-num">'+
-							item[i].goods_commonid
+							item[i].goods_serial
 							+'</div>'+
 							'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+
 							item[i].goods_price
@@ -41,7 +44,7 @@
 						'</div>'+
 						'<div class="show-list-3 display-flex">'+
 							'<div class="circle">'+
-								item[i].goods_total
+								item[i].goods_sum
 							'</div>'+
 						'</div>'+
 					'</div>'+
@@ -62,7 +65,7 @@
 							'<div class="text display-flex">'+
 								'<div class="show-list-2">'+
 									'<div class="goods-num">'+
-										item[i].goods_commonid
+										item[i].goods_serial
 									+'</div>'+
 									'<div class="goods-price ">'+
 										'<span class="iconfont">&#xe600;</span>'+
@@ -71,7 +74,7 @@
 								'</div>'+
 								'<div class="show-list-3 display-flex">'+
 									'<div class="circle">'+
-										item[i].goods_total
+										item[i].goods_sum
 									+'</div>'+
 								'</div>'+
 							'</div>'+
@@ -92,11 +95,11 @@
 		});
 }
 	$(".bar-position1 .bar-pisition-list").click(function(){
-		goods_total = $(this).index();	
+		sort_id = $(this).index();	
 		ajaxCommit();
 	});
 	$(".bar-position2 .bar-pisition-list").click(function(){
-		is_ordering = $(this).index();	
+		has_id = $(this).index();	
 		ajaxCommit();
 	});
 	$("#submit").click(function(){
@@ -105,3 +108,4 @@
 		ajaxCommit();
 	});
 	ajaxCommit();
+	})
