@@ -252,4 +252,34 @@ body {
   color: #FFFFFF;
   border: 0.025rem solid #cd9300 !important; }
 
+.warning {
+  display: none;
+  position: fixed;
+  left: 50%;
+  bottom: 2.5rem;
+  margin-left: -5rem;
+  text-align: center;
+  background-color: #cd9300;
+  width: 10rem;
+  height: 1.5rem;
+  font-size: 0.7rem;
+  line-height: 1.5rem;
+  color: #FFFFFF;
+  border-radius: 0.75rem; }
+
+.warning1 {
+  display: none;
+  position: fixed;
+  left: 50%;
+  bottom: 2.5rem;
+  margin-left: -5rem;
+  text-align: center;
+  background-color: #cd9300;
+  width: 10rem;
+  height: 1.5rem;
+  font-size: 0.7rem;
+  line-height: 1.5rem;
+  color: #FFFFFF;
+  border-radius: 0.75rem; }
+
 /*# sourceMappingURL=dingdan.css.map */

@@ -311,3 +311,34 @@ body {
     color: #FFFFFF;
     border: px2rem(1) solid #cd9300 !important;
 }
+//数量为零时候的弹出框
+.warning{
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: px2rem(100);
+    margin-left: px2rem(-200);
+    text-align: center;
+    background-color: #cd9300;
+    width: px2rem(400);
+    height: px2rem(60);
+    font-size: px2rem(28);
+    line-height: px2rem(60);
+    color: #FFFFFF;
+    border-radius: px2rem(30);
+}
+.warning1{
+    display: none;
+    position: fixed;
+    left: 50%;
+    bottom: px2rem(100);
+    margin-left: px2rem(-200);
+    text-align: center;
+    background-color: #cd9300;
+    width: px2rem(400);
+    height: px2rem(60);
+    font-size: px2rem(28);
+    line-height: px2rem(60);
+    color: #FFFFFF;
+    border-radius: px2rem(30);
+}
