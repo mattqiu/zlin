@@ -24,13 +24,14 @@
       </view>
       <view class="list margin-top-20 margin-boooom center-list3">
         <image src="{{iphono5}}"></image>
-        <input  placeholder="验证码" name="identCode" bindblur="identCode"/>
-        <button bindtap="getValidCode">{{count!=60?count+' s':'获取验证码'}}</button>
+        <input  placeholder="验证码" name="captcha" bindblur="identCode"/>
+        <button bindtap="getValidCode" type="default" disabled="{{buttonDisable}}">{{verifyCodeTime}}</button>
       </view>
       <view class="list margin-top-20 center-list4">
         <image src="{{iphono4}}"></image>
         <input name="inviteNumber" bindblur="saveInviteNumber" placeholder="邀请码" />
-        <image style="width:50rpx;height:50rpx" src="{{iphono3}}"></image>
+        
+        <button bindblur="scanCode"><image style="width:50rpx;height:50rpx" src="{{iphono3}}"></image></button>
       </view>
     </view>
   </view>

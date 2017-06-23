@@ -140,7 +140,8 @@ class searchControl extends wxappControl {
         			output_data($goods_list,'成功获取商品信息');
         			break;
         	default:
-        		$goods_list = 'goods_total desc,goods_price desc';
+        		$order = 'goods_total desc,goods_price desc';
+        		$goods_list = $model_goods->getGoodsOrderList($condition, $fields,$order, $this->page);
         		break;
         }
     

@@ -69,6 +69,8 @@ class loginControl extends wxappHomeControl {
         		}
         		//根据获取到的unionId，去查找会员信息
         		$unionid = 's:7:"unionid";s:'.strlen($unionId).':"'.$unionId.'";';//拼接模糊查询的格式
+        		
+        		
         		/*
         		 * 参考mysql json格式查询：http://www.cnblogs.com/waterystone/p/5626098.html
         		 * 下面写一个mysql5.7.9以上版本支持json 查询
@@ -77,12 +79,16 @@ class loginControl extends wxappHomeControl {
         		$condition =array();
         		$condition['member_wxinfo'] = array(array('like','%'.$unionid.'%'));
         		$model_member = Model('member');
-        		$member_info = $model_member->getMemberInfo($condition);
+        		$member_info = '';//$model_member->getMemberInfo($condition);
         		if(!empty($member_info)){
         			//这里证明一点，再wxapp上没有留下过记录，所以要去新增一条记录
         			//新登录生成token
         			$token = $this->login_mobile_token($member_info['member_id'], $member_info['member_name'], $client,$openid);
         		}else{
+				//output_data($result);
+
+				output_json($result);
+        		exit;
         			//没有获取到会员信息，则证明该微信账号并未再平台上注册登记过
         			output_error('抱歉该微信并未绑定平台的账号，目前是无法登录成功！');
         		}        		
@@ -254,6 +260,7 @@ class loginControl extends wxappHomeControl {
         	}
         if($token) {
 		echo $token;
+		echo $result;
 		die;
         }else{
         	//没有绑定账号的需要去绑定或者去注册 待完成
@@ -270,6 +277,7 @@ class loginControl extends wxappHomeControl {
 		$model_member	= Model('member');
 
         $register_info = array();
+
         $register_info['member_name']     = $register_info['member_mobile'] = $_GET['member_mobile']; //根据客户提供的手机号，注册
         $register_info['password_confirm'] = $register_info['member_passwd']    = $this->getRandPass();
         $member_info = $model_member->register($register_info);

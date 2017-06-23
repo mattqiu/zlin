@@ -4,8 +4,11 @@ var util = require('../../utils/util.js');
 var app = new getApp();
 Page({
   data: {
+    phone:'',
+    captcha:'',
+    password:'',
     motto:"欢迎进去订货会系统",
-    count: 60,
+    verifyCodeTime: '获取验证码',
     font: "../../images/login/font.png",
     logo: "../../images/login/logo.png",
     iphono: "../../images/login/iphono.png",
@@ -20,9 +23,16 @@ Page({
    */
   // 获取手机号码
   savePhoneNumber: function (e) {
-    console.log(e.detail.value)
-    this.setData({
-      phoneNumber: e.detail.value
+    var that =this;
+    var data = {
+      type: 1,
+      phone: e.detail.value,
+    }
+    util.Ajax("connect_sms/check_sms_mobile", data, function (res) {
+      that.setData({
+        phone: e.detail.value,
+      })
+      console.log('返回的验证码', app.globalData.userInfo)
     });
   },
   // 获取密码
@@ -33,68 +43,66 @@ Page({
     });
   },
   // 获取验证码
-  getValidCode: function () {
-    if (this.data.phoneNumber && this.data.count == 60) {
-      this.tick()
-    } else if (!this.data.phoneNumber) {
-      wx.showToast({
-        title: '请填写电话号码',
-        icon: 'loading',
-        duration: 1000
+  getValidCode: function (e) {
+    var phoneNumber = this.data.phone;
+    if (this.data.buttonDisable) return false;
+    var that = this;
+    var c = 60;
+    var intervalId = setInterval(function () {
+      c = c - 1;
+      that.setData({
+        verifyCodeTime: c + 's后重发',
+        buttonDisable: true
       })
+      if (c == 0) {
+        clearInterval(intervalId);
+        that.setData({
+          verifyCodeTime: '获取验证码',
+          buttonDisable: false
+        })
+      }
+    }, 1000);
+    var regMobile = /^1\d{10}$/;
+    if (!regMobile.test(phoneNumber)) {
+      wx.showToast({
+        title: '手机号有误！'
+      })
+      return false;
+    };
+    var data={
+      phone: phoneNumber
     }
-  },
-  tick: function () {
-    var vm = this
-    if (vm.data.count > 0) {
-      vm.setData({
-        count: vm.data.count - 1
-      });
-      setTimeout(function () {
-        return vm.tick()
-      }, 1000)
-    } else {
-      vm.setData({
-        count: 60
-      });
-    }
-  },
-  // 填写验证码
-  identCode:function(e){
-    //console.log(e.detail.value)
-    this.setData({
-      identCode: e.detail.value
-    });
+    util.Ajax("connect_sms/get_sms_captcha", data, function (res) {
+      that.setData({
+        goods_list: res,
+      })
+    })
   },
   // 获取验证码结束
   // 获取邀请码
-  saveInviteNumber: function (e) {
-    //console.log(e.detail.value)
-    this.setData({
-      saveInviteNumber: e.detail.value
-    });
-  },
-  formSubmit: function (data) {
-    //console.log(data.detail.value);
-    const self = this;
-    wx.request({
-      url: saveMemberUrl,
-      data:e.detail.value,
-      method:'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success:function(data){
-        //console.log("添加个人注册信息",res)
-        app.showSucMsg("注册成功",1000);
-        wx.redirectTo({
-          url: 'list',
-        })
-      },
-      fail:function(err){
-        app.showErrMsg(err);
-        console.log(err);
+  scanCode: function () {
+    console.log("二维码扫描结果:");
+    wx.scanCode({
+      //onlyFromCamera: true,
+      success: (res) => {
+        console.log(res)
       }
+    })
+  },
+  // 登录传参
+  formSubmit: function (e) {
+    //console.log(data.detail.value);
+    var that = this;
+    var data={
+      phone: e.detail.value.phoneNumber,
+      captcha: e.detail.value.inviteNumber,
+      passward: e.detail.value.password,
+      userinfo: app.globalData.userInfo
+    }
+    util.Ajax("connect_sms/sms_register", data, function (res) {
+      that.setData({
+        goods_list: res,
+      })
     })
   },
   //加载首页信息
@@ -142,7 +150,7 @@ Page({
           }
           //跳转商品列表页
           wx.navigateTo({
-            url: '../goods/index'
+            //url: '../goods/index'
           })
         }
       });

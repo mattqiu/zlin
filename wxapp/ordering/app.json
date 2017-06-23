@@ -1,8 +1,8 @@
 {
   "pages":[   
+    "pages/register/register",
     "pages/goods/index",
     "pages/goods/detail",
-    "pages/index/index",
     "pages/goods/checkin",
     "pages/goods/assessment",
     "pages/order/index",
@@ -40,13 +40,13 @@
       "pagePath": "pages/analysis/index",
       "text": "分析",
       "iconPath": "images/tabBar/tab-3.png",
-      "selectedIconPath": "images/tabBar/tab-3-active.png"
+      "selectedIconPath": "images/tabBar/tab-2-active.png"
     },
     {
       "pagePath": "pages/my/index",
       "text": "我的",
       "iconPath": "images/tabBar/tab-4.png",
-      "selectedIconPath": "images/tabBar/tab-4-active.png"
+      "selectedIconPath": "images/tabBar/tab-2-active.png"
     }]
   }
 }

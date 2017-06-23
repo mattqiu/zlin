@@ -92,7 +92,8 @@ App({
       success: function (res) {
         // success
         wx.hideToast();
-        //console.log('获取用户登录信息！', res)
+        that.globalData.userInfo = res.data;
+        //console.log('获取用户登录信息！', res.data)
         if (res.error_code) {
           that.showErrMsg(res.errMsg);
           that.getUserInfo();//失败后重新去获取

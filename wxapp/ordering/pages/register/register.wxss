@@ -1,0 +1,125 @@
+/* pages/register/register.wxss */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  box-sizing: border-box;
+   background-color: #f6f6f6
+} 
+.logo{
+  width: 100%;
+}
+.logo-none{
+  width: 100%;
+  height: 100rpx;
+}
+.logo-list1,.logo-list2{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+.logo-list1 image{
+  width: 170rpx;
+  height: 170rpx;
+}
+.logo-list2 image{
+  width: 226rpx;
+  height: 96rpx;
+}
+/*logo*/
+.center{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.center{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.center-container{
+  border: 2rpx solid #bebebe;
+  border-radius: 10rpx;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.center .list{
+  padding-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.list image{
+  width: 18rpx;
+  height: 30rpx;
+}
+.margin-top-20{
+  margin-top: 30rpx;
+}
+.margin-boooom{
+  border-bottom: 2rpx solid #bebebe;
+}
+.list input{
+  padding-left: 20rpx;
+}
+.center-list1{
+  margin-top: 50rpx;
+}
+.center-list3 button{
+  border: 2rpx solid #bebebe;
+  font-size: 24rpx;
+  width: 200rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.center-list4{
+  margin-bottom: 50rpx;
+}
+.center-list4 input{
+  width: 90%;
+}
+.button-container{
+  width: 100%;
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: center;
+}
+.button-log{
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+.button-log button{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.forget{
+  display: flex;
+  width:100%;
+  align-items: center;
+  justify-content: center;
+}
+.forget .forget-line{
+  width: 35%;
+  height: 0rpx;
+  border: 2rpx solid #bebebe;
+}
+.forget .forget-text{
+  width: 20%;
+  height: 40rpx;
+  color: #bebebe;
+  line-height: 40rpx;
+  text-align: center;
+  font-size: 24rpx;
+}

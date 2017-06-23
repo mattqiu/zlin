@@ -1,0 +1,53 @@
+<!--pages/register/register.wxml-->
+<!--logs.wxml-->
+<form bindsubmit="formSubmit">
+<view class="container">
+  <view class="logo">
+    <view class="logo-none">
+
+    </view>
+    <view class="logo-list1">
+      <image src="{{logo}}"></image>
+    </view>
+    <view class="logo-list2">
+      <image src="{{font}}"></image>
+    </view>
+  </view>
+  <view class="center">
+    <view class="center-container">
+      <view class="list margin-boooom center-list1">
+        <image src="{{iphono}}"></image>
+        <input name="phoneNumber" bindblur="savePhoneNumber" placeholder="手机号（+86）" />
+      </view>
+      <view class="list margin-top-20 margin-boooom center-list2">
+        <image src="{{password}}"></image>
+        <input name="password" bindblur="savePassword" placeholder="密码" />
+      </view>
+      <view class="list margin-top-20 margin-boooom center-list3">
+        <image src="{{iphono5}}"></image>
+        <input  placeholder="验证码" name="captcha" bindblur="identCode"/>
+        <button bindtap="getValidCode" type="default" disabled="{{buttonDisable}}">{{verifyCodeTime}}</button>
+      </view>
+      <view class="list margin-top-20 center-list4">
+        <image src="{{iphono4}}"></image>
+        <input name="inviteNumber" bindblur="saveInviteNumber" placeholder="邀请码" value="{{inviteNumber}}"/>
+        
+        <button bindtap="scanCodeBtn"><image style="width:50rpx;height:50rpx" src="{{iphono3}}"></image></button>
+      </view>
+    </view>
+  </view>
+  <!--登录按钮-->
+  <!--<navigator class="button-log" url="../other/masege"> 点击跳转到其他的信息的页面-->
+  <view class="button-container">
+    <navigator class="button-log" url="../my/my">
+      <button type="warn" formType="submit">登录</button>
+    </navigator>
+  </view>
+
+  <view class="forget">
+    <view class="forget-line"></view>
+    <view bindtap="forgetpwd" class="forget-text">忘记密码</view>
+    <view class="forget-line"></view>
+  </view>
+</view>
+</form>

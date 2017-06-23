@@ -259,7 +259,48 @@ class memberModel extends Model {
             return array('error' => '注册失败');
 		}
     }
-
+    /**
+     * 小程序端注册
+     */
+    public function wxappregister($register_info, $addVRccard = 1) {
+    	// 注册验证
+    	$obj_validate = new Validate();
+    	$obj_validate->validateparam = array(
+    			array("input"=>$register_info["member_mobile"],		"require"=>"true",		"message"=>'手机号码不能为空'),
+    			array("input"=>$register_info["member_passwd"],		"require"=>"true",		"message"=>'密码不能为空'),
+    			array("input"=>$register_info["password_confirm"],"require"=>"true",	"validator"=>"Compare","operator"=>"==","to"=>$register_info["member_passwd"],"message"=>'密码与确认密码不相同'),
+    			array("input"=>$register_info["member_wxinfo"],			"require"=>"true", "message"=>'个人微信信息不能为空'),
+    			array("input"=>$register_info["member_wxopenid"],			"require"=>"true", "message"=>'个人微信的唯一值不能为空'),
+    	);
+    	$error = $obj_validate->validate();
+    	if ($error != ''){
+    		return array('error' => $error);
+    	}
+    	// 验证手机是否重复
+    	if (isset($register_info['member_mobile'])){
+    		if (!CheckMobileValidator(trim($register_info['member_mobile']))){
+    			return array('error' => '手机号填写不正确');
+    		}
+    		$check_member_mobile	= $this->getMemberInfo(array('member_mobile'=>$register_info['member_mobile']));
+    		if(is_array($check_member_mobile) and count($check_member_mobile)>0) {
+    			return array('error' => '手机已注册');
+    		}
+    		$register_info['member_mobile_bind'] = 1;
+    	}
+    
+    	// 会员添加
+    	$member_info	= $register_info;
+    
+    	$insert_id	= $this->addMember($member_info,$addVRccard);
+    	if($insert_id) {
+    		$member_info['member_id'] = $insert_id;
+    		$member_info['is_buy'] = 1;
+    
+    		return $member_info;
+    	} else {
+    		return array('error' => '注册失败');
+    	}
+    }
 	/**
 	 * 注册商城会员
 	 *
