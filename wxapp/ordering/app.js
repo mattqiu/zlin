@@ -93,7 +93,13 @@ App({
         // success
         wx.hideToast();
         that.globalData.userInfo = res.data;
-        //console.log('获取用户登录信息！', res.data)
+        console.log('获取用户登录信息！', res.data)
+        if (res.data){
+          
+          /*wx.navigateTo({
+            url: '../goods/index'
+          })*/
+        }
         if (res.error_code) {
           that.showErrMsg(res.errMsg);
           that.getUserInfo();//失败后重新去获取
@@ -104,6 +110,8 @@ App({
           //console.log('获取用户登录成功！', data)
           that.globalData.token = data;//获取成功后给全局token赋值
           typeof cb == "function" && cb(userInfo)
+          //跳转商品列表页
+          
         }
       },
       fail: function () {

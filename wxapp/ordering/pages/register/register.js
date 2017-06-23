@@ -113,7 +113,7 @@ Page({
       that.setData({
         goods_list: res,
       })
-      //console.log('个人信息:', res)
+      console.log('个人信息:', res)
     })
   },
   //加载首页信息

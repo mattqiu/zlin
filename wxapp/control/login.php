@@ -18,7 +18,93 @@ class loginControl extends wxappHomeControl {
 		$this->appId = WX_APIID;
 		$this->appSecret = WX_APPSECRET;
 	}
-
+	/**
+	 * 小程序登录接口
+	 */
+	public function wxappsellerOp(){
+	
+		$this->code = $_POST['code'];
+		if (empty($this->code)){
+			output_error('获取微信小程序CODE失败，请清除微信缓存后再打开小程序');
+		}
+		$url = "https://api.weixin.qq.com/sns/jscode2session?appid=".$this->appId."&secret=".$this->appSecret."&js_code=".$this->code."&grant_type=authorization_code";
+		$res =json_decode($this->httpGet($url), true);
+		$openid = $res['openid'];
+		$client = 'wxapp'; //微信小程序
+		/*
+		 * 思路：首先去登录令牌中查找 是否有微信小程序的登录记录，没有就根据 unionId（微信会员再所有公众号中的唯一识别码） 去找出该会员
+		 * 如果有 则可以直接登录
+		 */
+		//获取该员工登录店铺令牌
+		$model_mb_seller_token = Model('mb_seller_token');
+		$mb_seller_token_info = $model_mb_seller_token->getSellerTokenInfo(array('openid'=>$openid, 'client_type'=>$client));
+		
+		//查看商家是否有登录记录
+		if(empty($mb_seller_token_info)){
+			//没有则去查看该店员又没会员的登录记录
+			$model_mb_user_token = Model('mb_user_token');
+			$mb_user_token_info = $model_mb_user_token->getMbUserTokenInfo(array('openid'=>$openid, 'client'=>$client));
+			if(!empty($mb_user_token_info)){
+				//有会员登录记录，则根据会员的记录给店员添加一条商家的登录记录
+				//根据会员的登录信息，确定默认登陆的商家
+				$this->login_seller_token($mb_user_token_info['token'], $openid, $mb_user_token_info['member_id'], $client);
+			}else{
+				//都未登录的情况下，还有一种可能性。就是通过公众号等信息登录过。那么就要通过曾今获取到每个微信特有的unionId
+				//先获取到unionId
+				$encryptedData = urldecode($_POST['encryptedData']);
+				$iv = $_POST['iv'];
+				$inc_file = BASE_PATH.DS.'api'.DS.'wx'.DS.'wxBizDataCrypt.php';
+				if(!is_file($inc_file)){
+					output_error('微信校验接口不存在');
+				}
+				require($inc_file);
+				$pc = new WXBizDataCrypt($this->appId, $res['session_key']);
+				$errCode = $pc->decryptData($encryptedData, $iv, $data);
+				//file_put_contents('encrypte.txt',$data,FILE_APPEND);
+				if ($errCode == 0) {
+					$result = json_decode($data, true);//转换成数组
+					$unionId = $result['unionId'];
+				} else {
+					output_error('微信校验会员信息失败，原因：'.$errCode);
+				}
+				//根据获取到的unionId，去查找会员信息
+				$unionid = 's:7:"unionid";s:'.strlen($unionId).':"'.$unionId.'";';//拼接模糊查询的格式
+	
+	
+				/*
+				 * 参考mysql json格式查询：http://www.cnblogs.com/waterystone/p/5626098.html
+				 * 下面写一个mysql5.7.9以上版本支持json 查询
+				 * SELECT json_extract(member_wxinfo, '$.unionid') FROM zlin_member WHERE json_extract(member_wxinfo,'$.unionid') = 'o6AiRuOwBKVqa-DXfNQsNKk_50UA';
+				 */
+				$condition =array();
+				$condition['member_wxinfo'] = array(array('like','%'.$unionid.'%'));
+				$model_member = Model('member');
+				$member_info = '';//$model_member->getMemberInfo($condition);
+				if(!empty($member_info)){
+					//这里证明一点，再wxapp上没有留下过记录，所以要去新增一条记录
+					//新登录生成token
+					$token = $this->login_mobile_token($member_info['member_id'], $member_info['member_name'], $client,$openid);
+				}else{
+					//output_data($result);
+					//var_dump($result);
+					output_json($result);
+					exit;
+					//没有获取到会员信息，则证明该微信账号并未再平台上注册登记过
+					output_error('抱歉该微信并未绑定平台的账号，目前是无法登录成功！');
+				}
+			}
+		}else{
+			$token = $mb_seller_token_info['token'];
+			output_json($token);
+		}
+		if($token) {
+			//echo $token;
+			output_data($token);
+			die;
+		} else {
+			output_error('未获取到正确的登录令牌，请先删除小程序后重新添加即可！');
+		}
+	}
 	/**
 	 * 导购端登录
 	 */
@@ -83,10 +169,10 @@ class loginControl extends wxappHomeControl {
         		if(!empty($member_info)){
         			//这里证明一点，再wxapp上没有留下过记录，所以要去新增一条记录
         			//新登录生成token
-        			$token = $this->login_mobile_token($member_info['member_id'], $member_info['member_name'], $client,$openid);
+        			$token = $this->login_wxapp_token($member_info['member_id'], $member_info['member_name'], $client,$openid);
         		}else{
 				//output_data($result);
-
+				//var_dump($result);
 				output_json($result);
         		exit;
         			//没有获取到会员信息，则证明该微信账号并未再平台上注册登记过
@@ -98,11 +184,44 @@ class loginControl extends wxappHomeControl {
 		
         }        
         if($token) {
-			echo $token;
+			//echo $token;
+        	output_data($token);
 			die;
         } else {
         	output_error('未获取到正确的登录令牌，请先删除小程序后重新添加即可！');
         }       
+    }
+    /**
+     * 小程序端登录生成token
+     */
+    public function login_wxapp_token($member_id, $member_name, $client, $openid) {
+    	if(empty($member_id)) {
+    		return null;
+    	}
+    	$model_mb_user_token = Model('mb_user_token');
+    	$condition = array();
+    	//生成新的token
+    	$mb_user_token_info = array();
+    	$token = md5($member_name . strval(TIMESTAMP) . strval(rand(0,999999)));
+    	$mb_user_token_info['member_id'] = $condition['member_id'] = $member_id;
+    	$mb_user_token_info['member_name'] = $member_name;
+    	$mb_user_token_info['token'] = $token;
+    	if(!empty($openid)){
+    		$mb_user_token_info['openid'] = $openid;
+    	}
+    	$mb_user_token_info['login_time'] = TIMESTAMP;
+    	$mb_user_token_info['client_type'] = $condition['client_type'] = $client;
+    	//重新登录后以前的令牌失效
+    	//只允许单人登录,清除之前登录的信息
+    	$model_mb_user_token->delMbUserToken($condition);
+    	//会员登陆的同时也登陆商家
+    	$this->login_seller_token($token, $openid, $member_id, $client);
+    	$result = $model_mb_user_token->addMbUserToken($mb_user_token_info);
+    	if($result) {
+    		return $token;
+    	} else {
+    		return null;
+    	}
     }
     /**
      * 登录生成token
@@ -280,7 +399,7 @@ class loginControl extends wxappHomeControl {
 
         $register_info['member_name']     = $register_info['member_mobile'] = $_GET['member_mobile']; //根据客户提供的手机号，注册
         $register_info['password_confirm'] = $register_info['member_passwd']    = $this->getRandPass();
-        $member_info = $model_member->register($register_info);
+        $member_info = $model_member->wxappregister($register_info);
         //手机号重复，也有可能会提示错误。暂时不考虑
         //思路是如果客户验证了手机号，那么就去绑定。但要取消之前绑定的手机号,建议是不要去绑定了
         if(!isset($member_info['error'])) {
