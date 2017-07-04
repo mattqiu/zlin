@@ -93,12 +93,12 @@ App({
         // success
         wx.hideToast();
         that.globalData.userInfo = res.data;
-        console.log('获取用户登录信息！', res.data)
-        if (res.data){
-          
-          /*wx.navigateTo({
+        var arrlength = res.data.length;       
+        if (arrlength < 50){
+          //console.log('获取用户登录信息！', arrlength)
+          wx.navigateTo({
             url: '../goods/index'
-          })*/
+          })
         }
         if (res.error_code) {
           that.showErrMsg(res.errMsg);

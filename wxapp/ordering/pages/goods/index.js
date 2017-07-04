@@ -160,10 +160,10 @@ Page({
      //console.log('测试key', key);
      //console.log('测试order', order);
      var data = {
-       goods_total: goods_total,
+       sort_id: goods_total,
        buyer_id: '1'
      };
-     util.Ajax("search/index",data,function(res){
+     util.Ajax("ordering_goods/index",data,function(res){
        that.setData({
          goods_list: res.datas,        
        })
@@ -223,9 +223,9 @@ Page({
     var that = this;
     var data = {
       token: app.globalData.token,
-      goods_total: '1' 
+      sort_id: '1' 
     };
-    util.Ajax("search/index", data, function (res) {
+    util.Ajax("ordering_goods/index", data, function (res) {
       that.setData({
         goods_list: res.datas,
       })
@@ -268,12 +268,12 @@ Page({
   btn_submit:function(e){
     var that = this;
     var data = {
-      goods_total: '4',
+      sort_id: '4',
       buyer_id:'1',
       minPrice: this.data.minPrice,
       maxPrice: this.data.maxPrice,
     };
-    util.Ajax("search/index", data, function (res) {
+    util.Ajax("ordering_goods/index", data, function (res) {
       that.setData({
         goods_list: res,
       })

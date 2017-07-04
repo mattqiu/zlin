@@ -268,11 +268,10 @@ class memberModel extends Model {
     	$obj_validate->validateparam = array(
     			array("input"=>$register_info["member_mobile"],		"require"=>"true",		"message"=>'手机号码不能为空'),
     			array("input"=>$register_info["member_passwd"],		"require"=>"true",		"message"=>'密码不能为空'),
-    			array("input"=>$register_info["password_confirm"],"require"=>"true",	"validator"=>"Compare","operator"=>"==","to"=>$register_info["member_passwd"],"message"=>'密码与确认密码不相同'),
-    			array("input"=>$register_info["member_wxinfo"],			"require"=>"true", "message"=>'个人微信信息不能为空'),
-    			array("input"=>$register_info["member_wxopenid"],			"require"=>"true", "message"=>'个人微信的唯一值不能为空'),
     	);
     	$error = $obj_validate->validate();
+    	
+    	
     	if ($error != ''){
     		return array('error' => $error);
     	}
@@ -290,8 +289,9 @@ class memberModel extends Model {
     
     	// 会员添加
     	$member_info	= $register_info;
-    
+   	
     	$insert_id	= $this->addMember($member_info,$addVRccard);
+    	
     	if($insert_id) {
     		$member_info['member_id'] = $insert_id;
     		$member_info['is_buy'] = 1;
@@ -368,8 +368,8 @@ class memberModel extends Model {
 				if (OPEN_STORE_EXTENSION_STATE == 10 && $addVRccard == 1){
 					$member_info['store_id'] = GENERAL_PLATFORM_EXTENSION_ID;
 				}
-			}		    
-						
+			}
+	    
 		    $insert_id	= $this->table('member')->insert($member_info);			
 		    if (!$insert_id) {
 		        throw new Exception();
@@ -694,7 +694,7 @@ class memberModel extends Model {
        	//$condition['member_id'] = $member_id;
         //$condition['client_type'] = $_POST['client'];
         //$model_mb_user_token->delMbUserToken($condition);
-
+		
         //生成新的token
         $mb_user_token_info = array();
         $token = md5($member_name . strval(TIMESTAMP) . strval(rand(0,999999)));
@@ -703,11 +703,10 @@ class memberModel extends Model {
         $mb_user_token_info['token'] = $token;
         $mb_user_token_info['login_time'] = TIMESTAMP;
         $mb_user_token_info['client_type'] = $client;
-		
+
         //会员登陆的同时也登陆商家
         $model_seller = Model('seller');
         $seller_info = $model_seller->getSellerInfo(array('member_id' => $member_id));
-        
         if(!empty($seller_info)){ //判断该会员是否是商家
         	$model_mb_seller_token = Model('mb_seller_token');
         	//重新登录后以前的令牌失效
@@ -732,7 +731,52 @@ class memberModel extends Model {
             return $token;
         }
     }
-	
+    /**
+     * 小程序登录生成token
+     */
+    public function get_wxapp_token($member_id, $member_name,$member_wxopenid, $client) {
+    	$model_mb_user_token = Model('mb_user_token');
+    
+    	//重新登录后以前的令牌失效
+    	//暂时停用 可以控制一个端口登陆
+    	//$condition = array();
+    	//$condition['member_id'] = $member_id;
+    	//$condition['client_type'] = $_POST['client'];
+    	//$model_mb_user_token->delMbUserToken($condition);
+    
+    	//生成新的token
+    	$mb_user_token_info = array();
+    	$token = md5($member_name . strval(TIMESTAMP) . strval(rand(0,999999)));
+    	$mb_user_token_info['member_id'] = $member_id;
+    	$mb_user_token_info['member_name'] = $member_name;
+    	$mb_user_token_info['token'] = $token;
+    	$mb_user_token_info['openid'] = $member_wxopenid;
+    	$mb_user_token_info['login_time'] = TIMESTAMP;
+    	$mb_user_token_info['client_type'] = $client;
+    	$result = $model_mb_user_token->addMbUserToken($mb_user_token_info);
+    	
+    	
+    		//重新登录后以前的令牌失效
+    		//$sli_condition = array();
+    		//$sli_condition['seller_id'] = $seller_info['seller_id'];
+    		//$model_mb_seller_token->delSellerToken($sli_condition);
+    	$model_mb_seller_token = Model('mb_seller_token');
+    	$mb_seller_token_info = array();
+    	$mb_seller_token_info['seller_name'] = $member_name;
+    	$mb_seller_token_info['token'] = $token;
+    	$mb_seller_token_info['openid'] = $member_wxopenid;
+    	$mb_seller_token_info['login_time'] = TIMESTAMP;
+    	$mb_seller_token_info['client_type'] = $client;
+    	$res = $model_mb_seller_token->addSellerToken($mb_seller_token_info);
+    
+    	
+    
+    	if($result) {
+    		return $token;
+    	} else {
+    		return $token;
+    	}
+    }
 	/**
 	 * 将条件数组组合为SQL语句的条件部分
 	 *

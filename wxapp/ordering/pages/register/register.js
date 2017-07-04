@@ -114,6 +114,11 @@ Page({
         goods_list: res,
       })
       console.log('个人信息:', res)
+      if (res.data) {
+        wx.navigateTo({
+          url: '../goods/index'
+        })
+      }
     })
   },
   //加载首页信息
@@ -146,10 +151,11 @@ Page({
           })
         } else {
           that.setData(res.datas);
-          //console.log("获取成功", res.datas);
+          console.log("获取成功", res);
           app.globalData.member_id = that.data.member_id;
           app.globalData.seller_id = that.data.seller_id;
           app.globalData.seller_name = that.data.seller_name;
+          
           //没有默认的店铺则需要更新，有则无需更新
           if (app.globalData.store_id == '') {
             app.globalData.store_id = that.data.store_id;
