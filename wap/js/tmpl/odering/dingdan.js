@@ -67,27 +67,38 @@ $(function() {
 			$('.sizes_center .right .all').addClass('all_active')
 		}
 	})
-	//模拟数据的双向绑定
-	//第一步点击button的时侯找到相应的input输入框
-	//单选
-
-
-		var row = null;
-		var col = null;
+	//单选多选的数据绑定
+	var row = null;
+	var col = null;
+	var num = null;
+	$('.sizes_center button').click(function() {
+		$('.num .num_center .right input').val()
+		var num2 = null;
+		row = $(this).index();
 		$('.color_center button').click(function() {
 			col = $(this).index()
-			console.log(col);
+			$('.num .num_center .right input').val()
+			$('.size_center .center_list').eq(row + 1).find('.list').eq(col + 1).find('input').addClass('input_active').parent().parent().siblings().find('input').removeClass('input_active');
+			$('.size_center .center_list').eq(row + 1).find('.list').eq(col + 1).find('input').parent().siblings().find('input').removeClass('input_active');
+			num2 = $('.size_center .center_list').eq(row + 1).find('.list').eq(col + 1).find('input').val();
+			$('.num .num_center .right input').val(num2)
 		})
+	})
+	$('.color_center button').click(function() {
+		
+		$('.num .num_center .right input').val()
+		var num1 = null;
+		col = $(this).index()
 		$('.sizes_center button').click(function() {
-			var col = 2;
 			row = $(this).index();
-			console.log(row);
-			console.log(typeof(row))
-			//多选操作
-			$('.size_center .center_list').eq(row+1).find('input').addClass('active').parent().parent().siblings().find('input').removeClass('active');
+			$('.num .num_center .right input').val()
+			$('.size_center .center_list').eq(row + 1).find('.list').eq(col + 1).find('input').addClass('input_active').parent().parent().siblings().find('input').removeClass('input_active')
+			$('.size_center .center_list').eq(row + 1).find('.list').eq(col + 1).find('input').parent().siblings().find('input').removeClass('input_active');
+			num1 = $('.size_center .center_list').eq(row + 1).find('.list').eq(col + 1).find('input').val();
+			$('.num .num_center .right input').val(num1)
 		})
-	//全选操作
-	var num = null;
+	})
+	//全选操作，点击修改全部的数据
 	$('.right .all').click(function() {
 		if($('.color .right .all').hasClass('all_active') && $('.sizes .right .all').hasClass('all_active')) {
 			$('.size_center input').addClass('input_active')
@@ -97,10 +108,10 @@ $(function() {
 		} else {
 			$('.size_center input').removeClass('input_active')
 		}
-
 	})
 	//数量增加减少操作
 	$('.num .num_center .right .down').click(function() {
+
 		//判断是否选择的长度是否为0；如果是0;弹出提示框
 		if($('.sizes_center button.button_active').length == 0 || $('.color_center button.button_active').length == 0) {
 			$('.warning1').show();
@@ -112,6 +123,23 @@ $(function() {
 					opacity: '0'
 				});
 			}, 3000);
+		} else if($('.sizes_center button.button_active').length == 1 || $('.color_center button.button_active').length == 1) {
+			if($('.num .num_center .right input').val() > 0) {
+				num--;
+				$('.num .num_center .right input').val(num);
+				$('.size_center input.input_active').val(num)
+			} else {
+				$('.warning').show();
+				$('.warning').animate({
+					opacity: '1'
+				});
+				setTimeout(function() {
+					$('.warning').animate({
+						opacity: '0'
+					});
+				}, 3000);
+			}
+
 		} else {
 			//判断如果长度不是0的操作;
 			if($('.num .num_center .right input').val() > 0) {
@@ -134,6 +162,7 @@ $(function() {
 		}
 
 	})
+	//控制选择的弹出框的
 	$('.num .num_center .right .up').click(function() {
 		if($('.sizes_center button.button_active').length == 0 || $('.color_center button.button_active').length == 0) {
 			$('.warning1').show();
@@ -145,6 +174,10 @@ $(function() {
 					opacity: '0'
 				});
 			}, 3000);
+		} else if($('.sizes_center button.button_active').length == 1 || $('.color_center button.button_active').length == 1) {
+			num++;
+			$('.num .num_center .right input').val(num);
+			$('.size_center input.input_active').val(num)
 		} else {
 			num++;
 			$('.num .num_center .right input').val(num);

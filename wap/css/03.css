@@ -4,12 +4,53 @@ body {
   margin: 0 auto;
   overflow: scroll; }
 
-.goodsshow {
+* {
+  margin: 0px;
+  padding: 0px; }
+
+.clearfix:after {
+  content: '';
+  overflow: hidden;
+  clear: both;
+  display: block;
+  height: 0px; }
+
+.goodsshow .box {
+  width: 16rem;
+  height: 16rem;
+  position: relative;
+  overflow: hidden; }
+.goodsshow .box .zhangshiul {
+  position: relative;
+  height: 16rem; }
+.goodsshow .box .zhangshiul li {
+  position: absolute;
+  left: 0rem;
+  top: 0rem;
+  list-style: none;
   width: 16rem;
   height: 16rem; }
-  .goodsshow img {
+  .goodsshow .box .zhangshiul li img {
     width: 16rem;
     height: 16rem; }
+.goodsshow .gundongul02 {
+  width: 16rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0rem;
+  bottom: 0rem; }
+.goodsshow .gundongul li {
+  list-style: none;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 0.125rem;
+  float: left;
+  background-color: red;
+  margin-left: 0.125rem; }
+.goodsshow .box .gundongul .active {
+  background-color: yellow; }
 
 .show {
   width: 16rem;

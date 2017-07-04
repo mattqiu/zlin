@@ -7,18 +7,67 @@ body {
     margin: 0 auto;
     overflow: scroll;
 }
+* {
+     margin: 0px;
+     padding: 0px;
+ }
+    
+ .clearfix:after {
+     content: '';
+     overflow: hidden;
+     clear: both;
+     display: block;
+     height: 0px;
+ }
 
 .goodsshow {
-    width: px2rem(640);
-    height: px2rem(640);
-    img {
+    .box {
         width: px2rem(640);
         height: px2rem(640);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .box .zhangshiul {
+        position: relative;
+        height: px2rem(640);
+    }
+    
+    .box .zhangshiul li {
+        position: absolute;
+        left: px2rem(0);
+        top: px2rem(0);
+        list-style: none;
+        width: px2rem(640);
+        height: px2rem(640);
+        img{
+            width: px2rem(640);
+            height: px2rem(640);
+        }
+    }
+    .gundongul02{
+        width: px2rem(640);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: px2rem(0);
+        bottom: px2rem(0);
+    }
+    .gundongul li {
+        list-style: none;
+        width: px2rem(10);
+        height: px2rem(10);
+        border-radius: px2rem(5);
+        float: left;
+        background-color: red;
+        margin-left: px2rem(5);
+    }
+    
+    .box .gundongul .active {
+        background-color: yellow;
     }
 }
-
-.box {}
-
 .show {
     width: 16rem;
     height: px2rem(130);
