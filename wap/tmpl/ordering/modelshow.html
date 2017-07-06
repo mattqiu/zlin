@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<link rel="stylesheet" href="">
+		<link rel="stylesheet" type="text/css" href="../../css/modelshow.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/all.css" />
+		<script type="text/javascript" src='../../js/jquery-3.1.1.min.js'></script>
+		<script src="../../js/tmpl/odering/mui.js"></script>
+		<script src="../../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="header display-flex">
+			<div class="header_container display-flex">
+				<div class="header_left ">
+					<img src="../../image/back.png" />
+				</div>
+				<div class="header_center">
+					001
+				</div>
+				<div class="header_right">
+					<img id="stop" src="../../image/stop.png" />
+					<img id="stop1" src="../../image/bofan.png" />
+				</div>
+			</div>
+		</div>
+		<div class="box display-flex">
+			<div class="container display-flex">
+				<div class="img">
+					<img src="images/img1.jpg" alt="">
+				</div>
+				<div class="img">
+					<img src="images/img2.jpg" alt="">
+				</div>
+				<div class="img">
+					<img src="images/img3.jpg" alt="">
+				</div>
+				<div class="img">
+					<img src="images/img4.jpg" alt="">
+				</div>
+				<div class="img">
+					<img src="images/img5.jpg" alt="">
+				</div>
+				<div class="img">
+					<img src="images/img6.jpg" alt="">
+				</div>
+				<div class="img">
+					<img src="images/img7.jpg" alt="">
+				</div>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				var index = 0;
+				var timer = setInterval(domove, 1000);
+
+				function domove() {
+					$('.container>.img').first().animate({
+						'color': 'red'
+					}, 1000, function() {
+						$(this).parent().append($(this));
+						$(this).animate({
+							'display': 'none'
+						}, 1000);
+					})
+				}
+				$('.container>.img').on("swipeleft", function() {
+					$('.container>.img').first().animate({
+						'color': 'red'
+					}, 1000, function() {
+						$(this).parent().append($(this));
+						$(this).animate({
+							'display': 'none'
+						}, 10);
+					})
+				});
+				$('.container>.img').on("swiperight", function() {
+					$('.container>.img').last().animate({
+						'color': 'red'
+					}, 1000, function() {
+						$(this).parent().prepend($(this));
+						$(this).animate({
+							'display': 'none'
+						}, 10);
+					})
+				});
+				$('#stop').click(function() {
+					clearInterval(timer);
+					$(this).hide().siblings().show();
+				})
+				$('#stop1').click(function() {
+					clearInterval(timer);
+					$(this).hide().siblings().show();
+					timer = setInterval(domove, 1000);
+				})
+			})
+		</script>
+	</body>
+
+</html>

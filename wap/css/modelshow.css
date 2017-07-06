@@ -1,0 +1,77 @@
+body {
+  width: 16rem;
+  overflow: hidden;
+  margin: 0 auto;
+  background-color: #000000;
+  overflow: scroll;
+  max-width: 16rem; }
+
+.header {
+  width: 16rem;
+  height: 1.2rem; }
+  .header .header_container {
+    width: 15rem;
+    height: 1.2rem; }
+    .header .header_container .header_left {
+      width: 2.5rem;
+      height: 1.2rem; }
+      .header .header_container .header_left img {
+        width: 0.7rem;
+        height: 0.7rem; }
+    .header .header_container .header_center {
+      width: 10rem;
+      height: 1.2rem;
+      line-height: 1.2rem;
+      text-align: center;
+      color: #FFFFFF;
+      font-size: 0.7rem; }
+    .header .header_container .header_right {
+      width: 2.5rem;
+      height: 1.2rem;
+      text-align: right; }
+      .header .header_container .header_right img {
+        width: 0.7rem;
+        height: 0.7rem; }
+      .header .header_container .header_right img:nth-child(2) {
+        display: none; }
+
+.box {
+  width: 16rem; }
+  .box .container {
+    width: 15rem;
+    height: 13.25rem;
+    margin-top: 1rem; }
+    .box .container .img:nth-child(n+4) {
+      display: none; }
+    .box .container .img:nth-child(1) {
+      width: 2.5rem;
+      height: 3.9rem;
+      text-align: left; }
+      .box .container .img:nth-child(1) img {
+        width: 2.5rem;
+        height: 3.9rem;
+        transform: perspective(400px) rotateY(45deg);
+        transform-style: preserve-3d;
+        -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.5))); }
+    .box .container .img:nth-child(2) {
+      width: 10rem;
+      height: 13.25rem;
+      text-align: center; }
+      .box .container .img:nth-child(2) img {
+        width: 8.875rem;
+        height: 13.25rem;
+        -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.5))); }
+    .box .container .img:nth-child(3) {
+      width: 2.5rem;
+      height: 14rem;
+      display: flex;
+      justify-content: right;
+      align-items: center; }
+      .box .container .img:nth-child(3) img {
+        width: 2.5rem;
+        height: 3.9rem;
+        transform: perspective(400px) rotateY(-45deg);
+        -webkit-box-reflect: below 10px;
+        -webkit-box-reflect: below 0px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(70%, transparent), to(rgba(250, 250, 250, 0.5))); }
+
+/*# sourceMappingURL=modelshow.css.map */
