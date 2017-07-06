@@ -113,7 +113,8 @@ Page({
       that.setData({
         goods_list: res,
       })
-      console.log('个人信息:', res)
+      var perlength = res.data.length;
+      console.log('个人信息:', perlength)
       if (res.data) {
         wx.navigateTo({
           url: '../goods/index'

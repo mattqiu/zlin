@@ -12,7 +12,7 @@
 	width: 60rpx;
 	height: 60rpx;
 	border-radius: 50%;
-	background: rgba(0, 0, 0, .5) url(../../images/icons/icon-arrow_left_white.png) no-repeat center center;
+	background: rgba(0, 0, 0, .5) url(https://demo.hzlwo.com/wxapp/images/icons/icon-arrow_left_white.png) no-repeat center center;
 	background-size: 17rpx auto;
 }
 .top .about{
@@ -27,14 +27,14 @@
 	text-align: center;
 }
 .collect{
-	background: url(../../images/icons/icon-star.png) no-repeat center top;
+	background: url(https://demo.hzlwo.com/wxapp/images/icons/icon-star.png) no-repeat center top;
 	background-size: 61rpx auto;
 	color: #ffb5b5;
 	margin-bottom: 48rpx;
 }
 .evaluate{
 	padding-top: 54rpx;
-	background: url(../../images/icons/icon-heart.png) no-repeat center top;
+	background: url(https://demo.hzlwo.com/wxapp/images/icons/icon-heart.png) no-repeat center top;
 	background-size: 50rpx auto;
 	color: #535353;
 }
@@ -112,7 +112,7 @@
 	margin: 150rpx auto;
 	width: 296rpx;
 	height: 250rpx;
-	background: url(../../images/goods/empty.png) no-repeat center center;
+	background: url(https://demo.hzlwo.com/wxapp/images/goods/empty.png) no-repeat center center;
 	background-size: 100%;
 }
 
