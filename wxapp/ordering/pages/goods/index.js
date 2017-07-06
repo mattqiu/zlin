@@ -10,6 +10,7 @@ Page({
     goods_commonid:'',
     goods_name:'',
     goods_price:'',
+    goods_sum:'',
     goods_id:'',
     minPrice:'',
     maxPrice:'',

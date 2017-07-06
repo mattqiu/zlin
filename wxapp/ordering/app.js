@@ -94,7 +94,7 @@ App({
         wx.hideToast();
         that.globalData.userInfo = res.data;
         var arrlength = res.data.length;       
-        if (arrlength < 50){
+        if (arrlength < 150){
           //console.log('获取用户登录信息！', arrlength)
           wx.navigateTo({
             url: '../goods/index'
