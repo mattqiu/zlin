@@ -8,6 +8,7 @@ $(function() {
         }
       })(jQuery);
       var goods_commonid = $.getUrlParam('goods_commonid');
+      var goods_sum = $.getUrlParam('goods_sum');
 			$.ajax({
 			type: "get",
 			url: WxappSiteUrl + "/index.php?act=goods&op=goods_detail&goods_commonid="+goods_commonid,
@@ -15,7 +16,7 @@ $(function() {
 			success: function(data) {
 				var goods_detail = data.datas.goods_detail;
 				var spec_name = data.datas.goods_detail.spec_name;
-				var spec_value = data.datas.goods_detail.spec_value;
+				//var spec_value = data.datas.goods_detail.spec_value;
 				var store_info   = data.datas.store_info;
 			  /*console.log(spec_name);
 				console.log(spec_value);
@@ -23,7 +24,7 @@ $(function() {
 				console.log(spec_value.length);*/
 				//商品属性
 				var li = '<div class="attribute-list">'+
-                	'<div class="public">品牌名称</div><div class="publics">'+goods_detail.gc_name+'</div>'+
+                	'<div class="public">品牌名称</div><div class="publics">'+goods_detail.brand_name+'</div>'+
                 '</div>'+
                 '<div class="attribute-list">'+
                 	'<div class="public">货号</div><div class="publics">'+goods_detail.goods_serial+'</div>'+
@@ -38,11 +39,11 @@ $(function() {
                 '<div class="show-list-2">'+
 					'<div class="goods-name">'+goods_detail.goods_name+'</div>'+
 					'<div class="goods-num">'+goods_detail.goods_serial+'</div>'+
-					'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+goods_detail.goods_commonid+'</span></div>'+
+					'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+goods_detail.goods_price+'</span></div>'+
 				'</div>'+
 				'<div class="show-list-3 display-flex">'+
 					'<div class="circle">'+
-						goods_detail.goods_total
+						goods_sum
 					+'</div>'+
 				'</div>';
 				//商品图片
@@ -58,7 +59,7 @@ $(function() {
 					'<div class="related-show">'+
 						'<img src="'+store_info[i].goods_image+'" />'+
 						'<div class="show-list-2">'+
-							'<div class="goods-num">'+store_info[i].goods_commonid+'</div>'+
+							'<div class="goods-num">'+store_info[i].goods_serial+'</div>'+
 							'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+store_info[i].goods_price+'</span></div>'+
 						'</div>'+
 					'</div>';

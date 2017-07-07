@@ -211,10 +211,11 @@ class goodsControl extends wxappHomeControl{
         // 商品详细信息
         $model_goods = Model('goods');
         $goods_detail = $model_goods->getGoodsDetail($goods_commonid);
-		$condition['store_id'] = $goods_detail['goods_info']['store_id'];
-		//$goods_detail['store_info'] = $model_goods->getStoreDetail($condition);
-		$store_info = $model_goods->getStoreDetail($condition);
-        /*$spec_name  = unserialize($goods_detail['spec_name']);
+        $condition['store_id'] = $goods_detail['store_id'];
+
+        //$goods_detail['store_info'] = $model_goods->getStoreDetail($condition);
+        $store_info = $model_goods->getStoreDetail($condition);
+        $spec_name  = unserialize($goods_detail['spec_name']);
         $spec_value = unserialize($goods_detail['spec_value']);
         foreach ($spec_value as $key => $value) {
             $spec_value[$key] = implode(',',$value);
@@ -226,16 +227,12 @@ class goodsControl extends wxappHomeControl{
 /*        foreach ($spec_name as $key => $value) {
             $spec_name[$key] = $value.':'.implode(',',$spec_value[$key]);
         }*/
-        //print_r($spec_name);*/
-        foreach ($store_info as $key => $value) {
-        	//$store_info[$key]['goods_sum'] = empty($value['goods_sum'])?0:$value['goods_sum'];
-        	$store_info[$key]['goods_image'] = cthumb($store_info[$key]['goods_image']);
-        }
-		$all_info['goods_detail'] = $goods_detail;
-		$all_info['store_info'] = $store_info;
+        //print_r($spec_name);
+        $all_info['goods_detail'] = $goods_detail;
+        $all_info['store_info'] = $store_info;
         
-		//print_r($all_info);
-		output_data($all_info,'成功获取商品信息');
+        //print_r($all_info);
+        output_data($all_info,'成功获取商品信息');
     }
 
     /**
