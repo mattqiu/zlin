@@ -1,7 +1,7 @@
 <!--pages/goods/detail.wxml-->
 <view class="section">
 	<view class="top">
-		<view class="pic"><image src="{{goods_info.goods_image[0][0]}}" mode="scaleToFill"></image></view>
+		<view class="pic"><image src="{{goods_info.goods_image}}" mode="scaleToFill"></image></view>
 		<view class="icon-prev"></view>
 		<view class="about">
 			<view class="about-item collect">
@@ -13,12 +13,10 @@
 		</view>
 	</view>
 	<view class="info">
-		<view class="goods-name">{{goods_info.goods_info.goods_name}} </view>
-		<view class="goods-no">{{goods_info.goods_info.goods_commonid}}</view>
-		<view class="goods-pirce highlight">￥{{goods_info.goods_info.goods_price}}</view>
-		<navigator url="checkin?goods_commonid={{goods_info.goods_info.goods_commonid}}&&goods_name={{goods_info.goods_info.goods_name}}&&goods_price={{goods_info.goods_info.goods_price}}">
-        <view class="goods-dn">{{goods_sum}}</view>
-    </navigator>
+		<view class="goods-name">{{goods_info.goods_name}} </view>
+		<view class="goods-no">{{goods_info.goods_commonid}}</view>
+		<view class="goods-pirce highlight">￥{{goods_info.goods_price}}</view>
+		 <navigator url="checkin?goods_commonid={{goods_info.goods_commonid}}&&goods_name={{goods_info.goods_name}}&&goods_price={{goods_info.goods_price}}"><view class="goods-dn">{{goods_info.goods_total}}</view></navigator>
 	</view>
 	<view class="tab-ctrl">
 		<view bindtap="switchTab" data-idx="0" class="tab-nav {{tabIndex == 0 ? 'active' : ''}}">商品属性</view>
@@ -27,10 +25,10 @@
 	</view>
 	<view wx:if="{{tabIndex == 0}}" class="goods-attr">
 		<view class="goods-attr__item">
-			<view class="label">品牌名称</view>{{goods_info.goods_info.brand_name}}
+			<view class="label">品牌名称</view>{{goods_info.brand_name}}
 		</view>
 		<view class="goods-attr__item">
-			<view class="label">货　　号</view>{{goods_info.goods_info.goods_commonid}}
+			<view class="label">货　　号</view>{{goods_info.goods_commonid}}
 		</view>
 	</view>
 	<view wx:if="{{tabIndex == 1}}" class="goods-detail">

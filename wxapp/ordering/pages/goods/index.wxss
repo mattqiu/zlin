@@ -145,6 +145,7 @@ page{
 	overflow: hidden;
 	white-space: nowrap;
   text-overflow: ellipsis;
+  max-width:490rpx;
 }
 .goods-item__no{
 	font-size: 30rpx;
@@ -193,7 +194,7 @@ page{
 }
 .goods-list__type1 .goods-item__dn{
 	position: absolute;
-	bottom: 5rpx;
+	bottom: -1rpx;
 	right: 33rpx;
 }
 /*商品列表风格2 大图*/
@@ -229,7 +230,7 @@ page{
 }
 .goods-list__type2 .goods-item__dn{
 	position: absolute;
-	top: 50%;
+	top: 75%;
 	right: 24rpx;
 
 	transform: translate(0, -50%);
@@ -292,10 +293,19 @@ page{
 	display: flex;
 }
 .filter-plane__footer{
-	margin-left: -20rpx;
+	margin-left: 20rpx;
 	flex: 0 0 auto;
 	height: 80rpx;
 	display: flex;
+}
+.filter-plane__footer .filter-reset{
+	text-align: center;
+	color: #fff;
+	font-size: 30rpx;
+	background-color: #dacb6f;
+	line-height: 80rpx;
+  width: 300rpx;
+  margin-left:-20px;
 }
 .filter-plane__footer .filter-btn{
 	flex: 1 0 auto;

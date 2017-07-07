@@ -1,6 +1,6 @@
 <?php
 /**
- * 推广员抽佣比率表
+ * 职业经理人抽佣比率表
  *
  *
  *
@@ -11,9 +11,9 @@
  * @since      File available since Release v1.1
  */
 defined('InIMall') or exit('Access Invalid!');
-class extension_commis_rateModel extends Model {
+class cityunion_commis_rateModel extends Model {
     public function __construct() {
-        parent::__construct('extension_commis_rate');
+        parent::__construct('cityunion_commis_rate');
     }
 	/**
 	 * 读取单行信息
@@ -31,7 +31,7 @@ class extension_commis_rateModel extends Model {
 		return $this->where($condition)->find();
 	}
 	/**
-     * 管理奖比率
+     * 平台返佣比率
      * @param array $condition
      * @return int
      */

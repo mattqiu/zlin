@@ -82,39 +82,6 @@ class goodsModel extends Model{
     }
     
     /**
-     * 商品首页列表查询功能
-     *
-     * @param array $condition 条件
-     * @param string $field 字段
-     * @param string $group 分组
-     * @param string $order 排序
-     * @param int $limit 限制
-     * @param int $page 分页
-     * @return array 二维数组
-     */
-    public function getGoodsOrderList($condition, $field = 'goods_commonid,goods_total,goods_price,goods_name,goods_image', $order = '', $limit = '100') {	
-    	
-    	$goods_list = $this->table('goods_common')->field($field)->where($condition)->order($order)->limit($limit)->select();
-    	return $goods_list;
-    }
-    /**
-     * 查询所有商品goods_commonid
-     *
-     * @param array $condition 条件
-     * @param string $field 字段
-     * @param string $group 分组
-     * @param string $order 排序
-     * @param int $limit 限制
-     * @param int $page 分页
-     * @return array 二维数组
-     */
-    public function getGoodsCommonidList($condition, $field = 'goods_commonid', $order = '',$limit='') {
-    	 
-    	$all_commonid_list = $this->table('goods_common')->field($field)->limit($limit)->select();
-    	return $all_commonid_list;
-    }
-
-	/**
      * 获取指定分类指定店铺下的随机商品列表
      *
      * @param int $gcId 一级分类ID
@@ -868,7 +835,7 @@ class goodsModel extends Model{
     public function getGoodsCommonInfoByID($goods_commonid, $fields = '*') {
         $common_info = $this->_rGoodsCommonCache($goods_commonid, $fields);
         if (empty($common_info)) {
-            $common_info = $this->getGoodsCommonInfo(array('goods_commonid'=>$goods_commonid));
+            $common_info = $this->getGoodsCommonInfo(array('goods_commonid'=>$goods_commonid), $fields);
             $this->_wGoodsCommonCache($goods_commonid, $common_info);
         }
             
@@ -1241,10 +1208,14 @@ class goodsModel extends Model{
      * 获得商品规格数组
      * @param unknown $common_id
      */
-    public function getGoodsSpecListByCommonId($common_id) {
+    public function getGoodsSpecListByCommonId($common_id,$store_id = 0) {
         $spec_list = $this->_rGoodsSpecCache($common_id);
         if (empty($spec_list)) {
-            $spec_array = $this->getGoodsList(array('goods_commonid' => $common_id), 'goods_spec,goods_id,store_id,goods_image,color_id');
+        	$where['goods_commonid'] = $common_id;
+        	if(!empty($store_id)){
+        		$where['store_id'] = $store_id;
+        	}
+            $spec_array = $this->getGoodsList($where, 'goods_spec,goods_id,goods_price,store_id,goods_image,color_id');
             $spec_list['spec'] = serialize($spec_array);
             $this->_wGoodsSpecCache($common_id, $spec_list);
         }
@@ -1406,7 +1377,7 @@ class goodsModel extends Model{
 		
         $result2 = $this->getGoodsCommonInfoByID($result1['goods_commonid']);
         $goods_info = array_merge($result2, $result1);
-		return $goods_info;
+
         $goods_info['spec_value'] = unserialize($goods_info['spec_value']);
         $goods_info['spec_name'] = unserialize($goods_info['spec_name']);
         $goods_info['goods_spec'] = unserialize($goods_info['goods_spec']);

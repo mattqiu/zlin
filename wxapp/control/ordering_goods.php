@@ -110,13 +110,13 @@ class ordering_goodsControl extends wxappControl {
 	  		$where .= ' AND gc.goods_price <= '.$maxPrice;
 	  	}
         /**
-        $model = Model();
-        $table = 'goods_common,ordering_goods';
-        $field = 'sum(ordering_goods.goods_num) as goods_sum, goods_common.goods_commonid, goods_common.goods_name, goods_common.goods_serial, goods_common.goods_price, goods_common.goods_image';
-        $group = 'ordering_goods.goods_commonid';
-        $on    = 'goods_common.goods_commonid = ordering_goods.goods_commonid';
+        *$model = Model();
+        *$table = 'goods_common,ordering_goods';
+        *$field = 'sum(ordering_goods.goods_num) as goods_sum, goods_common.goods_commonid, goods_common.goods_name, goods_common.goods_serial, goods_common.goods_price, goods_common.goods_image';
+        *$group = 'ordering_goods.goods_commonid';
+        *$on    = 'goods_common.goods_commonid=ordering_goods.goods_commonid';
         
-        $goods_list = $model->table($table)->field($field)->join('left')->on($on)->where($condition)->group($group)->page($page)->order($order)->select();
+        *$goods_list = $model->table($table)->field($field)->join('left')->on($on)->where($condition)->group($group)->page($page)->order($order)->select();
         */
 	  	$ogoods_sql = 'SELECT og.goods_sum,gc.goods_commonid, gc.goods_name, gc.goods_serial, gc.goods_price, gc.goods_image FROM zlin_goods_common AS gc
 			LEFT JOIN (SELECT goods_commonid, SUM(goods_num) AS goods_sum FROM zlin_ordering_goods'.$orderingWhere.' GROUP BY goods_commonid) AS og ON og.goods_commonid = gc.goods_commonid 
@@ -159,17 +159,14 @@ class ordering_goodsControl extends wxappControl {
     		
     		$tpl_spec = array();
     		$tpl_spec['sign'] = $spec_sign;
-    		$spec_list[$spec_sign] = $value['goods_id'];
+    		$spec_list[$spec_sign]['goods_id'] = $value['goods_id'];
+            $spec_list[$spec_sign]['goods_price'] = $value['goods_price'];
     		$spec_image[$value['color_id']] = thumb($value, 60);
     	}
     	$goods_detail['spec_list'] = $spec_list;
     	$goods_detail['spec_image'] = $spec_image;
-    	if(!empty($spec_name)){
-    		$goods_detail['spec_name'] = $spec_name;
-    	}
     	$sp_name = ''; //定义横竖排交叉的名称
     	if(!empty($spec_value)){
-    		$goods_detail['spec_value'] = $spec_value;
     		$i = 0;
     		if (!empty($spec_value) && is_array($spec_value)) {
 	    		foreach ($spec_value as $skey=>$spec) {
@@ -177,6 +174,12 @@ class ordering_goodsControl extends wxappControl {
 	    			$sp_value[$i]['let'] = count($spec);
 	    			$sp_value[$i]['name'] = $spec;
 	    			$i++;
+                    foreach ($spec as $svkey => $sp_v) {
+                        # code...
+                        $obj_sp_value[$skey][$svkey]['sp_v_id'] = $svkey;
+                        $obj_sp_value[$skey][$svkey]['sp_v_name'] = $sp_v;
+                        $obj_sp_value[$skey][$svkey]['checked'] = '';
+                    }
 	    		}
     		}
     		// 声明组合SKU数组
@@ -186,7 +189,7 @@ class ordering_goodsControl extends wxappControl {
     				$objRowSpec = ''; //横排属性
     				$objColSpec = $sp_value[0]['name']; //竖排属性
     				foreach($objColSpec as $ckey=>$spec){
-    					$colSku[$ckey]['sp_name'] = $spec;
+    					$colSku[$ckey]['sp_name'][0] = $spec;
     					$colSku[$ckey]['list'][0]['skuid'] = $ckey;
     					$colSku[$ckey]['list'][0]['skuname'] = $spec;
     				}
@@ -194,7 +197,7 @@ class ordering_goodsControl extends wxappControl {
     				$objRowSpec = $sp_value[0]['name']; //横排属性
     				$objColSpec = ''; //竖排属性
     				foreach($objRowSpec as $rkey=>$spec){
-    					$colSku[0]['sp_name'] = $spec;
+    					$colSku[0]['sp_name'][0] = $spec;
     					$colSku[0]['list'][$rkey]['skuid'] = $rkey;
     					$colSku[0]['list'][$rkey]['skuname'] = $spec;
     				}
@@ -217,7 +220,7 @@ class ordering_goodsControl extends wxappControl {
     			//按照上标最大数组循环
     			foreach($objColSpec as $dkey=>$maxspec){
     				// 按照需要交错合并的两个数组循环
-    				$colSku[$dkey]['sp_name'] = $maxspec;
+    				$colSku[$dkey]['sp_name'][0] = $maxspec;
     				$colIdx = 0;
     				foreach($objRowSpec as $xkey=>$minspec){
     					if($xkey>$dkey){
@@ -227,6 +230,7 @@ class ordering_goodsControl extends wxappControl {
     						$skuid = $xkey.'|'.$dkey;
     						$skyname = $minspec.'|'.$maxspec;
     					}
+                        $colSku[$dkey]['list'][$colIdx]['goods_id'] = $spec_list[$skuid]['goods_id'];
     					$colSku[$dkey]['list'][$colIdx]['skuid'] = $skuid;
     					$colSku[$dkey]['list'][$colIdx]['skuname'] = $skyname;
     					$colIdx++;
@@ -236,26 +240,26 @@ class ordering_goodsControl extends wxappControl {
     			//新思路就是直接从$s_array 中获取数量循环出来即可
     			//查出第一排名称即可$objRowSpec
     			$objRowSpec = ''; //横排属性
-    			$sp_let = count($spec_value);
-    			foreach ($spec_value as $skey=>$spec) {
-	    			$sp_value[$i]['id'] = $skey;
-	    			$sp_value[$i]['let'] = count($spec);
-	    			$sp_value[$i]['name'] = $spec;
-	    			$i++;
+    			
+                foreach ($spec_array as $key => $value) {
+                    $s_array = unserialize($value['goods_spec']);
+                    $tmp_array = array();
+                    if (!empty($s_array) && is_array($s_array)) {
+                        foreach ($s_array as $k => $v) {
+                            $tmp_array[] = $k;
+                            $colSku[$key]['sp_name'][$k] = $v;
 	    		}
-	    		for($j=0;$j<$sp_let;$j++){
-	    			$skuid = $sp_value[$j]['id'];
 	    		}
-    			$objColSpec = $sp_value[0]['name']; //竖排属性
-    			foreach($objColSpec as $ckey=>$spec){
-    				$colSku[$ckey]['sp_name'] = $spec;
-    				$colSku[$ckey]['list'][0]['skuid'] = $ckey;
-    				$colSku[$ckey]['list'][0]['skuname'] = $spec;
+                    $colSku[$key]['list'][0]['goods_id'] = $value['goods_id'];
+
     			}
     			
     		}
+    	}else{
+            $spec_value = '';
     	}
-    	
+        $goods_detail['spec_name'] = $spec_name;
+    	$goods_detail['spec_value'] = $obj_sp_value;
     	$goods_detail['sp_name'] = $sp_name;//显示横竖排交叉的名称
     	$goods_detail['colspec'] = $colSku;
     	$goods_detail['rowspec'] = $objRowSpec;

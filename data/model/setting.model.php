@@ -55,6 +55,31 @@ class settingModel extends Model{
 	}
 	
 	/**
+	 * 添加系统配置信息
+	 *
+	 * @param array $param 配置信息
+	 * @return bool
+	 */
+	public function saveSetting($param){
+		if (is_array($param)){
+			foreach ($param as $k => $v){
+				$tmp = array();
+				$tmp['value'] = $v;
+				$where['name'] = $k;
+				$result = $this->field($field)->where($where)->select();
+				if (!empty($result)){
+					$result = $this->update($tmp,$where);;
+				}else{
+					$where['value'] = $tmp['value'];
+					$result = $this->insert($where);
+				}
+			}
+			return $result;
+		}
+		return false;
+	}
+	
+	/**
 	 * 更新信息
 	 *
 	 * @param array $param 更新数据

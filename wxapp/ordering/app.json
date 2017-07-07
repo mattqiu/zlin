@@ -40,13 +40,13 @@
       "pagePath": "pages/analysis/index",
       "text": "分析",
       "iconPath": "images/tabBar/tab-3.png",
-      "selectedIconPath": "images/tabBar/tab-2-active.png"
+      "selectedIconPath": "images/tabBar/tab-3.png"
     },
     {
       "pagePath": "pages/my/index",
       "text": "我的",
       "iconPath": "images/tabBar/tab-4.png",
-      "selectedIconPath": "images/tabBar/tab-2-active.png"
+      "selectedIconPath": "images/tabBar/tab-4.png"
     }]
   }
 }

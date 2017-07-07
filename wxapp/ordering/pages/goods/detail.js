@@ -18,19 +18,14 @@ Page({
     var data = {
       token: app.globalData.token,
       goods_commonid: options.goods_commonid,
-      goods_name: options.goods_name,
-      goods_price: options.goods_price,
-      goods_sum: options.goods_sum
     };
-    util.Ajax("goods/goods_detail", data, function (res) {
-      //console.log("a结果：", res.datas.goods_detail);
-      let goods_info;
-      let store_info;
+    util.Ajax("ordering_goods/goods_detail", data, function (res) {
+      //console.log("a结果：", res);
       that.setData({
         goods_info: res.datas.goods_detail,
         store_info: res.datas.store_info
       });
-      console.log("b结果：", res.datas);
+      console.log("a结果：", res.datas.store_info);
     });
   },
   onReady:function(){

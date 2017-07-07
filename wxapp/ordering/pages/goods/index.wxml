@@ -3,17 +3,17 @@
 	<!-- 头部 -->
 	<view class="header">
 		<view class="search-bar">
-			<input type="text" placeholder="输入款号或商品关键字" />
+			<input type="text" bindchange="changeKeyword" placeholder="输入款号或商品关键字" />
 		</view>
 		<view class="icon icon__scan"></view>
 	</view>
-	<!-- 过滤栏目 -->
+	<!-- 头部过滤栏目start -->
 	<view class="filter-bar">
-		<view class="filter-bar__item icon-arrow" bindtap="showPlane" data-index="0">
-			{{filter.sort.list[filter.sort.currentIdx].name}}
+		<view class="filter-bar__item icon-arrow {{filter_type=='sort' ? 'active' : ''}}" bindtap="showPlane" data-index="0">
+			{{sort.list[sort_id].name}}
 		</view>
-		<view class="filter-bar__item icon-arrow" bindtap="showPlane" data-index="1">
-			{{filter.has.list[filter.has.currentIdx].name}}
+		<view class="filter-bar__item icon-arrow {{filter_type=='has' ? 'active' : ''}}" bindtap="showPlane" data-index="1">
+			{{has.list[has_id].name}}
 		</view>
 		<view class="filter-bar__item {{isShowList ? 'active' : ''}}" bindtap="toggleShow">
 			陈列
@@ -22,87 +22,96 @@
 			筛选
 		</view>
 		<view class="filter-bar__item filter-type{{goodsListType}}" bindtap="switchGoodsType">
-			
 		</view>
-		<view class="plane" wx:if="{{showPlaneType === '0'}}">
+    <view class="plane" wx:if="{{showPlaneType == '0'}}">
 				<view class="plane-item"
-					wx:for="{{filter.sort.list}}" 
-					data-id="{{item.goods_total}}" 
-					data-index="{{item.order}}"
+					wx:for="{{sort.list}}" 
+					data-id="{{item.sort_id}}"
+          data-index="{{index}}"
 					data-type="sort"
 					bindtap="selectPlaneItem">
 					{{item.name}}
 				</view>
 		</view>
-		<view class="plane" wx:if="{{showPlaneType === '1'}}">
+		<view class="plane" wx:if="{{showPlaneType == '1'}}">
 				<view class="plane-item" 
-					wx:for="{{filter.has.list}}" 
-					data-id="{{item.goods_total}}" 
-					data-index="{{item.order_2}}"
+					wx:for="{{has.list}}" 
+					data-id="{{item.has_id}}"
+          data-index="{{index}}"
 					data-type="has"
 					bindtap="selectPlaneItem">
 					{{item.name}}
 				</view>
 		</view>
 	</view>
-	<!-- 内容列表 -->
-	<view class="main">
-		<view class="goods-list">
-			<scroll-view scroll-y="true" style="height:100%;">
-				<!-- 商品列表 -->
-				<view wx:if="{{!isShowList}}" class="goods-list__type{{goodsListType}}">
-					<view class="goods-item" wx:for="{{goods_list}}">
-              <navigator url="detail?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}&&goods_sum={{item.goods_sum}}">
-                <view class="goods-item__pic">
-                  <image src="{{item.goods_image}}" mode="scaleToFill"></image>
+  <!-- 头部过滤栏目end -->
+    <!-- 内容列表start -->
+  <view class="main">
+      <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="bindDownLoad"  bindscroll="bindScroll" bindscrolltoupper="bindTopLoad" scrollTop="{{scrollTop}}">
+        <view class="goods-list">
+          <!-- 商品列表start -->
+          <view wx:if="{{!isShowList}}" class="goods-list__type{{goodsListType}}">
+            <view class="goods-item" wx:for="{{goods_list}}">
+                <navigator url="detail?goods_commonid={{item.goods_commonid}}">
+                  <view class="goods-item__pic">
+                    <image src="{{item.goods_image}}" mode="scaleToFill"></image>
+                  </view>
+                </navigator>
+                <view class="goods-item__info">
+                  <view class="goods-item__name">{{item.goods_name}}</view>
+                  <view class="goods-item__no">{{item.goods_serial}}</view>
+                  <view class="goods-item__price">￥{{item.goods_price}}</view>
+                  <navigator url="checkin?goods_commonid={{item.goods_commonid}}"><view wx:if="{{item.goods_sum>0}}" class="goods-item__dn">{{item.goods_sum}}</view>
+                    <view wx:else class="goods-item__dn">
+                    <image src="../../images/goods/goods-nodh.jpg" ></image>
+                  </view>
+                  </navigator>
                 </view>
-               </navigator>
-              <view class="goods-item__info">
-                <view class="goods-item__name">{{item.goods_name}}</view>
-                <view class="goods-item__no">{{item.goods_commonid}}</view>
-                <view class="goods-item__price">￥{{item.goods_price}}</view>
-                <navigator url="checkin?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}&&goods_sum={{item.goods_sum}}"><view class="goods-item__dn">{{item.goods_sum}}</view></navigator>
+            </view>
+          </view>
+          <!-- 陈列列表 -->
+          <view wx:else class="goods-show">
+            <view class="goods-item" wx:for="{{goodsList}}">
+              <view class="goods-item__pic">
+                <image src="{{item.pic}}" mode="scaleToFill"></image>
               </view>
-					</view>
-				</view>
-				<!-- 陈列列表 -->
-				<view wx:else class="goods-show">
-					<view class="goods-item" wx:for="{{goodsList}}">
-						<view class="goods-item__pic">
-							<image src="{{item.pic}}" mode="scaleToFill"></image>
-						</view>
-						<view class="goods-item__info">
-							<view class="goods-item__name">{{item.name}}</view>
-							<view class="goods-item__dn">{{item.dn}}</view>
-						</view>
-					</view>
-				</view>
-			</scroll-view>
-		</view>
-	</view>
+              <view class="goods-item__info">
+                <view class="goods-item__name">{{item.name}}</view>
+                <view class="goods-item__dn">{{item.goods_serial}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+  </view>
+  <!-- 内容列表end -->
+
 	<!-- 筛选面板 -->
-	<view class="filter-plane" wx:if="{{showPlaneType === '2'}}">
-		<view class="filter-plane__wrap">
-			<view class="filter-plane__item-wrap">
-					<scroll-view scroll-y>
-						<view wx:for="{{filter.ft.list}}" class="filter-plane__item {{item.show ? 'open' : ''}}">
-							<view class="item__hd" data-index="{{index}}" bindtap="toggleOpt">
-								{{item.title}}
-							</view>
-							<view wx:if="{{item.hasPriceRange}}" class="opt__range">
-								<input type="text" name="minPrice" data-index="4" bindinput="minPrice" placeholder="最低价"/>
-								-
-								<input type="text" name="maxPrice" data-index="4" bindinput="maxPrice" placeholder="最高价"/>
-							</view>
-							<view class="item__bd">
-								<view wx:for="{{item.opts}}" wx:for-index="idx" wx:for-item="opt" class="opt">{{opt.name}}</view>
-							</view>
-						</view>
-				</scroll-view>
-			</view>
-			<view class="filter-plane__footer">
-				<view class="filter-btn" bindtap="btn_submit">确认</view>
-			</view>
-		</view>
-	</view>
+  <form bindsubmit="formFilterSubmit" bindreset="formFilterReset">
+    <view class="filter-plane" wx:if="{{showPlaneType == '2'}}">
+      <view class="filter-plane__wrap">
+        <view class="filter-plane__item-wrap">
+            <scroll-view scroll-y>
+              <view wx:for="{{filter.list}}" class="filter-plane__item {{item.show ? 'open' : ''}}">
+                <view class="item__hd" data-index="{{index}}" bindtap="toggleOpt">
+                  {{item.title}}
+                </view>
+                <view wx:if="{{item.hasPriceRange}}" class="opt__range">
+                  <input type="text" name="minPrice" bindinput="minPrice" placeholder="最低价"/>
+                  -
+                  <input type="text" name="maxPrice" bindblur="blurMaxPrice" placeholder="最高价"/>
+                </view>
+                <view class="item__bd">
+                  <view wx:for="{{item.opts}}" wx:for-index="idx" wx:for-item="opt" class="opt">{{opt.name}}</view>
+                </view>
+              </view>
+          </scroll-view>
+        </view>
+        <view class="filter-plane__footer">
+          <button class="filter-reset" formType="reset">重置</button>
+          <button class="filter-btn" formType="submit">确认</button>
+        </view>
+      </view>
+    </view>
+  </form>
 </view>

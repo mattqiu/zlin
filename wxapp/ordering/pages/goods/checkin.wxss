@@ -43,6 +43,9 @@
 	display: flex;
 	padding: 8rpx;
 }
+.goods-sku{
+	padding: 8rpx 0;
+}
 .goods-pic{
 	width: 155rpx;
 	height: 155rpx;
@@ -79,6 +82,10 @@
 	text-align: center;
 	line-height: 68rpx;
 	font-size: 30rpx;
+}
+.table-col.active{
+	background-color: #ce9100;
+  height: 68rpx;
 }
 .table-row:first-child .table-col,
 .table-col:first-child{

@@ -14,7 +14,7 @@
 			<view class="goods-info">
 				<view class="goods-info__item">
 					<view class="label">货号：</view>
-					<view class="text">{{goods_info.goods_commonid}}</view>
+					<view class="text">{{goods_info.goods_serial}}</view>
 				</view>
 				<view class="goods-info__item">
 					<view class="label">名称：</view>
@@ -27,127 +27,70 @@
 			</view>
 		</view>
 		<view class="goods-sku">
+
 			<view class="table-row">
-				<view class="table-col">尺码</view>
-				<view class="table-col">绿色</view>
-				<view class="table-col">粉色</view>
-				<view class="table-col">黑色</view>
-				<view class="table-col">红色</view>
+				<view class="table-col">{{goods_info.sp_name}}</view>
+				<view wx:for="{{goods_info.rowspec}}" class="table-col">{{item}}</view>
 			</view>
-			<view class="table-row">
-				<view class="table-col">XS</view>
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
+			<view wx:for="{{goods_info.colspec}}" wx:for-item="spitem" class="table-row">
+				<view class="table-col"  wx:for="{{spitem.sp_name}}" wx:for-item="colname">{{colname}}</view>
+        <block wx:for="{{spitem.list}}"> 
+				  <input name="{{item.goods_id}}" class="table-col {{specsku[item.skuid].checked?'active':''}}" type="number" bindinput="inputSkuNum" data-skuid="{{item.skuid}}" placeholder="0" value="{{specsku[item.skuid].gnum}}" />          
+        </block>
 			</view>
-			<view class="table-row">
-				<view class="table-col">S</view>
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-			</view>
-			<view class="table-row">
-				<view class="table-col">M</view>
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-			</view>
-			<view class="table-row">
-				<view class="table-col">L</view>
-			<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-				<input class="table-col" placeholder="3" />
-			</view>
-			<view class="table-row">
-				<view class="table-col">XL</view>
-				<view class="table-col">3</view>
-				<view class="table-col">3</view>
-				<view class="table-col">3</view>
-				<view class="table-col">3</view>
-			</view>
+			
 		</view>
 	</view>
 	<!-- 颜色 -->
-	<view class="ui-card">
+	<view wx:for="{{goods_spec}}" wx:for-item="spec" wx:for-index="spid" class="ui-card">
 		<view class="ui-card__hd">
-			<view class="title">颜色</view>
+			<view class="title">{{goods_info.spec_name[spid]}}</view>
 			<view class="other">
 				<view class="chioce-type">
 					<label class="radio-wrap">
-						<view class="radio"></view>单选
+						<view class="radio {{optRadio[spid]=='more' || optRadio[spid]=='all'?'':'checked'}}" bindtap="tapRadioSpec" data-spid="{{spid}}" data-type="one"></view>单选
 					</label>
 					<label class="radio-wrap">
-						<view class="radio checked"></view>多选
+						<view class="radio {{optRadio[spid]=='more' || optRadio[spid]=='all'?'checked':''}}" bindtap="tapRadioSpec" data-spid="{{spid}}" data-type="more"></view>多选
 					</label>
 					<label class="checkbox-wrap">
-						<view class="checkbox checked"></view>
+						<view class="checkbox {{optRadio[spid]=='all'?'checked':''}}" bindtap="tapRadioSpec" data-spid="{{spid}}" data-checked="{{optRadio[spid]=='all'?'true':''}}" data-type="all"></view>
 					</label>
 				</view>
 			</view>
 		</view>
 		<view class="ui-card__bd">
 			<view class="opt-wrap">
-				<view class="opt">绿色</view>
-				<view class="opt">粉色</view>
-				<view class="opt active">黑色</view>
-				<view class="opt active">红色</view>
+				<view wx:for="{{spec}}" wx:for-item="sp_v" wx:for-index="svid" bindtap="tapOptSpec" data-spid="{{spid}}" data-svid="{{svid}}" data-svname="{{sp_v.sp_v_name}}"  data-checked="{{sp_v.checked}}" class="opt {{sp_v.checked?'active':''}}">{{sp_v.sp_v_name}}</view>
 			</view>
 		</view>
 	</view>
-	<!-- 尺码 -->
-	<view class="ui-card">
-		<view class="ui-card__hd">
-			<view class="title">颜色</view>
-			<view class="other">
-				<view class="chioce-type">
-					<label class="radio-wrap">
-						<view class="radio checked"></view>单选
-					</label>
-					<label class="radio-wrap">
-						<view class="radio"></view>多选
-					</label>
-					<label class="checkbox-wrap">
-						<view class="checkbox"></view>
-					</label>
-				</view>
-			</view>
-		</view>
-		<view class="ui-card__bd">
-			<view class="opt-wrap">
-				<view class="opt active">XS</view>
-				<view class="opt">S</view>
-				<view class="opt">M</view>
-				<view class="opt">L</view>
-			</view>
-		</view>
-	</view>
+
 	<!-- 数量 -->
 	<view class="footer ui-card">
 		<view class="ui-card__hd">
 			<view class="title">数量（件）</view>
 			<view class="other">
 				<view class="operation-num">
-					<view class="btn"></view>
-					<view class="num">0</view>
-					<view class="btn"></view>
+					<view bindtap="tapMinusGnum" class="btn"></view>
+					<view>
+            <input name="goodsNum" type="number" class="num" placeholder="0" bindinput="inputGoodsNum" value="{{goodsNum}}" />   
+          </view>
+					<view bindtap="tapPlusGnum" class="btn"></view>
 				</view>
 			</view>
 		</view>
 		<view class="operation-wrap">
 			<view class="item">
 				<text class="label">总件数：</text>
-				<text class="text">999件</text>
+				<text class="text">{{goodsTotal}}件</text>
 			</view>
 			<view class="item">
 				<text class="label">总金额：</text>
-				<text class="text">13258.00元</text>
+				<text class="text">￥{{totalAmount}}元</text>
 			</view>
 		</view>
-		<view class="operation-btn" bindtap="btn_submit">提　交</view>
+		<view class="operation-btn" bindtap="btn_submit">确定并返回</view>
 	</view>
 	
 </view>
