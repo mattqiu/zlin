@@ -8,12 +8,13 @@ $(function() {
 	var minPrice    = 0;
 	var maxPrice    = 0;
 	var curpage    	= 1;
-	var ajaxCommit 	= function() {
+	var keyword    	= '';
+	var goodsajaxCommit 	= function() {
 		$("#show1").empty();
 		$("#two").empty();
 		$.ajax({
 			type: "get",
-			url: WxappSiteUrl + "/index.php?act=ordering_goods&op=index&token="+token+"&member_id="+member_id+"&keyword="+keyword+"&filter_type="+filter_type+"&sort_id="+sort_id+"&has_id="+has_id+"&minPrice="+minPrice+"&maxPrice="+maxPrice+"&curpage="+curpage,
+			url: WxappSiteUrl + "/index.php?act=ordering_goods&op=index&token="+token+"&member_id="+member_id+"&keyword="+keyword+"&filter_type="+filter_type+"&sort_id="+sort_id+"&has_id="+has_id+"&minPrice="+minPrice+"&maxPrice="+maxPrice+"&curpage="+curpage+"&keyword="+keyword,
 			dataType: "json",
 			success: function(data) {
 				var datas = data.datas;
@@ -25,11 +26,11 @@ $(function() {
 					'<div class="show-list display-flex">'+
 
 						'<div class="show-list-1 display-flex">'+
-							'<div class="image">'+
+							'<a href="/wap/tmpl/ordering/dinghuohui3.html?goods_commonid='+item[i].goods_commonid+'&goods_sum='+item[i].goods_sum+'"><div class="image">'+
 								'<img src="'+
 								item[i].goods_image
 								+'" />'+
-							'</div>'+
+							'</div></a>'+
 						'</div>'+
 						'<div class="show-list-2">'+
 							'<div class="goods-name">'+
@@ -54,11 +55,11 @@ $(function() {
 
 
 				var li2 = '<div class="show_list">'+
-							'<div class="img">'+
+							'<a href="/wap/tmpl/ordering/dinghuohui3.html?goods_commonid='+item[i].goods_commonid+'&goods_sum='+item[i].goods_sum+'"><div class="img">'+
 								'<img src="'+
 								item[i].goods_image
 								+'" />'+
-							'</div>'+
+							'</div></a>'+
 							'<div class="name">'+
 								item[i].goods_name
 							+'</div>'+
@@ -96,16 +97,20 @@ $(function() {
 }
 	$(".bar-position1 .bar-pisition-list").click(function(){
 		sort_id = $(this).index();	
-		ajaxCommit();
+		goodsajaxCommit();
 	});
 	$(".bar-position2 .bar-pisition-list").click(function(){
 		has_id = $(this).index();	
-		ajaxCommit();
+		goodsajaxCommit();
 	});
 	$("#submit").click(function(){
 		minPrice = $("#input1").val();
 		maxPrice = $("#input2").val();
-		ajaxCommit();
+		goodsajaxCommit();
 	});
-	ajaxCommit();
+	$("#search").click(function(){
+		keyword = $("#keyword").val();
+		goodsajaxCommit();
+	});
+	goodsajaxCommit();
 	})
