@@ -133,15 +133,15 @@ $(function() {
 		var min = $('.filter-input #input1').val()
 		var max = $('.filter-input #input2').val()
 	})
-	$("#order").click(function(){
-		window.location.href = WapSiteUrl+"/tmpl/ordering/";
-	});
-	$("#goods").click(function(){
-		window.location.href = WapSiteUrl+"/tmpl/ordering/dinghuohui02_3.html";
-	});
-	$("#ordermanager").click(function(){
-		window.location.href = WapSiteUrl+"/tmpl/ordering/orderforgoods.html";
-	});
+//	$("#order").click(function(){
+//		window.location.href = WapSiteUrl+"/tmpl/ordering/";
+//	});
+//	$("#goods").click(function(){
+//		window.location.href = WapSiteUrl+"/tmpl/ordering/dinghuohui02_3.html";
+//	});
+//	$("#ordermanager").click(function(){
+//		window.location.href = WapSiteUrl+"/tmpl/ordering/orderforgoods.html";
+//	});
 	/*页面加载完成执行ajax 加载我的订单默认数据*/
 	ajaxCommit('order');
 })

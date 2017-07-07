@@ -54,17 +54,3 @@ $designWidth: 640;
 .border-bottom-dash{
     border-bottom: px2rem(1) dashed black;
 }
-.footer{
-    background-color: #FFFFFF;
-    border-top: px2rem(1) solid red;
-    font-size: px2rem(27);
-    width: 16rem;
-    height: px2rem(87);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    span{
-        font-size: px2rem(27);
-        margin-top: px2rem(20);
-    }
-}

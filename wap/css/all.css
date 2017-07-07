@@ -50,17 +50,4 @@
 .border-bottom-dash {
   border-bottom: 0.025rem dashed black; }
 
-.footer {
-  background-color: #FFFFFF;
-  border-top: 0.025rem solid red;
-  font-size: 0.675rem;
-  width: 16rem;
-  height: 2.175rem;
-  position: fixed;
-  bottom: 0;
-  left: 0; }
-  .footer span {
-    font-size: 0.675rem;
-    margin-top: 0.5rem; }
-
 /*# sourceMappingURL=all.css.map */
