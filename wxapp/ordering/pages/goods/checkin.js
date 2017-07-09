@@ -436,31 +436,19 @@ Page({
   },
   formSubmit:function(e){
     var formData = e.detail.value;
-    var formId = e.detail.name;
+    //var formId = e.detail.name;
     console.log('提交:', formData);
-    console.log('提交id:', order_info);
-   /* var that = this;
+    var that = this;
     var data ={
-      list: [
-        {
-          goods_num: that.data.specsku,
-          goods_id: that.data.goods_id
-        },
-      ],
-      token: app.globalData.token
-      /*goods_commonid: '100008',
-      goods_name: 'goods_name',
-      goods_price: '600',
+      list: formData,
+      token: app.globalData.token,
+      goods_commonid: options.goods_commonid,
       member_id: app.globalData.member_id,
       store_id: app.globalData.store_id
-      buyer_id: '5',
-      store_id: '1',
-      store_name: 'E.music',
-      gooods_image:'http://demo.hzlwo.com/data/upload/shop/common/default_goods_image.gif'
     };
     util.Ajax("member_cart/cart_add",data,function(options){
       console.log("购物城返回结果：",options);
-    })*/
+    })
   },
   onReady:function(){
     // 页面渲染完成
