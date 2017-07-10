@@ -133,9 +133,9 @@ class ordering_goodsControl extends wxappControl {
     }
     
     /**
-     * 获取商品详细页
+     * 获取商品sku页
      */
-    public function goods_detailOp() {
+    public function goods_skuOp() {
     	$goods_commonid = intval($_REQUEST['goods_commonid']);
     	// 商品详细信息
     	$model_goods = Model('goods');
@@ -265,5 +265,42 @@ class ordering_goodsControl extends wxappControl {
     	$goods_detail['rowspec'] = $objRowSpec;
     	$goods_detail['goods_image'] = cthumb($goods_detail['goods_image']);
     	output_data($goods_detail,'成功获取商品信息');
+    }
+    /**
+     * 商品详细页
+     */
+    public function goods_detailOp() {
+        $goods_commonid = intval($_REQUEST['goods_commonid']);
+        // 商品详细信息
+        $model_goods          = Model('goods');
+        $model_ordering_goods = Model('ordering_goods');
+        $condition['goods_commonid'] = $goods_commonid;
+        //商品轮播图
+        $goos_imgs = $model_goods->getGoodsImageList($condition,'goods_image','',5);
+        foreach ($goos_imgs as $key => $value) {
+            $goos_imgs[$key]['goods_image'] = @thumb($value['goods_image']);
+        }
+        //商品订单数量总和
+        $ordering_sum = $model_ordering_goods->where($condition)->sum("goods_num");
+
+        $goods_detail = $model_goods->getGoodsDetail($goods_commonid);
+        $map_condition['store_id'] = $goods_detail['goods_info']['store_id'];
+        $map_condition['goods_commonid'] = array("neq",$goods_commonid);
+        //相关商品(公共店铺id)
+        $store_info = $model_goods->getGoodsCommonList($map_condition);
+        $spec_name  = $goods_detail['goods_info']['spec_name'];
+        $spec_value = $goods_detail['goods_info']['spec_value'];
+        foreach ($spec_value as $key => $value) {
+            $spec_value[$key] = implode(',',$value);
+        }
+        $goods_detail['goods_info']['spec_name'] = array_merge($spec_name);
+        $goods_detail['goods_info']['spec_value'] = array_merge($spec_value);
+        //商品订单数量总和
+        $goods_detail['goods_info']['goods_sum'] = !empty($ordering_sum)?$ordering_sum:0;
+        //商品轮播图
+        $goods_detail['goods_info']['goos_imgs'] = $goos_imgs;
+        $all_info['goods_detail'] = $goods_detail['goods_info'];
+        $all_info['store_info'] = $store_info;
+        output_data($all_info,'成功获取商品信息');
     }
 }

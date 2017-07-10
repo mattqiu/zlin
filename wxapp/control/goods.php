@@ -203,39 +203,6 @@ class goodsControl extends wxappHomeControl{
     }
 
     /**
-     * 商品详细页
-     */
-    public function goods_detailOp() {
-        //header("content-type:text/html;charset=utf8");
-        $goods_commonid = intval($_REQUEST['goods_commonid']);
-        // 商品详细信息
-        $model_goods = Model('goods');
-        $goods_detail = $model_goods->getGoodsDetail($goods_commonid);
-        $condition['store_id'] = $goods_detail['store_id'];
-
-        //$goods_detail['store_info'] = $model_goods->getStoreDetail($condition);
-        $store_info = $model_goods->getStoreDetail($condition);
-        $spec_name  = unserialize($goods_detail['spec_name']);
-        $spec_value = unserialize($goods_detail['spec_value']);
-        foreach ($spec_value as $key => $value) {
-            $spec_value[$key] = implode(',',$value);
-        }
-        //print_r(array_merge($spec_name));
-        //print_r(array_merge($spec_value));
-        $goods_detail['spec_name'] = array_merge($spec_name);
-        $goods_detail['spec_value'] = array_merge($spec_value);
-/*        foreach ($spec_name as $key => $value) {
-            $spec_name[$key] = $value.':'.implode(',',$spec_value[$key]);
-        }*/
-        //print_r($spec_name);
-        $all_info['goods_detail'] = $goods_detail;
-        $all_info['store_info'] = $store_info;
-        
-        //print_r($all_info);
-        output_data($all_info,'成功获取商品信息');
-    }
-
-    /**
      * 商品详细信息处理
      */
     private function _goods_detail_extend($goods_detail) {

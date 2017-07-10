@@ -11,17 +11,20 @@ $(function() {
       var goods_sum = $.getUrlParam('goods_sum');
 			$.ajax({
 			type: "get",
-			url: WxappSiteUrl + "/index.php?act=goods&op=goods_detail&goods_commonid="+goods_commonid,
+			url: WxappSiteUrl + "/index.php?act=ordering_goods&op=goods_detail&goods_commonid="+goods_commonid,
 			dataType: "json",
 			success: function(data) {
 				var goods_detail = data.datas.goods_detail;
 				var spec_name = data.datas.goods_detail.spec_name;
-				//var spec_value = data.datas.goods_detail.spec_value;
 				var store_info   = data.datas.store_info;
-			  /*console.log(spec_name);
-				console.log(spec_value);
-				console.log(spec_name.length);
-				console.log(spec_value.length);*/
+				var goos_imgs    = data.datas.goods_detail.goos_imgs;
+				//商品轮播图
+				var img = "";
+				for (var i = 0; i < goos_imgs.length; i++) {
+					img += '<li><img class="img2" src="'+goos_imgs[i].goods_image+'" alt=""></li>'
+				}
+				/*console.log(img);
+				return;*/
 				//商品属性
 				var li = '<div class="attribute-list">'+
                 	'<div class="public">品牌名称</div><div class="publics">'+goods_detail.brand_name+'</div>'+
@@ -41,23 +44,31 @@ $(function() {
 					'<div class="goods-num">'+goods_detail.goods_serial+'</div>'+
 					'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+goods_detail.goods_price+'</span></div>'+
 				'</div>'+
-				'<div class="show-list-3 display-flex">'+
-					'<div class="circle">'+
-						goods_sum
+				'<div class="show-list-3 display-flex">';
+				if(goods_detail.goods_sum){
+					li2+= '<div class="circle">'+
+						goods_detail.goods_sum
 					+'</div>'+
 				'</div>';
+			}else{
+				li2+= '<img href="'+
+						WapSiteUrl+'/images/ordering/goods-nodh.jpg">'+
+				'</div>';
+			}
+				
 				//商品图片
 				var li3 = 
 				'<img src="'+goods_detail.goods_image+'" />';
 				$('.attribute').append(li);
 				$('.show-list').append(li2);
 				$('.goodsshow').append(li3);
+				$('.zhangshiul').append(img);
 				//相关推荐
 				var list = [];
 				for(var i = 0; i < store_info.length; i++) {
 					var li4 = 
 					'<div class="related-show">'+
-						'<img src="'+store_info[i].goods_image+'" />'+
+						'<a href="'+WapSiteUrl+'/tmpl/ordering/dinghuohui3.html?goods_commonid='+store_info[i].goods_commonid+'"><img src="'+store_info[i].goods_image+'" /></a>'+
 						'<div class="show-list-2">'+
 							'<div class="goods-num">'+store_info[i].goods_serial+'</div>'+
 							'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+store_info[i].goods_price+'</span></div>'+

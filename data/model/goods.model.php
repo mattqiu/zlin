@@ -969,9 +969,9 @@ class goodsModel extends Model{
      * @param string $field
      * @return array
      */
-    public function getGoodsImageList($condition, $field = '*', $order = 'is_default desc,goods_image_sort asc') {
+    public function getGoodsImageList($condition, $field = '*', $order = 'is_default desc,goods_image_sort asc',$limit= '') {
         $this->cls();
-        return $this->table('goods_images')->field($field)->where($condition)->order($order)->select();
+        return $this->table('goods_images')->field($field)->where($condition)->order($order)->limit($limit)->select();
     }
 
     /**
@@ -1740,17 +1740,5 @@ class goodsModel extends Model{
     	return $this->table('goods_barcode')->field($field)->where($condition)->find();
     }
     
-    /**
-     * 获取店铺所有产品信息
-     *
-     * @param array $condition 条件
-     * @param array $field 字段
-     * @param string $page 分页
-     * @param string $order 排序
-     * @return array
-     */
-    public function getStoreDetail($condition, $field = '*', $page = 0, $order = '', $limit = '6') {
 
-    	return $this->table('goods_common')->field($field)->where($condition)->order($order)->limit($limit)->page($page)->select();
-    }
 }

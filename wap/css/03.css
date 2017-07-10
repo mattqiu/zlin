@@ -159,5 +159,14 @@ body {
 .active {
   border-bottom: 0.075rem solid #cd9300;
   color: #cd9300; }
-
+.goods-item__dn{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  background-color: #ce9100;
+  font-size: 35rpx;
+  color: #fff;
+  line-height: 70rpx;
+  text-align: center;
+}
 /*# sourceMappingURL=03.css.map */
