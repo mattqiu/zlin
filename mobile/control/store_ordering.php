@@ -75,26 +75,46 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
         $condition['buyer_id'] = 1;//$this->seller_info['seller_id'];//商家(登录者)id
         if($size == 'total'){//请求总排行榜数据时 获取所有的状态的订单
            unset($condition['ordering_state']); 
+           $map_condition['buyer_id'] = $condition['buyer_id'];
+           unset($condition['buyer_id']);
         }
         //获取订单信息
-        $ordering_info = $model_order->getOrderingInfo($condition,'*', 'ordering_id desc');
-
-       
+        $ordering_info = $model_order->getOrderingList($condition,'*', 'ordering_id desc');
+        /*print_r($ordering_info);
+        exit;*/
         if($ordering_info){
             unset($condition);
             //总排行榜时获取数据
             if($size == 'total' && count($ordering_info) > 1){
+
                 foreach ($ordering_info as $key => $value) {
                     $ordering_id[] = $value['ordering_id'];
                 }
                 $ordering_id = implode(',',$ordering_id);
                 $condition['ordering_id'] = array('in',$ordering_id);
-                $ordering_list = $model_order->getOrderingList($condition, $page, 'goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
+                //所有的订单数据
+                $ordering_list = $model_order->getOrderingGoodsList($condition, $page, 'goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
+                //自己的订单数据
+                $own_ordering_list = $model_order->getOrderingGoodsList($map_condition, $page, 'goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
+                //订单数据进行处理 总排行榜数量显示自己所订数量
+                foreach ($ordering_list as $key => $value) {
+                    $ordering_newlist[$value['goods_commonid']] = $value['num'];
+                }
+                foreach ($own_ordering_list as $key => $value) {
+                    $own_ordering_newlist[$value['goods_commonid']] = $value['num'];
+                }
+                foreach ($ordering_newlist as $key => $value) {
+                    $ordering_newlist[$key] = $own_ordering_newlist[$key]?$own_ordering_newlist[$key]:0;
+                }
+                foreach ($ordering_list as $key => $value) {
+                    $ordering_list[$key]['num'] = $ordering_newlist[$value['goods_commonid']];
+                }
+
             }else{
             //其他请求时 获取数据(多获取了订单id ordering_id字段)
                 foreach ($ordering_info as $key => $value) {
                     $condition['ordering_id'] = $value['ordering_id'];
-                    $ordering_list[] = $model_order->getOrderingList($condition, $page, 'ordering_id,goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
+                    $ordering_list[] = $model_order->getOrderingGoodsList($condition, $page, 'ordering_id,goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
                 }
             }
             
@@ -139,6 +159,10 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                 $model = Model();
                 $ordeiing_info = $model->table('ordering')->where(array('ordering_id'=>$value['ordering_id']))->field("add_time")->find();
                 $new_ordering_list[$key]['addtime'] = date("Y-m-d H:i:s",$ordeiing_info['add_time']);
+                //订单编号
+                $new_ordering_list[$key]['ordering_sn'] = $ordering_info[$key]['ordering_sn'];
+                //买家姓名
+                $new_ordering_list[$key]['buyer_name'] = $ordering_info[$key]['buyer_name'];
                 //订单管理 已完成订单 底部栏显示信息 合计  总金额
                 if($_GET["state_type"] == "state_commit"){    
                     $bottom['total_style_num'] += $value['style_num'];

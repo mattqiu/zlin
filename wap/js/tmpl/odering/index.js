@@ -1,5 +1,13 @@
 $(function() {
 	/*我的订单*/
+	$("#my_order").click(function(){
+		 state_type = 'state_new';
+		 size = '';
+		 sc = 'asc';
+		 order = 'goods_serial';
+		 page = '10';
+		 ajaxCommit('order');
+	});
 	$('#up-order').click(function() {
 		sc = 'asc';
 		ajaxCommit('order');
