@@ -22,10 +22,10 @@ Page({
     util.Ajax("ordering_goods/goods_detail", data, function (res) {
       //console.log("a结果：", res);
       that.setData({
-        goods_info: res.datas.goods_detail,
+        goods_info: res.datas,
         store_info: res.datas.store_info
       });
-      console.log("a结果：", res.datas.store_info);
+      console.log("a结果：", res.datas);
     });
   },
   onReady:function(){

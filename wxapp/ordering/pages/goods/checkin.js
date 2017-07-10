@@ -3,6 +3,7 @@ var util = require('../../utils/util.js');
 var app = new getApp();
 Page({
   data:{
+    order_info:[],  
     goods_commonid:'',
     goodsNum: 0,//定义商品数量
     goodsTotal: 0,//商品总数
@@ -259,7 +260,6 @@ Page({
             _totalAmount = _totalAmount + 1 * goods_price;
           }
         }
-
         that.setData({
           specsku: _specsku,
           goodsNum: goodsNum,
@@ -309,8 +309,10 @@ Page({
   },
   //修改SKU数量事件
   inputSkuNum:function(e){
+    var order_info;
     var that = this;
     let _skunum = Number(e.detail.value),
+      goods_id = e.currentTarget.id,
       curData = e.currentTarget.dataset,
       _skuid = curData.skuid,
       _specsku = that.data.specsku, 
@@ -318,7 +320,6 @@ Page({
       _goodsTotal = Number(that.data.goodsTotal),//商品总数
       _totalAmount = Number(that.data.totalAmount),//商品总金额
       goodsNum = Number(that.data.goodsNum);
-    
     if (_skunum < 99999) {
       if (app.common.judgeNull(_specsku)) {
         _specsku[_skuid] = { gnum: _skunum, checked :'true'};
@@ -329,7 +330,7 @@ Page({
       } else {
         let specskuKeys = Object.keys(_specsku),
           specskuKeysLen = specskuKeys.length;
-        console.log('specskuKeys:', specskuKeys);
+        //console.log('specskuKeys:', specskuKeys);
         for (let i = 0; i < specskuKeysLen; i++) {
           let curObj = _specsku[specskuKeys[i]];
           if (_skuid == specskuKeys[i]) {//选中的数量添加
@@ -343,9 +344,13 @@ Page({
           }
         }
       }
+      //console.log('数量：', _skunum);
+      //console.log('order_info：', order_info);
       that.setData({
         specsku: _specsku,
         goodsNum: _skunum,
+       // order_info['goods_id']:
+        goods_id: goods_id,
         goodsTotal: _goodsTotal,
         totalAmount: _totalAmount
       });
@@ -362,7 +367,8 @@ Page({
       _specsku = that.data.specsku,
       _goodsTotal = Number(that.data.goodsTotal),//商品总数
       _totalAmount = Number(that.data.totalAmount);
-    //console.log('sku:', _specsku)
+    console.log('sku:', _specsku)
+    console.log('totalAmount:', _totalAmount)
     if (app.common.judgeNull(_specsku)) {
       app.showErrMsg('请先选择颜色或尺码！');
       return;
@@ -418,7 +424,7 @@ Page({
         _optRadio[_specKey[i]] = 'one';//默认单选框
         i++;
       }
-      console.log("a结果：", res);
+      //console.log("a结果：", res);
       that.setData({
         goods_info: res.datas,
         goods_spec: res.datas.spec_value, //商品规格
@@ -428,37 +434,17 @@ Page({
       })
     });
   },
-  btn_submit:function(e){
+  formSubmit:function(e){
+    var formData = e.detail.value;
+    //var formId = e.detail.name;
+    console.log('提交:', formData);
     var that = this;
     var data ={
-      list:[
-        {
-          goods_id: '55',
-          quantity: '78',
-        },
-        {
-          goods_id: '56',
-          quantity: '105',
-        },
-        {
-          goods_id: '57',
-          quantity: '125',
-        },
-        {
-          goods_id: '58',
-          quantity: '135',
-        }
-      ],
+      list: formData,
       token: app.globalData.token,
-      goods_commonid: '100008',
-      goods_name: 'goods_name',
-      goods_price: '600',
-      /*member_id: app.globalData.member_id,
-      store_id: app.globalData.store_id*/
-      buyer_id: '5',
-      store_id: '1',
-      store_name: 'E.music',
-      gooods_image:'http://demo.hzlwo.com/data/upload/shop/common/default_goods_image.gif'
+      goods_commonid: options.goods_commonid,
+      member_id: app.globalData.member_id,
+      store_id: app.globalData.store_id
     };
     util.Ajax("member_cart/cart_add",data,function(options){
       console.log("购物城返回结果：",options);

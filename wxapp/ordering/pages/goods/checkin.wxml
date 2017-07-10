@@ -1,4 +1,5 @@
 <!--pages/goods/checkin.wxml-->
+<form bindsubmit="formSubmit">
 <view class="section">
 	<!-- 头部 -->
 	<view class="header">
@@ -27,18 +28,20 @@
 			</view>
 		</view>
 		<view class="goods-sku">
-
+      
 			<view class="table-row">
 				<view class="table-col">{{goods_info.sp_name}}</view>
 				<view wx:for="{{goods_info.rowspec}}" class="table-col">{{item}}</view>
 			</view>
 			<view wx:for="{{goods_info.colspec}}" wx:for-item="spitem" class="table-row">
 				<view class="table-col"  wx:for="{{spitem.sp_name}}" wx:for-item="colname">{{colname}}</view>
+        
         <block wx:for="{{spitem.list}}"> 
-				  <input name="{{item.goods_id}}" class="table-col {{specsku[item.skuid].checked?'active':''}}" type="number" bindinput="inputSkuNum" data-skuid="{{item.skuid}}" placeholder="0" value="{{specsku[item.skuid].gnum}}" />          
+				  <input name="{{item.goods_id}}" data-id="{{item.goods_id}}" class="table-col {{specsku[item.skuid].checked?'active':''}}" type="number" bindinput="inputSkuNum" data-skuid="{{item.skuid}}" placeholder="0" value="{{specsku[item.skuid].gnum}}" />          
         </block>
+        
 			</view>
-			
+      
 		</view>
 	</view>
 	<!-- 颜色 -->
@@ -90,8 +93,10 @@
 				<text class="text">￥{{totalAmount}}元</text>
 			</view>
 		</view>
-		<view class="operation-btn" bindtap="btn_submit">确定并返回</view>
+		<button form-type="submit" class="operation-btn">确定并返回</button>
+			
 	</view>
 	
 </view>
+</form>
 

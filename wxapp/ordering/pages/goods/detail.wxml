@@ -37,7 +37,7 @@
 	<view wx:if="{{tabIndex == 2}}" class="recommend" >
 		<view class="recommend-item" wx:for="{{store_info}}">
 			<navigator url="detail?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}"><view class="pic"><image src="{{item.goods_image}}" mode="scaleToFill"></image></view></navigator>
-			<view class="goods-no">{{item.goods_commonid}}</view>
+			<view class="goods-no">{{item.brand_name}}</view>
 			<view class="goods-pirce highlight">￥{{item.goods_price}}</view>
 		</view>
 	</view>
