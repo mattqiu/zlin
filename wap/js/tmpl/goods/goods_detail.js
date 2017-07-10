@@ -45,14 +45,13 @@ $(function() {
 					'<div class="goods-price "><span class="iconfont">&#xe600;</span><span>'+goods_detail.goods_price+'</span></div>'+
 				'</div>'+
 				'<div class="show-list-3 display-flex">';
-				if(goods_detail.goods_sum){
+				if(goods_detail.goods_sum!=0){
 					li2+= '<div class="circle">'+
 						goods_detail.goods_sum
 					+'</div>'+
 				'</div>';
 			}else{
-				li2+= '<img href="'+
-						WapSiteUrl+'/images/ordering/goods-nodh.jpg">'+
+				li2+= '<img src="../../image/goods-nodh.jpg"/>'+
 				'</div>';
 			}
 				

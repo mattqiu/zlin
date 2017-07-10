@@ -31,12 +31,18 @@ body {
             background: url(../image/search.png) no-repeat px2rem(10) center;
             background-size: px2rem(40) px2rem(40);
             font-size: px2rem(26);
-            width: px2rem(550);
+            width: px2rem(450);
             height: px2rem(50);
             line-height: px2rem(50);
             padding-left: px2rem(60);
             background-color: #dec085;
             border-radius: px2rem(10);
+        }
+        .search{
+            width: px2rem(100);
+            font-size: px2rem(28);
+            color: #FFFFFF;
+            text-align: center;
         }
         .RichScan {
             color: #FFFFFF;

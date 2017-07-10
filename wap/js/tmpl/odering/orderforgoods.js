@@ -133,6 +133,7 @@ $(function(){
 		$('#not_ready').css('display', 'block');
 	})
 	$('.order_center .center_left .checkbox').click(function(){
+		console.log("被点击");
 		$(this).toggleClass('checkbox_sure');
 	})
 	/*订单管理 已完成订单*/

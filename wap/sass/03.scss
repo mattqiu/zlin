@@ -19,7 +19,31 @@ body {
      display: block;
      height: 0px;
  }
-
+.goodsshowheader{
+    position: fixed;
+    left: px2rem(0);
+    height: px2rem(0);
+    z-index: 100;
+    width: px2rem(640);
+    height:px2rem(48);
+    background-color: rgba(0,0,0,0);
+    .back{
+        height: px2rem(48);
+        margin-left: px2rem(20);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .back_img{
+            width: px2rem(40);
+            height: px2rem(40);
+            font-size: px2rem(38);
+            line-height: px2rem(38);
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            overflow: hidden;
+        }
+    }
+}
 .goodsshow {
     .box {
         width: px2rem(640);
@@ -101,6 +125,10 @@ body {
         .show-list-3 {
             width: px2rem(150);
             height: px2rem(130);
+            img{
+                width: px2rem(60);
+                height: px2rem(60);
+            }
             .circle {
                 width: px2rem(60);
                 height: px2rem(60);
@@ -169,6 +197,9 @@ body {
         width: px2rem(640);
         margin-top: px2rem(20);
         display: none;
+        .related_container{
+            width: px2rem(640);
+        }
         .related-container {
             width: px2rem(600);
             .related-show {
