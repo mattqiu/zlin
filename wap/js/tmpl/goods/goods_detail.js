@@ -50,11 +50,11 @@ $(function() {
 						goods_detail.goods_sum
 					+'</div>'+
 				'</div>';
-			}else{
-				li2+= '<img href="'+
-						WapSiteUrl+'/images/ordering/goods-nodh.jpg">'+
-				'</div>';
-			}
+				}else{
+					li2+= '<img href="'+
+							WapSiteUrl+'/images/ordering/goods-nodh.jpg /">'+
+					'</div>';
+				}
 				
 				//商品图片
 				var li3 = 

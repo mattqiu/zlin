@@ -27,7 +27,7 @@ $(function(){
 							'<div class="order_center ">'+
 						'<div class="row01 display-flex">'+
 							'<div class="row_list1">'+
-								'款号ZFQ1234555'
+								item[i].ordering_sn
 							+'</div>'+
 							'<div class="row_list2">'+
 								item[i].addtime
@@ -38,7 +38,7 @@ $(function(){
 
 							'</div>'+
 							'<div class="row_list2">'+
-								'张小明'
+								item[i].buyer_name
 							+'</div>'+
 						'</div>'+
 						'<div class="row03 display-flex">'+
@@ -82,7 +82,7 @@ $(function(){
 							'<div class="center_right">'+
 								'<div class="row01 display-flex">'+
 									'<div class="row_list1">'+
-										'款号ZFQ1234555'+
+										item[i].ordering_sn+
 									'</div>'+
 									'<div class="row_list2">'+
 										item[i].addtime
@@ -93,7 +93,7 @@ $(function(){
 
 									'</div>'+
 									'<div class="row_list2">'+
-										'张小明'+
+										item[i].buyer_name+
 									'</div>'+
 								'</div>'+
 								'<div class="row03 display-flex">'+
