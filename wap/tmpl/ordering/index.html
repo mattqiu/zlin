@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  ng-app="ydApp" ng-controller="ydCtrl">
+<html ng-app="ydApp" ng-controller="ydCtrl">
 
 	<head>
 		<title>myapp</title>
@@ -23,35 +23,44 @@
 	<script src="../../js/tmpl/odering/ordering.js"></script>
 	<script src="../../js/tmpl/odering/function.js"></script>
 	<!--刷新列表-->
+
 	<body>
 		<div ng-view>
-			
+
 		</div>
 		<!--页面的底部公用的部分-->
 		<div class="footer display-flex">
 			<div class="col-3 text-center" id="goods">
-				<span class="iconfont">&#xe60b;</span>
-				<div>
-					<a href="#/dinghuohui02_3">商品</a>
-				</div>
+				<a class="footer_active" href="#/dinghuohui02_3">
+					<span class="iconfont">&#xe60b;</span>
+					<div>
+						商品
+					</div>
+				</a>
 			</div>
 			<div class="col-3 text-center" id="order">
-				<span class="iconfont">&#xe613;</span>
-				<div>
-					<a href="#/dingdan">订单</a>
-				</div>
+				<a href="#/dingdan">
+					<span class="iconfont">&#xe613;</span>
+					<div>
+						订单
+					</div>
+				</a>
 			</div>
 			<div class="col-3 text-center" id="display">
-				<span class="iconfont">&#xe608;</span>
-				<div>
-					<a href="#/analys">分析</a>
-				</div>
+				<a href="#/analys">
+					<span class="iconfont">&#xe608;</span>
+					<div>
+						分析
+					</div>
+				</a>
 			</div>
 			<div class="col-3 text-center" id="myself">
-				<span class="iconfont">&#xe60f;</span>
-				<div>
-					<a href="#/home">我的</a>
-				</div>
+				<a href="#/home">
+					<span class="iconfont">&#xe60f;</span>
+					<div>
+						我的
+					</div>
+				</a>
 			</div>
 		</div>
 		<script src="../../js/angular/angular.min.js"></script>
@@ -59,23 +68,28 @@
 		<script src="../../js/angular/angular-animate.min.js"></script>
 		<script src="../../js/angular/bootstrap.js"></script>
 		<script>
-//			$(document).on("pageinit", "#pageone", function() {
-//				$(".model-3").on("swiperight", function() {
-//					$('.model-3').animate({
-//						left: "100%"
-//					});
-//				});
-//			});
-			angular.module("ydApp",["ngRoute"])
-			.controller("ydCtrl",["$scope",function($scope){
-			}])
-		   //配置路由
-			.config(function($routeProvider){
-				$routeProvider
-				.when("/home",{templateUrl:"dinghuohui02_3.html"})
-				.when("/dingdan",{templateUrl:"dingdan.html"})
-				.otherwise({redirectTo:"/home"})
-			})
+						$(document).on("pageinit", "#pageone", function() {
+							$(".model-3").on("swiperight", function() {
+								$('.model-3').animate({
+									left: "100%"
+								});
+							});
+						});
+			angular.module("ydApp", ["ngRoute"])
+				.controller("ydCtrl", ["$scope", function($scope) {}])
+				//配置路由
+				.config(function($routeProvider) {
+					$routeProvider
+						.when("/home", {
+							templateUrl: "dinghuohui02_3.html"
+						})
+						.when("/dingdan", {
+							templateUrl: "dingdan.html"
+						})
+						.otherwise({
+							redirectTo: "/home"
+						})
+				})
 		</script>
 	</body>
 

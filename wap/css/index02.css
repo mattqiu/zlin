@@ -1,7 +1,7 @@
 body {
   width: 16rem;
   margin: 0 auto;
-  overflow: scroll; }
+  overflow: hidden; }
 
 .bars-list {
   font-size: 0.7rem;
@@ -198,7 +198,7 @@ body {
           background-color: #cd9300; }
 
 .footer {
-  border-top: 0.025rem solid red;
+  border-top: 0.025rem solid #cd9300;
   font-size: 0.675rem;
   width: 16rem;
   height: 2.25rem;
@@ -206,9 +206,21 @@ body {
   bottom: 0;
   left: 0;
   background-color: #FFFFFF; }
+  .footer a {
+    text-decoration: none;
+    color: #333; }
+  .footer a:active {
+    text-decoration: none;
+    color: #333; }
+  .footer a:focus, .footer a:hover {
+    text-decoration: none;
+    color: #cd9300; }
   .footer span {
     font-size: 0.675rem;
     margin-top: 0.5rem; }
+
+.footer_active {
+  color: #cd9300; }
 
 .display-flex {
   display: flex;

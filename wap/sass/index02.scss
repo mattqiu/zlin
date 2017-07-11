@@ -4,7 +4,7 @@ $designWidth: 640;
 body {
     width: 16rem;
     margin: 0 auto;
-    overflow: scroll;
+    overflow: hidden;
 }
 
 .bars-list {
@@ -59,7 +59,7 @@ body {
     flex-wrap: wrap;
     background-color: #e6e6e6;
     font-size: px2rem(28);
-//  font-weight: 700;
+    //  font-weight: 700;
     .container-bar {
         width: 15rem;
         display: flex;
@@ -95,9 +95,9 @@ body {
     color: #e5e5e5;
     height: px2rem(25);
     width: px2rem(40);
-    white-space:nowrap; 
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow : ellipsis
+    text-overflow: ellipsis
 }
 
 .flex-start {
@@ -247,8 +247,21 @@ body {
         }
     }
 }
-.footer{
-    border-top: px2rem(1) solid red;
+
+.footer {
+    a {
+        text-decoration: none;
+        color: #333;   
+    }
+     a:active {
+         text-decoration: none;
+          color: #333;
+     }
+     a:focus, a:hover{
+         text-decoration: none;
+         color: #cd9300;
+     }
+    border-top: px2rem(1) solid #cd9300;
     font-size: px2rem(27);
     width: 16rem;
     height: px2rem(90);
@@ -256,10 +269,13 @@ body {
     bottom: 0;
     left: 0;
     background-color: #FFFFFF;
-    span{
+    span {
         font-size: px2rem(27);
         margin-top: px2rem(20);
     }
+}
+.footer_active{
+    color: #cd9300;
 }
 .display-flex {
     display: flex;

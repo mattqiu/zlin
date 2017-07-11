@@ -141,4 +141,7 @@ $(function() {
 		var min = $('.filter-input #input1').val()
 		var max = $('.filter-input #input2').val()
 	})
+	$('.footer .col-3').click(function(){
+		$(this).addClass('footer_active').siblings().removeClass('footer_active')
+	})
 })

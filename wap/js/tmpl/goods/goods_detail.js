@@ -50,7 +50,6 @@ $(function() {
 						goods_detail.goods_sum
 					+'</div>'+
 				'</div>';
-
 			}else{
 				li2+= '<img src="../../image/goods-nodh.jpg"/>'+
 				'</div>';

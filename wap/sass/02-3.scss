@@ -5,7 +5,9 @@ body {
     width: 16rem;
     margin: 0 auto;
     background-color: #e6e6e6;
-    overflow:scroll;
+//  overflow:scroll;
+    overflow:scroll;overflow-x:hidden;
+//  overflow:scroll;overflow-y:hidden;
 }
 
 .headers {
@@ -139,7 +141,9 @@ body {
     width: 16rem;
     margin-top: px2rem(200);
     margin-bottom: px2rem(90);
+        overflow: scroll;
     #show1 {
+            overflow: scroll;
         display: block;
         .show1 {
             width: 16rem;
@@ -203,6 +207,7 @@ body {
     }
     #show2 {
             display: none;
+            overflow: scroll;
         .show2 {
             width: 16rem;
             .show_center {
