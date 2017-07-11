@@ -60,7 +60,7 @@ body {
             height: 0; }
           .containers .containers_header .header_center .text .list .num {
             padding-left: 0.5rem;
-            width: 0rem;
+            width: 5rem;
             display: inline-block;
             text-align: left; }
           .containers .containers_header .header_center .text .list .num:after {

@@ -144,4 +144,8 @@ $(function() {
 	$('.footer .col-3').click(function(){
 		$(this).addClass('footer_active').siblings().removeClass('footer_active')
 	})
+	$('.goodsshowheader .back .back_img').click(function(){
+			console.log("sssss")
+			window.history.go(-1)
+		})
 })

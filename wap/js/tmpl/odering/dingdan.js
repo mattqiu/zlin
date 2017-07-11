@@ -1,4 +1,35 @@
 $(function() {
+	$.ajax({
+		type:"get",
+		url:"../../../../zlin/wap/js/tmpl/odering/form.json",
+		async:true,
+	    success:function(data){
+	    	console.log(data);
+	    	var item = data.datas;
+	    	var list = [];
+	    		var header = '<div class="header_center display-flex">'+
+					'<div class="img display-flex">'+
+						'<img src="../../image/solution1.jpg" alt="" />'+
+					'</div>'+
+					'<div class="text">'+
+						'<div class="list">'+
+							'<div class="name">货号</div>'+
+							'<div class="num">'+item.goods_serial+'</div>'+
+						'</div>'+
+						'<div class="list">'+
+							'<div class="name">名称</div>'+
+							'<div class="num">'+item.goods_name+'</div>'+
+						'</div>'+
+						'<div class="list">'+
+							'<div class="name">零售价</div>'+
+							'<div class="num">'+item.goods_price+'</div>'+
+						'</div>'+
+					'</div>'+
+				'</div>'
+				list.push(header);
+	    	$('.containers_header').append(list);
+	    }
+	});
 	//控制颜色
 	$('.center .bigcircle').click(function() {
 		$(this).find('.smallcircle').addClass('active')

@@ -61,7 +61,8 @@ $(function() {
 				'<img src="'+goods_detail.goods_image+'" />';
 				$('.attribute').append(li);
 				$('.show-list').append(li2);
-				$('.goodsshow').append(li3);
+//				$('.goodsshow').append(li3);
+//暂时不知道干什么用的
 				$('.zhangshiul').append(img);
 				//相关推荐
 				var list = [];
