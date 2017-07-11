@@ -69,8 +69,12 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
         }else{
             $page  = $_GET["page"]?$_GET["page"]:10;
         }
-        
-        
+        //订单管理中 未提交订单详情 (详情等同我的订单数据)
+        //接口示例:zlin.test5.com/mobile/index.php?act=store_ordering&op=ordering_list&ordering_id=1&order=num&sc=desc&page=10&curpage=1
+        //参数传值 ordering_id
+        if(!empty($_GET["ordering_id"])){
+            $condition['ordering_id'] = $_GET["ordering_id"];
+        }
         $orderby = $order.' '.$sc;
         $condition['buyer_id'] = 1;//$this->seller_info['seller_id'];//商家(登录者)id
         if($size == 'total'){//请求总排行榜数据时 获取所有的状态的订单
@@ -111,7 +115,7 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                 }
 
             }else{
-            //其他请求时 获取数据(多获取了订单id ordering_id字段)
+            //其他请求时 获取数据(多获取了订单id （ordering_id字段）)
                 foreach ($ordering_info as $key => $value) {
                     $condition['ordering_id'] = $value['ordering_id'];
                     $ordering_list[] = $model_order->getOrderingGoodsList($condition, $page, 'ordering_id,goods_commonid,goods_serial,goods_image,sum(goods_num) num,goods_price,goods_price*sum(goods_num) total_price,store_goods_state','goods_commonid', $orderby,'', array('goods_common'));
