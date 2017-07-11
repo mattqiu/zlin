@@ -1,229 +1,1 @@
-  <?php
-/**
- * 我的购物车
- *
- *
- *
- *
- * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com)
- * @license    http://www.zlin-e.com
- * @link       http://www.zlin-e.com
- * @since      File available since Release v1.1
- */
- 
-defined('InIMall') or exit('Access Invalid!');
-
-class member_cartControl extends wxappMemberControl {
-
-	public function __construct() {
-		parent::__construct();
-	}
-
-    /**
-     * 购物车列表
-     */
-	public function cart_listOp() {
-		$cart_list = $this->cart_list_data();
-		output_data($cart_list);
-	}
-	
-    public function cart_list_data() {
-        $model_cart = Model('cart');
-
-        $condition = array('buyer_id' => $this->member_info['member_id']);
-        $cart_list	= $model_cart->listCart('db', $condition);
-		// 购物车列表 [得到最新商品属性及促销信息]
-		$cart_list = logic('buy_1')->getGoodsCartList($cart_list, $jjgObj);
-		
-		//购物车商品以店铺ID分组显示,并计算商品小计,店铺小计与总价由JS计算得出
-		$sum = 0;
-        $store_cart_list = array();
-        foreach ($cart_list as $cart) {			
-            $cart['goods_total'] = imPriceFormat($cart['goods_price'] * $cart['goods_num']);
-			$cart['goods_image_url'] = cthumb($cart['goods_image'], $cart['store_id']);
-			$store_cart_list[$cart['store_id']]['goods'][] = $cart;						
-			
-			$sum += $cart['goods_total'];
-        }
-		//获取店铺信息                          
-		$cart_list = array();
-		$model_voucher = Model('voucher');
-		$model_store = Model('store');
-		foreach ($store_cart_list as $k=>$cart_info) {
-			//店铺信息
-			$store_info = $model_store->getStoreInfoByID($k);			
-			$cart_info['store_id'] = $store_info['store_id'];
-			$cart_info['store_name'] = $store_info['store_name'];
-			if ($store_info['store_free_price']>0){
-				$cart_info['free_freight'] = '满'.$store_info['store_free_price'].'免运费';
-			}
-			
-			//店铺优惠劵
-			$voucher = $model_voucher->getVoucherTemplateList(array('voucher_t_store_id'=>$cart_info['store_id']));
-            $cart_info['voucher'] = !empty($voucher)?$voucher:NULL;			
-			//满即送
-						
-            $cart_list[] = $cart_info;
-        }
-
-		$result = array();
-		$result['cart_list'] = $cart_list;
-		$result['sum'] = imPriceFormat($sum);		
-
-        return $result;
-    }
-
-    /**
-     * 购物车添加
-     */
-    public function cart_addOp() {    	$list = $_REQUEST['list'];    	print_r($list);    	exit;    	$list = substr($list,1,strlen($list)-2);    	$localnum = strrpos($list, ',');    	$list2 = substr($list,$localnum,-1);    	$listtotal = explode(",",$list2);    	    	    	$goods_commonid = $_REQUEST['goods_commonid'];    	    	$buyer_id = intval($_REQUEST['member_id']);    	$model_ordering = Model('ordering');    	$condition['buyer_id'] =$buyer_id;     	$order_info = $model_ordering->getOrderingInfo($condition);     	//$arr= array($_REQUEST['list']);    	$arr2 = array(array(          'goods_id'=> '55',          'quantity'=> '16'        ),        array(          'goods_id'=> '56',          'quantity'=> '18',        ),        array(          'goods_id'=> '57',          'quantity'=> '20',        ),        array(          'goods_id'=> '59',          'quantity'=> '25',        ),);    	    	//$data['ordering_id'] = $order_info['ordering_id'];    	$data =array();    	$data['goods_commonid'] =$_REQUEST['goods_commonid'];    	$data['goods_name'] = $_REQUEST['goods_name'];    	$data['goods_price']= $_REQUEST['goods_price'];    	$data['goods_image'] = $_REQUEST['goods_image'];    	$data['buyer_id'] = $_REQUEST['buyer_id'];    	$data['store_id'] = $_REQUEST['store_id'];    	$data['store_name'] = $_REQUEST['store_name'];    	$goods_data['goods_commonid'] = $_REQUEST['goods_commonid'];    	$goods_info = $model_ordering ->getGoodsCommon($goods_data);    	//$goods_total =$goods_info[0]['goods_total'];		if(empty($order_info[0]['ordering_state'])){			$param = array(				'store_id' => $_REQUEST['store_id'],				'store_name' => $_REQUEST['store_name'],				'buyer_id' => $_REQUEST['buyer_id'],				'add_time' => strtotime("now")			);			$ordering_info =$model_ordering ->add_Ordering($param);			$order_info = $model_ordering->getOrderingInfo($condition);			$data['ordering_id'] = $order_info[0]['ordering_id'];			foreach ((array)$arr2 as $val){				$data['goods_id']= $val['goods_id'];				$data['goods_num']= $val['quantity'];				$ordering_goods_info = $model_ordering->addd_Ordering_Goods($data);			}			/*$goods_num_info = $model_ordering ->get_Buyer_Info($goods_data);			foreach ($goods_num_info as $key => $value) {				$goods_total += $value['goods_num'];			}			$goods_total_info['goods_total'] = $goods_total;			$goods_total_info['goods_commonid'] = $_REQUEST['goods_commonid'];			$goods_common_total = $model_ordering ->update_Goods_Total($goods_total_info,$goods_data);*/			return;		}elseif($order_info[0]['order_state']='10'){			foreach ((array)$arr2 as $val){				$change['goods_id']= $val['goods_id'];				$change['goods_num']= $val['quantity'];				$where['goods_id'] = $val['goods_id'];
-				$ordering_goods_info = $model_ordering->update_Ordering_Goods($change,$where);			}			/*$goods_num_info = $model_ordering ->get_Buyer_Info($goods_data);			foreach ($goods_num_info as $key => $value) { 				$goods_total += $value['goods_num']; 			}							$goods_total_info['goods_total'] = $goods_total;			$goods_total_info['goods_commonid'] = $_REQUEST['goods_commonid'];			$goods_common_total = $model_ordering ->update_Goods_Total($goods_total_info,$goods_data);*/			return;					}else{						output_error('您的订单已经提交，不可以进行二次提交');			return;	    }
-    }
-
-    /**
-     * 购物车删除
-     */
-    public function cart_delOp() {
-        $cart_id = intval($_REQUEST['cart_id']);
-
-        $model_cart = Model('cart');
-
-        if($cart_id > 0) {
-            $condition = array();
-            $condition['buyer_id'] = $this->member_info['member_id'];
-            $condition['cart_id'] = $cart_id;
-
-            $model_cart->delCart('db', $condition);
-        }
-
-        output_data('1');
-    }
-
-    /**
-     * 更新购物车购买数量
-     */
-    public function cart_edit_quantityOp() {
-		$cart_id = intval(abs($_REQUEST['cart_id']));
-		$quantity = intval(abs($_REQUEST['quantity']));
-		if(empty($cart_id) || empty($quantity)) {
-            output_error('参数错误');
-		}
-
-		$model_cart = Model('cart');
-
-        $cart_info = $model_cart->getCartInfo(array('cart_id'=>$cart_id, 'buyer_id' => $this->member_info['member_id']));
-
-        //检查是否为本人购物车
-        if($cart_info['buyer_id'] != $this->member_info['member_id']) {
-            output_error('参数错误');
-        }
-
-        //检查库存是否充足
-        if(!$this->_check_goods_storage($cart_info, $quantity, $this->member_info['member_id'])) {
-            output_error('库存不足');
-        }
-
-		$data = array();
-        $data['goods_num'] = $quantity;
-        $update = $model_cart->editCart($data, array('cart_id'=>$cart_id));
-		if ($update) {
-		    $return = array();
-            $return['quantity'] = $quantity;
-			$return['goods_price'] = imPriceFormat($cart_info['goods_price']);
-			$return['total_price'] = imPriceFormat($cart_info['goods_price'] * $quantity);
-            output_data($return);
-		} else {
-            output_error('修改失败');
-		}
-    }
-
-    /**
-     * 检查库存是否充足
-     */
-    private function _check_goods_storage($cart_info, $quantity, $member_id) {
-		$model_goods= Model('goods');
-        $model_bl = Model('p_bundling');
-        $logic_buy_1 = Logic('buy_1');
-
-		if ($cart_info['bl_id'] == '0') {
-            //普通商品
-		    $goods_info	= $model_goods->getGoodsOnlineInfoAndPromotionById($cart_info['goods_id']);
-
-		    //抢购
-		    $logic_buy_1->getGroupbuyInfo($goods_info);
-			if ($goods_info['ifgroupbuy']) {
-                if ($goods_info['upper_limit'] && $quantity > $goods_info['upper_limit']) {
-                    return false;
-                }
-            }
-
-		    //限时折扣
-		    $logic_buy_1->getXianshiInfo($goods_info,$quantity);
- 
-		    $quantity = $goods_info['goods_num'];
-		    if(intval($goods_info['goods_storage']) < $quantity) {
-                return false;
-		    }
-			$goods_info['cart_id'] = $cart_info['cart_id'];
-            $cart_info = $goods_info;
-		} else {
-		    //优惠套装商品
-		    $bl_goods_list = $model_bl->getBundlingGoodsList(array('bl_id' => $cart_info['bl_id']));
-		    $goods_id_array = array();
-		    foreach ($bl_goods_list as $goods) {
-		        $goods_id_array[] = $goods['goods_id'];
-		    }
-		    $bl_goods_list = $model_goods->getGoodsOnlineListAndPromotionByIdArray($goods_id_array);
-
-		    //如果有商品库存不足，更新购买数量到目前最大库存
-		    foreach ($bl_goods_list as $goods_info) {
-		        if (intval($goods_info['goods_storage']) < $quantity) {
-                    return false;
-		        }
-		    }
-		}
-        return true;
-    }
-	
-	/**
-     * 购物车商品数量
-     */
-    public function cart_countOp() {
-        $key = $_REQUEST['key'];
-        if(empty($key)) {
-            $key = $_REQUEST['key'];
-        }	 
-		
-		$cart_count = $this->getCartCount($key);
-        output_data(array('cart_count'=>$cart_count));
-    }
-	
-	/**-------------------------------------APP客户端---------------------------------------------------**/
-	public function app_cart_list() {
-        $model_cart = Model('cart');
-
-        $condition = array('buyer_id' => $this->member_info['member_id']);
-        $goods_list	= $model_cart->listCart('db', $condition);
-        $sum = 0;
-        foreach ($goods_list as $key => $value) {
-            $goods_list[$key]['goods_image_url'] = cthumb($value['goods_image'], $value['store_id']);
-			$goods_list[$key]['img'] = getPhoto_array(cthumb($value['goods_image'],240),cthumb($value['goods_image'],240),urlShop('goods', 'index', array('goods_id' => $value['goods_id'])));
-            $goods_list[$key]['goods_sum'] = imPriceFormat($value['goods_price'] * $value['goods_num']);
-            $sum += $goods_list[$key]['goods_sum'];
-        }
-		$total_info = array();
-		$total_info['goods_price'] = 0;
-		$total_info['market_price'] = 0;
-		$total_info['real_goods_count'] = 0;
-		$total_info['virtual_goods_count'] = 0;
-		$total_info['save_rate'] = 0;
-		$total_info['saving'] = 0;
-		$total_info['goods_amount'] = imPriceFormat($sum);
-		
-		$cart_list = array();
-		$cart_list['goods_list'] = $goods_list;
-		$cart_list['total'] = $total_info;		
-
-        output_data($cart_list);
-    }
-}
+  <?php/** * 我的购物车 * * * * * @copyright  Copyright (c) 2007-2016 zlin-e Inc. (http://www.zlin-e.com) * @license    http://www.zlin-e.com * @link       http://www.zlin-e.com * @since      File available since Release v1.1 */ defined('InIMall') or exit('Access Invalid!');class member_cartControl extends wxappMemberControl {	public function __construct() {		parent::__construct();	}    /**     * 购物车列表     */	public function cart_listOp() {		$cart_list = $this->cart_list_data();		output_data($cart_list);	}	    public function cart_list_data() {        $model_cart = Model('cart');        $condition = array('buyer_id' => $this->member_info['member_id']);        $cart_list	= $model_cart->listCart('db', $condition);		// 购物车列表 [得到最新商品属性及促销信息]		$cart_list = logic('buy_1')->getGoodsCartList($cart_list, $jjgObj);				//购物车商品以店铺ID分组显示,并计算商品小计,店铺小计与总价由JS计算得出		$sum = 0;        $store_cart_list = array();        foreach ($cart_list as $cart) {			            $cart['goods_total'] = imPriceFormat($cart['goods_price'] * $cart['goods_num']);			$cart['goods_image_url'] = cthumb($cart['goods_image'], $cart['store_id']);			$store_cart_list[$cart['store_id']]['goods'][] = $cart;												$sum += $cart['goods_total'];        }		//获取店铺信息                          		$cart_list = array();		$model_voucher = Model('voucher');		$model_store = Model('store');		foreach ($store_cart_list as $k=>$cart_info) {			//店铺信息			$store_info = $model_store->getStoreInfoByID($k);						$cart_info['store_id'] = $store_info['store_id'];			$cart_info['store_name'] = $store_info['store_name'];			if ($store_info['store_free_price']>0){				$cart_info['free_freight'] = '满'.$store_info['store_free_price'].'免运费';			}						//店铺优惠劵			$voucher = $model_voucher->getVoucherTemplateList(array('voucher_t_store_id'=>$cart_info['store_id']));            $cart_info['voucher'] = !empty($voucher)?$voucher:NULL;						//满即送						            $cart_list[] = $cart_info;        }		$result = array();		$result['cart_list'] = $cart_list;		$result['sum'] = imPriceFormat($sum);		        return $result;    }    /**     * 购物车添加     */    public function cart_addOp() {    	$list = $_REQUEST['list'];    	$newList=substr($list,1,strripos($list,',')-1);		$newList=explode(",", $newList);		$newList1=array();		for($i=0;$i<count($newList);$i++){			$newList2=explode(":", $newList[$i]);			$newList1[$i]['goods_id']=$newList2[0];			$newList1[$i]['quantity']=$newList2[1];		}    	print_r($newList1);    	exit;    	/*$list = substr($list,1,strlen($list)-2);    	$localnum = strrpos($list, ',');    	$list2 = substr($list,$localnum,-1);    	$listtotal = explode(",",$list2);    	*/    	    	$goods_commonid = $_REQUEST['goods_commonid'];    	    	$buyer_id = intval($_REQUEST['member_id']);    	$model_ordering = Model('ordering');    	$condition['buyer_id'] =$buyer_id;     	$order_info = $model_ordering->getOrderingInfo($condition);     	//$arr= array($_REQUEST['list']);    	$arr2 = array(array(          'goods_id'=> '55',          'quantity'=> '16'        ),        array(          'goods_id'=> '56',          'quantity'=> '18',        ),        array(          'goods_id'=> '57',          'quantity'=> '20',        ),        array(          'goods_id'=> '59',          'quantity'=> '25',        ),);    	    	//$data['ordering_id'] = $order_info['ordering_id'];    	$data =array();    	$data['goods_commonid'] =$_REQUEST['goods_commonid'];    	$data['goods_name'] = $_REQUEST['goods_name'];    	$data['goods_price']= $_REQUEST['goods_price'];    	$data['goods_image'] = $_REQUEST['goods_image'];    	$data['buyer_id'] = $_REQUEST['buyer_id'];    	$data['store_id'] = $_REQUEST['store_id'];    	$data['store_name'] = $_REQUEST['store_name'];    	$goods_data['goods_commonid'] = $_REQUEST['goods_commonid'];    	$goods_info = $model_ordering ->getGoodsCommon($goods_data);    	//$goods_total =$goods_info[0]['goods_total'];		if(empty($order_info[0]['ordering_state'])){			$param = array(				'store_id' => $_REQUEST['store_id'],				'store_name' => $_REQUEST['store_name'],				'buyer_id' => $_REQUEST['buyer_id'],				'add_time' => strtotime("now")			);			$ordering_info =$model_ordering ->add_Ordering($param);			$order_info = $model_ordering->getOrderingInfo($condition);			$data['ordering_id'] = $order_info[0]['ordering_id'];			foreach ((array)$arr2 as $val){				$data['goods_id']= $val['goods_id'];				$data['goods_num']= $val['quantity'];				$ordering_goods_info = $model_ordering->addd_Ordering_Goods($data);			}			/*$goods_num_info = $model_ordering ->get_Buyer_Info($goods_data);			foreach ($goods_num_info as $key => $value) {				$goods_total += $value['goods_num'];			}			$goods_total_info['goods_total'] = $goods_total;			$goods_total_info['goods_commonid'] = $_REQUEST['goods_commonid'];			$goods_common_total = $model_ordering ->update_Goods_Total($goods_total_info,$goods_data);*/			return;		}elseif($order_info[0]['order_state']='10'){			foreach ((array)$arr2 as $val){				$change['goods_id']= $val['goods_id'];				$change['goods_num']= $val['quantity'];				$where['goods_id'] = $val['goods_id'];				$ordering_goods_info = $model_ordering->update_Ordering_Goods($change,$where);			}			/*$goods_num_info = $model_ordering ->get_Buyer_Info($goods_data);			foreach ($goods_num_info as $key => $value) { 				$goods_total += $value['goods_num']; 			}							$goods_total_info['goods_total'] = $goods_total;			$goods_total_info['goods_commonid'] = $_REQUEST['goods_commonid'];			$goods_common_total = $model_ordering ->update_Goods_Total($goods_total_info,$goods_data);*/			return;					}else{						output_error('您的订单已经提交，不可以进行二次提交');			return;	    }    }    /**     * 购物车删除     */    public function cart_delOp() {        $cart_id = intval($_REQUEST['cart_id']);        $model_cart = Model('cart');        if($cart_id > 0) {            $condition = array();            $condition['buyer_id'] = $this->member_info['member_id'];            $condition['cart_id'] = $cart_id;            $model_cart->delCart('db', $condition);        }        output_data('1');    }    /**     * 更新购物车购买数量     */    public function cart_edit_quantityOp() {		$cart_id = intval(abs($_REQUEST['cart_id']));		$quantity = intval(abs($_REQUEST['quantity']));		if(empty($cart_id) || empty($quantity)) {            output_error('参数错误');		}		$model_cart = Model('cart');        $cart_info = $model_cart->getCartInfo(array('cart_id'=>$cart_id, 'buyer_id' => $this->member_info['member_id']));        //检查是否为本人购物车        if($cart_info['buyer_id'] != $this->member_info['member_id']) {            output_error('参数错误');        }        //检查库存是否充足        if(!$this->_check_goods_storage($cart_info, $quantity, $this->member_info['member_id'])) {            output_error('库存不足');        }		$data = array();        $data['goods_num'] = $quantity;        $update = $model_cart->editCart($data, array('cart_id'=>$cart_id));		if ($update) {		    $return = array();            $return['quantity'] = $quantity;			$return['goods_price'] = imPriceFormat($cart_info['goods_price']);			$return['total_price'] = imPriceFormat($cart_info['goods_price'] * $quantity);            output_data($return);		} else {            output_error('修改失败');		}    }    /**     * 检查库存是否充足     */    private function _check_goods_storage($cart_info, $quantity, $member_id) {		$model_goods= Model('goods');        $model_bl = Model('p_bundling');        $logic_buy_1 = Logic('buy_1');		if ($cart_info['bl_id'] == '0') {            //普通商品		    $goods_info	= $model_goods->getGoodsOnlineInfoAndPromotionById($cart_info['goods_id']);		    //抢购		    $logic_buy_1->getGroupbuyInfo($goods_info);			if ($goods_info['ifgroupbuy']) {                if ($goods_info['upper_limit'] && $quantity > $goods_info['upper_limit']) {                    return false;                }            }		    //限时折扣		    $logic_buy_1->getXianshiInfo($goods_info,$quantity); 		    $quantity = $goods_info['goods_num'];		    if(intval($goods_info['goods_storage']) < $quantity) {                return false;		    }			$goods_info['cart_id'] = $cart_info['cart_id'];            $cart_info = $goods_info;		} else {		    //优惠套装商品		    $bl_goods_list = $model_bl->getBundlingGoodsList(array('bl_id' => $cart_info['bl_id']));		    $goods_id_array = array();		    foreach ($bl_goods_list as $goods) {		        $goods_id_array[] = $goods['goods_id'];		    }		    $bl_goods_list = $model_goods->getGoodsOnlineListAndPromotionByIdArray($goods_id_array);		    //如果有商品库存不足，更新购买数量到目前最大库存		    foreach ($bl_goods_list as $goods_info) {		        if (intval($goods_info['goods_storage']) < $quantity) {                    return false;		        }		    }		}        return true;    }		/**     * 购物车商品数量     */    public function cart_countOp() {        $key = $_REQUEST['key'];        if(empty($key)) {            $key = $_REQUEST['key'];        }	 				$cart_count = $this->getCartCount($key);        output_data(array('cart_count'=>$cart_count));    }		/**-------------------------------------APP客户端---------------------------------------------------**/	public function app_cart_list() {        $model_cart = Model('cart');        $condition = array('buyer_id' => $this->member_info['member_id']);        $goods_list	= $model_cart->listCart('db', $condition);        $sum = 0;        foreach ($goods_list as $key => $value) {            $goods_list[$key]['goods_image_url'] = cthumb($value['goods_image'], $value['store_id']);			$goods_list[$key]['img'] = getPhoto_array(cthumb($value['goods_image'],240),cthumb($value['goods_image'],240),urlShop('goods', 'index', array('goods_id' => $value['goods_id'])));            $goods_list[$key]['goods_sum'] = imPriceFormat($value['goods_price'] * $value['goods_num']);            $sum += $goods_list[$key]['goods_sum'];        }		$total_info = array();		$total_info['goods_price'] = 0;		$total_info['market_price'] = 0;		$total_info['real_goods_count'] = 0;		$total_info['virtual_goods_count'] = 0;		$total_info['save_rate'] = 0;		$total_info['saving'] = 0;		$total_info['goods_amount'] = imPriceFormat($sum);				$cart_list = array();		$cart_list['goods_list'] = $goods_list;		$cart_list['total'] = $total_info;		        output_data($cart_list);    }}
