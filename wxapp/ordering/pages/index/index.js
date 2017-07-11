@@ -179,13 +179,17 @@ Page({
     let token = app.globalData.token;
     if (token) {//token不为空时
       //没有授权时是无法获取到会员信息，
-      that.loadIndex();
+      //跳转到商品列表页面
+      wx.navigateTo({
+        url: '../goods/index'
+      })
     }else{
       //调用应用实例的方法获取全局数据
       app.getUserInfo(function (userInfo) {
         app.globalData.token = wx.getStorageSync('token');
         //console.log("页面加载缓存token: ", wx.getStorageSync('token'));
-        that.loadIndex();
+        //that.loadIndex();
+        app.login();
       });
       
     }

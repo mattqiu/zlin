@@ -37,13 +37,13 @@ class loginControl extends wxappHomeControl {
 		 */
 		//获取该员工登录店铺令牌
 		$model_mb_seller_token = Model('mb_seller_token');
+		$model_mb_user_token = Model('mb_user_token');
 		$mb_seller_token_info = $model_mb_seller_token->getSellerTokenInfo(array('openid'=>$openid, 'client_type'=>$client));
-		
 		//查看商家是否有登录记录
 		if(empty($mb_seller_token_info)){
 			//没有则去查看该店员又没会员的登录记录
-			$model_mb_user_token = Model('mb_user_token');
-			$mb_user_token_info = $model_mb_user_token->getMbUserTokenInfo(array('openid'=>$openid, 'client'=>$client));
+			//$model_mb_user_token = Model('mb_user_token');
+			$mb_user_token_info = $model_mb_user_token->getMbUserTokenInfo(array('openid'=>$openid, 'client_type'=>$client));
 			if(!empty($mb_user_token_info)){
 				//有会员登录记录，则根据会员的记录给店员添加一条商家的登录记录
 				//根据会员的登录信息，确定默认登陆的商家
@@ -69,21 +69,23 @@ class loginControl extends wxappHomeControl {
 				}
 				//根据获取到的unionId，去查找会员信息
 				$unionid = 's:7:"unionid";s:'.strlen($unionId).':"'.$unionId.'";';//拼接模糊查询的格式
-	
+				$unionid2 = "'%".strlen($unionId).":".$unionId." %;'";//拼接模糊查询的格式
 	
 				/*
 				 * 参考mysql json格式查询：http://www.cnblogs.com/waterystone/p/5626098.html
 				 * 下面写一个mysql5.7.9以上版本支持json 查询
 				 * SELECT json_extract(member_wxinfo, '$.unionid') FROM zlin_member WHERE json_extract(member_wxinfo,'$.unionid') = 'o6AiRuOwBKVqa-DXfNQsNKk_50UA';
 				 */
+
 				$condition =array();
-				$condition['member_wxinfo'] = array(array('like','%'.$unionid.'%'));
+				$condition['member_wxinfo'] = array('like',$unionid2);
 				$model_member = Model('member');
-				$member_info = '';//$model_member->getMemberInfo($condition);
+				$member_info = $model_member->getMemberInfo($condition);
 				if(!empty($member_info)){
 					//这里证明一点，再wxapp上没有留下过记录，所以要去新增一条记录
 					//新登录生成token
 					$token = $this->login_mobile_token($member_info['member_id'], $member_info['member_name'], $client,$openid);
+					
 				}else{
 					//output_data($result);
 					//var_dump($result);
@@ -94,12 +96,24 @@ class loginControl extends wxappHomeControl {
 				}
 			}
 		}else{
-			$token = $mb_seller_token_info['token'];
-			output_json($token);
+			$mb_user_token_info = $model_mb_user_token->getMbUserTokenInfo(array('openid'=>$openid, 'client_type'=>$client));
+		    $token = $mb_seller_token_info['token'];
+			$member_id =$mb_user_token_info['member_id'];
+			output_json(array('member_id' => $member_id,'token' => $token));
+			//output_json($newMember_info);
+			//echo $token;
+			//output_json($token);
+			die;
 		}
 		if($token) {
+			$mb_user_token_info = $model_mb_user_token->getMbUserTokenInfo(array('openid'=>$openid, 'client_type'=>$client));
+			$token = $mb_seller_token_info['token'];
+			$member_id =$mb_user_token_info['member_id'];
+			output_json(array('member_id' => $member_id,'token' => $token));
+				
+			//output_json($newMember_info);
 			//echo $token;
-			output_data($token);
+			//output_data($token);
 			die;
 		} else {
 			output_error('未获取到正确的登录令牌，请先删除小程序后重新添加即可！');

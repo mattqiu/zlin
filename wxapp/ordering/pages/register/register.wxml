@@ -39,9 +39,7 @@
   <!--登录按钮-->
   <!--<navigator class="button-log" url="../other/masege"> 点击跳转到其他的信息的页面-->
   <view class="button-container">
-    <navigator class="button-log" url="../my/my">
-      <button type="warn" formType="submit">注册</button>
-    </navigator>
+      <button type="warn" class="button-log" formType="submit">注册</button>
   </view>
 
   <!--<view class="forget">

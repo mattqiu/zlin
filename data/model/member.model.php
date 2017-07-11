@@ -289,9 +289,9 @@ class memberModel extends Model {
     
     	// 会员添加
     	$member_info	= $register_info;
-   	
-    	$insert_id	= $this->addMember($member_info,$addVRccard);
     	
+    	$insert_id	= $this->addMember($member_info,$addVRccard);
+
     	if($insert_id) {
     		$member_info['member_id'] = $insert_id;
     		$member_info['is_buy'] = 1;
@@ -313,7 +313,6 @@ class memberModel extends Model {
 		}
 		try {		
 		    $this->beginTransaction();
-			
 		    $member_info	= array();
 		    $member_info['member_id']			= $param['member_id'];
 		    $member_info['member_name']			= $param['member_name'];
@@ -369,8 +368,10 @@ class memberModel extends Model {
 					$member_info['store_id'] = GENERAL_PLATFORM_EXTENSION_ID;
 				}
 			}
-	    
-		    $insert_id	= $this->table('member')->insert($member_info);			
+			//$newMember_info[0]=$member_info;
+			
+		    $insert_id	= $this->table('member')->insert($member_info);	
+
 		    if (!$insert_id) {
 		        throw new Exception();
 		    }
@@ -383,7 +384,7 @@ class memberModel extends Model {
 			if (OPEN_STORE_EXTENSION_STATE > 0 && $addVRccard == 1){
 				Model('extension')->addVirtualExtension(array('member_id'=>$insert_id,'member_name'=>$member_info['member_name'],'store_id'=>$member_info['store_id'],'parent_id'=>$member_info['parent_id']));
 			}
-
+			
             // 添加默认相册
 			$insert = array();
             $insert['ac_name']      = '买家秀';
@@ -398,13 +399,15 @@ class memberModel extends Model {
 			if (C('points_isuse')){
 				Model('points')->savePointsLog('regist',array('pl_memberid'=>$insert_id,'pl_membername'=>$register_info['username']),false);
 			}
+		    
 			//添加会员经验值
+
 			if ($GLOBALS['setting_config']['experience_isuse'] == 1){
 				$experience_model = Model('experience');
 				$experience_model->saveExperienceLog('regist',array('pl_memberid'=>$insert_id,'pl_membername'=>$register_info['username']),false);
 			}
-				
-		    $this->commit();
+			
+			$this->commit();
 		    return $insert_id;
 		} catch (Exception $e) {
 		    $this->rollback();

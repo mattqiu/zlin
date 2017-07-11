@@ -82,7 +82,6 @@ class wxappMemberControl extends wxappControl{
 
         $model_mb_user_token = Model('mb_user_token');
         $token = $_REQUEST['token'];
-        
         //$token = trim($token, "\xEF\xBB\xBF");//PHP去除BOM头
         if(empty($token)) {
             output_error('没有获取到登录令牌的token，清除微信缓存后再试', array('login' => '0','error_code'=>CODE_InvalidSession));

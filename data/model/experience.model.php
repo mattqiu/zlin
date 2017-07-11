@@ -106,7 +106,7 @@ class experienceModel {
 			//更新member内容
 			$obj_member = Model('member');
 			$upmember_array = array();
-			$upmember_array['member_exp'] = array('sign'=>'increase','value'=>$insertarr['pl_experience']);
+			$upmember_array['member_exppoints'] = array('exp','member_exppoints + '.$insertarr['pl_experience']);
 			$obj_member->editMember(array('member_id'=>$insertarr['pl_memberid']),$upmember_array);
 			return true;
 		}else {

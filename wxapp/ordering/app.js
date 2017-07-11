@@ -53,6 +53,7 @@ App({
                     encryptedData: encryptedData,
                     iv: iv
                   }, res2.userInfo, cb);
+
                 } else {
                   that.globalData.userInfo = res2.userInfo;
                   typeof cb == "function" && cb(that.globalData.userInfo)
@@ -88,19 +89,21 @@ App({
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       }, // 设置请求的 header
-      dataType: 'txt',
+      dataType: 'json',
       success: function (res) {
         // success
-        wx.hideToast();
-        that.globalData.userInfo = res.data;
-        var arrlength = res.data.length;       
-        if (arrlength < 150){
-          //console.log('获取用户登录信息！', arrlength)
-          wx.navigateTo({
-            url: '../goods/index'
-          })
-        }
-        if (res.error_code) {
+        var token = res.data.token;
+        var member_id = res.data.member_id;
+        that.globalData.token = token;
+        that.globalData.member_id = member_id;
+        wx.setStorageSync('token', token);
+        wx.setStorageSync('member_id', member_id);
+        //console.log('获取数据库用户信息', token)
+        //console.log('获取数据库用户信息2', member_id)
+        wx.navigateTo({
+          url: '../goods/index'
+        })
+        /*if (res.error_code) {
           that.showErrMsg(res.errMsg);
           that.getUserInfo();//失败后重新去获取
           return false;
@@ -112,7 +115,7 @@ App({
           typeof cb == "function" && cb(userInfo)
           //跳转商品列表页
           
-        }
+        }*/
       },
       fail: function () {
         // fail

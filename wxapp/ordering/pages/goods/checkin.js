@@ -5,6 +5,7 @@ Page({
   data:{
     order_info:[],  
     goods_commonid:'',
+    member_id: '',
     goodsNum: 0,//定义商品数量
     goodsTotal: 0,//商品总数
     totalAmount: 0.00,//总金额
@@ -362,6 +363,7 @@ Page({
   },
   //修改当前选中商品数量事件
   inputGoodsNum: function (e) {
+    console.log('公共member_id', app.globalData.member_id)
     var that = this;
     let _gnumval = Number(e.detail.value),
       _specsku = that.data.specsku,
@@ -408,12 +410,15 @@ Page({
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
+    var goods_commonid = options.goods_commonid;
+    console.log('获取', goods_commonid)
     var data = {
       token: app.globalData.token,
-      goods_commonid: options.goods_commonid,
+      goods_commonid: goods_commonid,
     };
 
     util.Ajax("ordering_goods/goods_detail", data, function (res) {
+      //console.log("a结果：", res);
       let spec_name = res.datas.spec_name,
         _sData = {},
         _optRadio = that.data.optRadio;
@@ -424,8 +429,9 @@ Page({
         _optRadio[_specKey[i]] = 'one';//默认单选框
         i++;
       }
-      //console.log("a结果：", res);
+     
       that.setData({
+        goods_commonid: goods_commonid,
         goods_info: res.datas,
         goods_spec: res.datas.spec_value, //商品规格
         sku_list: res.datas.spec_list, //商品sku
@@ -437,17 +443,16 @@ Page({
   formSubmit:function(e){
     var formData = e.detail.value;
     //var formId = e.detail.name;
-    console.log('提交:', formData);
+    //console.log('提交:', this.data.goods_commonid);
     var that = this;
     var data ={
       list: formData,
       token: app.globalData.token,
-      goods_commonid: options.goods_commonid,
-      member_id: app.globalData.member_id,
-      store_id: app.globalData.store_id
+      goods_commonid: that.data.goods_commonid,
+      member_id: app.globalData.member_id
     };
     util.Ajax("member_cart/cart_add",data,function(options){
-      console.log("购物城返回结果：",options);
+      console.log("购物并返回结果：",options);
     })
   },
   onReady:function(){
@@ -455,7 +460,6 @@ Page({
   },
   onShow:function(){
     // 页面显示
-    
   },
   onHide:function(){
     // 页面隐藏

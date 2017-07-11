@@ -9,6 +9,7 @@ Page({
     password: '',
     phonecaptcha:'',
     inviteNumber:'',
+    member_id:'',
     motto: "欢迎进去订货会系统",
     verifyCodeTime: '获取验证码',
     font: "../../images/login/font.png",
@@ -99,6 +100,7 @@ Page({
   // 登录传参
   formSubmit: function (e) {
     var phonecaptcha = this.data.phonecaptcha;
+    var member_id;
     //console.log(data.detail.value);
     var that = this;
     var data = {
@@ -110,12 +112,12 @@ Page({
       userinfo: app.globalData.userInfo
     }
     util.Ajax("connect_wxapp/sms_register", data, function (res) {
+      //console.log('个人信息:', res.member_id)
+      app.globalData.member_id = res.member_id
       that.setData({
-        goods_list: res,
-      })
-      var perlength = res.data.length;
-      console.log('个人信息:', perlength)
-      if (res.data) {
+        member_id :res.member_id
+      }) 
+      if (res.member_id) {
         wx.navigateTo({
           url: '../goods/index'
         })
@@ -140,6 +142,7 @@ Page({
             title: '温馨提示',
             content: res.errMsg,
             success: function (res) {
+              console.log("获取个人信息", res); 
               if (res.confirm) {
                 app.globalData.userInfo = '{}';//重新登录
                 app.globalData.token = '';
@@ -156,7 +159,7 @@ Page({
           app.globalData.member_id = that.data.member_id;
           app.globalData.seller_id = that.data.seller_id;
           app.globalData.seller_name = that.data.seller_name;
-          
+          console.log("获取个人信息2",res); 
           //没有默认的店铺则需要更新，有则无需更新
           if (app.globalData.store_id == '') {
             app.globalData.store_id = that.data.store_id;
@@ -178,7 +181,7 @@ Page({
   },
   //初始化页面
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -195,15 +198,21 @@ Page({
     var that = this;
     //用户第一次进去页面时，先查询是否已经获取了该会员的微信信息
     let token = app.globalData.token;
+    //console.log('测试token', token)
     if (token) {//token不为空时
       //没有授权时是无法获取到会员信息，
-      that.loadIndex();
+      //跳转到商品列表页面
+      wx.navigateTo({
+        url: '../goods/index'
+      })
     } else {
       //调用应用实例的方法获取全局数据
       app.getUserInfo(function (userInfo) {
+        console.log('userInfo：', userInfo)
         app.globalData.token = wx.getStorageSync('token');
         //console.log("页面加载缓存token: ", wx.getStorageSync('token'));
-        that.loadIndex();
+        //that.loadIndex();
+        app.login();
       });
 
     }
