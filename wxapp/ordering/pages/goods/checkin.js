@@ -345,7 +345,7 @@ Page({
           }
         }
       }
-      //console.log('数量：', _skunum);
+      //console.log('尺寸型号', _skuname);
       //console.log('order_info：', order_info);
       that.setData({
         specsku: _specsku,
@@ -411,7 +411,7 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
     var goods_commonid = options.goods_commonid;
-    console.log('获取', goods_commonid)
+    //console.log('获取', goods_commonid)
     var data = {
       token: app.globalData.token,
       goods_commonid: goods_commonid,
@@ -451,7 +451,7 @@ Page({
       goods_commonid: that.data.goods_commonid,
       member_id: app.globalData.member_id
     };
-    util.Ajax("member_cart/cart_add",data,function(options){
+    util.Ajax("ordering/cart_add",data,function(options){
       console.log("购物并返回结果：",options);
     })
   },

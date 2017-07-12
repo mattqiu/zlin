@@ -35,13 +35,9 @@ class orderingModel extends Model {
      */
     public function getOrderingList($condition = array(),$fields = '*', $order = '') {
         $ordering_list = $this->table('ordering')->field($fields)->where($condition)->order($order)->select();
-
         if (empty($ordering_list)) {
             return array();
-    }
-    
-    
-    
+        }
         return $ordering_list;
     }
 
@@ -93,7 +89,6 @@ class orderingModel extends Model {
 
         return $order_list;
     }
-    
     /**
      * 添加ordering_goods表订单信息
      *
@@ -109,9 +104,20 @@ class orderingModel extends Model {
     }
     public function add_Ordering($param) {
     
-    	$insert = $this->table('ordering')->insert($data);
+    	$insert = $this->table('ordering')->insert($param);
     	 
     	return $insert;
     }
+    /**
+     * 更新ordering_goods表订单信息
+     *
+     * @param unknown_type $condition
+     * @param array $extend 追加返回那些表的信息,如array('goods_id','goods_num')
+     * @return unknown
+     */
+	public function editOrderGoods($data,$condition) {
+		$update = $this->table('ordering_goods')->where($condition)->update($data);
+		return $update;
+	}
     
 }
