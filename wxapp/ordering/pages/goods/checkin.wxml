@@ -37,7 +37,7 @@
 				<view class="table-col"  wx:for="{{spitem.sp_name}}" wx:for-item="colname">{{colname}}</view>
         
         <block wx:for="{{spitem.list}}"> 
-				  <input name="{{item.goods_id}}" data-id="{{item.goods_id}}" class="table-col {{specsku[item.skuid].checked?'active':''}}" type="number" bindinput="inputSkuNum" data-skuid="{{item.skuid}}" placeholder="0" value="{{specsku[item.skuid].gnum}}" />          
+				  <input name="{{item.goods_id}}" class="table-col {{specsku[item.skuid].checked?'active':''}}" type="number" bindinput="inputSkuNum" data-goodsid="{{item.goods_id}}"  data-skuid="{{item.skuid}}" placeholder="0" value="{{specsku[item.skuid].gnum}}" />          
         </block>
         
 			</view>

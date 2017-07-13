@@ -56,6 +56,20 @@ class specModel extends Model {
     }
     
     /**
+     * 获得商品规格组名
+     * @param unknown $common_id
+     */
+    public function getSpecNameBySpvID($spec_value_id,$store_id = 0) {
+        $spv_info = $this->specValueOne(array('sp_value_id' => $spec_value_id),'sp_id');
+        if (!empty($spv_info)) {
+            $spec_info = $this->getSpecInfo($spv_info['sp_id'], 'sp_name');
+            $sp_name = $spec_info['sp_name'];
+        }else{
+        	$sp_name = '';
+        }
+        return $sp_name;
+    }
+    /**
      * 更新规格值
      * 
      * @param array $update 更新数据

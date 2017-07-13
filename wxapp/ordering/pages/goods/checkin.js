@@ -313,8 +313,8 @@ Page({
     var order_info;
     var that = this;
     let _skunum = Number(e.detail.value),
-      goods_id = e.currentTarget.id,
       curData = e.currentTarget.dataset,
+      goods_id = curData.goodsid,
       _skuid = curData.skuid,
       _specsku = that.data.specsku, 
       _skuList = that.data.sku_list,//获取商品价格
@@ -345,12 +345,9 @@ Page({
           }
         }
       }
-      //console.log('尺寸型号', _skuname);
-      //console.log('order_info：', order_info);
       that.setData({
         specsku: _specsku,
         goodsNum: _skunum,
-       // order_info['goods_id']:
         goods_id: goods_id,
         goodsTotal: _goodsTotal,
         totalAmount: _totalAmount
@@ -363,14 +360,12 @@ Page({
   },
   //修改当前选中商品数量事件
   inputGoodsNum: function (e) {
-    console.log('公共member_id', app.globalData.member_id)
     var that = this;
     let _gnumval = Number(e.detail.value),
       _specsku = that.data.specsku,
       _goodsTotal = Number(that.data.goodsTotal),//商品总数
       _totalAmount = Number(that.data.totalAmount);
-    console.log('sku:', _specsku)
-    console.log('totalAmount:', _totalAmount)
+    //console.log('sku:', _specsku)
     if (app.common.judgeNull(_specsku)) {
       app.showErrMsg('请先选择颜色或尺码！');
       return;
@@ -411,14 +406,12 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
     var that = this;
     var goods_commonid = options.goods_commonid;
-    //console.log('获取', goods_commonid)
     var data = {
       token: app.globalData.token,
       goods_commonid: goods_commonid,
     };
 
-    util.Ajax("ordering_goods/goods_detail", data, function (res) {
-      //console.log("a结果：", res);
+    util.Ajax("ordering_goods/goods_sku", data, function (res) {
       let spec_name = res.datas.spec_name,
         _sData = {},
         _optRadio = that.data.optRadio;
@@ -429,7 +422,7 @@ Page({
         _optRadio[_specKey[i]] = 'one';//默认单选框
         i++;
       }
-     
+      //console.log("a结果：", res);
       that.setData({
         goods_commonid: goods_commonid,
         goods_info: res.datas,
@@ -442,8 +435,6 @@ Page({
   },
   formSubmit:function(e){
     var formData = e.detail.value;
-    //var formId = e.detail.name;
-    //console.log('提交:', this.data.goods_commonid);
     var that = this;
     var data ={
       list: formData,

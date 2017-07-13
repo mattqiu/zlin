@@ -20,8 +20,7 @@
   </div>
   <div class="fixed-empty"></div>
   <div style="text-align: right;">
-    <a class="imap-btn imap-btn-green" href="javascript:void(0)"  onclick="ajax_form('my_manage_edit','添加高管晋升补贴','<?php echo AI5243500203
-    ('extension_config','manage_edit');?>',520);"><span>添加高管晋升补贴</span></a>
+    <a class="imap-btn imap-btn-green" href="javascript:void(0)"  onclick="ajax_form('my_manage_edit','添加高管晋升补贴','<?php echo urlAdminExtension('cityunion_config','manage_edit');?>',520);"><span>添加高管晋升补贴</span></a>
   </div>
   <table class="table tb-type2">
     <thead>
@@ -66,8 +65,8 @@
         <!-- <td class="tc"><?php echo $v['points_rate'];?></td> -->
         <td class="tc"><?php echo $v['award_level'];?></td>
         <td class="tc">
-          <a href="javascript:void(0)" onclick="ajax_form('my_manage_edit','修改高管晋升补贴','<?php echo urlAdminExtension('extension_config','manage_edit',array('em_id'=>$v['em_id']));?>',520);">修改</a>|
-          <a href="javascript:void(0)" onclick="javascript:ajax_get_confirm('真的要删除吗?','<?php echo urlAdminExtension('extension_config', 'manage_del',array('em_id'=>$v['em_id']));?>')">删除</a>
+          <a href="javascript:void(0)" onclick="ajax_form('my_manage_edit','修改高管晋升补贴','<?php echo urlAdminExtension('cityunion_config','manage_edit',array('em_id'=>$v['em_id']));?>',520);">修改</a>|
+          <a href="javascript:void(0)" onclick="javascript:ajax_get_confirm('真的要删除吗?','<?php echo urlAdminExtension('cityunion_config', 'manage_del',array('em_id'=>$v['em_id']));?>')">删除</a>
         </td>
       </tr>
       <?php }?>

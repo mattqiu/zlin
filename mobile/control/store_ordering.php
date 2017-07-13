@@ -83,9 +83,8 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
            unset($condition['buyer_id']);
         }
         //获取订单信息
-        $ordering_info = $model_order->getOrderingList($condition,'*', 'ordering_id desc');
-        /*print_r($ordering_info);
-        exit;*/
+        $ordering_info = $model_order->getOrderingInfo($condition,'*', 'ordering_id desc');
+
         if($ordering_info){
             unset($condition);
             //总排行榜时获取数据
