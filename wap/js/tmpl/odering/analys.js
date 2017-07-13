@@ -76,4 +76,27 @@ $(function(){
 					chart = c;
 				});
 			});
+
+	$(function(){
+		var goodsajaxCommit 	= function() {
+		$("#show1").empty();
+		$("#two").empty();
+			$.ajax({
+				type: "get",
+				url: ApiUrl + "/index.php?act=store_ordering&op=analys&keyword=价格",
+				dataType: "json",
+				success: function(data) {
+					var data = data;
+					console.log(data);
+					
+				},
+
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		}
+		goodsajaxCommit();
+	});
 })
