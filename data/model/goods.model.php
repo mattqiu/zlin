@@ -80,16 +80,6 @@ class goodsModel extends Model{
     	$condition = $this->_getRecursiveClass($condition);
     	return $this->table('goods')->field($field)->where($condition)->group($group)->order($order)->limit($limit)->page($page, $count)->select();
     }
-    /**
-     * 获取店铺信息
-     *
-     * @param array $condition 条件
-     * @param string $field 字段
-     */
-    public function getStoreInfo($condition, $field = '*') {
-    	return $this->table('goods_common')->field($field)->where($condition)->find();
-    }
-    
     
     /**
      * 获取指定分类指定店铺下的随机商品列表
