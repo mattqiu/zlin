@@ -142,35 +142,34 @@ class ordering_goodsControl extends wxappControl {
     	$goods_detail = $model_goods->getGoodsCommonInfoByID($goods_commonid,'goods_commonid,goods_name,goods_serial,goods_marketprice,goods_price,spec_name,spec_value,store_id,store_name,brand_name');
     	$spec_name = unserialize($goods_detail['spec_name']);
     	$spec_value = unserialize($goods_detail['spec_value']);
-		$condition['store_id'] = $goods_detail['store_id'];
 
     	// 查询所有规格商品
     	$spec_array = $model_goods->getGoodsSpecListByCommonId($goods_commonid,$goods_detail['store_id']);
-    	$store_info = $model_goods->getStoreDetail($condition);
-    	foreach ($store_info as $key => $value) {
-	        	$store_info[$key]['goods_image'] = cthumb($store_info[$key]['goods_image']);
-	        }
     	$spec_list = array();       // 各规格商，js使用
     	$spec_image = array();      // 各规格商品主图，规格颜色图片使用
     	foreach ($spec_array as $key => $value) {
     		$s_array = unserialize($value['goods_spec']);
     		$tmp_array = array();
+            $spname_array = array();
     		if (!empty($s_array) && is_array($s_array)) {
     			foreach ($s_array as $k => $v) {
     				$tmp_array[] = $k;
+                    $sp_name = Model('spec')->getSpecNameBySpvID($k);
+                    $spname_array[] = $sp_name.':'.$v;
     			}
     		}
     		sort($tmp_array);
     		$spec_sign = implode('|', $tmp_array);
+    		$spname = implode(',', $spname_array);
     		$tpl_spec = array();
     		$tpl_spec['sign'] = $spec_sign;
     		$spec_list[$spec_sign]['goods_id'] = $value['goods_id'];
             $spec_list[$spec_sign]['goods_price'] = $value['goods_price'];
+            $spec_list[$spec_sign]['goods_spec'] = $spname;
     		$spec_image[$value['color_id']] = thumb($value, 60);
     	}
     	$goods_detail['spec_list'] = $spec_list;
     	$goods_detail['spec_image'] = $spec_image;
-    	$goods_detail['store_info'] = $store_info;
     	$sp_name = ''; //定义横竖排交叉的名称
     	if(!empty($spec_value)){
     		$i = 0;

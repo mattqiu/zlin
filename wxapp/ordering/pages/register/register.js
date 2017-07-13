@@ -142,7 +142,6 @@ Page({
             title: '温馨提示',
             content: res.errMsg,
             success: function (res) {
-              console.log("获取个人信息", res); 
               if (res.confirm) {
                 app.globalData.userInfo = '{}';//重新登录
                 app.globalData.token = '';
@@ -159,7 +158,7 @@ Page({
           app.globalData.member_id = that.data.member_id;
           app.globalData.seller_id = that.data.seller_id;
           app.globalData.seller_name = that.data.seller_name;
-          console.log("获取个人信息2",res); 
+          
           //没有默认的店铺则需要更新，有则无需更新
           if (app.globalData.store_id == '') {
             app.globalData.store_id = that.data.store_id;
@@ -198,7 +197,6 @@ Page({
     var that = this;
     //用户第一次进去页面时，先查询是否已经获取了该会员的微信信息
     let token = app.globalData.token;
-    //console.log('测试token', token)
     if (token) {//token不为空时
       //没有授权时是无法获取到会员信息，
       //跳转到商品列表页面
@@ -208,7 +206,6 @@ Page({
     } else {
       //调用应用实例的方法获取全局数据
       app.getUserInfo(function (userInfo) {
-        console.log('userInfo：', userInfo)
         app.globalData.token = wx.getStorageSync('token');
         //console.log("页面加载缓存token: ", wx.getStorageSync('token'));
         //that.loadIndex();

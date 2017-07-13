@@ -252,9 +252,9 @@ class extension_configControl extends BaseExtensionControl {
 	 * 佣金分成配置
 	 *
 	 */
-    public function commislevelOP() {		
+    public function commislevelOp() {		
         $model_level = Model('extension_commis_rate');
-		$level_rate = $model_level->getCommisRateInfo(GENERAL_PLATFORM_EXTENSION_ID);		
+		$level_rate = $model_level->getCommisRateInfo(GENERAL_PLATFORM_EXTENSION_ID,array('extend_type'=>0));		
 		Tpl::output('level_rate',$level_rate);
 		
 		if (C('gl_promotion_level') >0 && C('gl_promotion_level')<=8){
@@ -274,7 +274,7 @@ class extension_configControl extends BaseExtensionControl {
 	 * @param 
 	 * @return 
 	 */
-	public function commislevel_saveOP() {
+	public function commislevel_saveOp() {
 		$model_rate	= Model('extension_commis_rate');
 		
 		$data=array();

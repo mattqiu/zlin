@@ -16,7 +16,6 @@ class cityunion_configControl extends BaseExtensionControl {
         array('url'=>'act=cityunion_config&op=perfor','lang'=>'cityunion_seller'), //商家补贴
 		array('url'=>'act=cityunion_config&op=commislevel','lang'=>'cityunion_commislevel'),//推广佣金分配
 		array('url'=>'act=cityunion_config&op=commisclass','lang'=>'cityunion_commisclass'),//推广佣金模板
-		array('url'=>'act=cityunion_config&op=saleman','lang'=>'cityunion_saleman'), //导购服务补贴
     );
 
     public function __construct() {
@@ -62,8 +61,8 @@ class cityunion_configControl extends BaseExtensionControl {
 			$data['gl_invite_money'] = $_POST['gl_invite_money'];//合伙人条件
 			$data['gl_invite_min'] = $_POST['gl_invite_min'];//合伙人条件
 			
-			$result = $model_setting->updateSetting($data);
-			if ($result === true){
+			$result = $model_setting->saveSetting($data);
+			if ($result){
 				showMessage(Language::get('im_common_save_succ'));
 			}else {
 				showMessage(Language::get('im_common_save_fail'));
@@ -168,7 +167,7 @@ class cityunion_configControl extends BaseExtensionControl {
 	 *
 	 */
     public function perforOp() {
-        $model_perfor = Model('cityunion_perforaward');
+        $model_perfor = Model('extension_perforaward');
 		$perfor_list = $model_perfor->getExtensionPerforAwardListByStoreID(GENERAL_PLATFORM_EXTENSION_ID);		
 		Tpl::output('perfor_list',$perfor_list);
 		
@@ -181,7 +180,7 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * 编辑绩优奖励方案
 	 */
 	public function perfor_editOp(){
-		$model_perfor = Model('cityunion_perforaward');
+		$model_perfor = Model('extension_perforaward');
 
 		$ep_id = intval($_GET["ep_id"]);
 		$perfor_info = $model_perfor->getExtensionPerforAwardByID($ep_id);		
@@ -197,7 +196,7 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * @return 
 	 */
 	public function perfor_saveOp() {
-		$model_perfor	= Model('cityunion_perforaward');		
+		$model_perfor	= Model('extension_perforaward');		
 	
 		$data=array();
 		$data['store_id']    = GENERAL_PLATFORM_EXTENSION_ID;
@@ -233,7 +232,7 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * @return 
 	 */
 	public function perfor_delOp() {
-		$model_perfor	= Model('cityunion_perforaward');		
+		$model_perfor	= Model('extension_perforaward');		
 	
 		if($_GET['ep_id'] != '') {
 			$where=array();
@@ -250,21 +249,34 @@ class cityunion_configControl extends BaseExtensionControl {
 	}
 	
 	/**
-	 * 佣金分成配置
+	 * 职业经理人佣金分成配置
 	 *
 	 */
-    public function commislevelOP() {		
+    public function commislevelOp() {		
         $model_level = Model('cityunion_commis_rate');
-		$level_rate = $model_level->getCommisRateInfo(GENERAL_PLATFORM_EXTENSION_ID);		
-		Tpl::output('level_rate',$level_rate);
-		
-		if (C('gl_promotion_level') >0 && C('gl_promotion_level')<=8){
-		  $promotion_level = C('gl_promotion_level');
-		}else{
-		  $promotion_level = 3;
-		}
-		Tpl::output('promotion_level',$promotion_level);
-		
+        
+        //职业经理人
+        $commislevel = $model_level->getCommisRateInfo(GENERAL_PLATFORM_EXTENSION_ID);
+        $gl_partner_level = C('gl_partner_level')?C('gl_partner_level'):1;//职业经理人邀请层级数
+        if(!empty($commislevel['rate_supplier_level'])){
+        	$rate_supplier_level = unserialize($commislevel['rate_supplier_level']);
+        }else{
+        	for ($i=0;$i<$gl_partner_level;$i++){
+        		$rate_supplier_level[$i] = 0;
+        	}
+        }
+        if(!empty($commislevel['rate_trader_level'])){
+        	$rate_trader_level = unserialize($commislevel['rate_trader_level']);
+        }else{
+        	for ($i=0;$i<$gl_partner_level;$i++){
+        		$rate_trader_level[$i] = 0;
+        	}
+        }
+        $commislevel['rate_supplier_level'] = $rate_supplier_level;
+        $commislevel['rate_trader_level'] = $rate_trader_level;
+        
+        Tpl::output('level_rate',$commislevel);
+        Tpl::output('partner_level',$gl_partner_level);
 		Tpl::output('top_link',$this->sublink($this->links,'commislevel'));
 		Tpl::setDirquna('extension');
         Tpl::showpage('cityunion_config.commislevel');
@@ -275,296 +287,28 @@ class cityunion_configControl extends BaseExtensionControl {
 	 * @param 
 	 * @return 
 	 */
-	public function commislevel_saveOP() {
+	public function commislevel_saveOp() {
 		$model_rate	= Model('cityunion_commis_rate');
 		
 		$data=array();
-		$data['rate_manage']=$_POST['rate_manage']?$_POST['rate_manage']:0;
-		$data['rate_perfor']=$_POST['rate_perfor']?$_POST['rate_perfor']:0;
-		$data['rate_level1']=$_POST['rate_level1']?$_POST['rate_level1']:0;
-		$data['rate_level2']=$_POST['rate_level2']?$_POST['rate_level2']:0;
-		$data['rate_level3']=$_POST['rate_level3']?$_POST['rate_level3']:0;
-		$data['rate_level4']=$_POST['rate_level4']?$_POST['rate_level4']:0;
-		$data['rate_level5']=$_POST['rate_level5']?$_POST['rate_level5']:0;
-		$data['rate_level6']=$_POST['rate_level6']?$_POST['rate_level6']:0;
-		$data['rate_level7']=$_POST['rate_level7']?$_POST['rate_level7']:0;
-		$data['rate_level8']=$_POST['rate_level8']?$_POST['rate_level8']:0;		
-		
+		$data['rate_manage']		=	$_POST['rate_manage']?$_POST['rate_manage']:0;
+		$data['rate_supplier']		=	$_POST['rate_supplier']?$_POST['rate_supplier']:0;//供应商总返佣额
+		$data['rate_supplier_level']=	serialize($_POST['rate_supplier_level']);//邀请供应商
+		$data['rate_trader']		=	$_POST['rate_trader']?$_POST['rate_trader']:0;//零售商返利
+		$data['rate_trader_level']	=	serialize($_POST['rate_trader_level']); //邀请零售商
 		if($_POST['mcr_id'] != '') {
 			$where=array();
 			$where['mcr_id']=intval($_POST['mcr_id']);
 			$state = $model_rate->where($where)->update($data);
 		} else {
 			$data['store_id']=GENERAL_PLATFORM_EXTENSION_ID;
-			$state = $model_rate->add($data);			
+			$state = $model_rate->add($data);
 		}
+		
 		if($state) {
 			showDialog('配置成功',urlAdminExtension('cityunion_config', 'commislevel'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
 		} else {
 			showDialog('配置失败');
-		}
-	}
-	
-	/**
-	 * 佣金模板
-	 *
-	 */
-    public function commisclassOp() {
-        $model_commis = Model('cityunion_commis_class');
-		$commis_list = $model_commis->getCommisList(GENERAL_PLATFORM_EXTENSION_ID);		
-		Tpl::output('commisclass_list',$commis_list);
-		
-		Tpl::output('top_link',$this->sublink($this->links,'commisclass'));
-		Tpl::setDirquna('extension');
-        Tpl::showpage('cityunion_config.commisclass');
-    }    
-
-	/**
-	 * 编辑佣金模板
-	 */
-	public function commisclass_editOp(){
-		$model_commis = Model('cityunion_commis_class');
-
-		$commis_id = intval($_GET["commis_id"]);
-		$commisclass = $model_commis->getCommisInfo(GENERAL_PLATFORM_EXTENSION_ID,array('commis_id'=>$commis_id));		
-		Tpl::output('commis_info',$commisclass);
-		
-		Tpl::setDirquna('extension');
-		Tpl::showpage('cityunion_config.commisclass.edit','null_layout');
-	}
-	/**
-	 * 保存佣金模板
-	 *
-	 * @param 
-	 * @return 
-	 */
-	public function commisclass_saveOp() {
-		$model_class	= Model('cityunion_commis_class');
-		
-		$data=array();
-		$data['commis_mode'] = $_POST['commis_mode'];
-		$data['store_id']    = GENERAL_PLATFORM_EXTENSION_ID;
-		$is_default = $_POST['is_default'];
-		if($is_default == 1){
-			//如果设置了默认的模板，则需要修改之前的模板
-			$model_class->where($data)->update(array('is_default'=>0));
-		}
-		$data['commis_class']= $_POST['commis_class'];
-		$data['commis_rate'] = $_POST['commis_rate'];
-		$data['commis_name'] = $_POST['commis_name'];
-		$data['is_default']  = $is_default;
-		if($_POST['commis_id'] != '') {
-			$where=array();
-			$where['commis_id']=intval($_POST['commis_id']);
-			$state = $model_class->where($where)->update($data);
-			if($state) {
-				showDialog('修改成功',urlAdminExtension('cityunion_config', 'commisclass'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('修改失败');
-			}
-		} else {
-			$state = $model_class->add($data);
-			if($state) {
-				showDialog('添加成功',urlAdminExtension('cityunion_config', 'commisclass'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('添加失败');
-			}
-		}
-	}
-	/**
-	 * 删除
-	 *
-	 * @param 
-	 * @return 
-	 */
-	public function commisclass_delOp() {
-		$model_class	= Model('cityunion_commis_class');		
-	
-		if($_GET['commis_id'] != '') {
-			$where=array();
-			$where['commis_id']=intval($_GET['commis_id']);
-			$state = $model_class->where($where)->delete();
-			if($state) {
-				showDialog('删除成功',urlAdminExtension('cityunion_config', 'commisclass'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('删除失败');
-			}
-		} else {
-			showDialog('非法操作',urlAdminExtension('cityunion_config', 'commisclass'),'error',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-		}
-	}
-	
-	/**
-	 * 平台定价模板
-	 *
-	 */
-	public function priceclassOp() {
-		$model_price = Model('cityunion_price_class');
-		$price_list = $model_price->getPriceList(GENERAL_PLATFORM_EXTENSION_ID);
-		Tpl::output('priceclass_list',$price_list);
-	
-		Tpl::output('top_link',$this->sublink($this->links,'priceclass'));
-		Tpl::setDirquna('extension');
-		Tpl::showpage('cityunion_config.priceclass');
-	}
-	
-	/**
-	 * 编辑平台定价模板
-	 */
-	public function priceclass_editOp(){
-		$model_price = Model('cityunion_price_class');
-	
-		$pid = intval($_GET["pid"]);
-		$priceclass = $model_price->getPriceInfo(GENERAL_PLATFORM_EXTENSION_ID,array('pid'=>$pid));
-		Tpl::output('price_info',$priceclass);
-	
-		Tpl::setDirquna('extension');
-		Tpl::showpage('cityunion_config.priceclass.edit','null_layout');
-	}
-	/**
-	 * 保存平台定价模板
-	 *
-	 * @param
-	 * @return
-	 */
-	public function priceclass_saveOp() {
-		$model_class	= Model('cityunion_price_class');
-	
-		$data=array();
-		$data['pname'] = $_POST['pname'];
-		$data['ptype']= $_POST['ptype'];
-		$data['profit_rate'] = $_POST['profit_rate'];
-		$data['huik_rate'] = $_POST['huik_rate'];
-		$data['mall_points'] = $_POST['mall_points'];
-		$data['store_subsidy'] = $_POST['store_subsidy'];
-		$data['tuig_subsidy'] = $_POST['tuig_subsidy'];
-		$data['store_id']    = GENERAL_PLATFORM_EXTENSION_ID;
-	
-		if($_POST['pid'] != '') {
-			$where=array();
-			$where['pid']=intval($_POST['pid']);
-			$state = $model_class->where($where)->update($data);
-			if($state) {
-				showDialog('修改成功',urlAdminExtension('cityunion_config', 'priceclass'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('修改失败');
-			}
-		} else {
-			$state = $model_class->add($data);
-			if($state) {
-				showDialog('添加成功',urlAdminExtension('cityunion_config', 'priceclass'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('添加失败');
-			}
-		}
-	}
-	/**
-	 * 删除平台定价模板
-	 *
-	 * @param
-	 * @return
-	 */
-	public function priceclass_delOp() {
-		$model_class	= Model('cityunion_price_class');
-	
-		if($_GET['pid'] != '') {
-			$where=array();
-			$where['pid']=intval($_GET['pid']);
-			$state = $model_class->where($where)->delete();
-			if($state) {
-				showDialog('删除成功',urlAdminExtension('cityunion_config', 'priceclass'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('删除失败');
-			}
-		} else {
-			showDialog('非法操作',urlAdminExtension('cityunion_config', 'priceclass'),'error',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-		}
-	}
-	
-	/**
-	 * 导购服务奖励方案
-	 *
-	 */
-	public function salemanOp() {
-		$model_saleman = Model('cityunion_salemanaward');
-		$saleman_list = $model_saleman->getExtensionSalemanAwardListByStoreID(GENERAL_PLATFORM_EXTENSION_ID);
-		Tpl::output('saleman_list',$saleman_list);
-	
-		Tpl::output('top_link',$this->sublink($this->links,'saleman'));
-		Tpl::setDirquna('extension');
-		Tpl::showpage('cityunion_config.saleman');
-	}
-	
-	/**
-	 * 编辑导购服务奖励方案
-	 */
-	public function saleman_editOp(){
-		$model_saleman = Model('cityunion_salemanaward');
-	
-		$sm_id = intval($_GET["sm_id"]);
-		$saleman_info = $model_saleman->getExtensionSalemanAwardByID($sm_id);
-		Tpl::output('saleman_info',$saleman_info);
-	
-		Tpl::setDirquna('extension');
-		Tpl::showpage('cityunion_config.saleman.edit','null_layout');
-	}
-	/**
-	 * 保存导购服务奖励方案
-	 *
-	 * @param
-	 * @return
-	 */
-	public function saleman_saveOp() {
-		$model_saleman	= Model('cityunion_salemanaward');
-		
-		$data=array();
-		$data['store_id']    = GENERAL_PLATFORM_EXTENSION_ID;
-		$data['award_name']  = $_POST['award_name'];
-		$data['mc_id']       = $_POST['mc_id'];
-		$data['serve_nums']  = $_POST['serve_nums'];
-		$data['order_nums']  = $_POST['order_nums'];
-		$data['achieve_val'] = $_POST['achieve_val'];
-		$data['award_rate']	 = $_POST['award_rate'];
-		$data['base_salary'] = $_POST['base_salary'];//保底薪资
-		
-		if($_POST['sm_id'] != '') {
-			$where=array();
-			$where['sm_id']=intval($_POST['sm_id']);
-			$state = $model_saleman->editExtensionSalemanAward($data, $where);
-			if($state) {
-				showDialog('修改成功',urlAdminExtension('cityunion_config', 'saleman'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('修改失败');
-			}
-		} else {
-			$state = $model_saleman->addExtensionSalemanAward($data);
-			if($state) {
-				showDialog('添加成功',urlAdminExtension('cityunion_config', 'saleman'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('添加失败');
-			}
-		}
-	}
-		
-	/**
-	 * 删除导购服务奖励方案
-	 *
-	 * @param
-	 * @return
-	 */
-	public function saleman_delOp() {
-		$model_saleman	= Model('cityunion_salemanaward');	
-		if($_GET['sm_id'] != '') {
-			$where=array();
-			$where['sm_id']=intval($_GET['sm_id']);
-			$state = $model_saleman->delExtensionSalemanAward($where);
-			if($state) {
-				showDialog('删除成功',urlAdminExtension('cityunion_config', 'saleman'),'succ',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
-			} else {
-				showDialog('删除失败');
-			}
-		} else {
-			showDialog('非法操作',urlAdminExtension('cityunion_config', 'saleman'),'error',empty($_GET['inajax']) ?'':'CUR_DIALOG.close();');
 		}
 	}
 	
