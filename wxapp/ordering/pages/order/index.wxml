@@ -22,8 +22,14 @@
 		<!-- 我的订单 -->
 		<view class="my-order" wx:if="{{listType == 0}}">
 			<view class="select-list">
-				<view wx:for="{{orderFilter}}" class="select-list__item"
-					data-idx="{{index}}"
+				<view wx:for="{{sortFilter}}" class="select-list__item"
+					data-sc="{{item.sc}}" data-index="{{item.index}}"
+					bindtap="sortFilterFn">
+					<view class="radio {{index == sortFilterIdx ? 'abled' : ''}}"></view>
+					<view class="name">{{item.name}}</view>
+				</view>
+        <view wx:for="{{orderFilter}}" class="select-list__item"
+					data-filter="{{item.filter}}" data-index="{{item.index}}"
 					bindtap="orderFilterFn">
 					<view class="radio {{index == orderFilterIdx ? 'abled' : ''}}"></view>
 					<view class="name">{{item.name}}</view>
@@ -41,21 +47,21 @@
 						<view wx:for="{{orderGoodsList}}" class="order-list_item">
 							<view class="order-item">
 								<view class="item-pic">
-									<image src="{{item.pic}}" mode="scaleToFill"></image>
+									<image src="{{item.goods_image}}" mode="scaleToFill"></image>
 								</view>
 								<view class="item-info">
-									<view class="name">{{item.name}}</view>
-									<view class="no">{{item.no}}</view>
+									<view class="name">{{item.goods_common_name}}</view>
+									<view class="no">{{item.goods_serial}}</view>
 								</view>
 							</view>
 							<view class="order-item">
 								{{item.num}}
 							</view>
 							<view class="order-item">
-								{{item.price}}
+								{{item.total_price}}
 							</view>
 							<view class="order-item">
-								{{item.num * item.price}}
+								{{item.num * item.total_price}}
 							</view>
 						</view>
 					</scroll-view>
@@ -77,21 +83,21 @@
 						<view wx:for="{{topGoodsList}}" class="order-list_item">
 							<view class="order-item">
 								<view class="item-pic">
-									<image src="{{item.pic}}" mode="scaleToFill"></image>
+									<image src="{{item.goods_image}}" mode="scaleToFill"></image>
 								</view>
 								<view class="item-info">
-									<view class="name">{{item.name}}</view>
-									<view class="no">{{item.no}}</view>
+									<view class="name">{{item.goods_common_name}}</view>
+									<view class="no">{{item.goods_serial}}</view>
 								</view>
 							</view>
 							<view class="order-item">
 								{{item.num}}
 							</view>
 							<view class="order-item">
-								{{item.price}}
+								{{item.total_price}}
 							</view>
 							<view class="order-item">
-								{{item.num * item.price}}
+								{{item.num * item.total_price}}
 							</view>
 							<view class="order-item">
 								{{index+1}}

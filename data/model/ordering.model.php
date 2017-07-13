@@ -22,10 +22,7 @@ class orderingModel extends Model {
     public function getOrderingInfo($condition, $field = '*') {
     	return $this->table('ordering')->field($field)->where($condition)->find();
     }
-    	
-
     
- 
     /**
      * 获取单条订货订单列表信息
      *

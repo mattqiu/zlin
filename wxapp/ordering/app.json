@@ -1,13 +1,13 @@
 {
   "pages":[
+    "pages/order/manage",
+    "pages/order/index",
+    "pages/goods/assessment",
     "pages/register/register",
     "pages/index/index",   
     "pages/goods/index",
     "pages/goods/detail",
     "pages/goods/checkin",
-    "pages/goods/assessment",
-    "pages/order/index",
-    "pages/order/manage",
     "pages/analysis/index",
     "pages/my/index",
     "pages/my/collection",

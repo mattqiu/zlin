@@ -20,15 +20,15 @@
 		<view wx:if="{{listType == 0}}" class="complated-wrap">
 			<view class="list-wrap">
 				<scroll-view scroll-y>
-					<view class="order-item">
+					<view wx:for="{{finishGoodsList}}" class="order-item">
 						<view class="order-item__main">
 							<view class="order__left">
-								<view class="item-content highlight">款号 ZFQ1254888</view>
-								<view class="item-content big">12款256件</view>
+								<view class="item-content highlight">款号 {{item.ordering_sn}}</view>
+								<view class="item-content big">{{style_num}}</view>
 							</view>
 							<view class="order__right">
-								<view class="item-content">2017-06-06 18:20:20</view>
-								<view class="item-content">张小明</view>
+								<view class="item-content">{{item.addtime}}</view>
+								<view class="item-content">{{item.buyer_name}}</view>
 								<view class="item-content big">6589元</view>
 							</view>
 						</view>
@@ -44,42 +44,26 @@
 		<view wx:else class="uncomplated-wrap">
 			<view class="list-wrap">
 				<scroll-view scroll-y>
-					<view class="order-item">
+        <checkbox-group bindchange="changeboxChange">
+					<view wx:for="{{noFinishGoodsList}}" class="order-item">
 						<view class="order-item__label">
 							<label class="checkbox-wrap">
-								<view class="checkbox"></view>
+								<checkbox value="{{item.ordering_sn}}" checked="" />
 							</label>
 						</view>
 						<view class="order-item__main">
 							<view class="order__left">
-								<view class="item-content highlight">款号 ZFQ1254888</view>
-								<view class="item-content big">12款256件</view>
+								<view class="item-content highlight">款号 {{item.ordering_sn}}</view>
+								<view class="item-content big">{{style_num}}</view>
 							</view>
 							<view class="order__right">
-								<view class="item-content">2017-06-06 18:20:20</view>
-								<view class="item-content">张小明</view>
+								<view class="item-content">{{item.addtime}}</view>
+								<view class="item-content">{{item.buyer_name}}</view>
 								<view class="item-content big">6589元</view>
 							</view>
 						</view>
 					</view>
-					<view class="order-item">
-						<view class="order-item__label">
-							<label class="checkbox-wrap">
-								<view class="checkbox checked"></view>
-							</label>
-						</view>
-						<view class="order-item__main">
-							<view class="order__left">
-								<view class="item-content highlight">款号 ZFQ1254888</view>
-								<view class="item-content big">12款256件</view>
-							</view>
-							<view class="order__right">
-								<view class="item-content">2017-06-06 18:20:20</view>
-								<view class="item-content">张小明</view>
-								<view class="item-content big">6589元</view>
-							</view>
-						</view>
-					</view>
+          </checkbox-group>
 				</scroll-view>
 			</view>
 			<view class="footer">

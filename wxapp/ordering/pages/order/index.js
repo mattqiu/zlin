@@ -1,128 +1,43 @@
 // pages/order/index.js
+var util = require('../../utils/util.js');
+var app = new getApp();
 Page({
   data:{
+    sc:'asc',
+    filter:'goods_serial',
+    size:'',
+    page:'10',
     listType: 0, //0:我的订单 1:总榜排行
-    orderGoodsList: [
+    sortFilter: [
       {
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      }
-    ],
-    topGoodsList: [
+        name: '升序',
+        index:0,
+        sc:'asc'
+      },
       {
-        id: 0,
-        name: '百搭针织上衣百搭针织上衣百搭针织上衣百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
-      },{
-        id: 0,
-        name: '百搭针织上衣',
-        no: 1630188,
-        pic: '../../images/local/pic2.png',
-        num: 16,
-        price: 600
+        name: '降序',
+        index: 1,
+        sc: 'desc'
       }
     ],
     orderFilter: [
       {
-        name: '升序'
+        name: '货号',
+        index: 0,
+        filter: 'goods_serial'
       },
       {
-        name: '降序'
+        name: '数量',
+        index: 1,
+        filter: 'num'
       },
       {
-        name: '货号'
-      },
-      {
-        name: '数量'
-      },
-      {
-        name: '零售额'
+        name: '零售额',
+        index: 2,
+        filter: 'total_price'
       },
     ],
+    sortFilterIdx: 0,
     orderFilterIdx: 0,
     planeData: [
       {
@@ -136,17 +51,99 @@ Page({
   },
   listTypeFn: function(e){
     // 列表切换
+    var that =this;
     let type = e.currentTarget.dataset.idx;
-    this.setData({
+    if(type == 1){
+      var data = {
+        token: app.globalData.token,
+        member_id: app.globalData.member_id,
+        state_type: '',
+        size:'total',
+        sc: 'desc',
+        order: 'num',
+        curpage: '1',
+        page: '10'
+      };
+      util.Ajax("store_ordering/ordering_list", data, function (res) {
+        that.setData({
+          scrollTop: 0,//滚动条位置
+          showPlaneType: '',
+          is_top: false,
+          is_scroll: true,//可以再滚动
+          topGoodsList: res.datas.ordering_list,
+        })
+        console.log('返回商品排序', res)
+      });
+    }
+    console.log('表头选择',type);
+    that.setData({
       listType: type
     })
   },
-  orderFilterFn: function(e){
+  sortFilterFn: function(e){
     // 我的订单筛选
-    let index = e.currentTarget.dataset.idx;
-
-    this.setData({
-      orderFilterIdx: index
+    var that = this;
+    let sc = e.currentTarget.dataset.sc,
+      index = e.currentTarget.dataset.index,
+      filter = that.data.filter;
+    console.log('订单排序方式', sc);
+    console.log('订单排序方式2', filter);
+    var data = {
+      token: app.globalData.token,
+      member_id: app.globalData.member_id,
+      state_type: 'state_new',
+      sc: sc,
+      order:filter,
+      size:'',
+      page:'10'
+    };
+    util.Ajax("store_ordering/ordering_list", data, function (res) {
+      that.setData({
+        scrollTop: 0,//滚动条位置
+        showPlaneType: '',
+        is_top: false,
+        is_scroll: true,//可以再滚动
+        orderGoodsList: res.datas.ordering_list,
+      })
+      console.log('返回商品排序', res)
+    });
+    that.setData({
+      sortFilterIdx: index,
+      sc:sc,
+      filter:filter
+    })
+  },
+  orderFilterFn: function (e) {
+    // 我的订单筛选
+    var that = this;
+    let sc = that.data.sc,
+      index = e.currentTarget.dataset.index,
+      filter = e.currentTarget.dataset.filter;
+    console.log('订单排序方式3', sc);
+    console.log('订单排序方式4', filter);
+    var data = {
+      token: app.globalData.token,
+      member_id: app.globalData.member_id,
+      state_type: 'state_new',
+      sc: sc,
+      order: filter,
+      size: '',
+      page: '10'
+    };
+    util.Ajax("store_ordering/ordering_list", data, function (res) {
+      that.setData({
+        scrollTop: 0,//滚动条位置
+        showPlaneType: '',
+        is_top: false,
+        is_scroll: true,//可以再滚动
+        orderGoodsList: res.datas.ordering_list,
+      })
+      console.log('返回商品排序', res)
+    });
+    that.setData({
+      orderFilterIdx: index,
+      sc: sc,
+      filter: filter
     })
   },
   showPlane: function(){
@@ -184,6 +181,26 @@ Page({
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    var that = this;
+    var data = {
+      token: app.globalData.token,
+      member_id: app.globalData.member_id,
+      state_type:'state_new',
+      sc: 'asc',
+      order: 'goods_serial',
+      size: '',
+      page: '10'
+    };
+    util.Ajax("store_ordering/ordering_list", data, function (res) {
+      that.setData({
+        scrollTop: 0,//滚动条位置
+        showPlaneType: '',
+        is_top: false,
+        is_scroll: true,//可以再滚动
+        orderGoodsList: res.datas.ordering_list,
+      })
+      console.log('返回商品排序', res.datas)
+    });
   },
   onReady:function(){
     // 页面渲染完成
