@@ -13,6 +13,10 @@
 defined('InIMall') or exit('Access Invalid!');
 
 class articleModel extends Model {
+
+	public function __construct(){
+	        parent::__construct('article');
+	    }
 	/**
 	 * 列表
 	 *

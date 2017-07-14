@@ -139,7 +139,13 @@ class ordering_goodsControl extends wxappControl {
     	$goods_commonid = intval($_REQUEST['goods_commonid']);
     	// 商品详细信息
     	$model_goods = Model('goods');
-    	$goods_detail = $model_goods->getGoodsCommonInfoByID($goods_commonid,'goods_commonid,goods_name,goods_serial,goods_marketprice,goods_price,spec_name,spec_value,store_id,store_name,brand_name');
+    	$goods_detail = $model_goods->getGoodsCommonInfoByID($goods_commonid,'goods_commonid,goods_name,goods_serial,goods_marketprice,goods_price,spec_name,spec_value,store_id,store_name,gc_name');
+    	$gc_name = $goods_detail['gc_name'];
+        $gcnamecut = substr_count($gc_name,"&gt;"); //指定字符出现几次
+        if($gcnamecut>1){
+            $pos = strpos($gc_name, "&gt;", $gcnamecut-2);//倒数第二次出现的位置
+            $gc_name = substr($gc_name,$pos+4);//截取
+        }
     	$spec_name = unserialize($goods_detail['spec_name']);
     	$spec_value = unserialize($goods_detail['spec_value']);
 
@@ -165,7 +171,7 @@ class ordering_goodsControl extends wxappControl {
     		$tpl_spec['sign'] = $spec_sign;
     		$spec_list[$spec_sign]['goods_id'] = $value['goods_id'];
             $spec_list[$spec_sign]['goods_price'] = $value['goods_price'];
-            $spec_list[$spec_sign]['goods_spec'] = $spname;
+            $spec_list[$spec_sign]['goods_spec'] = '类型:'.$gc_name.','.$spname;
     		$spec_image[$value['color_id']] = thumb($value, 60);
     	}
     	$goods_detail['spec_list'] = $spec_list;
