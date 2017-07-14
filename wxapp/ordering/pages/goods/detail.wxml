@@ -1,7 +1,7 @@
 <!--pages/goods/detail.wxml-->
 <view class="section">
 	<view class="top">
-		<view class="pic"><image src="{{goods_info.goods_image}}" mode="scaleToFill"></image></view>
+		<view class="pic"><image src="{{goods_info.goos_imgs[0].goods_image}}" mode="scaleToFill"></image></view>
 		<view class="icon-prev"></view>
 		<view class="about">
 			<view class="about-item collect">
@@ -16,7 +16,7 @@
 		<view class="goods-name">{{goods_info.goods_name}} </view>
 		<view class="goods-no">{{goods_info.goods_commonid}}</view>
 		<view class="goods-pirce highlight">￥{{goods_info.goods_price}}</view>
-		 <navigator url="checkin?goods_commonid={{goods_info.goods_commonid}}&&goods_name={{goods_info.goods_name}}&&goods_price={{goods_info.goods_price}}"><view class="goods-dn">{{goods_info.goods_total}}</view></navigator>
+		 <navigator url="checkin?goods_commonid={{goods_info.goods_commonid}}&&goods_name={{goods_info.goods_name}}&&goods_price={{goods_info.goods_price}}"><view class="goods-dn">{{goods_info.goods_sum}}</view></navigator>
 	</view>
 	<view class="tab-ctrl">
 		<view bindtap="switchTab" data-idx="0" class="tab-nav {{tabIndex == 0 ? 'active' : ''}}">商品属性</view>
@@ -36,8 +36,12 @@
 	</view>
 	<view wx:if="{{tabIndex == 2}}" class="recommend" >
 		<view class="recommend-item" wx:for="{{store_info}}">
-			<navigator url="detail?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}"><view class="pic"><image src="{{item.goods_image}}" mode="scaleToFill"></image></view></navigator>
-			<view class="goods-no">{{item.brand_name}}</view>
+			<navigator url="detail?goods_commonid={{item.goods_commonid}}&&goods_name={{item.goods_name}}&&goods_price={{item.goods_price}}">
+        <view class="pic">
+          <image src="{{item.goods_image}}" mode="scaleToFill"></image>
+        </view>
+      </navigator>
+			<view class="goods-no">{{item.goods_serial}}</view>
 			<view class="goods-pirce highlight">￥{{item.goods_price}}</view>
 		</view>
 	</view>

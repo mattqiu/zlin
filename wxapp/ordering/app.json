@@ -1,9 +1,9 @@
 {
   "pages":[
+    "pages/register/register",
     "pages/order/manage",
     "pages/order/index",
     "pages/goods/assessment",
-    "pages/register/register",
     "pages/index/index",   
     "pages/goods/index",
     "pages/goods/detail",

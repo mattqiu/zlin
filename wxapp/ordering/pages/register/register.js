@@ -112,7 +112,7 @@ Page({
       userinfo: app.globalData.userInfo
     }
     util.Ajax("connect_wxapp/sms_register", data, function (res) {
-      //console.log('个人信息:', res.member_id)
+      console.log('个人信息:', res.member_id)
       app.globalData.member_id = res.member_id
       that.setData({
         member_id :res.member_id

@@ -813,7 +813,18 @@ class goodsModel extends Model{
 
         return $goods_list;
     }
+    /**
+     * 获取店铺信息
+     *
+     * @param array $condition
+     * @param string $field
+     * @return array
+     */
+    public function getGoodsStoreInfo($condition, $field = '*') {
 
+    	return $this->table('goods')->field($field)->where($condition)->find();
+    }
+    
     /**
      * 获取单条商品信息
      *

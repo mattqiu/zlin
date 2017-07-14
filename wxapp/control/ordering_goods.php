@@ -293,6 +293,9 @@ class ordering_goodsControl extends wxappControl {
         $map_condition['goods_commonid'] = array("neq",$goods_commonid);
         //相关商品(公共店铺id)
         $store_info = $model_goods->getGoodsCommonList($map_condition);
+        foreach ($store_info as $key => $value) {
+        	$store_info[$key]['goods_image'] = @thumb($value['goods_image']);
+        }
         $spec_name  = $goods_detail['goods_info']['spec_name'];
         $spec_value = $goods_detail['goods_info']['spec_value'];
         foreach ($spec_value as $key => $value) {

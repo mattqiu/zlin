@@ -6,6 +6,7 @@ var goodsUrl = require('../../config').goodsUrl;
 var app = new getApp();
 Page({
   data:{
+    member_id:app.globalData.member_id,
     keyword: '',
     minPrice: 0.00,
     maxPrice: 0.00,

@@ -435,6 +435,7 @@ Page({
   },
   formSubmit:function(e){
     var formData = e.detail.value;
+    //console.log("提交的数据：", formData);
     var that = this;
     var data ={
       list: formData,
