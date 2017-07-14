@@ -76,18 +76,74 @@ $(function(){
 					chart = c;
 				});
 			});
-
+	var keyword = '';
 	$(function(){
-		var goodsajaxCommit 	= function() {
-		$("#show1").empty();
-		$("#two").empty();
+		var analysajaxCommit = function(keyword) {
+
 			$.ajax({
 				type: "get",
-				url: ApiUrl + "/index.php?act=store_ordering&op=analys&keyword=价格",
+				url: ApiUrl + "/index.php?act=store_ordering&op=analys&keyword="+keyword,
 				dataType: "json",
 				success: function(data) {
-					var data = data;
-					console.log(data);
+					var data = data.datas;
+					var goods_spec_name   = data.goods_spec_name;//商品属性名称
+					var spec_num_list     = data.spec_num_list;//商品属性订单列表
+					var completion_target = data.completion_target;//指标完成
+
+					//指标完成
+					if(completion_target){
+						$("#completion_target").empty();
+						var completion_target_data = "";
+						completion_target_data+= '<div class="text">指标完成(元)</div>'+
+						'<div class="text"><span>'+completion_target['total_price']+'</span></div>'+
+						'<div class="text"><span>'+completion_target['total_size_num']+'</span>款<span>'+completion_target['total_num']+'</span>件</div>';
+						$("#completion_target").append(completion_target_data);
+					}
+
+					//商品属性名称
+					if(goods_spec_name){
+						$("#goods_spec").empty();
+						var goods_spec = "";
+						for (var i = 0; i < goods_spec_name.length; i++) {
+							goods_spec +='<div class="button">'
+							+goods_spec_name[i]+
+						'</div>';
+						}
+						$("#goods_spec").append(goods_spec);
+					}
+					
+					//商品属性订单列表
+					if(spec_num_list){
+						var goods_spec_list = "";
+						$("#goods_spec_list").empty();
+						for (var i = 0; i < spec_num_list.length; i++) {
+						goods_spec_list +='<div class="num_list01 display-flex">'+
+						'<div class="color" style="background-color:'+spec_num_list[i]['color']+'">'+
+							
+						'</div>'+
+					'</div>'+
+					'<div class="num_list02 text-center">'
+						+spec_num_list[i]['spec_name']+
+					'</div>'+
+
+					'<div class="num_list03 text-center">'
+						+spec_num_list[i]['num']+
+					'</div>'+
+					'<div class="num_list04 text-center">'
+						+spec_num_list[i]['proportion']+
+					'</div>';
+						}
+
+						$("#goods_spec_list").append(goods_spec_list);
+					}
+					
+						$(".button").click(function(){
+							keyword = $(this).text();					
+							//$(".button").removeClass("button_active");
+							
+							analysajaxCommit(keyword);
+							$(this).addClass("button_active");
+						});
 					
 				},
 
@@ -97,6 +153,9 @@ $(function(){
 				}
 			});
 		}
-		goodsajaxCommit();
+		analysajaxCommit(keyword);
 	});
+
+
+
 })

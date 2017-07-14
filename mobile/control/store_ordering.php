@@ -219,6 +219,19 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
     public function analysOp(){
         header("content-type:text/html;charset=utf8");
         $keyword = $_GET['keyword'];
+        $color_list = array(
+            '#FFD700',
+            '#F5DEB3',
+            '#FFA500',
+            '#FFDEAD',
+            '#FAF0E6',
+            '#DEB887',
+            '#8B4513',
+            '#FFA07A',
+            '#D2691E',
+            '#FFDAB9',
+            '#808080'
+            );
         //指标完成
         $shopping_id = 1;//订货会id
         $buyer_id    = 1;//买家id
@@ -239,7 +252,38 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
         $completion_target['total_price']    = $total_price;
         $completion_target['total_size_num'] = $total_size_num;
         $completion_target['total_num']      = $total_num;
-        if($keyword == "价格"){
+
+
+        //去重 获取商品goods_spec
+        $data2 = $model_order_goods->field('goods_spec')->where($condition)->distinct(true)->select();
+        $spec = array();
+        //对goods_spec数据进行格式处理1
+        foreach ($data2 as $key => $value) {
+            $new_value['goods_spec'] = str_replace("，",",",$value['goods_spec']);
+            $data2[$key]['size_color'] = explode(',', $new_value['goods_spec']);
+            $size_color = explode(',', $new_value['goods_spec']);
+            foreach ($size_color as $k => $v) {
+                $spec[$k] = !empty($spec[$k])?$spec[$k]:array();
+                if(!in_array($size_color[$k],$spec[$k])){
+                    $spec[$k][] = $size_color[$k];
+                }
+                
+            }
+
+        }
+
+        //对goods_spec数据进行格式处理2
+        foreach ($spec as $key => $value) {            
+            foreach ($value as $k => $v) {
+                $new_value = str_replace("：",":",$v);
+                $specname = explode(':',$new_value);
+                $new_spec[$specname[0]][] = $specname[1];
+            }
+            
+        }
+        $goods_spec_name = array_keys($new_spec);
+        array_push($goods_spec_name, "价格");
+                if($keyword == "价格"){
             //当keyword 为价格时 单独数据处理
             $price = array(
                         array(
@@ -281,42 +325,28 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                     }else{
                         $spec_num[$k]['spec_name'] = $v['min'].'-'.$v['max'].'元';
                     }
+                    if($k > 9){
+                        $spec_num[$k]['color'] = $color_list[10];
+                    }else{
+                        $spec_num[$k]['color'] = $color_list[$k];
+                    }
                     $spec_num[$k]['num'] = $spec_num[$k]['num']?$spec_num[$k]['num']." 件":"0件" ;
                     $spec_num[$k]['proportion'] = round(($spec_num[$k]['num']/$total_num)*100, 2)." %"; 
 
                 }
-            output_data(array('spec_num_list' => $spec_num,'completion_target' => $completion_target), mobile_page(0));
+            //output_data(array('spec_num_list' => $spec_num,'completion_target' => $completion_target), mobile_page(0));
+            //exit;
+        }
+        
+
+        if(!$keyword){
+            $keyword = $goods_spec_name[0];
+        }
+
+        if ($keyword == "价格") {
+            output_data(array('spec_num_list' => $spec_num,'completion_target' => $completion_target,'goods_spec_name' => $goods_spec_name), mobile_page(0));
             exit;
         }
-
-        //去重 获取商品goods_spec
-        $data2 = $model_order_goods->field('goods_spec')->where($condition)->distinct(true)->select();
-        $spec = array();
-        //对goods_spec数据进行格式处理1
-        foreach ($data2 as $key => $value) {
-            $new_value['goods_spec'] = str_replace("，",",",$value['goods_spec']);
-            $data2[$key]['size_color'] = explode(',', $new_value['goods_spec']);
-            $size_color = explode(',', $new_value['goods_spec']);
-            foreach ($size_color as $k => $v) {
-                $spec[$k] = !empty($spec[$k])?$spec[$k]:array();
-                if(!in_array($size_color[$k],$spec[$k])){
-                    $spec[$k][] = $size_color[$k];
-                }
-                
-            }
-
-        }
-
-        //对goods_spec数据进行格式处理2
-        foreach ($spec as $key => $value) {            
-            foreach ($value as $k => $v) {
-                $new_value = str_replace("：",":",$v);
-                $specname = explode(':',$new_value);
-                $new_spec[$specname[0]][] = $specname[1];
-            }
-            
-        }
-
         //根据前端所传的keyword值去获取数据
         foreach ($new_spec as $key => $value) {
             if($keyword == $key){
@@ -324,6 +354,12 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                     $condition['goods_spec'] = array("like","%".$keyword.":".$v."%");
                     $condition['shopping_id'] = $shopping_id;
                     $condition['buyer_id']    = $buyer_id;
+                    if($k > 9){
+                        $spec_num[$k]['color'] = $color_list[10];
+                    }else{
+                        $spec_num[$k]['color'] = $color_list[$k];
+                    }
+                    
                     $spec_num[$k]['spec_name'] = $v;
                     $spec_num[$k]['num'] = $model_order_goods->where($condition)->sum('goods_num')." 件"; 
                     $spec_num[$k]['proportion'] = round(($spec_num[$k]['num']/$total_num)*100, 2)." %"; 
@@ -332,7 +368,7 @@ http://zlin.test.com/mobile/index.php?act=store_ordering&op=ordering_list&state_
                 
             }
         }
-        output_data(array('spec_num_list' => $spec_num,'completion_target' => $completion_target), mobile_page(0));
+        output_data(array('spec_num_list' => $spec_num,'completion_target' => $completion_target,'goods_spec_name' => $goods_spec_name), mobile_page(0));
             exit;
     }
     
